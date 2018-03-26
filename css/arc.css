@@ -10,6 +10,7 @@ html {
 	--footerBgColor: rgba(50,50,50,0.75);
 	--footerTextColor: rgba(255,255,255,0.4);
 
+	background-color: #000;
 	background: url(../images/background.png) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
