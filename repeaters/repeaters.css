@@ -16,6 +16,6 @@
 .repeaterListTable td:nth-of-type(2), .repeaterListTable th:nth-of-type(2) { width: 75px; }
 .repeaterListTable td:nth-of-type(3), .repeaterListTable th:nth-of-type(3) { width: 200px; }
 .repeaterListTable td:nth-of-type(4), .repeaterListTable th:nth-of-type(4) { width: 200px; }
-.repeaterListTable td:nth-of-type(4), .repeaterListTable th:nth-of-type(5) { width: 75px; }
-.repeaterListTable td:nth-of-type(5), .repeaterListTable th:nth-of-type(6) { width: 50px; }
-.repeaterListTable td:nth-of-type(6), .repeaterListTable th:nth-of-type(7) { width: 400px; }
+.repeaterListTable td:nth-of-type(5), .repeaterListTable th:nth-of-type(5) { width: 75px; }
+.repeaterListTable td:nth-of-type(6), .repeaterListTable th:nth-of-type(6) { width: 50px; }
+.repeaterListTable td:nth-of-type(7), .repeaterListTable th:nth-of-type(7) { width: 400px; }
