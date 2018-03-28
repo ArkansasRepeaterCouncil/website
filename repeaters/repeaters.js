@@ -1,7 +1,7 @@
 $.getJSON( "https://repeatercoordinationservice.azurewebsites.net/api/GetPublicList?state=ar", function( data ) {
 	var items = [];
 	
-	items.push("<thead><tr><th>Callsign</th><th>Trustee</th><th>Status</th><th>City</th><th>Offset</th><th>Attributes</th></tr></thead>");
+	items.push("<thead><tr><th>Callsign</th><th>Trustee</th><th>Status</th><th>City</th><th>Frequency</th><th>Offset</th><th>Attributes</th></tr></thead>");
 	
 	items.push("<tbody>");
 	
@@ -12,6 +12,7 @@ $.getJSON( "https://repeatercoordinationservice.azurewebsites.net/api/GetPublicL
 		items.push( "<td>" + obj.Trustee + "</td>" );
 		items.push( "<td>" + obj.Status + "</td>" );
 		items.push( "<td>" + obj.City + "</td>" );
+		items.push( "<td>" + obj.OutputFrequency + "</td>" );
 		items.push( "<td>" + obj.Offset + "</td>" );
 		
 		items.push( "<td>" );
@@ -23,7 +24,7 @@ $.getJSON( "https://repeatercoordinationservice.azurewebsites.net/api/GetPublicL
 		getValueIfNotNull(obj.DMR_ID, "DMR ID: ", attributes);
 		getNameIfNotNull(obj.AutoPatch, "autopatch", attributes);
 		getNameIfNotNull(obj.EmergencyPower, "emergency power", attributes);
-		getNameIfNotNull(obj.Linked, "linked, ", attributes);
+		getNameIfNotNull(obj.Linked, "linked", attributes);
 		getNameIfNotNull(obj.RACES, "RACES", attributes);
 		getNameIfNotNull(obj.ARES, "ARES", attributes);
 		getNameIfNotNull(obj.Weather, "weather net", attributes);
