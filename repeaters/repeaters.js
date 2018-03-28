@@ -1,7 +1,7 @@
 $.getJSON( "https://repeatercoordinationservice.azurewebsites.net/api/GetPublicList?state=ar", function( data ) {
 	var items = [];
 	
-	items.push("<thead><tr><th>Col</th><th>Col</th><th>Col</th><th>Col</th><th>Col</th><th>Col</th></tr></thead>");
+	items.push("<thead><tr><th>Callsign</th><th>Trustee</th><th>Status</th><th>City</th><th>Offset</th><th>Attributes</th></tr></thead>");
 	
 	items.push("<tbody>");
 	
