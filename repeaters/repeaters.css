@@ -1,0 +1,20 @@
+ .repeaterListTable tr:nth-of-type(even) {background: #CCC}
+
+.repeaterListTable thead, .repeaterListTable tfoot {
+	height: 24px;
+	display: block;
+	background-color: #aaa;
+}
+
+.repeaterListTable tbody {
+	height: 200px;
+	overflow: auto;
+	display: block;
+}
+
+.repeaterListTable td:nth-of-type(1), .repeaterListTable th:nth-of-type(1) { width: 75px; }
+.repeaterListTable td:nth-of-type(2), .repeaterListTable th:nth-of-type(2) { width: 75px; }
+.repeaterListTable td:nth-of-type(3), .repeaterListTable th:nth-of-type(3) { width: 200px; }
+.repeaterListTable td:nth-of-type(4), .repeaterListTable th:nth-of-type(4) { width: 200px; }
+.repeaterListTable td:nth-of-type(5), .repeaterListTable th:nth-of-type(5) { width: 50px; }
+.repeaterListTable td:nth-of-type(6), .repeaterListTable th:nth-of-type(6) { width: 400px; }
