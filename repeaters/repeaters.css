@@ -1,9 +1,9 @@
- .repeaterListTable tr:nth-of-type(even) {background: #CCC}
+ .repeaterListTable tr:nth-of-type(even) {background: #999}
 
 .repeaterListTable thead, .repeaterListTable tfoot {
 	height: 24px;
 	display: block;
-	background-color: #aaa;
+	background-color: #666;
 }
 
 .repeaterListTable tbody {
