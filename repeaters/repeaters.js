@@ -44,6 +44,7 @@ $.getJSON( "https://repeatercoordinationservice.azurewebsites.net/api/GetPublicL
 		html: items.join( "" )
 	}).appendTo( "#repeaterList" );
 	
+	$("#h2Loading").hide();
 });
 	
 function getValueIfNotNull(val, prefixString, arr) {
