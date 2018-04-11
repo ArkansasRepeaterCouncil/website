@@ -1,0 +1,42 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Arkansas Repeater Council</title>
+	<link rel="stylesheet" href="/css/arc.css">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
+	<script src='/js/headerScroll.js'></script>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+        
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <nav id="header">
+	        <div id="headerTitle">Arkansas Repeater<br>Council<asp:ContentPlaceHolder id="ContentPlaceHolderTitle" runat="server"></asp:ContentPlaceHolder></div>
+	        <div id="headerLinks">
+			        <ul>
+				        <li><a href="/">Home</a></li>
+				        <li><a href="/repeaters/">Repeater directory</a></li>
+				        <li><a href="/about/">About us</a></li>
+				        <li><a href="/procedures/">Procedures</a></li>
+				        <!-- <li><a href="#">Login</a></li> -->
+			        </ul>
+	        </div>
+        </nav>
+        <div id="pageContent">
+            <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+	        <div>Arkansas Repeater Council is a non-profit incorporation. &bull; Site design by <a href="https://www.qrz.com/db/N5JLC">N5JLC</a></div>
+        </footer>
+    </div>
+    </form>
+</body>
+</html>

@@ -1,26 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Source+Sans+Pro');
 
 html {
-	--textColor: #fff;
-	--linkColor: #508ced;
-	--backgroundColor: #d0d0d0;
-	--sectionBgColor: rgba(50,50,50,0.75);
-	--headerBgColor: rgba(225, 225, 225, 1);
-	--headerLinkColor: #000;
-	--footerBgColor: rgba(50,50,50,0.75);
-	--footerTextColor: rgba(255,255,255,0.4);
+    --textColor: #fff;
+    --linkColor: #508ced;
+    --backgroundColor: #d0d0d0;
+    --sectionBgColor: rgba(50,50,50,0.75);
+    --headerBgColor: rgba(225, 225, 225, 1);
+    --headerLinkColor: #000;
+    --footerBgColor: rgba(50,50,50,0.75);
+    --footerTextColor: rgba(255,255,255,0.4);
 
-	background-color: #000;
-	background: url(../images/background.png) no-repeat center center fixed; 
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+    background-color: #000;
+    background: url(../images/background.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-html,body {
-	margin: 0;
-	padding: 0;
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 }
 
 body {
