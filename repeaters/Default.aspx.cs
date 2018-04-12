@@ -11,7 +11,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 	{
 		using (var webClient = new System.Net.WebClient())
 		{
-			string json = webClient.DownloadString("https://repeatercoordinationservice.azurewebsites.net/api/ListPublicRepeaters?state=ar");
+			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=ar");
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			string rtn = "";
