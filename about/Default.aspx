@@ -1,9 +1,6 @@
-<html>
-<head>
-	<title>Arkansas Repeater Council: About us</title>
-	<link rel="stylesheet" href="/css/arc.css">
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
-	<script src='/js/headerScroll.js'></script>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="about_Default" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style>
         .avatar { 
             display: inline-block;
@@ -18,21 +15,10 @@
             height: 120px;
         }
     </style>
-</head>
-<body>
-<nav id="header">
-	<div id="headerTitle">Arkansas Repeater<br>Council: About</div>
-	<div id="headerLinks">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/repeaters/">Repeater directory</a></li>
-				<li><a href="/about/">About us</a></li>
-				<li><a href="/procedures/">Procedures</a></li>
-				<!-- <li><a href="#">Login</a></li> -->
-			</ul>
-	</div>
-</nav>
-<div id="pageContent">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">: About
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 	<section>
 		<h1>About us</h1>
 		<p>
@@ -61,9 +47,5 @@
 			</ul>
 		</p>
 	</section>
-</div>
-<footer>
-	<div>Arkansas Repeater Council is a non-profit incorporation. &bull; Site design by <a href="https://www.qrz.com/db/N5JLC">N5JLC</div>
-</footer>
-</body>
-</html>
+</asp:Content>
+
