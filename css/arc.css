@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Source+Sans+Pro');
 
 html {
+    /*
     --textColor: #fff;
     --linkColor: #508ced;
-    --backgroundColor: #d0d0d0;
     --sectionBgColor: rgba(50,50,50,0.75);
     --headerBgColor: rgba(225, 225, 225, 1);
     --headerLinkColor: #000;
     --footerBgColor: rgba(50,50,50,0.75);
     --footerTextColor: rgba(255,255,255,0.4);
+    */
 
     background-color: #000;
     background: url(../images/background.png) no-repeat center center fixed;
@@ -29,7 +30,7 @@ body {
 }
 
 a, a:hover, a:link, a:visited { 
-	color: var(--linkColor);
+	color: #508ced;
 	text-decoration: none;
 }
 a:hover {
@@ -42,19 +43,19 @@ a:hover {
 }
 
 #header {
-	position: fixed;
-	display: block;
-	background: var(--headerBgColor);
-	width: 100%;
-	top: 15px;
-	text-align: left;
-	z-index: 9998;
-	border-top-style: solid;
-	border-top-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-width: 1px;
-	border-color: var(--borderColor);
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: fixed;
+    display: block;
+    background: rgba(225, 225, 225, 1);
+    width: 100%;
+    top: 15px;
+    text-align: left;
+    z-index: 9998;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: #bfbfbf;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #headerTitle {
@@ -92,7 +93,7 @@ html.scrolled #headerLinks {
 	margin-right: 50px;
 }
 #headerLinks ul li a {
-	color: var(--headerLinkColor);
+	color:  #000;
 }
 
 h1, h2, h3, h4 {
@@ -106,13 +107,13 @@ h1 {
 
 #pageContent {
 	line-height: 1.4;
-	color: var(--textColor);
+	color: #fff;
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
 #pageContent table {
 	line-height: 1.4;
-	color: var(--textColor);
+	color: #fff;
 	font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -126,7 +127,7 @@ h1 {
 
 section {
 	margin-top: 100px;
-	background-color: var(--sectionBgColor);
+	background-color: rgba(50,50,50,0.75);
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
@@ -134,24 +135,22 @@ section {
 }
 
 footer {
-	margin-top: 20px;
-	padding-top: 2px;
-	color: var(--footerTextColor);
-	background-color: var(--footerBgColor);
-	text-align: right;
-	width: 80%;
-	-webkit-border-radius: 10px 10px 0px 0px;
-	-moz-border-radius: 10px 10px 0px 0px;
-	border-radius: 10px 10px 0px 0px;
-	font-size: 0.8em;
-	height: 25px;
-	
-	
+    margin-top: 20px;
+    padding-top: 2px;
+    color: rgba(255,255,255,0.4);
+    background-color: rgba(50,50,50,0.75);
+    text-align: right;
+    width: 80%;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
+    font-size: 0.8em;
+    height: 25px;
 }
 footer div {
 	margin-right: 20px;
 	margin-top: 3px;
 }
-footer div a, footer div a:visited, footer div a:active, footer div a:hover, footer div a:link {
-	color: var(--footerTextColor);
-}
+    footer div a, footer div a:visited, footer div a:active, footer div a:hover, footer div a:link {
+        color: rgba(255,255,255,0.4);
+    }
