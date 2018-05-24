@@ -65,6 +65,14 @@ public partial class repeaters_Default : System.Web.UI.Page
 		{
 			arr.Add(prefixString + val);
 		}
+		else if ((val is decimal) && ((decimal)val != 0))
+		{
+			arr.Add(prefixString + val);
+		}
+		else if (val != null)
+		{
+			arr.Add(prefixString + val);
+		}
 	}
 
 	private void getNameIfNotNull(object val, string name, List<string> arr)
