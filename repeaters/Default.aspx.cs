@@ -11,7 +11,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 	{
 		using (var webClient = new System.Net.WebClient())
 		{
-			string json = webClient.DownloadString("https://repeatercoordinationservice.azurewebsites.net/api/ListPublicRepeaters?state=ar");
+			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=ar");
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			string rtn = "";
@@ -62,6 +62,14 @@ public partial class repeaters_Default : System.Web.UI.Page
 	private void getValueIfNotNull(object val, string prefixString, List<string> arr)
 	{
 		if ((val is int) && ((int)val == 1))
+		{
+			arr.Add(prefixString + val);
+		}
+		else if ((val is decimal) && ((decimal)val != 0))
+		{
+			arr.Add(prefixString + val);
+		}
+		else if (val != null)
 		{
 			arr.Add(prefixString + val);
 		}

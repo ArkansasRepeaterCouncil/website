@@ -24,7 +24,7 @@
 				        <li><a href="/repeaters/">Repeater directory</a></li>
 				        <li><a href="/about/">About us</a></li>
 				        <li><a href="/procedures/">Procedures</a></li>
-				        <!-- <li><a href="#">Login</a></li> -->
+				        <li><asp:LoginStatus ID="LoginStatus1" runat="server" /></li>
 			        </ul>
 	        </div>
         </nav>

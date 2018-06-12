@@ -1,24 +1,10 @@
-<html>
-<head>
-	<title>Arkansas Repeater Council: Procedures</title>
-	<link rel="stylesheet" href="/css/arc.css">
-	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js'></script>
-	<script src='/js/headerScroll.js'></script>
-</head>
-<body>
-<nav id="header">
-	<div id="headerTitle">Arkansas Repeater<br>Council: Procedures</div>
-	<div id="headerLinks">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/repeaters/">Repeater directory</a></li>
-				<li><a href="/about/">About us</a></li>
-				<li><a href="/procedures/">Procedures</a></li>
-				<!-- <li><a href="#">Login</a></li> -->
-			</ul>
-	</div>
-</nav>
-<div id="pageContent">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="procedures_Default" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">: Procedures
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 	<section>
 		<h1>Procedures</h1>
 		<p><strong>These procedures and guidelines will soon change drastically.  Please check back here for details.</strong></p>
@@ -170,9 +156,6 @@ coordination of any given frequency, any change in the trustee of any coordinate
 grounds for the revocation of a frequency coordination. The Coordinator must, however, be notified in
 writing of a change in trusteeship within (60) days.
 	</section>
-</div>
-<footer>
-	<div>Arkansas Repeater Council is a non-profit incorporation. &bull; Site design by <a href="https://www.qrz.com/db/N5JLC">N5JLC</div>
-</footer>
-</body>
-</html>
+
+</asp:Content>
+
