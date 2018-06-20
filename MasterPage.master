@@ -19,13 +19,29 @@
         <nav id="header">
 	        <div id="headerTitle">Arkansas Repeater<br>Council<asp:ContentPlaceHolder id="ContentPlaceHolderTitle" runat="server"></asp:ContentPlaceHolder></div>
 	        <div id="headerLinks">
-			        <ul>
+                <nav role="navigation">
+			        <ul class="primaryLinks">
 				        <li><a href="/">Home</a></li>
 				        <li><a href="/repeaters/">Repeater directory</a></li>
 				        <li><a href="/about/">About us</a></li>
 				        <li><a href="/procedures/">Procedures</a></li>
-				        <li><asp:LoginStatus ID="LoginStatus1" runat="server" /></li>
+                        <li><asp:LinkButton ID="lbLogin" runat="server" OnClick="lbLogin_Click" Text="Login"></asp:LinkButton></li>
 			        </ul>
+                    <asp:Panel ID="pnlLoggedInNav" Visible="false" runat="server">
+                        <style type="text/css">
+                            #headerLinks ul.primaryLinks { 
+                                margin-bottom: 0px; 
+                                margin-top: 10px;
+                            }
+                        </style>
+                        <ul class="loggedInLinks">
+				            <li><a href="/Dashboard/">Dashboard</a></li>
+                            <li><a href="#">Maintain repeaters</a></li>
+                            <li><a href="#">Coordination request</a></li>
+				            <li><a href="#">Profile</a></li>
+			            </ul>
+                    </asp:Panel>
+                </nav>
 	        </div>
         </nav>
         <div id="pageContent">
