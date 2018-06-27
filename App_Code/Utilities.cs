@@ -20,4 +20,20 @@ public static class Utilities
 		return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
 	}
 
+	public static Credentials GetExistingCredentials()
+	{
+		Credentials outputCreds = new Credentials();
+
+		HttpCookie hc = HttpContext.Current.Request.Cookies["login"];
+		if ((hc != null) && (hc.Value != string.Empty))
+		{
+			outputCreds = new Credentials(hc.Value);
+		}
+		else
+		{
+			HttpContext.Current.Response.Redirect("~/Login.aspx");
+		}
+
+		return outputCreds;
+	}
 }
