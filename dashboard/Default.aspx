@@ -8,7 +8,7 @@
     	<section>
 		<h1>Dashboard</h1>
 		<p>
-			You are logged in, but there's nothing here.
+			You are logged in, but there's nothing here. Use the menu above to get around.
 		</p>
 	</section>
 </asp:Content>
