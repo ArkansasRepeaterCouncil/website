@@ -7,7 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
         <h1>Login</h1>
-        <asp:login runat="server" PasswordRecoveryText="Reset my password" PasswordRecoveryUrl="~/LoginReset.aspx" RenderOuterTable="False" TitleText="" UserNameLabelText="Call sign:" UserNameRequiredErrorMessage="Call sign is required." ID="login1" CreateUserText="Request an account" CreateUserUrl="~/LoginRequest.aspx" OnAuthenticate="login1_Authenticate"></asp:login>
+        <asp:login runat="server" PasswordRecoveryText="Reset my password" PasswordRecoveryUrl="~/LoginReset.aspx" TitleText="" UserNameLabelText="Call sign:" UserNameRequiredErrorMessage="Call sign is required." ID="login1" CreateUserText="Request an account" CreateUserUrl="~/LoginRequest.aspx" OnAuthenticate="login1_Authenticate" BorderPadding="0" BorderStyle="None"></asp:login>
     </section>
 </asp:Content>
 
