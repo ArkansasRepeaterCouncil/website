@@ -1,0 +1,17 @@
+version: 1.0.{build}
+branches:
+  only:
+  - master
+build: off
+artifacts:
+- path: '**\*.aspx'
+- path: '**\*.aspx.cs'
+- path: '**\*.master'
+- path: '**\*.master.cs'
+- path: '**\*.config'
+- path: '**\*.dll'
+- path: '**\*.xml'
+- path: '**\*.html'
+- path: '**\*.css'
+- path: '**\*.js'
+- path: '**\*.png'
