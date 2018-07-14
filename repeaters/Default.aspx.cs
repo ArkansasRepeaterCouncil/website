@@ -33,16 +33,16 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 				List<string> attributes = new List<string>();
 
-				getValueIfNotNull(obj.Analog_InputAccess, "input tone: ", attributes);
-				getValueIfNotNull(obj.Analog_OutputAccess, "output tone: ", attributes);
-				getValueIfNotNull(obj.DSTAR_Module, "D-Star module: ", attributes);
-				getValueIfNotNull(obj.DMR_ID, "DMR ID: ", attributes);
-				getNameIfNotNull(obj.AutoPatch, "autopatch", attributes);
-				getNameIfNotNull(obj.EmergencyPower, "emergency power", attributes);
-				getNameIfNotNull(obj.Linked, "linked", attributes);
-				getNameIfNotNull(obj.RACES, "RACES", attributes);
-				getNameIfNotNull(obj.ARES, "ARES", attributes);
-				getNameIfNotNull(obj.Weather, "weather net", attributes);
+				Utilities.getValueIfNotNull(obj.Analog_InputAccess, "input tone: ", attributes);
+				Utilities.getValueIfNotNull(obj.Analog_OutputAccess, "output tone: ", attributes);
+				Utilities.getValueIfNotNull(obj.DSTAR_Module, "D-Star module: ", attributes);
+				Utilities.getValueIfNotNull(obj.DMR_ID, "DMR ID: ", attributes);
+				Utilities.getNameIfNotNull(obj.AutoPatch, "autopatch", attributes);
+				Utilities.getNameIfNotNull(obj.EmergencyPower, "emergency power", attributes);
+				Utilities.getNameIfNotNull(obj.Linked, "linked", attributes);
+				Utilities.getNameIfNotNull(obj.RACES, "RACES", attributes);
+				Utilities.getNameIfNotNull(obj.ARES, "ARES", attributes);
+				Utilities.getNameIfNotNull(obj.Weather, "weather net", attributes);
 
 				for (int index = 0; index < attributes.Count; index++)
 				{
@@ -56,31 +56,6 @@ public partial class repeaters_Default : System.Web.UI.Page
 			rtn += "</tbody></table>";
 
 			repeaterList.Text = rtn;
-		}
-	}
-
-	private void getValueIfNotNull(object val, string prefixString, List<string> arr)
-	{
-		if ((val is int) && ((int)val == 1))
-		{
-			arr.Add(prefixString + val);
-		}
-		else if ((val is decimal) && ((decimal)val != 0))
-		{
-			arr.Add(prefixString + val);
-		}
-		else if (val != null)
-		{
-			arr.Add(prefixString + val);
-		}
-	}
-
-	private void getNameIfNotNull(object val, string name, List<string> arr)
-	{
-		bool boolVal = false;
-		if ((Boolean.TryParse(val.ToString(), out boolVal)) && (boolVal))
-		{
-			arr.Add(name);
 		}
 	}
 }

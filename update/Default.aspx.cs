@@ -10,10 +10,12 @@ public partial class update_Default : System.Web.UI.Page
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
+		Credentials creds = Utilities.GetExistingCredentials();
 
 		using (var webClient = new System.Net.WebClient())
 		{
-			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "?state=ar");
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetUsersRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
+			string json = webClient.DownloadString(url);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			string rtn = "";
@@ -23,7 +25,7 @@ public partial class update_Default : System.Web.UI.Page
 			foreach (dynamic obj in data)
 			{
 				rtn += "<tr>";
-
+				rtn += "<td><button onclick='alert(" + obj.ID + ");'>Edit</button></td>";
 				rtn += "<td>" + obj.Callsign + "</td>";
 				rtn += "<td>" + obj.Trustee + "</td>";
 				rtn += "<td>" + obj.Status + "</td>";
@@ -35,16 +37,16 @@ public partial class update_Default : System.Web.UI.Page
 
 				List<string> attributes = new List<string>();
 
-				getValueIfNotNull(obj.Analog_InputAccess, "input tone: ", attributes);
-				getValueIfNotNull(obj.Analog_OutputAccess, "output tone: ", attributes);
-				getValueIfNotNull(obj.DSTAR_Module, "D-Star module: ", attributes);
-				getValueIfNotNull(obj.DMR_ID, "DMR ID: ", attributes);
-				getNameIfNotNull(obj.AutoPatch, "autopatch", attributes);
-				getNameIfNotNull(obj.EmergencyPower, "emergency power", attributes);
-				getNameIfNotNull(obj.Linked, "linked", attributes);
-				getNameIfNotNull(obj.RACES, "RACES", attributes);
-				getNameIfNotNull(obj.ARES, "ARES", attributes);
-				getNameIfNotNull(obj.Weather, "weather net", attributes);
+				Utilities.getValueIfNotNull(obj.Analog_InputAccess, "input tone: ", attributes);
+				Utilities.getValueIfNotNull(obj.Analog_OutputAccess, "output tone: ", attributes);
+				Utilities.getValueIfNotNull(obj.DSTAR_Module, "D-Star module: ", attributes);
+				Utilities.getValueIfNotNull(obj.DMR_ID, "DMR ID: ", attributes);
+				Utilities.getNameIfNotNull(obj.AutoPatch, "autopatch", attributes);
+				Utilities.getNameIfNotNull(obj.EmergencyPower, "emergency power", attributes);
+				Utilities.getNameIfNotNull(obj.Linked, "linked", attributes);
+				Utilities.getNameIfNotNull(obj.RACES, "RACES", attributes);
+				Utilities.getNameIfNotNull(obj.ARES, "ARES", attributes);
+				Utilities.getNameIfNotNull(obj.Weather, "weather net", attributes);
 
 				for (int index = 0; index < attributes.Count; index++)
 				{
@@ -58,31 +60,6 @@ public partial class update_Default : System.Web.UI.Page
 			rtn += "</tbody></table>";
 
 			repeaterList.Text = rtn;
-		}
-	}
-
-	private void getValueIfNotNull(object val, string prefixString, List<string> arr)
-	{
-		if ((val is int) && ((int)val == 1))
-		{
-			arr.Add(prefixString + val);
-		}
-		else if ((val is decimal) && ((decimal)val != 0))
-		{
-			arr.Add(prefixString + val);
-		}
-		else if (val != null)
-		{
-			arr.Add(prefixString + val);
-		}
-	}
-
-	private void getNameIfNotNull(object val, string name, List<string> arr)
-	{
-		bool boolVal = false;
-		if ((Boolean.TryParse(val.ToString(), out boolVal)) && (boolVal))
-		{
-			arr.Add(name);
 		}
 	}
 }
