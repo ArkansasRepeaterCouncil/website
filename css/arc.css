@@ -1,16 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Source+Sans+Pro');
 
 html {
-    /*
-    --textColor: #fff;
-    --linkColor: #508ced;
-    --sectionBgColor: rgba(50,50,50,0.75);
-    --headerBgColor: rgba(225, 225, 225, 1);
-    --headerLinkColor: #000;
-    --footerBgColor: rgba(50,50,50,0.75);
-    --footerTextColor: rgba(255,255,255,0.4);
-    */
-
     background-color: #000;
     background: url(../images/background.png) no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -81,6 +71,17 @@ html.scrolled #headerTitle {
 	transition: all 1s;
 	transition-delay: 0.6s;
 }
+
+ul.loggedInLinks {
+    position: relative;
+    left: 200px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding: 0;
+    font-size: 0.8em;
+}
+
+
 html.scrolled #headerLinks {
 	position: relative;
 	left: 50px;
@@ -89,11 +90,16 @@ html.scrolled #headerLinks {
 }
 
 #headerLinks ul li {
-	display: inline-block;
-	margin-right: 50px;
+    display: inline-block;
+    margin-right: 50px;
 }
+
 #headerLinks ul li a {
 	color:  #000;
+}
+
+#headerLinks ul.loggedInLinks li a {
+    color: #777;
 }
 
 h1, h2, h3, h4 {
@@ -151,6 +157,6 @@ footer div {
 	margin-right: 20px;
 	margin-top: 3px;
 }
-    footer div a, footer div a:visited, footer div a:active, footer div a:hover, footer div a:link {
-        color: rgba(255,255,255,0.4);
-    }
+footer div a, footer div a:visited, footer div a:active, footer div a:hover, footer div a:link {
+    color: rgba(255,255,255,0.4);
+}

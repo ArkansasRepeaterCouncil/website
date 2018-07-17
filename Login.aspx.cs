@@ -21,16 +21,16 @@ public partial class Login : System.Web.UI.Page
 			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "DoLogin?" + parameters);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
-			if (data[0].Return = 1)
+			if ((int)data[0].Return == 1)
 			{
 				e.Authenticated = true;
+
+				HttpCookie ckLogin = new HttpCookie("login", Utilities.Base64Encode(login1.UserName + "|" + login1.Password));
 				if (login1.RememberMeSet)
 				{
-					HttpCookie ckUser = new HttpCookie("callsign", login1.UserName);
-					HttpCookie ckPass = new HttpCookie("password", login1.Password);
-					ckUser.Expires = DateTime.Now.AddDays(30);
-					ckPass.Expires = DateTime.Now.AddDays(30);
+					ckLogin.Expires = DateTime.Now.AddDays(364);
 				}
+				Response.Cookies.Add(ckLogin);
 			}
 			else
 			{
