@@ -18,7 +18,7 @@ public partial class update_Default : System.Web.UI.Page
 			string json = webClient.DownloadString(url);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
-			string[] fields = {"Callsign", "OutputFrequency", "City", "Status" };
+			string[] fields = {"Callsign", "OutputFrequency", "City", "Status", "DateUpdated" };
 
 			foreach (dynamic obj in data)
 			{
