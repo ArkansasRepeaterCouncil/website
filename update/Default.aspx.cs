@@ -8,36 +8,71 @@ using System.Web.UI.WebControls;
 
 public partial class update_Default : System.Web.UI.Page
 {
+	Credentials creds;
+
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		Credentials creds = Utilities.GetExistingCredentials();
+		creds = Utilities.GetExistingCredentials();
 
+		LoadRepeaterDetails();
+	}
+
+	private void LoadRepeaterDetails()
+	{
+		string repeaterId = "0";
+		try
+		{
+			repeaterId = Request.QueryString["id"].ToString();
+		}
+		catch (Exception)
+		{
+			
+		}
+		
+
+		// Call web service to get all data for the repeater with this ID
+		dynamic repeaterData;
 		using (var webClient = new System.Net.WebClient())
 		{
-			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetUsersRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetails?callsign={0}&password={1}&repeaterid={2}", creds.Username, creds.Password, repeaterId);
 			string json = webClient.DownloadString(url);
-			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+			repeaterData = JsonConvert.DeserializeObject<dynamic>(json);
+		}
 
-			string[] fields = {"Callsign", "OutputFrequency", "City", "Status", "DateUpdated" };
+		//// Load data into new controls
+		lblRepeaterName.Text = repeaterData[0].Callsign.Value + " (" + repeaterData[0].OutputFrequency.Value + ")";
 
-			foreach (dynamic obj in data)
+		foreach (dynamic property in repeaterData[0])
+		{
+			RepeaterProperty rp = new RepeaterProperty(property);
+			
+			switch (rp.Type)
 			{
-				
-				TableRow row = new TableRow();
-				TableCell cell = new TableCell();
-				cell.Text = "<button onclick='alert(" + obj.ID + ");'>Edit</button>";
-				row.Cells.Add(cell);
+				case "Boolean":
+					CheckBox cb = new CheckBox();
+					cb.Text = rp.FriendlyName;
+					cb.ID = rp.Name;
+					cb.Checked = rp.Value;
+					cb.Enabled = !rp.ReadOnly;
+					formPanel.Controls.Add(cb);
+					break;
+				default:
+					Label lbl = new Label();
+					lbl.Text = rp.FriendlyName;
+					lbl.Width = 400;
+					lbl.CssClass = "formLabel";
+					formPanel.Controls.Add(lbl);
 
-				for (int i = 0; i < fields.Length; i++)
-				{
-					cell = new TableCell();
-					cell.Text = obj[fields[i]];
-					row.Cells.Add(cell);
-				}
-
-				RepeatersTable.Rows.Add(row);
+					TextBox tb = new TextBox();
+					tb.Text = rp.Value;
+					tb.ID = rp.Name;
+					tb.Enabled = !rp.ReadOnly;
+					formPanel.Controls.Add(tb);
+					break;
 			}
-
+			Label newline = new Label();
+			newline.Text = "<br>";
+			formPanel.Controls.Add(newline);
 		}
 	}
 }
