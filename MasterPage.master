@@ -36,7 +36,6 @@
                         </style>
                         <ul class="loggedInLinks">
 				            <li><a href="/Dashboard/">Dashboard</a></li>
-                            <li><a href="/update/">Update repeaters</a></li>
                             <li><a href="/request/">Coordination request</a></li>
 				            <li><a href="/profile/">Profile</a></li>
 			            </ul>
