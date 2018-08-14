@@ -42,15 +42,19 @@ public class RepeaterProperty
 				break;
 			case "OutputFrequency":
 				FriendlyName = "Output frequency";
+				ReadOnly = true;
 				break;
 			case "InputFrequency":
 				FriendlyName = "Input frequency";
+				ReadOnly = true;
 				break;
 			case "Sponsor":
 				break;
 			case "Latitude":
+				ReadOnly = true;
 				break;
 			case "Longitude":
+				ReadOnly = true;
 				break;
 			case "AMSL":
 				FriendlyName = "Sea level elevation (meters)";
