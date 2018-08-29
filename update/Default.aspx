@@ -115,7 +115,7 @@
                 <asp:ListItem>Brandmeister</asp:ListItem>
                 <asp:ListItem>DMR-MARC</asp:ListItem>
                 <asp:ListItem>Other</asp:ListItem>
-                <asp:ListItem>Not applicable</asp:ListItem>
+                <asp:ListItem Value="">Not applicable</asp:ListItem>
             </asp:DropDownList>
             <br />
             <asp:Label ID="lblP25_NAC" CssClass="formLabel" runat="server" Text="P25 NAC"></asp:Label><asp:TextBox ID="txtP25_NAC" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
