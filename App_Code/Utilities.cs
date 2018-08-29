@@ -77,7 +77,7 @@ public static class Utilities
 			string json = JsonConvert.SerializeObject(objToSend);
 
 			streamWriter.Write(json);
-			System.Diagnostics.Debug.Write(json);
+			System.Diagnostics.Debug.WriteLine(json);
 		}
 
 		var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
