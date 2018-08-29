@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Net;
 using System.Web;
 
 /// <summary>
@@ -60,5 +62,30 @@ public static class Utilities
 		{
 			arr.Add(name);
 		}
+	}
+
+	public static string PostJsonToUrl(string url, object objToSend)
+	{
+		string result = "";
+
+		var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+		httpWebRequest.ContentType = "application/json";
+		httpWebRequest.Method = "POST";
+
+		using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+		{
+			string json = JsonConvert.SerializeObject(objToSend);
+
+			streamWriter.Write(json);
+			System.Diagnostics.Debug.Write(json);
+		}
+
+		var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+		using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+		{
+			result = streamReader.ReadToEnd();
+		}
+
+		return result;
 	}
 }
