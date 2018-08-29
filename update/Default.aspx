@@ -80,7 +80,14 @@
             <asp:Label ID="lblAnalog_Width" CssClass="formLabel" runat="server" Text="Analog width"></asp:Label><asp:TextBox ID="txtAnalog_Width" CssClass="textInput" runat="server"></asp:TextBox>
             <br />
             <br />
-            <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label><asp:TextBox ID="txtDSTAR_Module" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
+            <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label>
+            <asp:DropDownList ID="ddlDSTARmodule" runat="server" CssClass="textInput">
+                <asp:ListItem>A</asp:ListItem>
+                <asp:ListItem>B</asp:ListItem>
+                <asp:ListItem>C</asp:ListItem>
+                <asp:ListItem Value="">Not applicable</asp:ListItem>
+            </asp:DropDownList>
+            <br />
             <asp:Label ID="lblDMR_ColorCode" CssClass="formLabel" runat="server" Text="DMR color code"></asp:Label>
             <asp:DropDownList ID="ddlDMR_ColorCode" runat="server" CssClass="textInput">
                 <asp:ListItem>0</asp:ListItem>
@@ -103,7 +110,14 @@
             </asp:DropDownList>
             <br />
             <asp:Label ID="lblDMR_ID" CssClass="formLabel" runat="server" Text="DMR ID"></asp:Label><asp:TextBox ID="txtDMR_ID" CssClass="textInput" placeholder="Leave blank if none" runat="server"></asp:TextBox><br />
-            <asp:Label ID="lblDMR_Network" CssClass="formLabel" runat="server" Text="DMR network"></asp:Label><asp:TextBox ID="txtDMR_Network" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
+            <asp:Label ID="lblDMR_Network" CssClass="formLabel" runat="server" Text="DMR network"></asp:Label>
+            <asp:DropDownList ID="ddlDMR_Network" runat="server" CssClass="textInput">
+                <asp:ListItem>Brandmeister</asp:ListItem>
+                <asp:ListItem>DMR-MARC</asp:ListItem>
+                <asp:ListItem>Other</asp:ListItem>
+                <asp:ListItem>Not applicable</asp:ListItem>
+            </asp:DropDownList>
+            <br />
             <asp:Label ID="lblP25_NAC" CssClass="formLabel" runat="server" Text="P25 NAC"></asp:Label><asp:TextBox ID="txtP25_NAC" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
             <asp:Label ID="lblNXDN_RAN" CssClass="formLabel" runat="server" Text="NXDN RAN"></asp:Label><asp:TextBox ID="txtNXDN_RAN" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
             <asp:Label ID="lblYSF_DSQ" CssClass="formLabel" runat="server" Text="YSF DSQ"></asp:Label><asp:TextBox ID="txtYSF_DSQ" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox>
