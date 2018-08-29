@@ -58,14 +58,14 @@ public class Repeater
 	public string P25_NAC;
 	public string NXDN_RAN;
 	public string YSF_DSQ;
-	public string Autopatch;
-	public string EmergencyPower;
-	public string Linked;
-	public string RACES;
-	public string ARES;
-	public string WideArea;
-	public string Weather;
-	public string Experimental;
+	public bool Autopatch;
+	public bool EmergencyPower;
+	public bool Linked;
+	public bool RACES;
+	public bool ARES;
+	public bool WideArea;
+	public bool Weather;
+	public bool Experimental;
 	public string DateCoordinated;
 	public string DateUpdated;
 	public string DateDecoordinated;
@@ -99,7 +99,7 @@ public class Repeater
 		
 	}
 
-	public Repeater(string id, string type, string callsign, string trusteeid, string status, string city, string sitename, string outputfrequency, string inputfrequency, string sponsor, string latitude, string longitude, string amsl, string erp, string outputpower, string antennagain, string antennaheight, string analog_inputaccess, string analog_outputaccess, string analog_width, string dstar_module, string dmr_colorcode, string dmr_id, string dmr_network, string p25_nac, string nxdn_ran, string ysf_dsq, string autopatch, string emergencypower, string linked, string races, string ares, string widearea, string weather, string experimental, string datecoordinated, string dateupdated, string datedecoordinated, string datecoordinationsource, string dateconstruction, string coordinatorcomments, string notes, string state)
+	public Repeater(string id, string type, string callsign, string trusteeid, string status, string city, string sitename, string outputfrequency, string inputfrequency, string sponsor, string latitude, string longitude, string amsl, string erp, string outputpower, string antennagain, string antennaheight, string analog_inputaccess, string analog_outputaccess, string analog_width, string dstar_module, string dmr_colorcode, string dmr_id, string dmr_network, string p25_nac, string nxdn_ran, string ysf_dsq, bool autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, string datecoordinationsource, string dateconstruction, string coordinatorcomments, string notes, string state)
 	{
 		ID = int.Parse(id);
 		Type = type;
