@@ -40,10 +40,10 @@ public partial class update_Default : System.Web.UI.Page
 			// Load data into new controls
 			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 			txtID.Text = repeater.ID.ToString();
-			txtType.Text = repeater.Type;
+			ddlType.SelectedValue = repeater.Type;
 			txtRepeaterCallsign.Text = repeater.RepeaterCallsign;
 			txtTrusteeID.Text = repeater.TrusteeID;
-			txtStatus.Text = repeater.Status;
+			ddlStatus.SelectedValue = repeater.Status;
 			txtCity.Text = repeater.City;
 			txtSiteName.Text = repeater.SiteName;
 			txtOutputFrequency.Text = repeater.OutputFrequency;
@@ -60,20 +60,20 @@ public partial class update_Default : System.Web.UI.Page
 			txtAnalog_OutputAccess.Text = repeater.Analog_OutputAccess;
 			txtAnalog_Width.Text = repeater.Analog_Width;
 			txtDSTAR_Module.Text = repeater.DSTAR_Module;
-			txtDMR_ColorCode.Text = repeater.DMR_ColorCode;
+			ddlDMR_ColorCode.SelectedValue = repeater.DMR_ColorCode;
 			txtDMR_ID.Text = repeater.DMR_ID;
 			txtDMR_Network.Text = repeater.DMR_Network;
 			txtP25_NAC.Text = repeater.P25_NAC;
 			txtNXDN_RAN.Text = repeater.NXDN_RAN;
 			txtYSF_DSQ.Text = repeater.YSF_DSQ;
-			txtAutopatch.Text = repeater.Autopatch;
-			txtEmergencyPower.Text = repeater.EmergencyPower;
-			txtLinked.Text = repeater.Linked;
-			txtRACES.Text = repeater.RACES;
-			txtARES.Text = repeater.ARES;
-			txtWideArea.Text = repeater.WideArea;
-			txtWeather.Text = repeater.Weather;
-			txtExperimental.Text = repeater.Experimental;
+			ddlAutopatch.SelectedValue = repeater.Autopatch;
+			chkEmergencyPower.Checked = repeater.EmergencyPower;
+			chkLinked.Checked = repeater.Linked;
+			chkRACES.Checked = repeater.RACES;
+			chkARES.Checked = repeater.ARES;
+			chkWideArea.Checked = repeater.WideArea;
+			chkWeather.Checked = repeater.Weather;
+			chkExperimental.Checked = repeater.Experimental;
 			txtDateCoordinated.Text = repeater.DateCoordinated;
 			txtDateUpdated.Text = repeater.DateUpdated;
 			txtDateDecoordinated.Text = repeater.DateDecoordinated;
@@ -105,7 +105,7 @@ public partial class update_Default : System.Web.UI.Page
 	protected void btnSave_Click(object sender, EventArgs e)
 	{
 		// Create repeater object from fields
-		Repeater newRepeater = new Repeater(txtID.Text, txtType.Text, txtRepeaterCallsign.Text, txtTrusteeID.Text, txtStatus.Text, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, txtDSTAR_Module.Text, txtDMR_ColorCode.Text, txtDMR_ID.Text, txtDMR_Network.Text, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, txtAutopatch.Text, txtEmergencyPower.Text, txtLinked.Text, txtRACES.Text, txtARES.Text, txtWideArea.Text, txtWeather.Text, txtExperimental.Text, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtCoordinatorComments.Text, txtNotes.Text, txtState.Text);
+		Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, txtTrusteeID.Text, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, txtDSTAR_Module.Text, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, txtDMR_Network.Text, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtCoordinatorComments.Text, txtNotes.Text, txtState.Text);
 
 		// Save repeater
 		newRepeater.Save(creds, repeater);
