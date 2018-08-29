@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,6 +10,7 @@ using System.Web.UI.WebControls;
 public partial class update_Default : System.Web.UI.Page
 {
 	Credentials creds;
+	Repeater repeater;
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -19,60 +21,93 @@ public partial class update_Default : System.Web.UI.Page
 
 	private void LoadRepeaterDetails()
 	{
-		string repeaterId = "0";
-		try
+		if (!IsPostBack)
 		{
-			repeaterId = Request.QueryString["id"].ToString();
-		}
-		catch (Exception)
-		{
-			
-		}
-		
-
-		// Call web service to get all data for the repeater with this ID
-		dynamic repeaterData;
-		using (var webClient = new System.Net.WebClient())
-		{
-			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetails?callsign={0}&password={1}&repeaterid={2}", creds.Username, creds.Password, repeaterId);
-			string json = webClient.DownloadString(url);
-			repeaterData = JsonConvert.DeserializeObject<dynamic>(json);
-		}
-
-		//// Load data into new controls
-		lblRepeaterName.Text = repeaterData[0].Callsign.Value + " (" + repeaterData[0].OutputFrequency.Value + ")";
-
-		foreach (dynamic property in repeaterData[0])
-		{
-			RepeaterProperty rp = new RepeaterProperty(property);
-			
-			switch (rp.Type)
+			string repeaterId = "0";
+			try
 			{
-				case "Boolean":
-					CheckBox cb = new CheckBox();
-					cb.Text = rp.FriendlyName;
-					cb.ID = rp.Name;
-					cb.Checked = rp.Value;
-					cb.Enabled = !rp.ReadOnly;
-					formPanel.Controls.Add(cb);
-					break;
-				default:
-					Label lbl = new Label();
-					lbl.Text = rp.FriendlyName;
-					lbl.Width = 400;
-					lbl.CssClass = "formLabel";
-					formPanel.Controls.Add(lbl);
+				repeaterId = Request.QueryString["id"].ToString();
 
-					TextBox tb = new TextBox();
-					tb.Text = rp.Value;
-					tb.ID = rp.Name;
-					tb.Enabled = !rp.ReadOnly;
-					formPanel.Controls.Add(tb);
-					break;
+				// Call web service to get all data for the repeater with this ID
+				repeater = Repeater.Load(creds, repeaterId);
+				ViewState["repeater"] = repeater;
 			}
-			Label newline = new Label();
-			newline.Text = "<br>";
-			formPanel.Controls.Add(newline);
+			catch (Exception)
+			{
+				throw new HttpParseException("Unable to load and parse data for requested repeater. Please try again. If the problem persists please report it.");
+			}
+
+			// Load data into new controls
+			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
+			txtID.Text = repeater.ID.ToString();
+			txtType.Text = repeater.Type;
+			txtRepeaterCallsign.Text = repeater.RepeaterCallsign;
+			txtTrusteeID.Text = repeater.TrusteeID;
+			txtStatus.Text = repeater.Status;
+			txtCity.Text = repeater.City;
+			txtSiteName.Text = repeater.SiteName;
+			txtOutputFrequency.Text = repeater.OutputFrequency;
+			txtInputFrequency.Text = repeater.InputFrequency;
+			txtSponsor.Text = repeater.Sponsor;
+			txtLatitude.Text = repeater.Latitude;
+			txtLongitude.Text = repeater.Longitude;
+			txtAMSL.Text = repeater.AMSL;
+			txtERP.Text = repeater.ERP;
+			txtOutputPower.Text = repeater.OutputPower;
+			txtAntennaGain.Text = repeater.AntennaGain;
+			txtAntennaHeight.Text = repeater.AntennaHeight;
+			txtAnalog_InputAccess.Text = repeater.Analog_InputAccess;
+			txtAnalog_OutputAccess.Text = repeater.Analog_OutputAccess;
+			txtAnalog_Width.Text = repeater.Analog_Width;
+			txtDSTAR_Module.Text = repeater.DSTAR_Module;
+			txtDMR_ColorCode.Text = repeater.DMR_ColorCode;
+			txtDMR_ID.Text = repeater.DMR_ID;
+			txtDMR_Network.Text = repeater.DMR_Network;
+			txtP25_NAC.Text = repeater.P25_NAC;
+			txtNXDN_RAN.Text = repeater.NXDN_RAN;
+			txtYSF_DSQ.Text = repeater.YSF_DSQ;
+			txtAutopatch.Text = repeater.Autopatch;
+			txtEmergencyPower.Text = repeater.EmergencyPower;
+			txtLinked.Text = repeater.Linked;
+			txtRACES.Text = repeater.RACES;
+			txtARES.Text = repeater.ARES;
+			txtWideArea.Text = repeater.WideArea;
+			txtWeather.Text = repeater.Weather;
+			txtExperimental.Text = repeater.Experimental;
+			txtDateCoordinated.Text = repeater.DateCoordinated;
+			txtDateUpdated.Text = repeater.DateUpdated;
+			txtDateDecoordinated.Text = repeater.DateDecoordinated;
+			txtDateCoordinationSource.Text = repeater.DateCoordinationSource;
+			txtDateConstruction.Text = repeater.DateConstruction;
+			txtCoordinatorComments.Text = repeater.CoordinatorComments;
+			txtNotes.Text = repeater.Notes;
+			txtState.Text = repeater.State;
 		}
+		else
+		{
+			try
+			{
+				repeater = (Repeater)ViewState["repeater"];
+			}
+			catch (Exception)
+			{
+				throw new Exception("Unable to load repeater data from memory.");
+			}
+			
+		}
+	}
+
+	protected void btnCancel_Click(object sender, EventArgs e)
+	{
+		Response.Redirect("/dashboard/");
+	}
+
+	protected void btnSave_Click(object sender, EventArgs e)
+	{
+		// Create repeater object from fields
+		Repeater newRepeater = new Repeater(txtID.Text, txtType.Text, txtRepeaterCallsign.Text, txtTrusteeID.Text, txtStatus.Text, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, txtDSTAR_Module.Text, txtDMR_ColorCode.Text, txtDMR_ID.Text, txtDMR_Network.Text, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, txtAutopatch.Text, txtEmergencyPower.Text, txtLinked.Text, txtRACES.Text, txtARES.Text, txtWideArea.Text, txtWeather.Text, txtExperimental.Text, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtCoordinatorComments.Text, txtNotes.Text, txtState.Text);
+
+		// Save repeater
+		newRepeater.Save(creds, repeater);
 	}
 }
