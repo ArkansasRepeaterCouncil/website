@@ -31,6 +31,7 @@ public partial class update_Default : System.Web.UI.Page
 		}
 
 		LoadRepeaterDetails(repeaterId);
+		LoadRepeaterNotes(repeaterId);
 	}
 
 	private void LoadRepeaterDetails(string repeaterId)
@@ -103,8 +104,8 @@ public partial class update_Default : System.Web.UI.Page
 			string json = webClient.DownloadString(url);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
-			string[] fields = { "Callsign", "OutputFrequency", "City", "Status", "DateUpdated" };
-
+			string[] fields = { "ChangeID", "callsign", "FullName", "ChangeDateTime", "ChangeDescription" };
+			
 			string output = "";
 			foreach (dynamic obj in data)
 			{
