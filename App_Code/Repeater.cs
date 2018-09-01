@@ -182,11 +182,6 @@ public class Repeater
 			}
 		}
 
-		if (strReturn != string.Empty)
-		{
-			strReturn = String.Format("{0} made the following change(s):\r\n{1}", credentials.Username.ToUpper(), strReturn);
-		}
-
 		return strReturn;
 	}
 }
