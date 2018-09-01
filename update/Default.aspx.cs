@@ -16,27 +16,27 @@ public partial class update_Default : System.Web.UI.Page
 	{
 		creds = Utilities.GetExistingCredentials();
 
-		LoadRepeaterDetails();
+		string repeaterId = "0";
+		try
+		{
+			repeaterId = Request.QueryString["id"].ToString();
+
+			// Call web service to get all data for the repeater with this ID
+			repeater = Repeater.Load(creds, repeaterId);
+			ViewState["repeater"] = repeater;
+		}
+		catch (Exception)
+		{
+			throw new HttpParseException("Unable to load and parse data for requested repeater. Please try again. If the problem persists please report it.");
+		}
+
+		LoadRepeaterDetails(repeaterId);
 	}
 
-	private void LoadRepeaterDetails()
+	private void LoadRepeaterDetails(string repeaterId)
 	{
 		if (!IsPostBack)
 		{
-			string repeaterId = "0";
-			try
-			{
-				repeaterId = Request.QueryString["id"].ToString();
-
-				// Call web service to get all data for the repeater with this ID
-				repeater = Repeater.Load(creds, repeaterId);
-				ViewState["repeater"] = repeater;
-			}
-			catch (Exception)
-			{
-				throw new HttpParseException("Unable to load and parse data for requested repeater. Please try again. If the problem persists please report it.");
-			}
-
 			// Load data into new controls
 			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 			txtID.Text = repeater.ID.ToString();
@@ -79,8 +79,6 @@ public partial class update_Default : System.Web.UI.Page
 			txtDateDecoordinated.Text = repeater.DateDecoordinated;
 			txtDateCoordinationSource.Text = repeater.DateCoordinationSource;
 			txtDateConstruction.Text = repeater.DateConstruction;
-			txtCoordinatorComments.Text = repeater.CoordinatorComments;
-			txtNotes.Text = repeater.Notes;
 			txtState.Text = repeater.State;
 		}
 		else
@@ -97,6 +95,28 @@ public partial class update_Default : System.Web.UI.Page
 		}
 	}
 
+	private void LoadRepeaterNotes(string repeaterId)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterNotes?callsign={0}&password={1}&repeaterid={3}", creds.Username, creds.Password, repeaterId);
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+			string[] fields = { "Callsign", "OutputFrequency", "City", "Status", "DateUpdated" };
+
+			string output = "";
+			foreach (dynamic obj in data)
+			{
+				for (int i = 0; i < fields.Length; i++)
+				{
+					output += obj[fields[i]] + " ";
+				}
+			}
+			lblNotes.Text = output;
+		}
+	}
+
 	protected void btnCancel_Click(object sender, EventArgs e)
 	{
 		Response.Redirect("/dashboard/");
@@ -105,7 +125,7 @@ public partial class update_Default : System.Web.UI.Page
 	protected void btnSave_Click(object sender, EventArgs e)
 	{
 		// Create repeater object from fields
-		Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, txtTrusteeID.Text, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtCoordinatorComments.Text, txtNotes.Text, txtState.Text);
+		Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, txtTrusteeID.Text, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtState.Text);
 
 		// Save repeater
 		newRepeater.Save(creds, repeater);
