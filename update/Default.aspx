@@ -12,7 +12,7 @@
         .formLabel {
             text-align: right;
             display: inline-block;
-            width: 400px;
+            width: 300px;
         }
         .chkInput {
             text-align: right;
@@ -26,6 +26,10 @@
         input[readonly="readonly"]:after {
            content: " *";
         }
+        .ajax__tab_xp .ajax__tab_body {
+            background-color: rgba(0,0,0,0.4) !important;
+            font-size: 20px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
@@ -35,8 +39,8 @@
         <h1><asp:Label ID="lblRepeaterName" runat="server" Text="Label"></asp:Label></h1>
         <p>Note: Some fields are disabled because we are still working on that part of the program, please check back soon.</p>
         <asp:Panel ID="formPanel" runat="server" ClientIDMode="Static">
-            <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0">
-                <ajaxToolkit:TabPanel ID="tabDetails" runat="server" HeaderText="TabPanel1">
+            <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="400px" Width="80%" ScrollBars="Auto">
+                <ajaxToolkit:TabPanel ID="tabDetails" runat="server" HeaderText="Details">
                     <ContentTemplate>
                         <asp:Label ID="lblType" CssClass="formLabel" runat="server" Text="Type"></asp:Label>
                         <asp:DropDownList ID="ddlType" CssClass="textInput" runat="server">
