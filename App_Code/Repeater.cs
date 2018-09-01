@@ -71,8 +71,6 @@ public class Repeater
 	public string DateDecoordinated;
 	public string DateCoordinationSource;
 	public string DateConstruction;
-	public string CoordinatorComments;
-	public string Notes;
 	public string State;
 	[JsonProperty]
 	private string ChangeLog;
@@ -99,7 +97,7 @@ public class Repeater
 		
 	}
 
-	public Repeater(string id, string type, string callsign, string trusteeid, string status, string city, string sitename, string outputfrequency, string inputfrequency, string sponsor, string latitude, string longitude, string amsl, string erp, string outputpower, string antennagain, string antennaheight, string analog_inputaccess, string analog_outputaccess, string analog_width, string dstar_module, string dmr_colorcode, string dmr_id, string dmr_network, string p25_nac, string nxdn_ran, string ysf_dsq, string autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, string datecoordinationsource, string dateconstruction, string coordinatorcomments, string notes, string state)
+	public Repeater(string id, string type, string callsign, string trusteeid, string status, string city, string sitename, string outputfrequency, string inputfrequency, string sponsor, string latitude, string longitude, string amsl, string erp, string outputpower, string antennagain, string antennaheight, string analog_inputaccess, string analog_outputaccess, string analog_width, string dstar_module, string dmr_colorcode, string dmr_id, string dmr_network, string p25_nac, string nxdn_ran, string ysf_dsq, string autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, string datecoordinationsource, string dateconstruction, string state)
 	{
 		ID = int.Parse(id);
 		Type = type;
@@ -141,8 +139,6 @@ public class Repeater
 		DateDecoordinated = datedecoordinated;
 		DateCoordinationSource = datecoordinationsource;
 		DateConstruction = dateconstruction;
-		CoordinatorComments = coordinatorcomments;
-		Notes = notes;
 		State = state;
 	}
 
