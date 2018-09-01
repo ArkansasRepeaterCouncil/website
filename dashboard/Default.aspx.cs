@@ -48,7 +48,6 @@ public partial class dashboard_Default : System.Web.UI.Page
 
 				RepeatersTable.Rows.Add(row);
 			}
-
 		}
 	}
 
