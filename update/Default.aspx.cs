@@ -100,7 +100,8 @@ public partial class update_Default : System.Web.UI.Page
 	{
 		using (var webClient = new System.Net.WebClient())
 		{
-			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterNotes?callsign={0}&password={1}&repeaterid={3}", creds.Username, creds.Password, repeaterId);
+			string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+			string url = String.Format("{0}GetRepeaterNotes?callsign={1}&password={2}&repeaterid={3}", rootUrl, creds.Username, creds.Password, repeaterId);
 			string json = webClient.DownloadString(url);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
@@ -109,10 +110,7 @@ public partial class update_Default : System.Web.UI.Page
 			string output = "";
 			foreach (dynamic obj in data)
 			{
-				for (int i = 0; i < fields.Length; i++)
-				{
-					output += obj[fields[i]] + " ";
-				}
+				output += String.Format("<div class='noteTop'>{0} - {1} ({2})</div><div class='noteBottom'>{3}</div>", obj["ChangeDateTime"], obj["FullName"], obj["callsign"], obj["ChangeDescription"]);
 			}
 			lblNotes.Text = output;
 		}
