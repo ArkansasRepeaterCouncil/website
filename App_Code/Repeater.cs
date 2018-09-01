@@ -145,12 +145,16 @@ public class Repeater
 	public void Save(Credentials credentials, Repeater originalRepeater)
 	{
 		ChangeLog = CreateChangeLog(credentials, originalRepeater);
-		callsign = credentials.Username;
-		password = credentials.Password;
-		DateUpdated = DateTime.UtcNow.ToString();
 
-		string url = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "UpdateRepeater";
-		string result = Utilities.PostJsonToUrl(url, this);
+		if (ChangeLog != "") // Don't bother if there's nothing changed
+		{
+			callsign = credentials.Username;
+			password = credentials.Password;
+			DateUpdated = DateTime.UtcNow.ToString();
+
+			string url = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "UpdateRepeater";
+			string result = Utilities.PostJsonToUrl(url, this);
+		}
 	}
 
 	private string CreateChangeLog(Credentials credentials, Repeater oldRepeater)
