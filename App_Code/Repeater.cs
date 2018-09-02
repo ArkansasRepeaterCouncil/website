@@ -98,12 +98,13 @@ public class Repeater
 		
 	}
 
-	public Repeater(string id, string type, string callsign, string trusteeid, string status, string city, string sitename, string outputfrequency, string inputfrequency, string sponsor, string latitude, string longitude, string amsl, string erp, string outputpower, string antennagain, string antennaheight, string analog_inputaccess, string analog_outputaccess, string analog_width, string dstar_module, string dmr_colorcode, string dmr_id, string dmr_network, string p25_nac, string nxdn_ran, string ysf_dsq, string autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, string datecoordinationsource, string dateconstruction, string state)
+	public Repeater(string id, string type, string callsign, string trusteeid, string trusteecallsign, string status, string city, string sitename, string outputfrequency, string inputfrequency, string sponsor, string latitude, string longitude, string amsl, string erp, string outputpower, string antennagain, string antennaheight, string analog_inputaccess, string analog_outputaccess, string analog_width, string dstar_module, string dmr_colorcode, string dmr_id, string dmr_network, string p25_nac, string nxdn_ran, string ysf_dsq, string autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, string datecoordinationsource, string dateconstruction, string state)
 	{
 		ID = int.Parse(id);
 		Type = type;
 		RepeaterCallsign = callsign;
 		TrusteeID = trusteeid;
+		TrusteeCallsign = trusteecallsign;
 		Status = status;
 		City = city;
 		SiteName = sitename;

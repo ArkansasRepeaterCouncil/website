@@ -58,7 +58,7 @@
                         <br />
                         <asp:Label ID="lblRepeaterCallsign" CssClass="formLabel" runat="server" Text="Repeater callsign"></asp:Label><asp:TextBox ID="txtRepeaterCallsign" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblTrusteeID" CssClass="formLabel" runat="server" Text="Trustee"></asp:Label><asp:HiddenField ID="hdnTrusteeId" runat="server" />
-                        <asp:TextBox ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><asp:Button ID="btnChangeTrustee" runat="server" Text="Change" OnClick="btnChangeTrustee_Click" /><asp:DropDownList ID="ddlTrustee" Visible="false" runat="server"></asp:DropDownList><br />
+                        <asp:TextBox ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><asp:Button ID="btnChangeTrustee" runat="server" Text="Change" OnClick="btnChangeTrustee_Click" /><asp:DropDownList ID="ddlTrustee" Visible="false" CssClass="textInput" runat="server"></asp:DropDownList><br />
                         <asp:Label ID="lblStatus" CssClass="formLabel" runat="server" Text="Status"></asp:Label>
                         <asp:DropDownList ID="ddlStatus" runat="server" CssClass="textInput">
                             <asp:ListItem Value="1">Proposed</asp:ListItem>
