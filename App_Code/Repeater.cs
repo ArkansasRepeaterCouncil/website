@@ -35,6 +35,7 @@ public class Repeater
 	public string Type;
 	public string RepeaterCallsign;
 	public string TrusteeID;
+	public string TrusteeCallsign;
 	public string Status;
 	public string City;
 	public string SiteName;
