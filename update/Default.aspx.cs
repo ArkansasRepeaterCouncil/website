@@ -43,7 +43,8 @@ public partial class update_Default : System.Web.UI.Page
 			txtID.Text = repeater.ID.ToString();
 			ddlType.SelectedValue = repeater.Type;
 			txtRepeaterCallsign.Text = repeater.RepeaterCallsign;
-			txtTrusteeID.Text = repeater.TrusteeID;
+			txtTrusteeCallsign.Text = repeater.TrusteeCallsign;
+			hdnTrusteeId.Value = repeater.TrusteeID;
 			ddlStatus.SelectedValue = repeater.Status;
 			txtCity.Text = repeater.City;
 			txtSiteName.Text = repeater.SiteName;
@@ -124,9 +125,30 @@ public partial class update_Default : System.Web.UI.Page
 	protected void btnSave_Click(object sender, EventArgs e)
 	{
 		// Create repeater object from fields
-		Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, txtTrusteeID.Text, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtState.Text);
+		Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, hdnTrusteeId.Value, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtState.Text);
 
 		// Save repeater
 		newRepeater.Save(creds, repeater);
+	}
+
+	protected void btnChangeTrustee_Click(object sender, EventArgs e)
+	{
+		ddlTrustee.Visible = true;
+		txtTrusteeCallsign.Visible = false;
+		btnChangeTrustee.Visible = false;
+		ddlTrustee.Items.Clear();
+
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetUsersRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+			foreach (dynamic obj in data)
+			{
+				ListItem li = new ListItem(obj["Callsign"], obj["ID"]);
+				ddlTrustee.Items.Add(li);
+			}
+		}
 	}
 }
