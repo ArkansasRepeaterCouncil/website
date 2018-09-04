@@ -30,6 +30,12 @@
             background-color: rgba(0,0,0,0.4) !important;
             font-size: 20px;
         }
+        .noteTop {
+            background-color: rgba(0,0,0,0.4);
+        }
+        .noteBottom {
+            margin-bottom: 10px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
@@ -165,6 +171,19 @@
                 <ajaxToolkit:TabPanel ID="tabNotes" runat="server" HeaderText="Notes">
                     <ContentTemplate>
                         <asp:Label ID="lblNotes" runat="server" Text="No notes have been added for this repeater"></asp:Label>
+                    </ContentTemplate>
+                </ajaxToolkit:TabPanel>
+                <ajaxToolkit:TabPanel ID="tabUsers" runat="server" HeaderText="Users">
+                    <ContentTemplate>
+                        <p>Users listed here will be able to edit the details of this repeater. Every change is logged and can be seen on the <em>Notes</em> tab. You can not remove the repeater trustee.</p>
+                        <asp:Table ID="tblRepeaterUsers" runat="server">
+                            <asp:TableHeaderRow>
+                                <asp:TableHeaderCell></asp:TableHeaderCell>
+                                <asp:TableHeaderCell>Callsign</asp:TableHeaderCell>
+                                <asp:TableHeaderCell>Name</asp:TableHeaderCell>
+                                <asp:TableHeaderCell>Email</asp:TableHeaderCell>
+                            </asp:TableHeaderRow>
+                        </asp:Table>
                     </ContentTemplate>
                 </ajaxToolkit:TabPanel>
             </ajaxToolkit:TabContainer>

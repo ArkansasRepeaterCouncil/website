@@ -32,6 +32,7 @@ public partial class update_Default : System.Web.UI.Page
 
 		LoadRepeaterDetails(repeaterId);
 		LoadRepeaterNotes(repeaterId);
+		LoadRepeaterUsers(repeaterId);
 	}
 
 	private void LoadRepeaterDetails(string repeaterId)
@@ -105,15 +106,58 @@ public partial class update_Default : System.Web.UI.Page
 			string url = String.Format("{0}GetRepeaterNotes?callsign={1}&password={2}&repeaterid={3}", rootUrl, creds.Username, creds.Password, repeaterId);
 			string json = webClient.DownloadString(url);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
-
-			string[] fields = { "ChangeID", "callsign", "FullName", "ChangeDateTime", "ChangeDescription" };
 			
 			string output = "";
 			foreach (dynamic obj in data)
 			{
-				output += String.Format("<div class='noteTop'>{0} - {1} ({2})</div><div class='noteBottom'>{3}</div>", obj["ChangeDateTime"], obj["FullName"], obj["callsign"], obj["ChangeDescription"]);
+				string description = obj["ChangeDescription"].ToString();
+				if (description.StartsWith("â€¢"))
+				{
+					description = description.Replace("â€¢", "<li>");
+					description = String.Format("<ul>{0}</ul>", description);
+				}
+				output += String.Format("<div class='noteTop'>{0} - {1} ({2})</div><div class='noteBottom'>{3}</div>", obj["ChangeDateTime"], obj["FullName"], obj["callsign"], description);
 			}
 			lblNotes.Text = output;
+		}
+	}
+
+	private void LoadRepeaterUsers(string repeaterId)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+			string url = String.Format("{0}ListRepeaterUsers?callsign={1}&password={2}&repeaterid={3}", rootUrl, creds.Username, creds.Password, repeaterId);
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+			// ID, Callsign, FullName, Email
+			foreach (dynamic obj in data)
+			{
+				TableRow row = new TableRow();
+
+				TableCell cell = new TableCell();
+				Button btn = new Button();
+				btn.Text = "Remove";
+				string userid = obj["ID"].ToString();
+				btn.Click += (sender, e) => btnRemoveRepeaterUser(sender, e, userid);
+				cell.Controls.Add(btn);
+				row.Cells.Add(cell);
+
+				cell = new TableCell();
+				cell.Text = obj["Callsign"].ToString();
+				row.Cells.Add(cell);
+
+				cell = new TableCell();
+				cell.Text = obj["FullName"].ToString();
+				row.Cells.Add(cell);
+
+				cell = new TableCell();
+				cell.Text = String.Format("<a href='mailto:{0}'>{0}</a>", obj["Email"].ToString());
+				row.Cells.Add(cell);
+
+				tblRepeaterUsers.Rows.Add(row);
+			}
 		}
 	}
 
@@ -166,5 +210,10 @@ public partial class update_Default : System.Web.UI.Page
 
 			ddlTrustee.SelectedValue = hdnTrusteeId.Value;
 		}
+	}
+
+	protected void btnRemoveRepeaterUser(object sender, EventArgs e, string userid)
+	{
+
 	}
 }
