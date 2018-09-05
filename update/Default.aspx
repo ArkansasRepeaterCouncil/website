@@ -57,7 +57,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
         <h1><asp:Label ID="lblRepeaterName" runat="server" Text="Label"></asp:Label></h1>
-        <p>Note: Some fields are disabled because we are still working on that part of the program, please check back soon.</p>
+        <p>Every change is logged and can be seen on the <em>Notes</em> tab.</p>
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <asp:Panel ID="formPanel" runat="server" ClientIDMode="Static">
             <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="400px" Width="80%" ScrollBars="Auto">
                 <ajaxToolkit:TabPanel ID="tabDetails" runat="server" HeaderText="Details">
@@ -78,7 +79,7 @@
                         <br />
                         <asp:Label ID="lblRepeaterCallsign" CssClass="formLabel" runat="server" Text="Repeater callsign"></asp:Label><asp:TextBox ID="txtRepeaterCallsign" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblTrusteeID" CssClass="formLabel" runat="server" Text="Trustee"></asp:Label><asp:HiddenField ID="hdnTrusteeId" runat="server" />
-                        <asp:TextBox ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><asp:Button ID="btnChangeTrustee" runat="server" Text="Change" OnClick="btnChangeTrustee_Click" /><asp:DropDownList ID="ddlTrustee" Visible="false" CssClass="textInput" runat="server"></asp:DropDownList><br />
+                        <asp:TextBox ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><asp:Button ID="btnChangeTrustee" runat="server" Text="Change" OnClick="btnChangeTrustee_Click" /><asp:DropDownList ID="ddlTrustee" Visible="False" CssClass="textInput" runat="server"></asp:DropDownList><br />
                         <asp:Label ID="lblStatus" CssClass="formLabel" runat="server" Text="Status"></asp:Label>
                         <asp:DropDownList ID="ddlStatus" runat="server" CssClass="textInput">
                             <asp:ListItem Value="1">Proposed</asp:ListItem>
@@ -95,13 +96,13 @@
                         <asp:Label ID="lblOutputFrequency" CssClass="formLabel" runat="server" Text="Transmit frequency"></asp:Label><asp:TextBox ID="txtOutputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblInputFrequency" CssClass="formLabel" runat="server" Text="Receive frequency"></asp:Label><asp:TextBox ID="txtInputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblSponsor" CssClass="formLabel" runat="server" Text="Sponsor/Club"></asp:Label><asp:TextBox ID="txtSponsor" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label><asp:TextBox ID="txtLatitude" CssClass="textInput" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label><asp:TextBox ID="txtLatitude" CssClass="textInput" runat="server"></asp:TextBox><asp:CustomValidator ID="validLocation" runat="server" ErrorMessage="Location may not be more than one mile from the repeater's coordinated location." OnServerValidate="validLocation_ServerValidate">*</asp:CustomValidator><br />
                         <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label><asp:TextBox ID="txtLongitude" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude in meters"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblERP" CssClass="formLabel" runat="server" Text="Effective radiated power (ERP)"></asp:Label><asp:TextBox ID="txtERP" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"></asp:TextBox><asp:CustomValidator ID="validOutputPower" runat="server" ErrorMessage="Output power may not be more than 5 watts over the coordinated power." Text="*" OnServerValidate="validOutputPower_ServerValidate"></asp:CustomValidator><br />
                         <asp:Label ID="lblAntennaGain" CssClass="formLabel" runat="server" Text="Antenna gain"></asp:Label><asp:TextBox ID="txtAntennaGain" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblAntennaHeight" CssClass="formLabel" runat="server" Text="Antenna height"></asp:Label><asp:TextBox ID="txtAntennaHeight" CssClass="textInput" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblAntennaHeight" CssClass="formLabel" runat="server" Text="Antenna height"></asp:Label><asp:TextBox ID="txtAntennaHeight" CssClass="textInput" runat="server"></asp:TextBox><asp:CustomValidator ID="validAntennaHeight" runat="server" ErrorMessage="Antenna height may not be more than 50 feet over the coordinated antenna height." Text="*" OnServerValidate="validAntennaHeight_ServerValidate"></asp:CustomValidator><br />
                         <asp:Label ID="lblAnalog_InputAccess" CssClass="formLabel" runat="server" Text="Input PL tone"></asp:Label><asp:TextBox ID="txtAnalog_InputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblAnalog_OutputAccess" CssClass="formLabel" runat="server" Text="Output PL tone"></asp:Label><asp:TextBox ID="txtAnalog_OutputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblAnalog_Width" CssClass="formLabel" runat="server" Text="Analog width"></asp:Label><asp:TextBox ID="txtAnalog_Width" CssClass="textInput" runat="server"></asp:TextBox>
@@ -180,6 +181,10 @@
                         <asp:Label ID="lblDateCoordinationSource" CssClass="formLabel" runat="server" Text="Date coordination source"></asp:Label><asp:TextBox ID="txtDateCoordinationSource" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblDateConstruction" CssClass="formLabel" runat="server" Text="Date construction"></asp:Label><asp:TextBox ID="txtDateConstruction" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblState" CssClass="formLabel" runat="server" Text="State"></asp:Label><asp:TextBox ID="txtState" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                        <asp:Label ID="lblCoordinatedOutputPower" CssClass="formLabel" runat="server" Text="Coordinated output power"></asp:Label><asp:TextBox ID="txtCoordinatedOutputPower" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
+                        <asp:Label ID="Label1" CssClass="formLabel" runat="server" Text="Coordinated antenna height"></asp:Label><asp:TextBox ID="txtCoordinatedAntennaHeight" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
+                        <asp:Label ID="Label2" CssClass="formLabel" runat="server" Text="Coordinated latitude"></asp:Label><asp:TextBox ID="txtCoordinatedLatitude" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
+                        <asp:Label ID="Label3" CssClass="formLabel" runat="server" Text="Coordinated longitude"></asp:Label><asp:TextBox ID="txtCoordinatedLongitude" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox>
                     </ContentTemplate>
                 </ajaxToolkit:TabPanel>
                 <ajaxToolkit:TabPanel ID="tabNotes" runat="server" HeaderText="Notes">
@@ -189,7 +194,7 @@
                 </ajaxToolkit:TabPanel>
                 <ajaxToolkit:TabPanel ID="tabUsers" runat="server" HeaderText="Users">
                     <ContentTemplate>
-                        <p>Users listed here will be able to edit the details of this repeater. Every change is logged and can be seen on the <em>Notes</em> tab. You can not remove the repeater trustee.</p>
+                        <p>Users listed here will be able to edit the details of this repeater.  You can not remove the repeater trustee.</p>
                         <asp:Table ID="tblRepeaterUsers" runat="server">
                             <asp:TableHeaderRow>
                                 <asp:TableHeaderCell></asp:TableHeaderCell>

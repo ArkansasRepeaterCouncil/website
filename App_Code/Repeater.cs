@@ -73,12 +73,17 @@ public class Repeater
 	public string DateCoordinationSource;
 	public string DateConstruction;
 	public string State;
+	public string CoordinatedLatitude;
+	public string CoordinatedLongitude;
+	public string CoordinatedOutputPower;
+	public string CoordinatedAntennaHeight;
 	[JsonProperty]
 	private string ChangeLog;
 	[JsonProperty]
 	private string callsign;
 	[JsonProperty]
 	private string password;
+	
 
 	public static Repeater Load(Credentials credentials, string repeaterId)
 	{
@@ -98,7 +103,15 @@ public class Repeater
 		
 	}
 
-	public Repeater(string id, string type, string callsign, string trusteeid, string trusteecallsign, string status, string city, string sitename, string outputfrequency, string inputfrequency, string sponsor, string latitude, string longitude, string amsl, string erp, string outputpower, string antennagain, string antennaheight, string analog_inputaccess, string analog_outputaccess, string analog_width, string dstar_module, string dmr_colorcode, string dmr_id, string dmr_network, string p25_nac, string nxdn_ran, string ysf_dsq, string autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, string datecoordinationsource, string dateconstruction, string state)
+	public Repeater(string id, string type, string callsign, string trusteeid, string trusteecallsign, string status, 
+		string city, string sitename, string outputfrequency, string inputfrequency, string sponsor, string latitude, 
+		string longitude, string amsl, string erp, string outputpower, string antennagain, string antennaheight, 
+		string analog_inputaccess, string analog_outputaccess, string analog_width, string dstar_module, 
+		string dmr_colorcode, string dmr_id, string dmr_network, string p25_nac, string nxdn_ran, string ysf_dsq, 
+		string autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, 
+		bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, 
+		string datecoordinationsource, string dateconstruction, string state, string coordinatedLatitude, 
+		string coordinatedLongitude, string coordinatedOutputPower, string coordinatedAntennaHeight)
 	{
 		ID = int.Parse(id);
 		Type = type;
@@ -142,7 +155,11 @@ public class Repeater
 		DateCoordinationSource = datecoordinationsource;
 		DateConstruction = dateconstruction;
 		State = state;
-	}
+		CoordinatedLatitude = coordinatedLatitude;
+		CoordinatedLongitude = coordinatedLongitude;
+		CoordinatedOutputPower = coordinatedOutputPower;
+		CoordinatedAntennaHeight = coordinatedAntennaHeight;
+}
 
 	public void Save(Credentials credentials, Repeater originalRepeater)
 	{

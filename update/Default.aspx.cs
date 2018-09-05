@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Device.Location;
 
 public partial class update_Default : System.Web.UI.Page
 {
@@ -83,6 +80,10 @@ public partial class update_Default : System.Web.UI.Page
 			txtDateCoordinationSource.Text = repeater.DateCoordinationSource;
 			txtDateConstruction.Text = repeater.DateConstruction;
 			txtState.Text = repeater.State;
+			txtCoordinatedAntennaHeight.Text = repeater.CoordinatedAntennaHeight;
+			txtCoordinatedLatitude.Text = repeater.CoordinatedLatitude;
+			txtCoordinatedLongitude.Text = repeater.CoordinatedLongitude;
+			txtCoordinatedOutputPower.Text = repeater.CoordinatedOutputPower;
 		}
 		else
 		{
@@ -168,25 +169,31 @@ public partial class update_Default : System.Web.UI.Page
 
 	protected void btnSave_Click(object sender, EventArgs e)
 	{
-		string trusteeId = "";
-		string trusteeCallsign = "";
-
-		if (ddlTrustee.Visible)
+		if (this.IsValid)
 		{
-			trusteeId = ddlTrustee.SelectedValue;
-			trusteeCallsign = ddlTrustee.SelectedItem.Text;
-		}
-		else
-		{
-			trusteeId = hdnTrusteeId.Value;
-			trusteeCallsign = txtTrusteeCallsign.Text;
-		}
+			string trusteeId = "";
+			string trusteeCallsign = "";
 
-		// Create repeater object from fields
-		Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, trusteeId, trusteeCallsign, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtState.Text);
+			if (ddlTrustee.Visible)
+			{
+				trusteeId = ddlTrustee.SelectedValue;
+				trusteeCallsign = ddlTrustee.SelectedItem.Text;
+			}
+			else
+			{
+				trusteeId = hdnTrusteeId.Value;
+				trusteeCallsign = txtTrusteeCallsign.Text;
+			}
 
-		// Save repeater
-		newRepeater.Save(creds, repeater);
+			///TODO: Do something with:
+			/// string coordinatedLatitude, string coordinatedLongitude, string coordinatedOutputPower, string coordinatedAntennaHeight
+
+			// Create repeater object from fields
+			Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, trusteeId, trusteeCallsign, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtState.Text, repeater.CoordinatedLatitude, repeater.CoordinatedLongitude, repeater.CoordinatedOutputPower, repeater.CoordinatedAntennaHeight);
+
+			// Save repeater
+			newRepeater.Save(creds, repeater);
+		}
 	}
 
 	protected void btnChangeTrustee_Click(object sender, EventArgs e)
@@ -215,5 +222,65 @@ public partial class update_Default : System.Web.UI.Page
 	protected void btnRemoveRepeaterUser(object sender, EventArgs e, string userid)
 	{
 
+	}
+
+	protected void validLocation_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		try
+		{
+			double aLat = Double.Parse(repeater.CoordinatedLatitude);
+			double aLon = Double.Parse(repeater.CoordinatedLongitude);
+			GeoCoordinate a = new GeoCoordinate(aLat, aLon);
+
+			double bLat = Double.Parse(txtLatitude.Text);
+			double bLon = Double.Parse(txtLongitude.Text);
+			GeoCoordinate b = new GeoCoordinate(bLat, bLon);
+
+			double metersAway = a.GetDistanceTo(b);
+
+			if (metersAway <= 1609.34)
+			{
+				args.IsValid = true;
+			}
+			else
+			{
+				args.IsValid = false;
+			}
+		}
+		catch (Exception)
+		{
+			args.IsValid = false;
+		}
+
+	}
+
+	protected void validAntennaHeight_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		int newHeight = int.Parse(txtAntennaHeight.Text);
+		int allowedHeight = int.Parse(repeater.CoordinatedAntennaHeight) + 50;
+
+		if (newHeight <= allowedHeight)
+		{
+			args.IsValid = true;
+		}
+		else
+		{
+			args.IsValid = false;
+		}
+	}
+
+	protected void validOutputPower_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		int newPower = int.Parse(txtOutputPower.Text);
+		int allowedPower = int.Parse(repeater.CoordinatedOutputPower) + 5;
+
+		if (newPower <= allowedPower)
+		{
+			args.IsValid = true;
+		}
+		else
+		{
+			args.IsValid = false;
+		}
 	}
 }
