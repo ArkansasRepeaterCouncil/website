@@ -30,11 +30,25 @@
             background-color: rgba(0,0,0,0.4) !important;
             font-size: 20px;
         }
+        .noteTop, .noteBottom {
+            margin: 0;
+            padding: 5px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        .noteBottom ul {
+            padding-top: 0;
+            padding-bottom: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
         .noteTop {
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(255,255,255,1);
+            color: #000000;
         }
         .noteBottom {
-            margin-bottom: 10px;
+            background-color: rgba(255, 255, 153,0.7);
+            margin-bottom: 15px;
         }
     </style>
 </asp:Content>
