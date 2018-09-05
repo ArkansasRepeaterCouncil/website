@@ -31,58 +31,58 @@ public class Repeater
 		Decoordinated = 6
 	}
 
-	public int ID;
-	public string Type;
-	public string RepeaterCallsign;
-	public string TrusteeID;
-	public string TrusteeCallsign;
-	public string Status;
-	public string City;
-	public string SiteName;
-	public string OutputFrequency;
-	public string InputFrequency;
-	public string Sponsor;
-	public string Latitude;
-	public string Longitude;
-	public string AMSL;
-	public string ERP;
-	public string OutputPower;
-	public string AntennaGain;
-	public string AntennaHeight;
-	public string Analog_InputAccess;
-	public string Analog_OutputAccess;
-	public string Analog_Width;
-	public string DSTAR_Module;
-	public string DMR_ColorCode;
-	public string DMR_ID;
-	public string DMR_Network;
-	public string P25_NAC;
-	public string NXDN_RAN;
-	public string YSF_DSQ;
-	public string Autopatch;
-	public bool EmergencyPower;
-	public bool Linked;
-	public bool RACES;
-	public bool ARES;
-	public bool WideArea;
-	public bool Weather;
-	public bool Experimental;
-	public string DateCoordinated;
-	public string DateUpdated;
-	public string DateDecoordinated;
-	public string DateCoordinationSource;
-	public string DateConstruction;
-	public string State;
-	public string CoordinatedLatitude;
-	public string CoordinatedLongitude;
-	public string CoordinatedOutputPower;
-	public string CoordinatedAntennaHeight;
+	public int ID = 0;
+	public string Type = "";
+	public string RepeaterCallsign = "";
+	public string TrusteeID = "";
+	public string TrusteeCallsign = "";
+	public string Status = "";
+	public string City = "";
+	public string SiteName = "";
+	public string OutputFrequency = "";
+	public string InputFrequency = "";
+	public string Sponsor = "";
+	public string Latitude = "";
+	public string Longitude = "";
+	public string AMSL = "";
+	public string ERP = "";
+	public string OutputPower = "";
+	public string AntennaGain = "";
+	public string AntennaHeight = "";
+	public string Analog_InputAccess = "";
+	public string Analog_OutputAccess = "";
+	public string Analog_Width = "";
+	public string DSTAR_Module = "";
+	public string DMR_ColorCode = "";
+	public string DMR_ID = "";
+	public string DMR_Network = "";
+	public string P25_NAC = "";
+	public string NXDN_RAN = "";
+	public string YSF_DSQ = "";
+	public string Autopatch = "";
+	public bool EmergencyPower = false;
+	public bool Linked = false;
+	public bool RACES = false;
+	public bool ARES = false;
+	public bool WideArea = false;
+	public bool Weather = false;
+	public bool Experimental = false;
+	public string DateCoordinated = "";
+	public string DateUpdated = "";
+	public string DateDecoordinated = "";
+	public string DateCoordinationSource = "";
+	public string DateConstruction = "";
+	public string State = "";
+	public string CoordinatedLatitude = "";
+	public string CoordinatedLongitude = "";
+	public string CoordinatedOutputPower = "";
+	public string CoordinatedAntennaHeight = "";
 	[JsonProperty]
-	private string ChangeLog;
+	private string ChangeLog = "";
 	[JsonProperty]
-	private string callsign;
+	private string callsign = "";
 	[JsonProperty]
-	private string password;
+	private string password = "";
 	
 
 	public static Repeater Load(Credentials credentials, string repeaterId)
