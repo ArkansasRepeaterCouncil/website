@@ -3,6 +3,7 @@ using System;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Device.Location;
+using System.Web.UI;
 
 public partial class update_Default : System.Web.UI.Page
 {
@@ -37,6 +38,34 @@ public partial class update_Default : System.Web.UI.Page
 		if (!IsPostBack)
 		{
 			// Load data into new controls
+			if (repeater.Status == "6")
+			{
+				// formPanel.Controls
+				foreach (Control tab in TabContainer1.Controls)
+				{
+					foreach (Control content in tab.Controls)
+					{
+						foreach (Control child in content.Controls)
+						{
+							if (child is TextBox)
+							{
+								((TextBox)child).Enabled = false;
+							}
+							else if (child is DropDownList)
+							{
+								((DropDownList)child).Enabled = false;
+							}
+							else if (child is CheckBox)
+							{
+								((CheckBox)child).Enabled = false;
+							}
+						}
+					}
+				}
+				btnChangeTrustee.Enabled = false;
+				btnSave.Enabled = false;
+			}
+
 			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 			txtID.Text = repeater.ID.ToString();
 			ddlType.SelectedValue = repeater.Type;
@@ -138,13 +167,17 @@ public partial class update_Default : System.Web.UI.Page
 				TableRow row = new TableRow();
 
 				TableCell cell = new TableCell();
-				Button btn = new Button();
-				btn.Text = "Remove";
-				string userid = obj["ID"].ToString();
-				btn.Click += (sender, e) => btnRemoveRepeaterUser(sender, e, userid);
-				cell.Controls.Add(btn);
-				row.Cells.Add(cell);
 
+				if (repeater.Status != "6")
+				{
+					Button btn = new Button();
+					btn.Text = "Remove";
+					string userid = obj["ID"].ToString();
+					btn.Click += (sender, e) => btnRemoveRepeaterUser(sender, e, userid);
+					cell.Controls.Add(btn);
+				}
+
+				row.Cells.Add(cell);
 				cell = new TableCell();
 				cell.Text = obj["Callsign"].ToString();
 				row.Cells.Add(cell);
@@ -169,7 +202,7 @@ public partial class update_Default : System.Web.UI.Page
 
 	protected void btnSave_Click(object sender, EventArgs e)
 	{
-		if (this.IsValid)
+		if (this.IsValid && repeater.Status != "6")
 		{
 			string trusteeId = "";
 			string trusteeCallsign = "";
@@ -184,9 +217,6 @@ public partial class update_Default : System.Web.UI.Page
 				trusteeId = hdnTrusteeId.Value;
 				trusteeCallsign = txtTrusteeCallsign.Text;
 			}
-
-			///TODO: Do something with:
-			/// string coordinatedLatitude, string coordinatedLongitude, string coordinatedOutputPower, string coordinatedAntennaHeight
 
 			// Create repeater object from fields
 			Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, trusteeId, trusteeCallsign, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtState.Text, repeater.CoordinatedLatitude, repeater.CoordinatedLongitude, repeater.CoordinatedOutputPower, repeater.CoordinatedAntennaHeight);
