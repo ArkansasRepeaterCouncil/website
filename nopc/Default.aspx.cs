@@ -8,12 +8,18 @@ using System.Web.UI.WebControls;
 
 public partial class nopc_Default : System.Web.UI.Page
 {
+	string urlKey;
+
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		string urlKey = Request.QueryString["nopc"];
-		if ((urlKey != null) && (urlKey != ""))
+
+		if (!Page.IsPostBack)
 		{
-			LoadRequestDetails(urlKey);
+			if ((urlKey != null) && (urlKey != ""))
+			{
+				LoadRequestDetails(urlKey);
+			}
 		}
 	}
 
@@ -74,7 +80,7 @@ public partial class nopc_Default : System.Web.UI.Page
 
 					using (TableCell cell = new TableCell())
 					{
-						if (json.Request.Authorized[0].State == step.Step.State)
+						if ((json.Request.Authorized[0].State == step.Step.State) && (step.Step.Status.ID != "2"))
 						{
 							DropDownList ddl = new DropDownList();
 							ddl.Items.Add(new ListItem("Requested", "1"));
@@ -127,7 +133,11 @@ public partial class nopc_Default : System.Web.UI.Page
 		{
 			// Submit changes.
 			lblError.Visible = false;
-
+			new RequestUpdate(urlKey, ddl.SelectedValue, txt.Text.Trim()).Save();
+			txt.Enabled = false;
+			ddl.Enabled = false;
+			btnSubmit.Enabled = false;
+			lblSaved.Visible = true;
 		}
 	}
 }

@@ -7,6 +7,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <section>
 		<h1>Notice of Proposed Coordination</h1>
+        <asp:Label ID="lblSaved" runat="server" Text="<p style='color: #55FF55;'>Thanks! Your update has been saved.</p>" Visible="False"></asp:Label>
 		<p>
 			Please see the information below for details on this request, then use the dropdown list to either approve or decline it below.  If you decline a request, we do ask that you please provide a reason in the space provided.
 		</p>
