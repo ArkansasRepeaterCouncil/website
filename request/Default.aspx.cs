@@ -28,6 +28,7 @@ public partial class request_Default : System.Web.UI.Page
 
 	protected void btnSubmit_Click(object sender, EventArgs e)
 	{
-
+		new CoordinationRequest(txtLatitude.Text, txtLongitude.Text, txtOutputPower.Text, txtAltitude.Text, txtAntennaHeight.Text, creds).Save();
+		Response.Redirect("~/Dashboard/");
 	}
 }

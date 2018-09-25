@@ -28,36 +28,24 @@
         <asp:Label ID="Label10" runat="server" Text="Callsign" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtPersonCallsign" runat="server" CssClass="textInput" ReadOnly="True"></asp:TextBox><br />
         <asp:Label ID="Label11" runat="server" Text="Email address" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtEmail" runat="server" CssClass="textInput" ReadOnly="True"></asp:TextBox><br />
         <br />
-        <asp:Label ID="Label1" runat="server" Text="Band" CssClass="formLabel"></asp:Label><ajaxToolkit:ComboBox ID="cmbBand" runat="server" CssClass="textInput">
-            <asp:ListItem>10 Meters (28-29.7 MHz)</asp:ListItem>
-            <asp:ListItem>6 Meters (50-54 MHz)</asp:ListItem>
-            <asp:ListItem>2 Meters (144-148 MHz)</asp:ListItem>
-            <asp:ListItem>1.25 Meters (222-225 MHz)</asp:ListItem>
-            <asp:ListItem>70 Centimeters (420-450 MHz)</asp:ListItem>
-            <asp:ListItem>33 Centimeters (902-928 MHz)</asp:ListItem>
-            <asp:ListItem Selected="True">Any</asp:ListItem>
-        </ajaxToolkit:ComboBox>
+        <asp:Label ID="Label2" runat="server" Text="Frequency" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtFrequency" runat="server" CssClass="textInput" placeholder="000.000"></asp:TextBox>
+        <ajaxToolkit:FilteredTextBoxExtender ID="txtFrequency_FilteredTextBoxExtender" runat="server" BehaviorID="txtFrequency_FilteredTextBoxExtender" TargetControlID="txtFrequency" ValidChars=".0123456789" />
         <br />
         <asp:Label ID="Label4" runat="server" Text="Latitude" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtLatitude" runat="server" CssClass="textInput" placeholder="00.0000"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="txtLatitude_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox2_FilteredTextBoxExtender" TargetControlID="txtLatitude" ValidChars="-.0123456789" />
         <br />
-        <asp:Label ID="Label5" runat="server" Text="Longitude" CssClass="formLabel"></asp:Label><asp:TextBox ID="Longitude" runat="server" CssClass="textInput" placeholder="-00.0000"></asp:TextBox>
-        <ajaxToolkit:FilteredTextBoxExtender ID="Longitude_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox3_FilteredTextBoxExtender" TargetControlID="Longitude" ValidChars="-.0123456789" />
+        <asp:Label ID="Label5" runat="server" Text="Longitude" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtLongitude" runat="server" CssClass="textInput" placeholder="-00.0000"></asp:TextBox>
+        <ajaxToolkit:FilteredTextBoxExtender ID="Longitude_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox3_FilteredTextBoxExtender" TargetControlID="txtLongitude" ValidChars="-.0123456789" />
         <br />
-        <asp:Label ID="Label6" runat="server" Text="Output power" CssClass="formLabel"></asp:Label><asp:TextBox ID="TextBox4" runat="server" CssClass="textInput" placeholder="watts"></asp:TextBox>
-        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox4_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox4_FilteredTextBoxExtender" TargetControlID="TextBox4" ValidChars="0123456789" />
+        <asp:Label ID="Label6" runat="server" Text="Output power" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtOutputPower" runat="server" CssClass="textInput" placeholder="watts"></asp:TextBox>
+        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox4_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox4_FilteredTextBoxExtender" TargetControlID="txtOutputPower" ValidChars="0123456789" />
         <br />
-        <asp:Label ID="Label7" runat="server" Text="Altitude in meters from sea level" CssClass="formLabel"></asp:Label><asp:TextBox ID="TextBox5" runat="server" placeholder="meters" CssClass="textInput"></asp:TextBox>
-        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox5_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox5_FilteredTextBoxExtender" TargetControlID="TextBox5" ValidChars="0123456789" />
+        <asp:Label ID="Label7" runat="server" Text="Altitude in meters from sea level" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtAltitude" runat="server" placeholder="meters" CssClass="textInput"></asp:TextBox>
+        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox5_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox5_FilteredTextBoxExtender" TargetControlID="txtAltitude" ValidChars="0123456789" />
         <br />
         <asp:Label ID="Label8" runat="server" Text="Antenna height in meters" CssClass="formLabel"></asp:Label>
-        <asp:TextBox ID="TextBox6" runat="server" CssClass="textInput" placeholder="meters"></asp:TextBox>
-        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox6_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox6_FilteredTextBoxExtender" TargetControlID="TextBox6" ValidChars="0123456789" />
-        <br />
-        <br />
-        <h3>Optional</h3>
-        <asp:Label ID="Label2" runat="server" Text="Preferred frequency" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtFrequency" runat="server" CssClass="textInput" placeholder="Leave blank if no preference"></asp:TextBox><br />
-        <asp:Label ID="Label3" runat="server" Text="Nearby frequency is acceptable" CssClass="formLabel"></asp:Label><asp:CheckBox ID="chkNearbyFreqOk" runat="server" TextAlign="Left" Checked="True" />
+        <asp:TextBox ID="txtAntennaHeight" runat="server" CssClass="textInput" placeholder="meters"></asp:TextBox>
+        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox6_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox6_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="0123456789" />
         <br />
         <br />
         <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
