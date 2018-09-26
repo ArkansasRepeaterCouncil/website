@@ -40,9 +40,6 @@
         <asp:Label ID="Label6" runat="server" Text="Output power" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtOutputPower" runat="server" CssClass="textInput" placeholder="watts"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="TextBox4_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox4_FilteredTextBoxExtender" TargetControlID="txtOutputPower" ValidChars="0123456789" />
         <br />
-        <asp:Label ID="Label7" runat="server" Text="Altitude in meters from sea level" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtAltitude" runat="server" placeholder="meters" CssClass="textInput"></asp:TextBox>
-        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox5_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox5_FilteredTextBoxExtender" TargetControlID="txtAltitude" ValidChars="0123456789" />
-        <br />
         <asp:Label ID="Label8" runat="server" Text="Antenna height in meters" CssClass="formLabel"></asp:Label>
         <asp:TextBox ID="txtAntennaHeight" runat="server" CssClass="textInput" placeholder="meters"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="TextBox6_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox6_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="0123456789" />
