@@ -194,7 +194,7 @@ public class Repeater
 					oldValue = "";
 				}
 
-				if (!object.Equals(oldValue, newValue))
+				if ((!object.Equals(oldValue, newValue)) && (fieldInfo.Name != "DateUpdated"))
 				{
 					strReturn += String.Format("• {0} was changed from `{1}` to `{2}`\r\n", fieldInfo.Name, oldValue.ToString(), newValue.ToString());
 				}
