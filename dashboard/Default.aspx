@@ -31,7 +31,7 @@
             </asp:TableRow>
         </asp:Table>
     </section>
-    <asp:Panel ID="pnlRequests" runat="server">
+    <asp:Panel ID="pnlRequests" runat="server" Visible="False">
     <section>
 	    <h2>Coordination requests</h2>
         <asp:Table ID="tblRequests" runat="server" CssClass="repeaterList">
