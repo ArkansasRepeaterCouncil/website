@@ -1,0 +1,44 @@
+﻿
+.label {
+    width: 200px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+    .label:nth-of-type(odd) {
+        text-align: right;
+        margin-right: 15px;
+    }
+
+    .label:nth-of-type(even) {
+        text-align: left;
+    }
+
+#pageContent .notesTable {
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+}
+
+    #pageContent .notesTable td {
+        border: none;
+    }
+
+    #pageContent .notesTable tr:nth-of-type(even) td {
+        border-bottom: solid 1px #ffffff;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        padding-left: 20px;
+    }
+
+#pageContent .responsesTable {
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #pageContent .responsesTable thead td {
+        font-weight: bold;
+        border: none;
+    }
