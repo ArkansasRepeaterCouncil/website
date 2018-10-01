@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
+    <link type="text/css" rel="stylesheet" href="../css/requests.css" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <section>
@@ -26,11 +27,11 @@
     </section>
     <section>
         <h1>Notes</h1>
-        <asp:Table ID="tblNotes" runat="server"></asp:Table>
+        <asp:Table CssClass="notesTable" ID="tblNotes" runat="server"></asp:Table>
     </section>
     <section>
-        <h1>Approvals</h1>
-        <asp:Table ID="tblWorkflow" runat="server" Width="850px">
+        <h1>Responses</h1>
+        <asp:Table CssClass="responsesTable" ID="tblWorkflow" runat="server" Width="850px">
             <asp:TableRow runat="server" TableSection="TableHeader">
                 <asp:TableCell runat="server" Width="200px">State</asp:TableCell>
                 <asp:TableCell runat="server" Width="200px">Status</asp:TableCell>
