@@ -36,7 +36,7 @@
                         </style>
                         <ul class="loggedInLinks">
 				            <li><a href="/Dashboard/">Dashboard</a></li>
-                            <li><a href="/request/">Coordination request</a></li>
+                            <li><a href="/request/">Request coordination</a></li>
 				            <li><a href="/profile/">Profile</a></li>
 			            </ul>
                     </asp:Panel>
