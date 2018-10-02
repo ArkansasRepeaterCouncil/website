@@ -149,14 +149,13 @@
                 <ajaxToolkit:TabPanel ID="tabUsers" runat="server" HeaderText="Users">
                     <ContentTemplate>
                         <p>Users listed here will be able to edit the details of this repeater.  You can not remove the repeater trustee.</p>
-                        <asp:Table ID="tblRepeaterUsers" runat="server">
-                            <asp:TableHeaderRow>
-                                <asp:TableHeaderCell></asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Callsign</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Name</asp:TableHeaderCell>
-                                <asp:TableHeaderCell>Email</asp:TableHeaderCell>
-                            </asp:TableHeaderRow>
-                        </asp:Table>
+
+                        <asp:Panel ID="pnlAddUser" runat="server" Width="600px" CssClass="pnlAddUser" Visible="false">
+                            <asp:DropDownList ID="ddlAddUser" runat="server"></asp:DropDownList><br />
+                            <br />
+                            <asp:Button ID="btnAddUser" runat="server" Text="Add user" OnClick="btnAddUser_Click" />
+                        </asp:Panel>
+                        <asp:Table CssClass="tblRepeaterUsers" ID="tblRepeaterUsers" runat="server"></asp:Table>
                     </ContentTemplate>
                 </ajaxToolkit:TabPanel>
             </ajaxToolkit:TabContainer>

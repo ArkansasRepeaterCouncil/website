@@ -9,12 +9,13 @@ public partial class update_Default : System.Web.UI.Page
 {
 	Credentials creds;
 	Repeater repeater;
+	string repeaterId;
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		creds = Utilities.GetExistingCredentials();
 
-		string repeaterId = "0";
+		repeaterId = "0";
 		try
 		{
 			repeaterId = Request.QueryString["id"].ToString();
@@ -161,6 +162,36 @@ public partial class update_Default : System.Web.UI.Page
 			string json = webClient.DownloadString(url);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
+			tblRepeaterUsers.Rows.Clear();
+			using (TableHeaderRow thr = new TableHeaderRow())
+			{
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					Button btnAddRepeaterUser = new Button();
+					btnAddRepeaterUser.ID = "btnAddRepeaterUser";
+					btnAddRepeaterUser.Click += btnAddRepeaterUser_Click;
+					btnAddRepeaterUser.Text = "Add new";
+					thc.Controls.Add(btnAddRepeaterUser);
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Callsign";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Name";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Email";
+					thr.Cells.Add(thc);
+				}
+				tblRepeaterUsers.Rows.Add(thr);
+			}
+
 			// ID, Callsign, FullName, Email
 			foreach (dynamic obj in data)
 			{
@@ -250,11 +281,6 @@ public partial class update_Default : System.Web.UI.Page
 		}
 	}
 
-	protected void btnRemoveRepeaterUser(object sender, EventArgs e, string userid)
-	{
-
-	}
-
 	protected void validLocation_ServerValidate(object source, ServerValidateEventArgs args)
 	{
 		try
@@ -313,5 +339,45 @@ public partial class update_Default : System.Web.UI.Page
 		{
 			args.IsValid = false;
 		}
+	}
+
+	protected void btnAddRepeaterUser_Click(object sender, EventArgs e)
+	{
+		pnlAddUser.Visible = true;
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPossibleRepeaterUsers?callsign={0}&password={1}&repeaterid={2}", creds.Username, creds.Password, repeater.ID.ToString());
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+			ddlAddUser.Items.Clear();
+			foreach (dynamic obj in data)
+			{
+				ListItem li = new ListItem(string.Format("{0} - {1}", obj["Callsign"].ToString(), obj["FullName"].ToString()), obj["ID"].ToString());
+				ddlAddUser.Items.Add(li);
+			}
+		}
+	}
+
+	protected void btnRemoveRepeaterUser(object sender, EventArgs e, string userid)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "RemoveRepeaterUser?callsign={0}&password={1}&repeaterid={2}&userid={3}", creds.Username, creds.Password, repeater.ID.ToString(), userid);
+			string json = webClient.DownloadString(url);
+		}
+		LoadRepeaterUsers(repeaterId);
+	}
+
+	protected void btnAddUser_Click(object sender, EventArgs e)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "AddRepeaterUser?callsign={0}&password={1}&repeaterid={2}&userid={3}", creds.Username, creds.Password, repeater.ID.ToString(), ddlAddUser.SelectedValue);
+			string json = webClient.DownloadString(url);
+		}
+
+		LoadRepeaterUsers(repeaterId);
+		pnlAddUser.Visible = false;
 	}
 }

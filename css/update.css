@@ -66,3 +66,14 @@ input[readonly="readonly"]:after {
     margin-left: auto;
     margin-right: auto;
 }
+
+.pnlAddUser {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 400px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #444;
+    border: solid 1px #808080;
+}
