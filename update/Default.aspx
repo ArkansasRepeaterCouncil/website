@@ -3,54 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <style type="text/css">
-        .textInput {
-            margin-left: 5px;
-            margin-right: 15px;
-            width: 200px;
-        }
-        .formLabel {
-            text-align: right;
-            display: inline-block;
-            width: 300px;
-        }
-        .chkInput {
-            text-align: right;
-            display: inline-block;
-            width: 420px;
-        }
-        input[readonly="readonly"] {
-            background-color: #808080;
-            color: #000000;
-        }
-        input[readonly="readonly"]:after {
-           content: " *";
-        }
-        .ajax__tab_xp .ajax__tab_body {
-            background-color: rgba(0,0,0,0.4) !important;
-            font-size: 20px;
-        }
-        .noteTop, .noteBottom {
-            margin: 0;
-            padding: 5px;
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        .noteBottom ul {
-            padding-top: 0;
-            padding-bottom: 0;
-            margin-top: 0;
-            margin-bottom: 0;
-        }
-        .noteTop {
-            background-color: rgba(255,255,255,1);
-            color: #000000;
-        }
-        .noteBottom {
-            background-color: rgba(255, 255, 153,0.7);
-            margin-bottom: 15px;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="../css/update.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
 </asp:Content>
@@ -99,7 +52,7 @@
                         <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label><asp:TextBox ID="txtLatitude" CssClass="textInput" runat="server"></asp:TextBox><asp:CustomValidator ID="validLocation" runat="server" ErrorMessage="Location may not be more than one mile from the repeater's coordinated location." OnServerValidate="validLocation_ServerValidate">*</asp:CustomValidator><br />
                         <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label><asp:TextBox ID="txtLongitude" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude in meters"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblERP" CssClass="formLabel" runat="server" Text="Effective radiated power (ERP)"></asp:Label><asp:TextBox ID="txtERP" CssClass="textInput" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblERP" CssClass="formLabel" runat="server" Text="Effective radiated power (ERP)"></asp:Label><asp:TextBox ID="txtERP" CssClass="textInput" runat="server"></asp:TextBox> <a href="https://www.everythingrf.com/rf-calculators/eirp-effective-isotropic-radiated-power" target="_blank">Calculator</a><br />
                         <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"></asp:TextBox><asp:CustomValidator ID="validOutputPower" runat="server" ErrorMessage="Output power may not be more than 5 watts over the coordinated power." Text="*" OnServerValidate="validOutputPower_ServerValidate"></asp:CustomValidator><br />
                         <asp:Label ID="lblAntennaGain" CssClass="formLabel" runat="server" Text="Antenna gain"></asp:Label><asp:TextBox ID="txtAntennaGain" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblAntennaHeight" CssClass="formLabel" runat="server" Text="Antenna height"></asp:Label><asp:TextBox ID="txtAntennaHeight" CssClass="textInput" runat="server"></asp:TextBox><asp:CustomValidator ID="validAntennaHeight" runat="server" ErrorMessage="Antenna height may not be more than 50 feet over the coordinated antenna height." Text="*" OnServerValidate="validAntennaHeight_ServerValidate"></asp:CustomValidator><br />
@@ -189,6 +142,7 @@
                 </ajaxToolkit:TabPanel>
                 <ajaxToolkit:TabPanel ID="tabNotes" runat="server" HeaderText="Notes">
                     <ContentTemplate>
+                        <asp:TextBox CssClass="txtNote" ID="txtNote" runat="server" TextMode="MultiLine" placeholder="Enter new note, make any other changes, then click save below."></asp:TextBox>
                         <asp:Label ID="lblNotes" runat="server" Text="No notes have been added for this repeater"></asp:Label>
                     </ContentTemplate>
                 </ajaxToolkit:TabPanel>
