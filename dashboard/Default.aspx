@@ -9,6 +9,11 @@
             margin-bottom: 20px;
         }
         .updatesList {
+            width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .updatesList ul {
             margin-top: 0;
             padding-top: 0;
             font-size: 0.7em;
@@ -47,14 +52,16 @@
     </asp:Panel>
     <section>
 	    <h2>Recent updates</h2>
-            <asp:Repeater ID="rptRSS" runat="server" DataSourceID="xmlRSS"> 
-                <ItemTemplate> 
-                    <strong><%# XPath("title") %></strong> (<%# XPath("pubDate") %>)
-                    <ul class="updatesList">
-                    <%# XPath("description").ToString().Replace("• ", "<li>") %>
-                    </ul>
-                </ItemTemplate>        
-            </asp:Repeater>
+            <div class="updatesList">
+                <asp:Repeater ID="rptRSS" runat="server" DataSourceID="xmlRSS"> 
+                    <ItemTemplate> 
+                        <strong><%# XPath("title") %></strong> (<%# XPath("pubDate") %>)
+                        <ul>
+                        <%# XPath("description").ToString().Replace("• ", "<li>") %>
+                        </ul>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
         <asp:XmlDataSource ID="xmlRSS" runat="server" DataFile="http://repeatercoordinationservice.azurewebsites.net/api/RSScreator?code=lYVEWOyzmLP0WYS1fg7NutMgKHOqrKkFMxcyj/41ubix126V9n7nNg==" XPath="rss/channel/item[position() <= 5]"></asp:XmlDataSource>
     </section>
 </asp:Content>
