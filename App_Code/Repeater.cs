@@ -77,6 +77,7 @@ public class Repeater
 	public string CoordinatedLongitude = "";
 	public string CoordinatedOutputPower = "";
 	public string CoordinatedAntennaHeight = "";
+	public string Note = "";
 	[JsonProperty]
 	private string ChangeLog = "";
 	[JsonProperty]
@@ -111,7 +112,7 @@ public class Repeater
 		string autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, 
 		bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, 
 		string datecoordinationsource, string dateconstruction, string state, string coordinatedLatitude, 
-		string coordinatedLongitude, string coordinatedOutputPower, string coordinatedAntennaHeight)
+		string coordinatedLongitude, string coordinatedOutputPower, string coordinatedAntennaHeight, string note)
 	{
 		ID = int.Parse(id);
 		Type = type;
@@ -159,6 +160,7 @@ public class Repeater
 		CoordinatedLongitude = coordinatedLongitude;
 		CoordinatedOutputPower = coordinatedOutputPower;
 		CoordinatedAntennaHeight = coordinatedAntennaHeight;
+		Note = note;
 }
 
 	public void Save(Credentials credentials, Repeater originalRepeater)
@@ -194,12 +196,19 @@ public class Repeater
 					oldValue = "";
 				}
 
-				if ((!object.Equals(oldValue, newValue)) && (fieldInfo.Name != "DateUpdated"))
+				if ((!object.Equals(oldValue, newValue)) && (fieldInfo.Name != "DateUpdated") && (fieldInfo.Name != "Note"))
 				{
 					strReturn += String.Format("• {0} was changed from `{1}` to `{2}`\r\n", fieldInfo.Name, oldValue.ToString(), newValue.ToString());
 				}
 			}
 		}
+
+		string spacing = "";
+		if ((strReturn != string.Empty) && (Note.Trim() != string.Empty))
+		{
+			spacing = "\r\n\r\n";
+		}
+		strReturn = Note + spacing + strReturn;
 
 		return strReturn;
 	}
