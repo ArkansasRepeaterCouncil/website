@@ -10,6 +10,7 @@ public partial class update_Default : System.Web.UI.Page
 	Credentials creds;
 	Repeater repeater;
 	string repeaterId;
+	bool enforceBusinessRules = false;
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -283,19 +284,49 @@ public partial class update_Default : System.Web.UI.Page
 
 	protected void validLocation_ServerValidate(object source, ServerValidateEventArgs args)
 	{
-		try
+		if (enforceBusinessRules)
 		{
-			double aLat = Double.Parse(repeater.CoordinatedLatitude);
-			double aLon = Double.Parse(repeater.CoordinatedLongitude);
-			GeoCoordinate a = new GeoCoordinate(aLat, aLon);
+			try
+			{
+				double aLat = Double.Parse(repeater.CoordinatedLatitude);
+				double aLon = Double.Parse(repeater.CoordinatedLongitude);
+				GeoCoordinate a = new GeoCoordinate(aLat, aLon);
 
-			double bLat = Double.Parse(txtLatitude.Text);
-			double bLon = Double.Parse(txtLongitude.Text);
-			GeoCoordinate b = new GeoCoordinate(bLat, bLon);
+				double bLat = Double.Parse(txtLatitude.Text);
+				double bLon = Double.Parse(txtLongitude.Text);
+				GeoCoordinate b = new GeoCoordinate(bLat, bLon);
 
-			double metersAway = a.GetDistanceTo(b);
+				double metersAway = a.GetDistanceTo(b);
 
-			if (metersAway <= 1609.34)
+				if (metersAway <= 1609.34)
+				{
+					args.IsValid = true;
+				}
+				else
+				{
+					args.IsValid = false;
+				}
+			}
+			catch (Exception)
+			{
+				args.IsValid = false;
+			}
+		}
+		else
+		{
+			args.IsValid = true;
+		}
+
+	}
+
+	protected void validAntennaHeight_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		if (enforceBusinessRules)
+		{
+			int newHeight = int.Parse(txtAntennaHeight.Text);
+			int allowedHeight = int.Parse(repeater.CoordinatedAntennaHeight) + 50;
+
+			if (newHeight <= allowedHeight)
 			{
 				args.IsValid = true;
 			}
@@ -304,40 +335,31 @@ public partial class update_Default : System.Web.UI.Page
 				args.IsValid = false;
 			}
 		}
-		catch (Exception)
-		{
-			args.IsValid = false;
-		}
-
-	}
-
-	protected void validAntennaHeight_ServerValidate(object source, ServerValidateEventArgs args)
-	{
-		int newHeight = int.Parse(txtAntennaHeight.Text);
-		int allowedHeight = int.Parse(repeater.CoordinatedAntennaHeight) + 50;
-
-		if (newHeight <= allowedHeight)
-		{
-			args.IsValid = true;
-		}
 		else
 		{
-			args.IsValid = false;
+			args.IsValid = true;
 		}
 	}
 
 	protected void validOutputPower_ServerValidate(object source, ServerValidateEventArgs args)
 	{
-		int newPower = int.Parse(txtOutputPower.Text);
-		int allowedPower = int.Parse(repeater.CoordinatedOutputPower) + 5;
-
-		if (newPower <= allowedPower)
+		if (enforceBusinessRules)
 		{
-			args.IsValid = true;
+			int newPower = int.Parse(txtOutputPower.Text);
+			int allowedPower = int.Parse(repeater.CoordinatedOutputPower) + 5;
+
+			if (newPower <= allowedPower)
+			{
+				args.IsValid = true;
+			}
+			else
+			{
+				args.IsValid = false;
+			}
 		}
 		else
 		{
-			args.IsValid = false;
+			args.IsValid = true;
 		}
 	}
 
