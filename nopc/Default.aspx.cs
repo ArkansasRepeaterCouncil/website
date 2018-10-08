@@ -12,7 +12,7 @@ public partial class nopc_Default : System.Web.UI.Page
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		string urlKey = Request.QueryString["nopc"];
+		urlKey = Request.QueryString["nopc"];
 
 		if (!Page.IsPostBack)
 		{
@@ -80,36 +80,13 @@ public partial class nopc_Default : System.Web.UI.Page
 
 					using (TableCell cell = new TableCell())
 					{
-						if ((json.Request.Authorized[0].State == step.Step.State) && (step.Step.Status.ID != "2"))
-						{
-							DropDownList ddl = new DropDownList();
-							ddl.Items.Add(new ListItem("Requested", "1"));
-							ddl.Items.Add(new ListItem("Approved", "2"));
-							ddl.Items.Add(new ListItem("Declined", "3"));
-							ddl.ID = "ddlStatus";
-							ddl.SelectedValue = step.Step.Status.ID.ToString();
-							cell.Controls.Add(ddl);
-						}
-						else
-						{
-							cell.Text = step.Step.Status.Description;
-						}
+						cell.Text = step.Step.Status.Description;
 						row.Cells.Add(cell);
 					}
 
 					using (TableCell cell = new TableCell())
 					{
-						if (json.Request.Authorized[0].State == step.Step.State)
-						{
-							TextBox txt = new TextBox();
-							txt.ID = "txtNote";
-							txt.Width = new Unit("400px");
-							cell.Controls.Add(txt);
-						}
-						else
-						{
-							cell.Text = String.Format("{0}<div class='noteDate'>{1}</div>", step.Step.Note, step.Step.TimeStamp);
-						}
+						cell.Text = String.Format("{0}<div class='noteDate'>{1}</div>", step.Step.Note, step.Step.TimeStamp);
 						row.Cells.Add(cell);
 					}
 
@@ -120,24 +97,29 @@ public partial class nopc_Default : System.Web.UI.Page
 	}
 
 	protected void btnSubmit_Click(object sender, EventArgs e)
-	{
-		DropDownList ddl = (DropDownList)this.FindControl("ddlStatus");
-		TextBox txt = (TextBox)this.FindControl("txtNote");
-		
-		if ((ddl.SelectedValue == "3") && (txt.Text.Trim() == ""))
+	{	
+
+
+		if (this.IsValid)
 		{
-			// They need to enter a reason why they declined it.
-			lblError.Visible = true;
+			// Submit changes.
+			new RequestUpdate(urlKey, ddlStatus.SelectedValue, txtNote.Text.Trim()).Save();
+			txtNote.Enabled = false;
+			ddlStatus.Enabled = false;
+			btnSubmit.Enabled = false;
+			lblSaved.Visible = true;
+		}
+	}
+
+	protected void CustomValidator1_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		if ((ddlStatus.SelectedValue == "3") && (txtNote.Text.Trim() == string.Empty))
+		{
+			args.IsValid = false;
 		}
 		else
 		{
-			// Submit changes.
-			lblError.Visible = false;
-			new RequestUpdate(urlKey, ddl.SelectedValue, txt.Text.Trim()).Save();
-			txt.Enabled = false;
-			ddl.Enabled = false;
-			btnSubmit.Enabled = false;
-			lblSaved.Visible = true;
+			args.IsValid = true;
 		}
 	}
 }

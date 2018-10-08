@@ -6,11 +6,12 @@ using System.Web;
 /// <summary>
 /// Summary description for RequestUpdate
 /// </summary>
+[Serializable]
 public class RequestUpdate
 {
-	string UrlKey;
-	string statusId;
-	string note;
+	public string UrlKey;
+	public string statusId;
+	public string note;
 
 	public RequestUpdate(string urlkey, string statusid, string Note)
 	{
