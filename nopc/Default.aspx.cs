@@ -14,12 +14,9 @@ public partial class nopc_Default : System.Web.UI.Page
 	{
 		urlKey = Request.QueryString["nopc"];
 
-		if (!Page.IsPostBack)
+		if ((urlKey != null) && (urlKey != ""))
 		{
-			if ((urlKey != null) && (urlKey != ""))
-			{
-				LoadRequestDetails(urlKey);
-			}
+			LoadRequestDetails(urlKey);
 		}
 	}
 
@@ -41,6 +38,7 @@ public partial class nopc_Default : System.Web.UI.Page
 			lblPower.Text = json.Request.OutputPower;
 			lblRequestor.Text = String.Format("{0}, {1}", json.Request.Requestor.Name, json.Request.Requestor.Callsign);
 			lblStatus.Text = json.Request.Status.Description;
+			lblRespondingEntity.Text = json.Request.Authorized.State;
 
 			foreach (dynamic note in json.Request.Notes)
 			{
@@ -98,8 +96,6 @@ public partial class nopc_Default : System.Web.UI.Page
 
 	protected void btnSubmit_Click(object sender, EventArgs e)
 	{	
-
-
 		if (this.IsValid)
 		{
 			// Submit changes.
@@ -108,6 +104,7 @@ public partial class nopc_Default : System.Web.UI.Page
 			ddlStatus.Enabled = false;
 			btnSubmit.Enabled = false;
 			lblSaved.Visible = true;
+			LoadRequestDetails(urlKey);
 		}
 	}
 
