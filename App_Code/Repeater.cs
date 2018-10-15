@@ -169,6 +169,11 @@ public class Repeater
 
 		if (ChangeLog != "") // Don't bother if there's nothing changed
 		{
+			if (Analog_Width.Trim() == string.Empty)
+			{
+				Analog_Width = "0";
+			}
+
 			callsign = credentials.Username;
 			password = credentials.Password;
 			DateUpdated = DateTime.UtcNow.ToString();
