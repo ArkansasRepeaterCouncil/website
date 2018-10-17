@@ -19,6 +19,9 @@ namespace ARC
 		public string PhoneHome = "";
 		public string PhoneWork = "";
 		public string PhoneCell = "";
+		public string NewPassword = "";
+		[JsonProperty]
+		private string Password = "";
 
 		public User() { }
 
@@ -33,6 +36,29 @@ namespace ARC
 				user = JsonConvert.DeserializeObject<User>(json);
 			}
 			return user;
+		}
+
+		public User (string id, string callsign, string fullname, string address, string city, string state, string zip, string email, string phonehome, string phonework, string phonecell, string newpassword)
+		{
+			ID = id;
+			Callsign = callsign;
+			FullName = fullname;
+			Address = address;
+			City = city;
+			State = state;
+			Zip = zip;
+			Email = email;
+			PhoneHome = phonehome;
+			PhoneWork = phonework;
+			PhoneCell = phonecell;
+			NewPassword = newpassword;
+		}
+
+		public void Save(string password)
+		{
+			Password = password;
+			string url = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "UpdateUser";
+			string result = Utilities.PostJsonToUrl(url, this);
 		}
 	}
 }
