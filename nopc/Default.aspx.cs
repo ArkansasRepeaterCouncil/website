@@ -16,8 +16,18 @@ public partial class nopc_Default : System.Web.UI.Page
 
 		if ((urlKey != null) && (urlKey != ""))
 		{
+			ClearWorkflowTable();
 			LoadRequestDetails(urlKey);
 		}
+	}
+
+	private void ClearWorkflowTable()
+	{
+		for (int i = 1; i < tblWorkflow.Rows.Count; i++)
+		{
+			tblWorkflow.Rows.RemoveAt(i);
+		}
+		
 	}
 
 	private void LoadRequestDetails(string urlKey)
@@ -38,7 +48,7 @@ public partial class nopc_Default : System.Web.UI.Page
 			lblPower.Text = json.Request.OutputPower;
 			lblRequestor.Text = String.Format("{0}, {1}", json.Request.Requestor.Name, json.Request.Requestor.Callsign);
 			lblStatus.Text = json.Request.Status.Description;
-			lblRespondingEntity.Text = json.Request.Authorized.State;
+			lblRespondingEntity.Text = json.Request.Authorized[0].State;
 
 			foreach (dynamic note in json.Request.Notes)
 			{
