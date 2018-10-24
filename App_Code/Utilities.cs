@@ -39,7 +39,7 @@ public static class Utilities
 		return outputCreds;
 	}
 
-	public static void getValueIfNotNull(object val, string prefixString, List<string> arr)
+	public static void GetValueIfNotNull(object val, string prefixString, List<string> arr)
 	{
 		if ((val is int) && ((int)val == 1))
 		{
@@ -55,7 +55,7 @@ public static class Utilities
 		}
 	}
 
-	public static void getNameIfNotNull(object val, string name, List<string> arr)
+	public static void GetNameIfNotNull(object val, string name, List<string> arr)
 	{
 		bool boolVal = false;
 		if ((Boolean.TryParse(val.ToString(), out boolVal)) && (boolVal))
