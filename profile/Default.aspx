@@ -20,6 +20,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
 		<h1>Profile</h1>
+        <p>This form is readonly for now while still being developed.</p>
         
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <label>User ID:</label> <asp:TextBox ID="txtUserId" runat="server" ReadOnly="true"></asp:TextBox><br />
@@ -51,7 +52,7 @@
         &nbsp;<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword1" ControlToValidate="txtPassword2" ErrorMessage="The new password and confirmation fields do not match.">*</asp:CompareValidator>
         <br />
         <br />
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" /> <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="False" />
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" Enabled="False" /> <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="False" />
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     </section>
 </asp:Content>
