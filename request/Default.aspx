@@ -22,14 +22,10 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
         <p>Complete the form below to submit a coordination request.</p>
-        <p style="font-size: 0.7em;"><strong>Want a faster response?</strong> The easiest way to ensure a speedy, positive response is to submit a request <em>without</em> a frequency preference. This will give the coordinators the leeway to find any open frequency on your behalf.</p>
 
         <asp:Label ID="Label9" runat="server" Text="Name" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtPersonName" runat="server" CssClass="textInput" ReadOnly="True"></asp:TextBox><br />
         <asp:Label ID="Label10" runat="server" Text="Callsign" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtPersonCallsign" runat="server" CssClass="textInput" ReadOnly="True"></asp:TextBox><br />
         <asp:Label ID="Label11" runat="server" Text="Email address" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtEmail" runat="server" CssClass="textInput" ReadOnly="True"></asp:TextBox><br />
-        <br />
-        <asp:Label ID="Label2" runat="server" Text="Frequency" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtFrequency" runat="server" CssClass="textInput" placeholder="000.000"></asp:TextBox>
-        <ajaxToolkit:FilteredTextBoxExtender ID="txtFrequency_FilteredTextBoxExtender" runat="server" BehaviorID="txtFrequency_FilteredTextBoxExtender" TargetControlID="txtFrequency" ValidChars=".0123456789" />
         <br />
         <asp:Label ID="Label4" runat="server" Text="Latitude" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtLatitude" runat="server" CssClass="textInput" placeholder="00.0000"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="txtLatitude_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox2_FilteredTextBoxExtender" TargetControlID="txtLatitude" ValidChars="-.0123456789" />
@@ -44,8 +40,25 @@
         <ajaxToolkit:FilteredTextBoxExtender ID="TextBox6_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox6_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="0123456789" />
         <br />
         <br />
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
-&nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
+        <asp:Label ID="Label1" runat="server" Text="Band" CssClass="formLabel"></asp:Label>
+        <asp:DropDownList ID="ddlBand" runat="server" CssClass="textInput">
+            <asp:ListItem>23cm</asp:ListItem>
+            <asp:ListItem>33cm</asp:ListItem>
+            <asp:ListItem Value="70cm" Selected="True">70cm</asp:ListItem>
+            <asp:ListItem>1.25m</asp:ListItem>
+            <asp:ListItem>10m</asp:ListItem>
+            <asp:ListItem>2m</asp:ListItem>
+            <asp:ListItem>6m</asp:ListItem>
+        </asp:DropDownList><br />
+        <asp:Label ID="lblFrequency" runat="server" Text="Frequency pair" CssClass="formLabel" Visible="False"></asp:Label>
+        <asp:DropDownList ID="ddlFrequency" runat="server" CssClass="textInput" Visible="False">
+        </asp:DropDownList>
+        <br />
+        <br />
+        Please keep in mind that the frequencies listed are those that our database show to be available - there may be someone using a frequency who is not coordinated. Please monitor the desired frquency before submitting your request.<br />
+        <br />
+        <div class="center"><asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" /><asp:Button ID="btnSubmit" runat="server" Text="Submit" Visible="false" OnClick="btnSubmit_Click" />
+&nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" /></div>
         <br />
     </section>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>

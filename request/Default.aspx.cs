@@ -32,7 +32,7 @@ public partial class request_Default : System.Web.UI.Page
 		decimal decAltitude = GetAltitude(txtLatitude.Text, txtLongitude.Text);
 		string strAltitude = Math.Round(decAltitude).ToString();
 
-		new CoordinationRequest(txtLatitude.Text, txtLongitude.Text, txtOutputPower.Text, strAltitude, txtAntennaHeight.Text, txtFrequency.Text, creds).Save();
+		new CoordinationRequest(txtLatitude.Text, txtLongitude.Text, txtOutputPower.Text, strAltitude, txtAntennaHeight.Text, ddlFrequency.SelectedValue, creds).Save();
 		Response.Redirect("~/Dashboard/");
 	}
 
@@ -59,5 +59,40 @@ public partial class request_Default : System.Web.UI.Page
 
 
 		return output;
+	}
+
+	protected void btnNext_Click(object sender, EventArgs e)
+	{
+		LoadAvailableFrequencies(txtLatitude.Text, txtLongitude.Text, ddlBand.SelectedValue);
+	}
+
+	private void LoadAvailableFrequencies(string latitude, string longitude, string band)
+	{
+		//try
+		//{
+			using (var webClient = new System.Net.WebClient())
+			{
+				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListUnusedFrequenciesNearPoint?lat={0}&lon={1}&miles={2}&band={3}", latitude, longitude, "90", band);
+				string json = webClient.DownloadString(url);
+				dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+				
+				ddlFrequency.Items.Clear();
+				foreach (dynamic obj in data)
+				{
+					ListItem li = new ListItem(string.Format("Tx {0}, Rx {1}", obj.outputFreq.ToString(), obj.inputFreq.ToString()), obj.outputFreq.ToString());
+					ddlFrequency.Items.Add(li);
+				}
+				ddlFrequency.SelectedIndex = 0;
+				ddlFrequency.Visible = true;
+				lblFrequency.Visible = true;
+				ddlBand.Enabled = false;
+				btnNext.Visible = false;
+				btnSubmit.Visible = true;
+			}
+		//}
+		//catch (Exception)
+		//{
+
+		//}
 	}
 }

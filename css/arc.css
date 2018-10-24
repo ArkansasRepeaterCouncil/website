@@ -164,3 +164,10 @@ footer div {
 footer div a, footer div a:visited, footer div a:active, footer div a:hover, footer div a:link {
     color: rgba(255,255,255,0.4);
 }
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 300px;
+}
