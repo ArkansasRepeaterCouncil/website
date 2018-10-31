@@ -19,9 +19,9 @@
             <asp:Label ID="Label2" runat="server" Text="Latitude: "></asp:Label><asp:Label ID="lblLatitude" runat="server" Text="Label"></asp:Label><br />
             <asp:Label ID="Label4" runat="server" Text="Longitude: "></asp:Label><asp:Label ID="lblLongitude" runat="server" Text="Label"></asp:Label><br />
             <asp:Label ID="Label6" runat="server" Text="Output frequency: "></asp:Label><asp:Label ID="lblOutputFrequency" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="Label8" runat="server" Text="Power: "></asp:Label><asp:Label ID="lblPower" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="Label10" runat="server" Text="Altitude: "></asp:Label><asp:Label ID="lblAltitude" runat="server" Text="Label"></asp:Label><br />
-            <asp:Label ID="Label12" runat="server" Text="Antenna height: "></asp:Label><asp:Label ID="lblAntennaHeight" runat="server" Text="Label"></asp:Label><br />
+            <asp:Label ID="Label8" runat="server" Text="Power: "></asp:Label><asp:Label ID="lblPower" runat="server" Text="Label"></asp:Label> watts<br />
+            <asp:Label ID="Label10" runat="server" Text="Altitude: "></asp:Label><asp:Label ID="lblAltitude" runat="server" Text="Label"></asp:Label> meters<br />
+            <asp:Label ID="Label12" runat="server" Text="Antenna height: "></asp:Label><asp:Label ID="lblAntennaHeight" runat="server" Text="Label"></asp:Label> meters<br />
 		</p>
     </section>
     <section>

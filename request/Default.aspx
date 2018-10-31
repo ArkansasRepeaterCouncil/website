@@ -33,10 +33,10 @@
         <asp:Label ID="Label5" runat="server" Text="Longitude" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtLongitude" runat="server" CssClass="textInput" placeholder="-00.0000"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="Longitude_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox3_FilteredTextBoxExtender" TargetControlID="txtLongitude" ValidChars="-.0123456789" />
         <br />
-        <asp:Label ID="Label6" runat="server" Text="Output power" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtOutputPower" runat="server" CssClass="textInput" placeholder="watts"></asp:TextBox>
+        <asp:Label ID="Label6" runat="server" Text="Output power" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtOutputPower" runat="server" CssClass="textInput" placeholder="watts"></asp:TextBox> watts
         <ajaxToolkit:FilteredTextBoxExtender ID="TextBox4_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox4_FilteredTextBoxExtender" TargetControlID="txtOutputPower" ValidChars="0123456789" />
         <br />
-        <asp:Label ID="Label8" runat="server" Text="Antenna height in meters" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtAntennaHeight" runat="server" CssClass="textInput" placeholder="meters"></asp:TextBox>
+        <asp:Label ID="Label8" runat="server" Text="Antenna height in meters" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtAntennaHeight" runat="server" CssClass="textInput" placeholder="meters"></asp:TextBox> meters
         <ajaxToolkit:FilteredTextBoxExtender ID="TextBox6_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox6_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="0123456789" />
         <br />
         <br />
