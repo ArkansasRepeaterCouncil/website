@@ -26,14 +26,16 @@
         <label>User ID:</label> <asp:TextBox ID="txtUserId" runat="server" ReadOnly="true"></asp:TextBox><br />
         <label>Callsign:</label> <asp:TextBox ID="txtCallsign" runat="server"></asp:TextBox>
         &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCallsign" ErrorMessage="The callsign given is not a valid US callsign." ValidationExpression="[AKNWaknw][a-zA-Z]{0,2}[0123456789][a-zA-Z]{1,3}">*</asp:RegularExpressionValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Callsign is required.">*</asp:RequiredFieldValidator>
         <br />
         <label>Full name:</label> <asp:TextBox ID="txtFullname" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullname" ErrorMessage="Full name is required">*</asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Full name is required.">*</asp:RequiredFieldValidator>
         <br />
         <label>Mailing address:</label> <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Mailing address is required." ControlToValidate="txtAddress">*</asp:RequiredFieldValidator>
         <br />
         <label>City:</label> <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="City is required." ControlToValidate="txtCity">*</asp:RequiredFieldValidator>
         <br />
-        <label>State:</label> <asp:TextBox ID="txtState" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="State is required." ControlToValidate="txtState">*</asp:RequiredFieldValidator>
+        <label>State:</label> <asp:TextBox ID="txtState" runat="server">AR</asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="State is required." ControlToValidate="txtState">*</asp:RequiredFieldValidator>
         <br />
         <label>ZIP code:</label> <asp:TextBox ID="txtZip" runat="server"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="txtZip_FilteredTextBoxExtender" runat="server" BehaviorID="txtZip_FilteredTextBoxExtender" FilterType="Numbers" TargetControlID="txtZip">
@@ -41,7 +43,7 @@
 &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="ZIP code is required." ControlToValidate="txtZip">*</asp:RequiredFieldValidator>
         <br />
         <label>Email:</label> <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required.">*</asp:RequiredFieldValidator>
-&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email address provided is not valid." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email address provided is not valid." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
         <br />
         <label>Home phone:</label> <asp:TextBox ID="txtPhoneHome" runat="server"></asp:TextBox>&nbsp;<br />
         <label>Cell phone:</label> <asp:TextBox ID="txtPhoneCell" runat="server"></asp:TextBox><br />

@@ -324,7 +324,7 @@ public partial class update_Default : System.Web.UI.Page
 		if (enforceBusinessRules)
 		{
 			int newHeight = int.Parse(txtAntennaHeight.Text);
-			int allowedHeight = int.Parse(repeater.CoordinatedAntennaHeight) + 50;
+			Double allowedHeight = Double.Parse(repeater.CoordinatedAntennaHeight) + 15.24;
 
 			if (newHeight <= allowedHeight)
 			{
