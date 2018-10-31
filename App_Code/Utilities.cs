@@ -68,22 +68,31 @@ public static class Utilities
 	{
 		string result = "";
 
-		var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-		httpWebRequest.ContentType = "application/json";
-		httpWebRequest.Method = "POST";
-
-		using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+		try
 		{
-			string json = JsonConvert.SerializeObject(objToSend);
+			
 
-			streamWriter.Write(json);
-			System.Diagnostics.Debug.WriteLine(json);
+			var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+			httpWebRequest.ContentType = "application/json";
+			httpWebRequest.Method = "POST";
+
+			using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+			{
+				string json = JsonConvert.SerializeObject(objToSend);
+
+				streamWriter.Write(json);
+				System.Diagnostics.Debug.WriteLine(json);
+			}
+
+			var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+			using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+			{
+				result = streamReader.ReadToEnd();
+			}
 		}
-
-		var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-		using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+		catch (Exception ex)
 		{
-			result = streamReader.ReadToEnd();
+			new ExceptionReport(ex);
 		}
 
 		return result;

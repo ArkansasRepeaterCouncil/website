@@ -28,13 +28,22 @@ namespace ARC
 		public static User Load(Credentials credentials)
 		{
 			// Call web service to get all data for the repeater with this ID
-			User user;
-			using (var webClient = new System.Net.WebClient())
+			User user = new User();
+
+			try
 			{
-				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetUserDetails?callsign={0}&password={1}", credentials.Username, credentials.Password);
-				string json = webClient.DownloadString(url);
-				user = JsonConvert.DeserializeObject<User>(json);
+				using (var webClient = new System.Net.WebClient())
+				{
+					string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetUserDetails?callsign={0}&password={1}", credentials.Username, credentials.Password);
+					string json = webClient.DownloadString(url);
+					user = JsonConvert.DeserializeObject<User>(json);
+				}
 			}
+			catch (Exception ex)
+			{
+				new ExceptionReport(ex);
+			}
+
 			return user;
 		}
 

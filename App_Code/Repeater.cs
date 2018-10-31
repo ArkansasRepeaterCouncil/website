@@ -88,14 +88,23 @@ public class Repeater
 
 	public static Repeater Load(Credentials credentials, string repeaterId)
 	{
-		// Call web service to get all data for the repeater with this ID
-		Repeater repeater;
-		using (var webClient = new System.Net.WebClient())
+		Repeater repeater = new Repeater();
+
+		try
 		{
-			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetails?callsign={0}&password={1}&repeaterid={2}", credentials.Username, credentials.Password, repeaterId);
-			string json = webClient.DownloadString(url);
-			repeater = JsonConvert.DeserializeObject<Repeater>(json);
+			using (var webClient = new System.Net.WebClient())
+			{
+				// Call web service to get all data for the repeater with this ID
+				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetails?callsign={0}&password={1}&repeaterid={2}", credentials.Username, credentials.Password, repeaterId);
+				string json = webClient.DownloadString(url);
+				repeater = JsonConvert.DeserializeObject<Repeater>(json);
+			}
 		}
+		catch (Exception ex)
+		{
+			new ExceptionReport(ex);
+		}
+		
 		return repeater;
 	}
 
