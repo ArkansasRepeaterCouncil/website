@@ -6,6 +6,7 @@ using System.Web;
 
 namespace ARC
 {
+	[Serializable]
 	public class User
 	{
 		public string ID = "";

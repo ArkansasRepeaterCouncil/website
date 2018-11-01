@@ -27,7 +27,14 @@ public partial class profile_Default : System.Web.UI.Page
 
 	protected void btnSubmit_Click(object sender, EventArgs e)
 	{
-		ARC.User user = new ARC.User(txtUserId.Text, txtCallsign.Text, txtFullname.Text, txtAddress.Text, txtCity.Text, txtState.Text, txtZip.Text, txtEmail.Text, txtPhoneHome.Text, txtPhoneWork.Text, txtPhoneCell.Text, txtPassword1.Text);
+		string newPassword = "";
+
+		if (txtPassword1.Text != string.Empty)
+		{
+			newPassword = txtPassword1.Text;
+		}
+
+		ARC.User user = new ARC.User(txtUserId.Text, txtCallsign.Text, txtFullname.Text, txtAddress.Text, txtCity.Text, txtState.Text, txtZip.Text, txtEmail.Text, txtPhoneHome.Text, txtPhoneWork.Text, txtPhoneCell.Text, newPassword);
 		user.Save(creds.Password);
 	}
 
