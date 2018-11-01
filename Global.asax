@@ -16,11 +16,11 @@
 
     void Application_Error(object sender, EventArgs e)
     {
-        Exception exception = Server.GetLastError();
-        if (exception != null)
-        {
-            new ExceptionReport(exception);
-        }
+        //Exception exception = Server.GetLastError();
+        //if (exception != null)
+        //{
+        //    new ExceptionReport(exception);
+        //}
     }
 
     void Session_Start(object sender, EventArgs e)
