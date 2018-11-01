@@ -20,16 +20,15 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
 		<h1>Profile</h1>
-        <p>This form is readonly for now while still being developed.</p>
         
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <label>User ID:</label> <asp:TextBox ID="txtUserId" runat="server" ReadOnly="true"></asp:TextBox><br />
         <label>Callsign:</label> <asp:TextBox ID="txtCallsign" runat="server"></asp:TextBox>
         &nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtCallsign" ErrorMessage="The callsign given is not a valid US callsign." ValidationExpression="[AKNWaknw][a-zA-Z]{0,2}[0123456789][a-zA-Z]{1,3}">*</asp:RegularExpressionValidator>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Callsign is required.">*</asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ErrorMessage="Callsign is required." ControlToValidate="txtCallsign">*</asp:RequiredFieldValidator>
         <br />
         <label>Full name:</label> <asp:TextBox ID="txtFullname" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtFullname" ErrorMessage="Full name is required">*</asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Full name is required.">*</asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ErrorMessage="Full name is required." ControlToValidate="txtFullname">*</asp:RequiredFieldValidator>
         <br />
         <label>Mailing address:</label> <asp:TextBox ID="txtAddress" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Mailing address is required." ControlToValidate="txtAddress">*</asp:RequiredFieldValidator>
         <br />
@@ -54,7 +53,7 @@
         &nbsp;<asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword1" ControlToValidate="txtPassword2" ErrorMessage="The new password and confirmation fields do not match.">*</asp:CompareValidator>
         <br />
         <br />
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" Enabled="False" /> <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="False" />
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" /> <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="False" />
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     </section>
 </asp:Content>
