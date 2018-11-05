@@ -44,9 +44,15 @@
         <label>Email:</label> <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required.">*</asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email address provided is not valid." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
         <br />
-        <label>Home phone:</label> <asp:TextBox ID="txtPhoneHome" runat="server"></asp:TextBox>&nbsp;<br />
-        <label>Cell phone:</label> <asp:TextBox ID="txtPhoneCell" runat="server"></asp:TextBox><br />
-        <label>Work phone:</label> <asp:TextBox ID="txtPhoneWork" runat="server"></asp:TextBox><br />
+        <label>Home phone:</label> <asp:TextBox ID="txtPhoneHome" runat="server"></asp:TextBox>
+        <ajaxToolkit:MaskedEditExtender ID="txtPhoneHome_MaskedEditExtender" runat="server" BehaviorID="txtPhoneHome_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" MaskType="Number" TargetControlID="txtPhoneHome" Mask="(999) 999-9999" DisplayMoney="Right" ClearMaskOnLostFocus="False" ClearTextOnInvalid="True" />
+        <br />
+        <label>Cell phone:</label> <asp:TextBox ID="txtPhoneCell" runat="server"></asp:TextBox>
+        <ajaxToolkit:MaskedEditExtender ID="txtPhoneCell_MaskedEditExtender" runat="server" BehaviorID="txtPhoneCell_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" TargetControlID="txtPhoneCell" MaskType="Number" Mask="(999) 999-9999" ClearTextOnInvalid="True" ClearMaskOnLostFocus="True" />
+        <br />
+        <label>Work phone:</label> <asp:TextBox ID="txtPhoneWork" runat="server"></asp:TextBox>
+        <ajaxToolkit:MaskedEditExtender ID="txtPhoneWork_MaskedEditExtender" runat="server" BehaviorID="txtPhoneWork_MaskedEditExtender" Century="2000" CultureAMPMPlaceholder="" CultureCurrencySymbolPlaceholder="" CultureDateFormat="" CultureDatePlaceholder="" CultureDecimalPlaceholder="" CultureThousandsPlaceholder="" CultureTimePlaceholder="" TargetControlID="txtPhoneWork" MaskType="Number" Mask="(999) 999-9999" ClearMaskOnLostFocus="True" ClearTextOnInvalid="True" />
+        <br />
         <br />
         <label>New password:</label><asp:TextBox ID="txtPassword1" runat="server" TextMode="Password"></asp:TextBox><br />
         <label>Confirm:</label><asp:TextBox ID="txtPassword2" runat="server" TextMode="Password"></asp:TextBox>
