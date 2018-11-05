@@ -12,17 +12,22 @@ public partial class profile_Default : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		creds = Utilities.GetExistingCredentials();
-		ARC.User user = ARC.User.Load(creds);
 
-		txtUserId.Text = user.ID;
-		txtAddress.Text = user.Address;
-		txtCallsign.Text = user.Callsign;
-		txtCity.Text = user.City;
-		txtEmail.Text = user.Email;
-		txtFullname.Text = user.FullName;
-		txtPhoneCell.Text = user.PhoneCell;
-		txtPhoneHome.Text = user.PhoneHome;
-		txtPhoneWork.Text = user.PhoneWork;
+		if (!Page.IsPostBack)
+		{
+			ARC.User user = ARC.User.Load(creds);
+
+			txtUserId.Text = user.ID;
+			txtAddress.Text = user.Address;
+			txtCallsign.Text = user.Callsign;
+			txtCity.Text = user.City;
+			txtZip.Text = user.Zip;
+			txtEmail.Text = user.Email;
+			txtFullname.Text = user.FullName;
+			txtPhoneCell.Text = user.PhoneCell;
+			txtPhoneHome.Text = user.PhoneHome;
+			txtPhoneWork.Text = user.PhoneWork;
+		}
 	}
 
 	protected void btnSubmit_Click(object sender, EventArgs e)
