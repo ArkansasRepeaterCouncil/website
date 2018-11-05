@@ -70,8 +70,6 @@ public static class Utilities
 
 		try
 		{
-			
-
 			var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 			httpWebRequest.ContentType = "application/json";
 			httpWebRequest.Method = "POST";
@@ -93,6 +91,7 @@ public static class Utilities
 		catch (Exception ex)
 		{
 			new ExceptionReport(ex);
+			// throw ex;
 		}
 
 		return result;
