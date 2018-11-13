@@ -12,11 +12,12 @@ public partial class nopc_Default : System.Web.UI.Page
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
+		ClearWorkflowTable();
+
 		urlKey = Request.QueryString["nopc"];
 
 		if ((urlKey != null) && (urlKey != ""))
 		{
-			ClearWorkflowTable();
 			LoadRequestDetails(urlKey);
 		}
 	}
