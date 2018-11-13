@@ -16,11 +16,14 @@
 
     void Application_Error(object sender, EventArgs e)
     {
-        //Exception exception = Server.GetLastError();
-        //if (exception != null)
-        //{
-        //    new ExceptionReport(exception);
-        //}
+        Exception exception = Server.GetLastError();
+        if (exception != null)
+        {
+            new ExceptionReport(exception);
+        }
+        Context.Session["exception"] = exception;
+        Server.ClearError();
+        Server.Transfer("~/error.aspx");
     }
 
     void Session_Start(object sender, EventArgs e)
