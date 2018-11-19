@@ -43,6 +43,12 @@ public partial class profile_Default : System.Web.UI.Page
 
 			ARC.User user = new ARC.User(txtUserId.Text, txtCallsign.Text, txtFullname.Text, txtAddress.Text, txtCity.Text, txtState.Text, txtZip.Text, txtEmail.Text, txtPhoneHome.Text, txtPhoneWork.Text, txtPhoneCell.Text, newPassword);
 			user.Save(creds.Password);
+
+			if (newPassword != "")
+			{
+				HttpCookie ckLogin = new HttpCookie("login", Utilities.Base64Encode(txtCallsign.Text + "|" + newPassword));
+				Response.Cookies.Add(ckLogin);
+			}
 		}
 	}
 
