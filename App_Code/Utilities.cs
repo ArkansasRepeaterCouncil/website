@@ -96,4 +96,28 @@ public static class Utilities
 
 		return result;
 	}
+
+	public static string GetResponseFromUrl(string url)
+	{
+		string result = "";
+
+		try
+		{
+			var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+			httpWebRequest.Method = "GET";
+
+			var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+			using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+			{
+				result = streamReader.ReadToEnd();
+			}
+		}
+		catch (Exception ex)
+		{
+			new ExceptionReport(ex);
+			// throw ex;
+		}
+
+		return result;
+	}
 }
