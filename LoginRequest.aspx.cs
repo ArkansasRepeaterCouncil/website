@@ -22,8 +22,8 @@ public partial class LoginRequest : System.Web.UI.Page
 			{
 				using (var webClient = new System.Net.WebClient())
 				{
-					string parameters = string.Format("callsign={0}&email={1}&name={2}&address={3}", txtCallsign.Text, txtEmail.Text, hdnName.Value, hdnAddress.Value);
-					string strUrl = string.Format("{0}{1}{2}", System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"], "ResetPassword?", parameters);
+					string parameters = string.Format("callsign={0}&email={1}&name={2}&address={3}&city={4}&state={5}&zip={6}", txtCallsign.Text, txtEmail.Text, hdnName.Value, hdnAddress.Value, hdnCity.Value, hdnState.Value, hdnZip.Value);
+					string strUrl = string.Format("{0}{1}{2}", System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"], "CreateNewUser?", parameters);
 					string json = webClient.DownloadString(strUrl);
 					dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 				}
@@ -53,6 +53,12 @@ public partial class LoginRequest : System.Web.UI.Page
 				args.IsValid = true;
 				hdnAddress.Value = data.address.line1;
 				hdnName.Value = data.name;
+
+				// Parse line2 to get other address values
+				string address2 = data.address.line2;
+				hdnCity.Value = address2.Split(',')[0];
+				hdnState.Value = address2.Split(',')[1].Split(' ')[0];
+				hdnZip.Value = address2.Split(',')[1].Split(' ')[1];
 			}
 			else
 			{

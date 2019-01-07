@@ -27,6 +27,9 @@
         <br />
         <asp:HiddenField ID="hdnName" runat="server" />
         <asp:HiddenField ID="hdnAddress" runat="server" />
+        <asp:HiddenField ID="hdnCity" runat="server" />
+        <asp:HiddenField ID="hdnState" runat="server" />
+        <asp:HiddenField ID="hdnZip" runat="server" />
         <br />
         <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
     </section>
