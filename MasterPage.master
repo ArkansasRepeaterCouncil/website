@@ -49,7 +49,7 @@
             </asp:ContentPlaceHolder>
         </div>
         <footer>
-	        <div>Arkansas Repeater Council is a non-profit corporation, registered with the <a href="https://www.sos.arkansas.gov/corps/search_corps.php?DETAIL=111848&corp_type_id=&corp_name=Arkansas+Repeater+Council&agent_search=&agent_city=&agent_state=&filing_number=&cmd=">Arkansas Secretary of State</a>. &bull; Site design by <a href="https://www.qrz.com/db/N5JLC">N5JLC</a></div>
+	        <div><a href="https://github.com/ArkansasRepeaterCouncil/website/tree/master#arkansas-repeater-council">Edit the site</a> - <a href="https://github.com/ArkansasRepeaterCouncil/website/issues">Report a problem</a></div>
         </footer>
     </div>
     </form>
