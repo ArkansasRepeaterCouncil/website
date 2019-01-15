@@ -102,7 +102,7 @@ public class Repeater
 		}
 		catch (Exception ex)
 		{
-			new ExceptionReport(ex);
+			new ExceptionReport(ex, "Exception while calling web service for repeater data", "Repeater ID: " + repeaterId);
 		}
 		
 		return repeater;
@@ -195,7 +195,8 @@ public class Repeater
 		}
 		catch (Exception ex)
 		{
-			new ExceptionReport(ex);
+			password = "**********";
+			new ExceptionReport(ex, "Exception thrown while trying to update repeater details", JsonConvert.SerializeObject(this));
 		}
 
 	}
