@@ -35,7 +35,7 @@ a:hover {
 #header {
     position: fixed;
     display: block;
-    background: rgba(225, 225, 225, 1);
+    background: rgba(225, 225, 225, 0.9);
     width: 100%;
     top: 15px;
     text-align: left;
@@ -132,12 +132,16 @@ h1 {
 }
 
 section {
-	margin-top: 100px;
+	margin-top: 60px;
 	background-color: rgba(50,50,50,0.75);
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	padding: 10px;
+}
+
+section:first-of-type {
+    margin-top: 100px;
 }
 
 footer {
@@ -159,4 +163,11 @@ footer div {
 }
 footer div a, footer div a:visited, footer div a:active, footer div a:hover, footer div a:link {
     color: rgba(255,255,255,0.4);
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 300px;
 }

@@ -33,16 +33,16 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 				List<string> attributes = new List<string>();
 
-				Utilities.getValueIfNotNull(obj.Analog_InputAccess, "input tone: ", attributes);
-				Utilities.getValueIfNotNull(obj.Analog_OutputAccess, "output tone: ", attributes);
-				Utilities.getValueIfNotNull(obj.DSTAR_Module, "D-Star module: ", attributes);
-				Utilities.getValueIfNotNull(obj.DMR_ID, "DMR ID: ", attributes);
-				Utilities.getNameIfNotNull(obj.AutoPatch, "autopatch", attributes);
-				Utilities.getNameIfNotNull(obj.EmergencyPower, "emergency power", attributes);
-				Utilities.getNameIfNotNull(obj.Linked, "linked", attributes);
-				Utilities.getNameIfNotNull(obj.RACES, "RACES", attributes);
-				Utilities.getNameIfNotNull(obj.ARES, "ARES", attributes);
-				Utilities.getNameIfNotNull(obj.Weather, "weather net", attributes);
+				Utilities.GetValueIfNotNull(obj.Analog_InputAccess, "input tone: ", attributes);
+				Utilities.GetValueIfNotNull(obj.Analog_OutputAccess, "output tone: ", attributes);
+				Utilities.GetValueIfNotNull(obj.DSTAR_Module, "D-Star module: ", attributes);
+				Utilities.GetValueIfNotNull(obj.DMR_ID, "DMR ID: ", attributes);
+				Utilities.GetNameIfNotNull(obj.AutoPatch, "autopatch", attributes);
+				Utilities.GetNameIfNotNull(obj.EmergencyPower, "emergency power", attributes);
+				Utilities.GetNameIfNotNull(obj.Linked, "linked", attributes);
+				Utilities.GetNameIfNotNull(obj.RACES, "RACES", attributes);
+				Utilities.GetNameIfNotNull(obj.ARES, "ARES", attributes);
+				Utilities.GetNameIfNotNull(obj.Weather, "weather net", attributes);
 
 				for (int index = 0; index < attributes.Count; index++)
 				{

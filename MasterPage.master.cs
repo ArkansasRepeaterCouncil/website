@@ -8,6 +8,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
+		if (!Request.IsLocal && !Request.IsSecureConnection)
+		{
+			string redirectUrl = Request.Url.ToString().Replace("http:", "https:");
+			Response.Redirect(redirectUrl, false);
+			HttpContext.Current.ApplicationInstance.CompleteRequest();
+		}
+
 		HttpCookie hc = Request.Cookies["login"];
 		if ((hc != null) && (hc.Value != string.Empty))
 		{

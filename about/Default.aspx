@@ -22,7 +22,7 @@
 	<section>
 		<h1>About us</h1>
 		<p>
-			The Arkansas Repeater Council is a non-profit incorporation comprised of repeater operators in the state of Arkansas, created for the purpose of coordinating amateur radio repeater frequencies used in the state.
+			The Arkansas Repeater Council is a non-profit corporation comprised of repeater operators in the state of Arkansas, created for the purpose of coordinating amateur radio repeater frequencies used in The Natural State.  The ARC has been a non-profit corporation registered with the Arkansas Secreatary of State since 1993 (<a href="https://www.sos.arkansas.gov/corps/search_corps.php?DETAIL=111848&corp_type_id=&corp_name=Arkansas+Repeater+Council&agent_search=&agent_city=&agent_state=&filing_number=&cmd=">click here for proof of incorporation status</a>)
 		</p>
 	</section>
 	<section>

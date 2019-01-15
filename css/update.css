@@ -1,0 +1,79 @@
+﻿.textInput {
+    margin-left: 5px;
+    margin-right: 15px;
+    width: 200px;
+}
+
+.formLabel {
+    text-align: right;
+    display: inline-block;
+    width: 300px;
+}
+
+.chkInput {
+    text-align: right;
+    display: inline-block;
+    width: 420px;
+}
+
+input[readonly="readonly"] {
+    background-color: #808080;
+    color: #000000;
+}
+
+input[readonly="readonly"]:after {
+    content: " *";
+}
+
+.ajax__tab_xp .ajax__tab_body {
+    background-color: rgba(0,0,0,0.4) !important;
+    font-size: 20px;
+}
+
+.noteTop, .noteBottom {
+    margin: 0;
+    padding: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.noteBottom ul {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.noteTop {
+    background-color: #ccc;
+    color: #000000;
+}
+
+.noteBottom {
+    background-color: #444;
+    margin-bottom: 15px;
+}
+
+#pageContent .txtNote {
+    width: 800px;
+    height: 36px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#pageContent .tblRepeaterUsers {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pnlAddUser {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 400px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #444;
+    border: solid 1px #808080;
+}

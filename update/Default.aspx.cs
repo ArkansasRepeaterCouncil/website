@@ -1,65 +1,405 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Device.Location;
+using System.Web.UI;
 
 public partial class update_Default : System.Web.UI.Page
 {
+	Credentials creds;
+	Repeater repeater;
+	string repeaterId;
+	bool enforceBusinessRules = false;
+
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		Credentials creds = Utilities.GetExistingCredentials();
+		creds = Utilities.GetExistingCredentials();
 
+		repeaterId = "0";
+		try
+		{
+			repeaterId = Request.QueryString["id"].ToString();
+
+			// Call web service to get all data for the repeater with this ID
+			repeater = Repeater.Load(creds, repeaterId);
+			ViewState["repeater"] = repeater;
+		}
+		catch (Exception)
+		{
+			throw new HttpParseException("Unable to load and parse data for requested repeater. Please try again. If the problem persists please report it.");
+		}
+
+		LoadRepeaterDetails(repeaterId);
+		LoadRepeaterNotes(repeaterId);
+		LoadRepeaterUsers(repeaterId);
+	}
+
+	private void LoadRepeaterDetails(string repeaterId)
+	{
+		if (!IsPostBack)
+		{
+			// Load data into new controls
+			if (repeater.Status == "6")
+			{
+				// formPanel.Controls
+				foreach (Control tab in TabContainer1.Controls)
+				{
+					foreach (Control content in tab.Controls)
+					{
+						foreach (Control child in content.Controls)
+						{
+							if (child is TextBox)
+							{
+								((TextBox)child).Enabled = false;
+							}
+							else if (child is DropDownList)
+							{
+								((DropDownList)child).Enabled = false;
+							}
+							else if (child is CheckBox)
+							{
+								((CheckBox)child).Enabled = false;
+							}
+						}
+					}
+				}
+				btnChangeTrustee.Enabled = false;
+				btnSave.Enabled = false;
+			}
+
+			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
+			txtID.Text = repeater.ID.ToString();
+			ddlType.SelectedValue = repeater.Type;
+			txtRepeaterCallsign.Text = repeater.RepeaterCallsign;
+			txtTrusteeCallsign.Text = repeater.TrusteeCallsign;
+			hdnTrusteeId.Value = repeater.TrusteeID;
+			ddlStatus.SelectedValue = repeater.Status;
+			txtCity.Text = repeater.City;
+			txtSiteName.Text = repeater.SiteName;
+			txtOutputFrequency.Text = repeater.OutputFrequency;
+			txtInputFrequency.Text = repeater.InputFrequency;
+			txtSponsor.Text = repeater.Sponsor;
+			txtLatitude.Text = repeater.Latitude;
+			txtLongitude.Text = repeater.Longitude;
+			txtAMSL.Text = repeater.AMSL;
+			txtERP.Text = repeater.ERP;
+			txtOutputPower.Text = repeater.OutputPower;
+			txtAntennaGain.Text = repeater.AntennaGain;
+			txtAntennaHeight.Text = repeater.AntennaHeight;
+			txtAnalog_InputAccess.Text = repeater.Analog_InputAccess;
+			txtAnalog_OutputAccess.Text = repeater.Analog_OutputAccess;
+			txtAnalog_Width.Text = repeater.Analog_Width;
+			ddlDSTARmodule.SelectedValue = repeater.DSTAR_Module;
+			ddlDMR_ColorCode.SelectedValue = repeater.DMR_ColorCode;
+			txtDMR_ID.Text = repeater.DMR_ID;
+			ddlDMR_Network.SelectedValue = repeater.DMR_Network;
+			txtP25_NAC.Text = repeater.P25_NAC;
+			txtNXDN_RAN.Text = repeater.NXDN_RAN;
+			txtYSF_DSQ.Text = repeater.YSF_DSQ;
+			ddlAutopatch.SelectedValue = repeater.Autopatch;
+			chkEmergencyPower.Checked = repeater.EmergencyPower;
+			chkLinked.Checked = repeater.Linked;
+			chkRACES.Checked = repeater.RACES;
+			chkARES.Checked = repeater.ARES;
+			chkWideArea.Checked = repeater.WideArea;
+			chkWeather.Checked = repeater.Weather;
+			chkExperimental.Checked = repeater.Experimental;
+			txtDateCoordinated.Text = repeater.DateCoordinated;
+			txtDateUpdated.Text = repeater.DateUpdated;
+			txtDateDecoordinated.Text = repeater.DateDecoordinated;
+			txtDateCoordinationSource.Text = repeater.DateCoordinationSource;
+			txtDateConstruction.Text = repeater.DateConstruction;
+			txtState.Text = repeater.State;
+			txtCoordinatedAntennaHeight.Text = repeater.CoordinatedAntennaHeight;
+			txtCoordinatedLatitude.Text = repeater.CoordinatedLatitude;
+			txtCoordinatedLongitude.Text = repeater.CoordinatedLongitude;
+			txtCoordinatedOutputPower.Text = repeater.CoordinatedOutputPower;
+		}
+		else
+		{
+			try
+			{
+				repeater = (Repeater)ViewState["repeater"];
+			}
+			catch (Exception)
+			{
+				throw new Exception("Unable to load repeater data from memory.");
+			}
+			
+		}
+	}
+
+	private void LoadRepeaterNotes(string repeaterId)
+	{
 		using (var webClient = new System.Net.WebClient())
 		{
-			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetUsersRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
+			string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+			string url = String.Format("{0}GetRepeaterNotes?callsign={1}&password={2}&repeaterid={3}", rootUrl, creds.Username, creds.Password, repeaterId);
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+			
+			string output = "";
+			foreach (dynamic obj in data)
+			{
+				string description = obj["ChangeDescription"].ToString();
+				if (description.StartsWith("â€¢"))
+				{
+					description = description.Replace("â€¢", "<li>");
+					description = String.Format("<ul>{0}</ul>", description);
+				}
+				output += String.Format("<div class='noteTop'>{0} - {1} ({2})</div><div class='noteBottom'>{3}</div>", obj["ChangeDateTime"], obj["FullName"], obj["callsign"], description);
+			}
+			lblNotes.Text = output;
+		}
+	}
+
+	private void LoadRepeaterUsers(string repeaterId)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+			string url = String.Format("{0}ListRepeaterUsers?callsign={1}&password={2}&repeaterid={3}", rootUrl, creds.Username, creds.Password, repeaterId);
 			string json = webClient.DownloadString(url);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
-			string rtn = "";
-			rtn += "<table class='repeaterListTable'><thead><tr><th>Callsign</th><th>Trustee</th><th>Status</th><th>City</th><th>Frequency</th><th>Offset</th><th>Attributes</th></tr></thead>";
-			rtn += "<tbody>";
-
-			foreach (dynamic obj in data)
+			tblRepeaterUsers.Rows.Clear();
+			using (TableHeaderRow thr = new TableHeaderRow())
 			{
-				rtn += "<tr>";
-				rtn += "<td><button onclick='alert(" + obj.ID + ");'>Edit</button></td>";
-				rtn += "<td>" + obj.Callsign + "</td>";
-				rtn += "<td>" + obj.Trustee + "</td>";
-				rtn += "<td>" + obj.Status + "</td>";
-				rtn += "<td>" + obj.City + "</td>";
-				rtn += "<td>" + obj.OutputFrequency + "</td>";
-				rtn += "<td>" + obj.Offset + "</td>";
-
-				rtn += "<td>";
-
-				List<string> attributes = new List<string>();
-
-				Utilities.getValueIfNotNull(obj.Analog_InputAccess, "input tone: ", attributes);
-				Utilities.getValueIfNotNull(obj.Analog_OutputAccess, "output tone: ", attributes);
-				Utilities.getValueIfNotNull(obj.DSTAR_Module, "D-Star module: ", attributes);
-				Utilities.getValueIfNotNull(obj.DMR_ID, "DMR ID: ", attributes);
-				Utilities.getNameIfNotNull(obj.AutoPatch, "autopatch", attributes);
-				Utilities.getNameIfNotNull(obj.EmergencyPower, "emergency power", attributes);
-				Utilities.getNameIfNotNull(obj.Linked, "linked", attributes);
-				Utilities.getNameIfNotNull(obj.RACES, "RACES", attributes);
-				Utilities.getNameIfNotNull(obj.ARES, "ARES", attributes);
-				Utilities.getNameIfNotNull(obj.Weather, "weather net", attributes);
-
-				for (int index = 0; index < attributes.Count; index++)
+				using (TableHeaderCell thc = new TableHeaderCell())
 				{
-					string attribute = attributes[index];
-					rtn += index < attributes.Count - 1 ? attribute + ", " : attribute;
+					Button btnAddRepeaterUser = new Button();
+					btnAddRepeaterUser.ID = "btnAddRepeaterUser";
+					btnAddRepeaterUser.Click += btnAddRepeaterUser_Click;
+					btnAddRepeaterUser.Text = "Add new";
+					thc.Controls.Add(btnAddRepeaterUser);
+					thr.Cells.Add(thc);
 				}
-
-				rtn += "</td></tr>";
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Callsign";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Name";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Email";
+					thr.Cells.Add(thc);
+				}
+				tblRepeaterUsers.Rows.Add(thr);
 			}
 
-			rtn += "</tbody></table>";
+			// ID, Callsign, FullName, Email
+			foreach (dynamic obj in data)
+			{
+				TableRow row = new TableRow();
 
-			repeaterList.Text = rtn;
+				TableCell cell = new TableCell();
+
+				if (repeater.Status != "6")
+				{
+					Button btn = new Button();
+					btn.Text = "Remove";
+					string userid = obj["ID"].ToString();
+					btn.Click += (sender, e) => btnRemoveRepeaterUser(sender, e, userid);
+					cell.Controls.Add(btn);
+				}
+
+				row.Cells.Add(cell);
+				cell = new TableCell();
+				cell.Text = obj["Callsign"].ToString();
+				row.Cells.Add(cell);
+
+				cell = new TableCell();
+				cell.Text = obj["FullName"].ToString();
+				row.Cells.Add(cell);
+
+				cell = new TableCell();
+				cell.Text = String.Format("<a href='mailto:{0}'>{0}</a>", obj["Email"].ToString());
+				row.Cells.Add(cell);
+
+				tblRepeaterUsers.Rows.Add(row);
+			}
 		}
+	}
+
+	protected void btnCancel_Click(object sender, EventArgs e)
+	{
+		Response.Redirect("~/dashboard/");
+	}
+
+	protected void btnSave_Click(object sender, EventArgs e)
+	{
+		if (this.IsValid && repeater.Status != "6")
+		{
+			string trusteeId = "";
+			string trusteeCallsign = "";
+
+			if (ddlTrustee.Visible)
+			{
+				trusteeId = ddlTrustee.SelectedValue;
+				trusteeCallsign = ddlTrustee.SelectedItem.Text;
+			}
+			else
+			{
+				trusteeId = hdnTrusteeId.Value;
+				trusteeCallsign = txtTrusteeCallsign.Text;
+			}
+
+			// Create repeater object from fields
+			Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, trusteeId, trusteeCallsign, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtState.Text, repeater.CoordinatedLatitude, repeater.CoordinatedLongitude, repeater.CoordinatedOutputPower, repeater.CoordinatedAntennaHeight, txtNote.Text.Trim());
+
+			// Save repeater
+			newRepeater.Save(creds, repeater);
+			Response.Redirect("~/dashboard/");
+		}
+	}
+
+	protected void btnChangeTrustee_Click(object sender, EventArgs e)
+	{
+		ddlTrustee.Visible = true;
+		txtTrusteeCallsign.Visible = false;
+		btnChangeTrustee.Visible = false;
+		ddlTrustee.Items.Clear();
+
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPossibleTrustees?callsign={0}&password={1}&repeaterid={2}", creds.Username, creds.Password, txtID.Text);
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+			
+			foreach (dynamic obj in data)
+			{
+				ListItem li = new ListItem(obj["Callsign"].ToString(), obj["ID"].ToString());
+				ddlTrustee.Items.Add(li);
+			}
+
+			ddlTrustee.SelectedValue = hdnTrusteeId.Value;
+		}
+	}
+
+	protected void validLocation_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		if (enforceBusinessRules)
+		{
+			try
+			{
+				double aLat = Double.Parse(repeater.CoordinatedLatitude);
+				double aLon = Double.Parse(repeater.CoordinatedLongitude);
+				GeoCoordinate a = new GeoCoordinate(aLat, aLon);
+
+				double bLat = Double.Parse(txtLatitude.Text);
+				double bLon = Double.Parse(txtLongitude.Text);
+				GeoCoordinate b = new GeoCoordinate(bLat, bLon);
+
+				double metersAway = a.GetDistanceTo(b);
+
+				if (metersAway <= 1609.34)
+				{
+					args.IsValid = true;
+				}
+				else
+				{
+					args.IsValid = false;
+				}
+			}
+			catch (Exception)
+			{
+				args.IsValid = false;
+			}
+		}
+		else
+		{
+			args.IsValid = true;
+		}
+
+	}
+
+	protected void validAntennaHeight_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		if (enforceBusinessRules)
+		{
+			int newHeight = int.Parse(txtAntennaHeight.Text);
+			Double allowedHeight = Double.Parse(repeater.CoordinatedAntennaHeight) + 15.24;
+
+			if (newHeight <= allowedHeight)
+			{
+				args.IsValid = true;
+			}
+			else
+			{
+				args.IsValid = false;
+			}
+		}
+		else
+		{
+			args.IsValid = true;
+		}
+	}
+
+	protected void validOutputPower_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		if (enforceBusinessRules)
+		{
+			int newPower = int.Parse(txtOutputPower.Text);
+			int allowedPower = int.Parse(repeater.CoordinatedOutputPower) + 5;
+
+			if (newPower <= allowedPower)
+			{
+				args.IsValid = true;
+			}
+			else
+			{
+				args.IsValid = false;
+			}
+		}
+		else
+		{
+			args.IsValid = true;
+		}
+	}
+
+	protected void btnAddRepeaterUser_Click(object sender, EventArgs e)
+	{
+		pnlAddUser.Visible = true;
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPossibleRepeaterUsers?callsign={0}&password={1}&repeaterid={2}", creds.Username, creds.Password, repeater.ID.ToString());
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+			ddlAddUser.Items.Clear();
+			foreach (dynamic obj in data)
+			{
+				ListItem li = new ListItem(string.Format("{0} - {1}", obj["Callsign"].ToString(), obj["FullName"].ToString()), obj["ID"].ToString());
+				ddlAddUser.Items.Add(li);
+			}
+		}
+	}
+
+	protected void btnRemoveRepeaterUser(object sender, EventArgs e, string userid)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "RemoveRepeaterUser?callsign={0}&password={1}&repeaterid={2}&userid={3}", creds.Username, creds.Password, repeater.ID.ToString(), userid);
+			string json = webClient.DownloadString(url);
+		}
+		LoadRepeaterUsers(repeaterId);
+	}
+
+	protected void btnAddUser_Click(object sender, EventArgs e)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "AddRepeaterUser?callsign={0}&password={1}&repeaterid={2}&userid={3}", creds.Username, creds.Password, repeater.ID.ToString(), ddlAddUser.SelectedValue);
+			string json = webClient.DownloadString(url);
+		}
+
+		LoadRepeaterUsers(repeaterId);
+		pnlAddUser.Visible = false;
 	}
 }

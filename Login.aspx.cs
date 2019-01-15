@@ -17,8 +17,9 @@ public partial class Login : System.Web.UI.Page
 	{
 		using (var webClient = new System.Net.WebClient())
 		{
-			string parameters = "callsign=" + login1.UserName + "&password=" + login1.Password;
-			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "DoLogin?" + parameters);
+			string parameters = string.Format("callsign={0}&password={1}", login1.UserName, login1.Password);
+			string strUrl = string.Format("{0}{1}{2}", System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"], "DoLogin?", parameters);
+			string json = webClient.DownloadString(strUrl);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			if ((int)data[0].Return == 1)
