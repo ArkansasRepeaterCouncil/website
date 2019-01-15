@@ -17,12 +17,11 @@
     void Application_Error(object sender, EventArgs e)
     {
         Exception exception = Server.GetLastError();
-        ExceptionReport exReport;
         if (exception != null)
         {
-            exReport = new ExceptionReport(exception, exception.InnerException.Message);
-            Context.Session["exception"] = exReport;
+            new ExceptionReport(exception);
         }
+        Context.Session["exception"] = exception;
         Server.ClearError();
         Server.Transfer("~/error.aspx");
     }

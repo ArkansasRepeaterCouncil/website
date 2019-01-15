@@ -42,7 +42,7 @@ namespace ARC
 			}
 			catch (Exception ex)
 			{
-				new ExceptionReport(ex, "Exception thrown while trying to load user", "Callsign: " + credentials.Username);
+				new ExceptionReport(ex);
 			}
 
 			return user;

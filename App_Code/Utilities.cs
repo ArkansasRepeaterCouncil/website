@@ -82,23 +82,16 @@ public static class Utilities
 				System.Diagnostics.Debug.WriteLine(json);
 			}
 
-			try
+			var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+			using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
 			{
-				var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-				using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-				{
-					result = streamReader.ReadToEnd();
-				}
+				result = streamReader.ReadToEnd();
 			}
-			catch (Exception ex)
-			{
-				new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "JSON: " + JsonConvert.SerializeObject(objToSend), "URL: " + url);
-			}
-
 		}
 		catch (Exception ex)
 		{
-			new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "JSON: " + JsonConvert.SerializeObject(objToSend), "URL: " + url);
+			new ExceptionReport(ex);
+			// throw ex;
 		}
 
 		return result;
@@ -121,7 +114,7 @@ public static class Utilities
 		}
 		catch (Exception ex)
 		{
-			new ExceptionReport(ex, "Exception thrown while trying to get content from URL");
+			new ExceptionReport(ex);
 			// throw ex;
 		}
 

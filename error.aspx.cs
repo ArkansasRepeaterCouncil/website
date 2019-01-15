@@ -13,12 +13,8 @@ public partial class error : System.Web.UI.Page
 		{
 			try
 			{
-				ExceptionReport ex = (ExceptionReport)Session["exception"];
-				lblDetails.Text = ex.InnerExceptionMessage;
-				if (ex.IssueURL != string.Empty)
-				{
-					lblDetails.Text = string.Format("An issue has been automatically opened. You can view the details at <a target='_blank' href='{0}'>{0}</a>.", ex.IssueURL);
-				}
+				Exception ex = (Exception)Session["exception"];
+				lblDetails.Text = ex.InnerException.Message;
 			}
 			catch
 			{
