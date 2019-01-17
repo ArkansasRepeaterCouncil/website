@@ -9,9 +9,20 @@ public partial class repeaters_Default : System.Web.UI.Page
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
+		getPublicRepeaterList();
+	}
+
+
+	protected void btnSearch_Click(object sender, EventArgs e)
+	{
+		getPublicRepeaterList();
+	}
+
+	protected void getPublicRepeaterList()
+	{
 		using (var webClient = new System.Net.WebClient())
 		{
-			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=ar");
+			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + string.Format("ListPublicRepeaters?state={0}&frequency={1}", "ar", txtFrequency.Text));
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			string rtn = "";
@@ -38,7 +49,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 				rtn += "<td>" + obj.Trustee + "</td>";
 				rtn += "<td>" + obj.Status + "</td>";
 				rtn += "<td>" + obj.City + "</td>";
-				
+
 
 				rtn += "<td>";
 
