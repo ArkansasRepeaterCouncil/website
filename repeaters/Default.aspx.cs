@@ -15,19 +15,30 @@ public partial class repeaters_Default : System.Web.UI.Page
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			string rtn = "";
-			rtn += "<table class='repeaterListTable'><thead><tr><th>Callsign</th><th>Trustee</th><th>Status</th><th>City</th><th>Frequency</th><th>Offset</th><th>Attributes</th></tr></thead>";
+			rtn += @"
+					<table class='repeaterListTable'>
+					<thead><tr>
+						<th>Frequency</th>
+						<th>Offset</th>
+						<th>Callsign</th>
+						<th>Trustee</th>
+						<th>Status</th>
+						<th>City</th>
+						<th>Attributes</th>
+					</tr></thead>";
 			rtn += "<tbody>";
 
 			foreach (dynamic obj in data)
 			{
 				rtn += "<tr>";
 
+				rtn += "<td>" + obj.OutputFrequency + "</td>";
+				rtn += "<td>" + obj.Offset + "</td>";
 				rtn += "<td>" + obj.Callsign + "</td>";
 				rtn += "<td>" + obj.Trustee + "</td>";
 				rtn += "<td>" + obj.Status + "</td>";
 				rtn += "<td>" + obj.City + "</td>";
-				rtn += "<td>" + obj.OutputFrequency + "</td>";
-				rtn += "<td>" + obj.Offset + "</td>";
+				
 
 				rtn += "<td>";
 
