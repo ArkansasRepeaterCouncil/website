@@ -27,46 +27,52 @@ public class ExceptionReport
 	public ExceptionReport(Exception ex)
 	{
 		url = HttpContext.Current.Request.Url.ToString();
-		querystring = HttpContext.Current.Request.QueryString.ToString();
-		message = ex.Message;
-		source = ex.Source;
-		stacktrace = ex.StackTrace;
-		InnerExceptionMessage = ex.InnerException.Message;
+		if (!url.StartsWith("http://localhost:"))
+		{
+			querystring = HttpContext.Current.Request.QueryString.ToString();
+			message = ex.Message;
+			source = ex.Source;
+			stacktrace = ex.StackTrace;
+			InnerExceptionMessage = ex.InnerException.Message;
 
-		string serviceUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "LogError";
-		string result = Utilities.PostJsonToUrl(serviceUrl, this);
+			string serviceUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "LogError";
+			string result = Utilities.PostJsonToUrl(serviceUrl, this);
 
-		Issue i = new Issue(ex);
-		IssueURL = i.Submit();
+			Issue i = new Issue(ex);
+			IssueURL = i.Submit();
+		}
 	}
 
 	public ExceptionReport(Exception ex, string context, params string[] addlData)
 	{
 		url = HttpContext.Current.Request.Url.ToString();
-		querystring = HttpContext.Current.Request.QueryString.ToString();
-		message = ex.Message;
-		source = ex.Source;
-		stacktrace = ex.StackTrace;
-		InnerExceptionMessage = ex.Message;
-
-		for (int x = 0; x < addlData.Length; x++)
+		if (!url.StartsWith("http://localhost:"))
 		{
-			additionalData += addlData[x];
-			if (x+1 < addlData.Length)
+			querystring = HttpContext.Current.Request.QueryString.ToString();
+			message = ex.Message;
+			source = ex.Source;
+			stacktrace = ex.StackTrace;
+			InnerExceptionMessage = ex.Message;
+
+			for (int x = 0; x < addlData.Length; x++)
 			{
-				additionalData += "\r\n";
+				additionalData += addlData[x];
+				if (x + 1 < addlData.Length)
+				{
+					additionalData += "\r\n";
+				}
 			}
-		}
 
-		string serviceUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "LogError";
-		string result = Utilities.PostJsonToUrl(serviceUrl, this);
+			string serviceUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "LogError";
+			string result = Utilities.PostJsonToUrl(serviceUrl, this);
 
-		Issue issue = new Issue(ex);
-		for (int x = 0; x < addlData.Length; x++)
-		{
-			additionalData += "\r\n\r\n" + addlData[x];
+			Issue issue = new Issue(ex);
+			for (int x = 0; x < addlData.Length; x++)
+			{
+				additionalData += "\r\n\r\n" + addlData[x];
+			}
+			issue.title = context;
+			IssueURL = issue.Submit();
 		}
-		issue.title = context;
-		IssueURL = issue.Submit();
 	}
 }
