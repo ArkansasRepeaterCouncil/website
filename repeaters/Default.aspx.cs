@@ -22,7 +22,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 	{
 		using (var webClient = new System.Net.WebClient())
 		{
-			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + string.Format("ListPublicRepeaters?state={0}&frequency={1}", "ar", txtFrequency.Text));
+			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + string.Format("ListPublicRepeaters?state={0}&search={1}", "ar", txtSearch.Text));
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			string rtn = "";
