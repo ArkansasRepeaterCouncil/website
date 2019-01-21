@@ -39,10 +39,12 @@
         <asp:Label ID="Label4" runat="server" Text="Latitude" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtLatitude" runat="server" CssClass="textInput" placeholder="00.0000"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="txtLatitude_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox2_FilteredTextBoxExtender" TargetControlID="txtLatitude" ValidChars="-.0123456789" />
         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Latitude is required." ControlToValidate="txtLatitude">*</asp:RequiredFieldValidator>
+        <asp:CustomValidator ID="validatorLatitude" runat="server" ControlToValidate="txtLatitude" ErrorMessage="Latitude is not in the U.S." OnServerValidate="validatorLatitude_ServerValidate">*</asp:CustomValidator>
         <br />
         <asp:Label ID="Label5" runat="server" Text="Longitude" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtLongitude" runat="server" CssClass="textInput" placeholder="-00.0000"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="Longitude_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox3_FilteredTextBoxExtender" TargetControlID="txtLongitude" ValidChars="-.0123456789" />
         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="Longitude is required." ControlToValidate="txtLongitude">*</asp:RequiredFieldValidator>
+        <asp:CustomValidator ID="validatorLongitude" runat="server" ErrorMessage="Longitude is not in the U.S." OnServerValidate="validatorLongitude_ServerValidate">*</asp:CustomValidator>
         <br />
         <asp:Label ID="Label6" runat="server" Text="Output power" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtOutputPower" runat="server" CssClass="textInput" placeholder="watts"></asp:TextBox> watts
         <ajaxToolkit:FilteredTextBoxExtender ID="TextBox4_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox4_FilteredTextBoxExtender" TargetControlID="txtOutputPower" ValidChars="0123456789" />

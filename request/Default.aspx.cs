@@ -29,11 +29,14 @@ public partial class request_Default : System.Web.UI.Page
 
 	protected void btnSubmit_Click(object sender, EventArgs e)
 	{
-		decimal decAltitude = GetAltitude(txtLatitude.Text, txtLongitude.Text);
-		string strAltitude = Math.Round(decAltitude).ToString();
+		if (Page.IsValid)
+		{
+			decimal decAltitude = GetAltitude(txtLatitude.Text, txtLongitude.Text);
+			string strAltitude = Math.Round(decAltitude).ToString();
 
-		new CoordinationRequest(txtLatitude.Text, txtLongitude.Text, txtOutputPower.Text, strAltitude, txtAntennaHeight.Text, ddlFrequency.SelectedValue, creds).Save();
-		Response.Redirect("~/Dashboard/");
+			new CoordinationRequest(txtLatitude.Text, txtLongitude.Text, txtOutputPower.Text, strAltitude, txtAntennaHeight.Text, ddlFrequency.SelectedValue, creds).Save();
+			Response.Redirect("~/Dashboard/");
+		}
 	}
 
 	private decimal GetAltitude(string latitude, string longitude)
@@ -63,7 +66,10 @@ public partial class request_Default : System.Web.UI.Page
 
 	protected void btnNext_Click(object sender, EventArgs e)
 	{
-		LoadAvailableFrequencies(txtLatitude.Text, txtLongitude.Text, ddlBand.SelectedValue);
+		if (Page.IsValid)
+		{
+			LoadAvailableFrequencies(txtLatitude.Text, txtLongitude.Text, ddlBand.SelectedValue);
+		}
 	}
 
 	private void LoadAvailableFrequencies(string latitude, string longitude, string band)
@@ -94,5 +100,29 @@ public partial class request_Default : System.Web.UI.Page
 		//{
 
 		//}
+	}
+
+
+
+
+
+	protected void validatorLatitude_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		args.IsValid = false;
+		double decLat = double.Parse(txtLatitude.Text);
+		if ((25.001 < decLat) && (decLat < 48.001))
+		{
+			args.IsValid = true;
+		}
+	}
+
+	protected void validatorLongitude_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		args.IsValid = false;
+		double decLon = double.Parse(txtLongitude.Text);
+		if ((-130.653571 < decLon) && (decLon < -71.056832))
+		{
+			args.IsValid = true;
+		}
 	}
 }
