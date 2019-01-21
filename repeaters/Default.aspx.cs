@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -9,7 +10,10 @@ public partial class repeaters_Default : System.Web.UI.Page
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		getPublicRepeaterList();
+		if (!Page.IsPostBack)
+		{
+			getPublicRepeaterList();
+		}
 	}
 
 
@@ -20,9 +24,26 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 	protected void getPublicRepeaterList()
 	{
+		string uri = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=ar";
+
+		Regex rxLatLon = new Regex(@"([-+]?(?:[0-9]|[1-9][0-9])\.\d+),\s*([-+]?(?:[0-9]|[1-9][0-9]|[1-9][0-9][0-9])\.\d+)");
+
+		if (rxLatLon.IsMatch(txtSearch.Text))
+		{
+			MatchCollection matches = rxLatLon.Matches(txtSearch.Text);
+			Match match = matches[0];
+			GroupCollection groups = match.Groups;
+			uri += string.Format("&latitude={0}&longitude={1}&miles={2}", groups[1], groups[2], "40");
+		}
+		else
+		{
+			uri += string.Format("&search={0}", txtSearch.Text);
+		}
+
 		using (var webClient = new System.Net.WebClient())
 		{
-			string json = webClient.DownloadString(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + string.Format("ListPublicRepeaters?state={0}&search={1}", "ar", txtSearch.Text));
+			System.Diagnostics.Debug.WriteLine(uri);
+			string json = webClient.DownloadString(uri);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			string rtn = "";
