@@ -34,60 +34,66 @@ public partial class request_details_Default : System.Web.UI.Page
 			lblRequestor.Text = String.Format("{0}, {1}", json.Request.Requestor.Name, json.Request.Requestor.Callsign);
 			lblStatus.Text = json.Request.Status.Description;
 
-			foreach (dynamic note in json.Request.Notes)
+			if (json.Request.Notes != null)
 			{
-				using (TableRow row = new TableRow())
+				foreach (dynamic note in json.Request.Notes)
 				{
-					using (TableCell cell = new TableCell())
+					using (TableRow row = new TableRow())
 					{
-						cell.Text = String.Format("{0}, {1}", note.Note.User.Name, note.Note.User.Callsign);
-						cell.HorizontalAlign = HorizontalAlign.Left;
-						row.Cells.Add(cell);
+						using (TableCell cell = new TableCell())
+						{
+							cell.Text = String.Format("{0}, {1}", note.Note.User.Name, note.Note.User.Callsign);
+							cell.HorizontalAlign = HorizontalAlign.Left;
+							row.Cells.Add(cell);
+						}
+
+						using (TableCell cell = new TableCell())
+						{
+							cell.Text = String.Format("{0}", note.Note.Timestamp);
+							cell.HorizontalAlign = HorizontalAlign.Right;
+							row.Cells.Add(cell);
+						}
+
+						tblNotes.Rows.Add(row);
 					}
 
-					using (TableCell cell = new TableCell())
+					using (TableRow row = new TableRow())
 					{
-						cell.Text = String.Format("{0}", note.Note.Timestamp);
-						cell.HorizontalAlign = HorizontalAlign.Right;
+						TableCell cell = new TableCell();
+						cell.Text = note.Note.Text;
+						cell.ColumnSpan = 2;
 						row.Cells.Add(cell);
+						tblNotes.Rows.Add(row);
 					}
-
-					tblNotes.Rows.Add(row);
-				}
-
-				using (TableRow row = new TableRow())
-				{
-					TableCell cell = new TableCell();
-					cell.Text = note.Note.Text;
-					cell.ColumnSpan = 2;
-					row.Cells.Add(cell);
-					tblNotes.Rows.Add(row);
 				}
 			}
 
-			foreach (dynamic step in json.Request.Workflow)
+			if (json.Request.Workflow != null)
 			{
-				using (TableRow row = new TableRow())
+				foreach (dynamic step in json.Request.Workflow)
 				{
-					using (TableCell cell = new TableCell())
+					using (TableRow row = new TableRow())
 					{
-						cell.Text = step.Step.State;
-						row.Cells.Add(cell);
-					}
+						using (TableCell cell = new TableCell())
+						{
+							cell.Text = step.Step.State;
+							row.Cells.Add(cell);
+						}
 
-					using (TableCell cell = new TableCell())
-					{
-						cell.Text = step.Step.Status.Description;
-						row.Cells.Add(cell);
-					}
+						using (TableCell cell = new TableCell())
+						{
+							cell.Text = step.Step.Status.Description;
+							row.Cells.Add(cell);
+						}
 
-					using (TableCell cell = new TableCell())
-					{
-						cell.Text = String.Format("{0}<div class='noteDate'>{1}</div>", step.Step.Note, step.Step.TimeStamp);
-						row.Cells.Add(cell);
-					}
+						using (TableCell cell = new TableCell())
+						{
+							cell.Text = String.Format("{0}<div class='noteDate'>{1}</div>", step.Step.Note, step.Step.TimeStamp);
+							row.Cells.Add(cell);
+						}
 
-					tblWorkflow.Rows.Add(row);
+						tblWorkflow.Rows.Add(row);
+					}
 				}
 			}
 		}

@@ -40,6 +40,7 @@
         <ajaxToolkit:FilteredTextBoxExtender ID="txtZip_FilteredTextBoxExtender" runat="server" BehaviorID="txtZip_FilteredTextBoxExtender" FilterType="Numbers" TargetControlID="txtZip">
         </ajaxToolkit:FilteredTextBoxExtender>
 &nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="ZIP code is required." ControlToValidate="txtZip">*</asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator3" runat="server" ErrorMessage="ZIP code is not valid." ValidationExpression="\d{5}(-\d{4})?" ControlToValidate="txtZip">*</asp:RegularExpressionValidator>
         <br />
         <label>Email:</label> <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email is required.">*</asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtEmail" ErrorMessage="Email address provided is not valid." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>

@@ -19,3 +19,12 @@
 .repeaterListTable td:nth-of-type(5), .repeaterListTable th:nth-of-type(5) { width: 75px; }
 .repeaterListTable td:nth-of-type(6), .repeaterListTable th:nth-of-type(6) { width: 50px; }
 .repeaterListTable td:nth-of-type(7), .repeaterListTable th:nth-of-type(7) { width: 400px; }
+
+.repeaterListTable {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
