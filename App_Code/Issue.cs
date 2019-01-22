@@ -17,7 +17,7 @@ public class Issue
 	public string title = "";
 	public string body = "";
 	public string milestone = "";
-	public string[] labels;
+	public string[] labels = { "bug" };
 	public string[] assignees;
 	private string Url
 	{
