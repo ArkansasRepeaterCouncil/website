@@ -127,4 +127,13 @@ public static class Utilities
 
 		return result;
 	}
+
+	public static string GetMaskedString(string stringToMask)
+	{
+		var firstPart = stringToMask.Substring(0, 2);
+		var lastPart = stringToMask.Substring(stringToMask.IndexOf("@"), stringToMask.Length - stringToMask.IndexOf("@"));
+		var mask = new String('*', stringToMask.Length - firstPart.Length - lastPart.Length);
+		var maskedString = string.Concat(firstPart, mask, lastPart);
+		return maskedString;
+	}
 }
