@@ -69,7 +69,7 @@ public class ExceptionReport
 			Issue issue = new Issue(ex);
 			for (int x = 0; x < addlData.Length; x++)
 			{
-				additionalData += "\r\n\r\n" + addlData[x];
+				issue.body += "\r\n\r\n" + addlData[x];
 			}
 			issue.title = context;
 			IssueURL = issue.Submit();
