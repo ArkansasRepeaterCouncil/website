@@ -17,7 +17,7 @@ public partial class error : System.Web.UI.Page
 				lblDetails.Text = ex.InnerExceptionMessage;
 				if (ex.IssueURL != string.Empty)
 				{
-					lblDetails.Text = string.Format("An issue has been automatically opened. You can view the details at <a target='_blank' href='{0}'>{0}</a>.", ex.IssueURL);
+					lblDetails.Text = string.Format("<p>An issue has been automatically opened. Please help us to fix this by adding a comment to the ticket and telling us what you were trying to do. Your issue can be found at <a target='_blank' href='{0}'>{0}</a>.</p>", ex.IssueURL);
 				}
 			}
 			catch
