@@ -72,7 +72,7 @@
         <br />
         Please keep in mind that the frequencies listed are those that our database show to be available - there may be someone using a frequency that is not coordinated. Please monitor the desired frequency before submitting your request.<br />
         <br />
-        <div class="center"><asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" /><asp:Button ID="btnSubmit" runat="server" Text="Submit" Visible="false" OnClick="btnSubmit_Click" />
+        <div class="center"><asp:Button ID="btnNext" runat="server" Text="Next" OnClick="btnNext_Click" CssClass="noDoubleClick" /><asp:Button ID="btnSubmit" runat="server" Text="Submit" Visible="false" OnClick="btnSubmit_Click" CssClass="noDoubleClick" />
 &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" /></div>
         <br />
     </section>
