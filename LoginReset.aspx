@@ -14,7 +14,7 @@
             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="That is not a valid US call sign." ValidationExpression="[AKNWaknw][a-zA-Z]{0,2}[0123456789][a-zA-Z]{1,3}" ControlToValidate="txtCallsign">*</asp:RegularExpressionValidator>
             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Callsign is required." ControlToValidate="txtCallsign">*</asp:RequiredFieldValidator>
             <br />
-            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+            <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="noDoubleClick" OnClick="btnSubmit_Click" />
         </section>
     </asp:Panel>
     <asp:Panel ID="pnlAfter" runat="server" Visible="false">

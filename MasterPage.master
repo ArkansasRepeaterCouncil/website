@@ -53,5 +53,13 @@
         </footer>
     </div>
     </form>
+    <script>
+        $('.noDoubleClick').click(function () {
+            $('.noDoubleClick').prop('disabled', true);
+            setTimeout(function () {
+                $('.noDoubleClick').prop('disabled', false);
+            }, 2000);
+        });
+    </script>
 </body>
 </html>

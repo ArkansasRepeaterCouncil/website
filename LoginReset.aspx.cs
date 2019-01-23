@@ -61,8 +61,6 @@ public partial class LoginReset : System.Web.UI.Page
 				pnlAfter.Visible = true;
 				lblDirections.Text = "An error occurred while processing your reset request.  We have logged this error.  In the meantime you are welcome to browse to the home page, then back here to try again.";
 			}
-			btnSubmit.Enabled = false;
-			txtCallsign.Enabled = false;
 		}
 	}
 }
