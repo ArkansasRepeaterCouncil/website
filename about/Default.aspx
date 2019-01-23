@@ -40,13 +40,21 @@
 	<section>
 		<h2>Officers</h2>
 		<p>
-			The officers drive the organization by leading the committee through various business decisions and meetings.
+			The officers drive the organization by leading the committee through various business decisions and meetings.</p>
 			<ul>
 				<li>President: Don McDaniel, WA5OOY</li>
 				<li>Vice President: Dennis Bedene, N5XMZ</li>
 				<li>Secretary/Treasurer: JM Rowe, N5XFW</li>
 			</ul>
-		</p>
+		<p>Directors</p>
+        <ul>
+            <li>Wayne Mahnker - WA5OOY (2019)
+            </li><li>Michael Clay - AC5XV (2019)
+            </li><li>Joe Giddons - N5IOZ (2020)
+            </li><li>Tem Moore - N5KWL (2020)
+            </li><li>Joel Echols - N5QLC (2021)
+            </li><li>Johnathan Williams - K5DVT (2021)</li>
+        </ul>
 	</section>
 </asp:Content>
 
