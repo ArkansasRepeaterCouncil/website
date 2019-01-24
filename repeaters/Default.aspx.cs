@@ -50,6 +50,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 			rtn += @"
 					<table class='repeaterListTable'>
 					<thead><tr>
+						<th>&nbsp;</th>
 						<th>Frequency</th>
 						<th>Offset</th>
 						<th>Callsign</th>
@@ -64,13 +65,13 @@ public partial class repeaters_Default : System.Web.UI.Page
 			{
 				rtn += "<tr>";
 
+				rtn += "<td><a href='details/?id=" + obj.ID + "'>Details</a></td>";
 				rtn += "<td>" + obj.OutputFrequency + "</td>";
 				rtn += "<td>" + obj.Offset + "</td>";
 				rtn += "<td>" + obj.Callsign + "</td>";
 				rtn += "<td>" + obj.Trustee + "</td>";
 				rtn += "<td>" + obj.Status + "</td>";
 				rtn += "<td>" + obj.City + "</td>";
-
 
 				rtn += "<td>";
 
