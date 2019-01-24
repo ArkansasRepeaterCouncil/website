@@ -108,6 +108,28 @@ public class Repeater
 		return repeater;
 	}
 
+	public static Repeater LoadPublic(string repeaterId)
+	{
+		Repeater repeater = new Repeater();
+
+		try
+		{
+			using (var webClient = new System.Net.WebClient())
+			{
+				// Call web service to get all data for the repeater with this ID
+				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetailsPublic?id={0}", repeaterId);
+				string json = webClient.DownloadString(url);
+				repeater = JsonConvert.DeserializeObject<Repeater>(json);
+			}
+		}
+		catch (Exception ex)
+		{
+			new ExceptionReport(ex, "Exception while calling web service for repeater data", "Repeater ID: " + repeaterId);
+		}
+
+		return repeater;
+	}
+
 	public Repeater()
 	{
 		
