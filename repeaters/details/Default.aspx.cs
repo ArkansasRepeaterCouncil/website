@@ -71,7 +71,7 @@ public partial class update_Default : System.Web.UI.Page
 		txtERP.Text = repeater.ERP;
 		txtOutputPower.Text = repeater.OutputPower;
 		txtAntennaGain.Text = repeater.AntennaGain;
-		txtAntennaHeight.Text = repeater.AntennaHeight;
+		txtAntennaHeight.Text = repeater.AntennaHeight + " meters";
 		txtAnalog_InputAccess.Text = repeater.Analog_InputAccess;
 		txtAnalog_OutputAccess.Text = repeater.Analog_OutputAccess;
 		txtAnalog_Width.Text = repeater.Analog_Width;
