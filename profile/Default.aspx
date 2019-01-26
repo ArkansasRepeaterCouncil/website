@@ -20,7 +20,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
 		<h1>Profile</h1>
-        
+        <asp:Label ID="lblFeedback" runat="server" Text="" Visible="false"></asp:Label>
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <label>User ID:</label> <asp:TextBox ID="txtUserId" runat="server" ReadOnly="true"></asp:TextBox><br />
         <label>Callsign:</label> <asp:TextBox ID="txtCallsign" runat="server"></asp:TextBox>

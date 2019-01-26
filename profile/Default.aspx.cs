@@ -49,6 +49,9 @@ public partial class profile_Default : System.Web.UI.Page
 				HttpCookie ckLogin = new HttpCookie("login", Utilities.Base64Encode(txtCallsign.Text + "|" + newPassword));
 				Response.Cookies.Add(ckLogin);
 			}
+
+			lblFeedback.Text = "<p class='feedback'>Account changes saved.</p>";
+			lblFeedback.Visible = true;
 		}
 	}
 
