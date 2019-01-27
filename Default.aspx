@@ -12,5 +12,12 @@
 amateur radio repeater frequencies in the state of Arkansas. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a> and the <a href="http://nfcc.us/">National Frequency Coordinators Council</a>.
 		</p>
     </section>
+    <section>
+        <div><asp:label id="lblCount" runat="server" text="100"></asp:label></div>
+        <div><asp:label id="lblPercent" runat="server" text="80"></asp:label></div>
+        <div><asp:label id="lblCoordinationCount" runat="server" text="100"></asp:label></div>
+        <div><asp:label id="lblAverageDaysPerCoordination" runat="server" text="10"></asp:label></div>
+        <div><asp:label id="lblRecentChanges" runat="server" text="Ch-ch-ch-ch-changes"></asp:label></div>
+    </section>
 </asp:Content>
 
