@@ -176,3 +176,38 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
     text-align: center;
     width: 300px;
 }
+
+#homeStatsContainer {
+    height: 250px;
+    text-align: justify;
+    font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
+    min-width: 600px;
+}
+
+#homeStatsContainer .stat {
+    display: inline-block;
+    height: 250px;
+    width: 250px;
+    border: 1px solid #ffffff;
+    text-align: center;
+}
+
+#homeStatsContainer:after {
+    content: '';
+    width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+    display: inline-block;
+}
+
+#homeStatsContainer .stat span.normalText {
+    font-size: 23px;
+}
+
+#piechart.currentRepeaters {
+    clear: both;
+    width: 100%;
+    height: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid #cecece;
+    background-color: rgba(0, 0 , 0, 0.2);
+}
