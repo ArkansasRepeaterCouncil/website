@@ -21,7 +21,7 @@ public partial class _Default : System.Web.UI.Page
 		dynamic stats = JsonConvert.DeserializeObject<dynamic>(json);
 
 		lblCount.Text = stats.TotalRepeaters;
-		lblPercent.Text = stats.PercentageCurrent;
+		hdnPercentCurrent.Value = stats.PercentageCurrent;
 		lblCoordinationCount.Text = stats.TotalCoordinationRequests;
 		lblAverageDaysPerCoordination.Text = stats.AverageDays;
 
