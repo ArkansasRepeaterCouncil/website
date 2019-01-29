@@ -13,23 +13,32 @@ public partial class update_Default : System.Web.UI.Page
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
+		disableForm();
+
 		repeaterId = "0";
-		try
+
+		if (Request.QueryString["id"] != null)
 		{
 			repeaterId = Request.QueryString["id"].ToString();
+			int intRepeaterId = 0;
 
-			// Call web service to get all data for the repeater with this ID
-			repeater = Repeater.LoadPublic(repeaterId);
+			if (int.TryParse(repeaterId, out intRepeaterId))
+			{
+				// Call web service to get all data for the repeater with this ID
+				try
+				{
+					repeater = Repeater.LoadPublic(repeaterId);
+					LoadRepeaterDetails(repeaterId);
+				}
+				catch (Exception)
+				{
+					throw new HttpParseException("Unable to load and parse data for requested repeater. Please try again. If the problem persists please report it using the link at the bottom of the page.");
+				}
+			}
 		}
-		catch (Exception)
-		{
-			throw new HttpParseException("Unable to load and parse data for requested repeater. Please try again. If the problem persists please report it using the link at the bottom of the page.");
-		}
-
-		LoadRepeaterDetails(repeaterId);
 	}
 
-	private void LoadRepeaterDetails(string repeaterId)
+	private void disableForm()
 	{
 		// formPanel.Controls
 		foreach (Control tab in TabContainer1.Controls)
@@ -53,7 +62,10 @@ public partial class update_Default : System.Web.UI.Page
 				}
 			}
 		}
+	}
 
+	private void LoadRepeaterDetails(string repeaterId)
+	{
 		lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 		txtID.Text = repeater.ID.ToString();
 		ddlType.SelectedValue = repeater.Type;
