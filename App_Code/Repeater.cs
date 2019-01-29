@@ -200,20 +200,17 @@ public class Repeater
 		{
 			ChangeLog = CreateChangeLog(credentials, originalRepeater);
 
-			if (ChangeLog != "") // Don't bother if there's nothing changed
+			if (Analog_Width.Trim() == string.Empty)
 			{
-				if (Analog_Width.Trim() == string.Empty)
-				{
-					Analog_Width = "0";
-				}
-
-				callsign = credentials.Username;
-				password = credentials.Password;
-				DateUpdated = DateTime.UtcNow.ToString();
-
-				string url = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "UpdateRepeater";
-				string result = Utilities.PostJsonToUrl(url, this);
+				Analog_Width = "0";
 			}
+
+			callsign = credentials.Username;
+			password = credentials.Password;
+			DateUpdated = DateTime.UtcNow.ToString();
+
+			string url = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "UpdateRepeater";
+			string result = Utilities.PostJsonToUrl(url, this);
 		}
 		catch (Exception ex)
 		{
