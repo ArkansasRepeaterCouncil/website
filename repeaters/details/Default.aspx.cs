@@ -30,9 +30,9 @@ public partial class update_Default : System.Web.UI.Page
 					repeater = Repeater.LoadPublic(repeaterId);
 					LoadRepeaterDetails(repeaterId);
 				}
-				catch (Exception)
+				catch (Exception ex)
 				{
-					throw new HttpParseException("Unable to load and parse data for requested repeater. Please try again. If the problem persists please report it using the link at the bottom of the page.");
+					lblRepeaterName.Text= "Unable to load and parse data for requested repeater. If the problem persists please report it using the link at the bottom of the page.";
 				}
 			}
 		}
