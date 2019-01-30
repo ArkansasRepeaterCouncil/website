@@ -64,7 +64,7 @@ public partial class request_Default : System.Web.UI.Page
 		return output;
 	}
 
-	protected void btnNext_Click(object sender, EventArgs e)
+	protected void doNext()
 	{
 		if (Page.IsValid)
 		{
@@ -74,32 +74,49 @@ public partial class request_Default : System.Web.UI.Page
 
 	private void LoadAvailableFrequencies(string latitude, string longitude, string band)
 	{
-		//try
-		//{
-			using (var webClient = new System.Net.WebClient())
+		using (var webClient = new System.Net.WebClient())
+		{
+			try
 			{
 				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListUnusedFrequenciesNearPoint?lat={0}&lon={1}&miles={2}&band={3}", latitude, longitude, "90", band);
 				string json = webClient.DownloadString(url);
 				dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
-				
-				ddlFrequency.Items.Clear();
-				foreach (dynamic obj in data)
-				{
-					ListItem li = new ListItem(string.Format("Tx {0}, Rx {1}", obj.outputFreq.ToString(), obj.inputFreq.ToString()), obj.outputFreq.ToString());
-					ddlFrequency.Items.Add(li);
-				}
-				ddlFrequency.SelectedIndex = 0;
-				ddlFrequency.Visible = true;
-				lblFrequency.Visible = true;
-				ddlBand.Enabled = false;
-				btnNext.Visible = false;
-				btnSubmit.Visible = true;
-			}
-		//}
-		//catch (Exception)
-		//{
 
-		//}
+				try
+				{
+					ddlFrequency.Items.Clear();
+
+					if (data != null)
+					{
+						foreach (dynamic obj in data)
+						{
+							if ((obj != null) && (obj.outputFreq != null) && (obj.inputFreq != null))
+							{
+								ListItem li = new ListItem(string.Format("Tx {0}, Rx {1}", obj.outputFreq.ToString(), obj.inputFreq.ToString()), obj.outputFreq.ToString());
+								ddlFrequency.Items.Add(li);
+							}
+						}
+					}
+
+					ddlBand.Enabled = false;
+					bttnNext.Visible = false;
+					txtLatitude.ReadOnly = true;
+
+					ddlFrequency.SelectedIndex = 0;
+					ddlFrequency.Visible = true;
+					lblFrequency.Visible = true;
+					btnSubmit.Visible = true;
+				}
+				catch (Exception ex2)
+				{
+					new ExceptionReport(ex2, "Unable to iterate frequencies for coordination request.", null);
+				}
+			}
+			catch (Exception ex)
+			{
+				new ExceptionReport(ex, "Unable to load frequencies for coordination request", null);
+			}
+		}
 	}
 
 
@@ -124,5 +141,10 @@ public partial class request_Default : System.Web.UI.Page
 		{
 			args.IsValid = true;
 		}
+	}
+
+	protected void bttnNext_Click(object sender, EventArgs e)
+	{
+		doNext();
 	}
 }

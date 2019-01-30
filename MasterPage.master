@@ -55,11 +55,12 @@
     </div>
     </form>
     <script>
-        $('.noDoubleClick').click(function () {
+        $('form').submit(function () {
             $('.noDoubleClick').prop('disabled', true);
             setTimeout(function () {
                 $('.noDoubleClick').prop('disabled', false);
-            }, 2000);
+            }, 3000);
+            return true;
         });
     </script>
 </body>
