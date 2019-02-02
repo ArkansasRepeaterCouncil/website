@@ -50,19 +50,6 @@
         </asp:Table>
     </section>
     </asp:Panel>
-    <section>
-	    <h2>Recent updates</h2>
-            <div class="updatesList">
-                <asp:Repeater ID="rptRSS" runat="server" DataSourceID="xmlRSS"> 
-                    <ItemTemplate> 
-                        <strong><%# XPath("title") %></strong> (<%# XPath("pubDate") %>)
-                        <ul>
-                        <%# XPath("description").ToString().Replace("• ", "<li>") %>
-                        </ul>
-                    </ItemTemplate>
-                </asp:Repeater>
-            </div>
-        <asp:XmlDataSource ID="xmlRSS" runat="server" DataFile="http://repeatercoordinationservice.azurewebsites.net/api/RSScreator?code=lYVEWOyzmLP0WYS1fg7NutMgKHOqrKkFMxcyj/41ubix126V9n7nNg==" XPath="rss/channel/item[position() <= 5]"></asp:XmlDataSource>
-    </section>
+
 </asp:Content>
 
