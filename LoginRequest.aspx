@@ -31,7 +31,7 @@
         <asp:HiddenField ID="hdnState" runat="server" />
         <asp:HiddenField ID="hdnZip" runat="server" />
         <br />
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="noDoubleClick" OnClick="btnSubmit_Click" />
+        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
     </section>
 </asp:Content>
 

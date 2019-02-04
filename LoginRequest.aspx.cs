@@ -14,7 +14,7 @@ public partial class LoginRequest : System.Web.UI.Page
 
 	}
 
-	protected void btnSubmit_Click(object sender, EventArgs e)
+	protected void sendNewAccountRequest()
 	{
 		if (IsValid)
 		{
@@ -35,8 +35,9 @@ public partial class LoginRequest : System.Web.UI.Page
 				new ExceptionReport(ex);
 				lblDirections.Text = "An error occurred while processing your reset request.  We have logged this error.  In the meantime you are welcome to browse to the home page, then back here to try again.";
 			}
-			btnSubmit.Enabled = false;
-			txtCallsign.Enabled = false;
+			btnSubmit.Visible = false;
+			txtCallsign.Visible = false;
+			txtEmail.Visible = false;
 		}
 	}
 
@@ -71,5 +72,12 @@ public partial class LoginRequest : System.Web.UI.Page
 
 			throw ex;
 		}
+	}
+
+
+
+	protected void btnSubmit_Click(object sender, EventArgs e)
+	{
+		sendNewAccountRequest();
 	}
 }
