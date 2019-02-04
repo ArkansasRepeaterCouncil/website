@@ -92,7 +92,16 @@ public static class Utilities
 			}
 			catch (Exception ex)
 			{
-				new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "JSON: " + JsonConvert.SerializeObject(objToSend), "URL: " + url);
+				if (objToSend is Repeater)
+				{
+					Repeater rptr = (Repeater)objToSend;
+					rptr.Sterilize();
+					new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "JSON: " + JsonConvert.SerializeObject(rptr), "URL: " + url);
+				}
+				else
+				{
+					new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "JSON: " + JsonConvert.SerializeObject(objToSend), "URL: " + url);
+				}
 			}
 
 		}

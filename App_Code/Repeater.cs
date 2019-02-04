@@ -254,4 +254,12 @@ public class Repeater
 
 		return strReturn;
 	}
+
+	public void Sterilize()
+	{
+		callsign = "";
+		password = "";
+		Latitude = Latitude.Substring(0, Latitude.IndexOf('.')) + "xxxx";
+		Longitude = Longitude.Substring(0, Longitude.IndexOf('.')) + "xxxx";
+	}
 }
