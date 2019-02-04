@@ -55,11 +55,13 @@ public partial class LoginRequest : System.Web.UI.Page
 				hdnAddress.Value = data.address.line1;
 				hdnName.Value = data.name;
 
+
 				// Parse line2 to get other address values
 				string address2 = data.address.line2;
-				hdnCity.Value = address2.Split(',')[0];
-				hdnState.Value = address2.Split(',')[1].Split(' ')[0];
-				hdnZip.Value = address2.Split(',')[1].Split(' ')[1];
+				string[] arrAddress = address2.Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries) ;
+				hdnCity.Value = arrAddress[0];
+				hdnState.Value = arrAddress[1];
+				hdnZip.Value = arrAddress[2];
 			}
 			else
 			{
@@ -70,7 +72,7 @@ public partial class LoginRequest : System.Web.UI.Page
 		{
 			args.IsValid = false;
 
-			throw ex;
+			new ExceptionReport(ex);
 		}
 	}
 
