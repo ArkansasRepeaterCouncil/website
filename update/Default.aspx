@@ -4,6 +4,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link type="text/css" rel="stylesheet" href="../css/update.css" />
+    <script>
+        function ddlStatus_change_client(source) {
+            if (source.options[source.selectedIndex].value == "6") {
+                alert("STOP AND READ!\n\nIf you are change the status to decoordinated and save this record, you will not be able to change it back.  If that's not your intention, change it back before you save.");
+            }
+        }
+
+        function btnChangeTrustee_click() {
+            alert("STOP AND READ!\n\nIf you are the current trustee and you change it to someone else, you will not be able to access this repeater unless you are added as an authorized user (in the Users tab).");
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
 </asp:Content>
@@ -32,9 +43,9 @@
                         <br />
                         <asp:Label ID="lblRepeaterCallsign" CssClass="formLabel" runat="server" Text="Repeater callsign"></asp:Label><asp:TextBox ID="txtRepeaterCallsign" CssClass="textInput" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblTrusteeID" CssClass="formLabel" runat="server" Text="Trustee"></asp:Label><asp:HiddenField ID="hdnTrusteeId" runat="server" />
-                        <asp:TextBox ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><asp:Button ID="btnChangeTrustee" runat="server" Text="Change" OnClick="btnChangeTrustee_Click" /><asp:DropDownList ID="ddlTrustee" Visible="False" CssClass="textInput" runat="server"></asp:DropDownList><br />
+                        <asp:TextBox ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><asp:Button ID="btnChangeTrustee" runat="server" Text="Change" OnClientClick="btnChangeTrustee_click();" OnClick="btnChangeTrustee_Click" /><asp:DropDownList ID="ddlTrustee" Visible="False" CssClass="textInput" runat="server"></asp:DropDownList><br />
                         <asp:Label ID="lblStatus" CssClass="formLabel" runat="server" Text="Status"></asp:Label>
-                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="textInput">
+                        <asp:DropDownList ID="ddlStatus" runat="server" CssClass="textInput" onchange="return ddlStatus_change_client(this);">
                             <asp:ListItem Value="1">Proposed</asp:ListItem>
                             <asp:ListItem Value="2">Under construction</asp:ListItem>
                             <asp:ListItem Value="3">Operational</asp:ListItem>
@@ -49,18 +60,36 @@
                         <asp:Label ID="lblOutputFrequency" CssClass="formLabel" runat="server" Text="Transmit frequency"></asp:Label><asp:TextBox ID="txtOutputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblInputFrequency" CssClass="formLabel" runat="server" Text="Receive frequency"></asp:Label><asp:TextBox ID="txtInputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblSponsor" CssClass="formLabel" runat="server" Text="Sponsor/Club"></asp:Label><asp:TextBox ID="txtSponsor" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label><asp:TextBox ID="txtLatitude" CssClass="textInput" runat="server"></asp:TextBox><asp:CustomValidator ID="validLocation" runat="server" ErrorMessage="Location may not be more than one mile from the repeater's coordinated location." OnServerValidate="validLocation_ServerValidate">*</asp:CustomValidator><br />
-                        <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label><asp:TextBox ID="txtLongitude" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server" placeholder="meters"> meters</asp:TextBox>
+                        <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label><asp:TextBox ID="txtLatitude" CssClass="textInput" runat="server"></asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtLatitude_FilteredTextBoxExtender" runat="server" BehaviorID="txtLatitude_FilteredTextBoxExtender" TargetControlID="txtLatitude" ValidChars="1234567890." />
+                        <asp:CustomValidator ID="validLocation" runat="server" ErrorMessage="Location may not be more than one mile from the repeater's coordinated location." OnServerValidate="validLocation_ServerValidate">*</asp:CustomValidator><br />
+                        <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label><asp:TextBox ID="txtLongitude" CssClass="textInput" runat="server"></asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtLongitude_FilteredTextBoxExtender" runat="server" BehaviorID="txtLongitude_FilteredTextBoxExtender" TargetControlID="txtLongitude" ValidChars="1234567890.-" />
                         <br />
-                        <asp:Label ID="lblERP" CssClass="formLabel" runat="server" Text="Effective radiated power (ERP)"></asp:Label><asp:TextBox ID="txtERP" CssClass="textInput" runat="server"> watts</asp:TextBox> <a href="https://www.everythingrf.com/rf-calculators/eirp-effective-isotropic-radiated-power" target="_blank">Calculator</a><br />
-                        <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"> watts</asp:TextBox><asp:CustomValidator ID="validOutputPower" runat="server" ErrorMessage="Output power may not be more than 5 watts over the coordinated power." Text="*" OnServerValidate="validOutputPower_ServerValidate"></asp:CustomValidator><br />
-                        <asp:Label ID="lblAntennaGain" CssClass="formLabel" runat="server" Text="Antenna gain"></asp:Label><asp:TextBox ID="txtAntennaGain" CssClass="textInput" runat="server"> DBi</asp:TextBox><br />
+                        <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server" placeholder="meters"> meters</asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtAMSL_FilteredTextBoxExtender" runat="server" BehaviorID="txtAMSL_FilteredTextBoxExtender" TargetControlID="txtAMSL" ValidChars="1234567890." />
+                        meters<br />
+                        <asp:Label ID="lblERP" runat="server" CssClass="formLabel" Text="Effective radiated power (ERP)"></asp:Label>
+                        <asp:TextBox ID="txtERP" runat="server" CssClass="textInput"> watts</asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtERP_FilteredTextBoxExtender" runat="server" BehaviorID="txtERP_FilteredTextBoxExtender" TargetControlID="txtERP" ValidChars="1234567890" />
+                        <a href="https://www.everythingrf.com/rf-calculators/eirp-effective-isotropic-radiated-power" target="_blank">Calculator</a><br />
+                        <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"> watts</asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtOutputPower_FilteredTextBoxExtender" runat="server" BehaviorID="txtOutputPower_FilteredTextBoxExtender" FilterType="Numbers" TargetControlID="txtOutputPower" ValidChars="0123456789" />
+                        <asp:CustomValidator ID="validOutputPower" runat="server" ErrorMessage="Output power may not be more than 5 watts over the coordinated power." Text="*" OnServerValidate="validOutputPower_ServerValidate"></asp:CustomValidator><br />
+                        <asp:Label ID="lblAntennaGain" CssClass="formLabel" runat="server" Text="Antenna gain"></asp:Label><asp:TextBox ID="txtAntennaGain" CssClass="textInput" runat="server"> DBi</asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtAntennaGain_FilteredTextBoxExtender" runat="server" BehaviorID="txtAntennaGain_FilteredTextBoxExtender" TargetControlID="txtAntennaGain" ValidChars="1234567890" />
+                        <br />
                         <asp:Label ID="lblAntennaHeight" CssClass="formLabel" runat="server" Text="Antenna height"></asp:Label><asp:TextBox ID="txtAntennaHeight" CssClass="textInput" runat="server" placeholder="meters"></asp:TextBox> 
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtAntennaHeight_FilteredTextBoxExtender" runat="server" BehaviorID="txtAntennaHeight_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="1234567890." />
                         meters<asp:CustomValidator ID="validAntennaHeight" runat="server" ErrorMessage="Antenna height may not be more than 15.24 meters (50 feet) over the coordinated antenna height." Text="*" OnServerValidate="validAntennaHeight_ServerValidate"></asp:CustomValidator><br />
-                        <asp:Label ID="lblAnalog_InputAccess" CssClass="formLabel" runat="server" Text="Input PL tone"></asp:Label><asp:TextBox ID="txtAnalog_InputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblAnalog_OutputAccess" CssClass="formLabel" runat="server" Text="Output PL tone"></asp:Label><asp:TextBox ID="txtAnalog_OutputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblAnalog_InputAccess" CssClass="formLabel" runat="server" Text="Input PL tone"></asp:Label><asp:TextBox ID="txtAnalog_InputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server" MaxLength="7"></asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtAnalog_InputAccess_FilteredTextBoxExtender" runat="server" BehaviorID="txtAnalog_InputAccess_FilteredTextBoxExtender" TargetControlID="txtAnalog_InputAccess" ValidChars="1234567890." />
+                        <br />
+                        <asp:Label ID="lblAnalog_OutputAccess" CssClass="formLabel" runat="server" Text="Output PL tone"></asp:Label><asp:TextBox ID="txtAnalog_OutputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server" MaxLength="7"></asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtAnalog_OutputAccess_FilteredTextBoxExtender" runat="server" BehaviorID="txtAnalog_OutputAccess_FilteredTextBoxExtender" TargetControlID="txtAnalog_OutputAccess" ValidChars="1234567890." />
+                        <br />
                         <asp:Label ID="lblAnalog_Width" CssClass="formLabel" runat="server" Text="Analog width"></asp:Label><asp:TextBox ID="txtAnalog_Width" CssClass="textInput" runat="server"></asp:TextBox>
+                        <ajaxToolkit:FilteredTextBoxExtender ID="txtAnalog_Width_FilteredTextBoxExtender" runat="server" BehaviorID="txtAnalog_Width_FilteredTextBoxExtender" TargetControlID="txtAnalog_Width" ValidChars="1234567890." />
                     </ContentTemplate>
                 </ajaxToolkit:TabPanel>
                 <ajaxToolkit:TabPanel ID="tabDigital" runat="server" HeaderText="Digital modes">
