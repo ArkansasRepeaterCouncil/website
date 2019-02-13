@@ -35,7 +35,7 @@
 		
 		<a class="namedAnchor" name="coordinationprocedure"></a><h3>Coordination request procedure</h3>
         <ol>
-            <li>Login to the Arkansas Repeater Council site at <a href="https://www.arkansasrepeatercouncil.org/Login.aspx">arkansasrepeatercouncil.org/Login.aspx</a>. (Create an account if you don't already have one.</li>
+            <li>Login to the Arkansas Repeater Council site at <a href="https://www.arkansasrepeatercouncil.org/Login.aspx">arkansasrepeatercouncil.org/Login.aspx</a>. (Create an account if you don't already have one.)</li>
             <li>Once logged-in, click the &quot;Request coordination&quot; link in the menu.</li>
             <li>Complete and submit the request form.</li>
             <li>Wait for the magic to happen.&nbsp; What&#39;s the magic?&nbsp; I&#39;m so glad you asked...</li>
