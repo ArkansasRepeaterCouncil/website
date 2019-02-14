@@ -7,7 +7,7 @@
     <script>
         function ddlStatus_change_client(source) {
             if (source.options[source.selectedIndex].value == "6") {
-                alert("STOP AND READ!\n\nIf you are change the status to decoordinated and save this record, you will not be able to change it back.  If that's not your intention, change it back before you save.");
+                alert("STOP AND READ!\n\nIf you change the status to decoordinated and save this record, you will not be able to change it back.  If that's not your intention, change it back before you save.");
             }
         }
 
