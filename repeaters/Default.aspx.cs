@@ -100,7 +100,13 @@ public partial class repeaters_Default : System.Web.UI.Page
 				for (int index = 0; index < attributes.Count; index++)
 				{
 					string attribute = attributes[index];
-					if ((attribute.Trim() != "") && (attribute != "DMR ID: ") && (attribute != "D-Star module: "))
+					if (
+						(attribute.Trim() != "") && 
+						(attribute != "DMR ID: ") && 
+						(attribute != "D-Star module: ") &&
+						(attribute != "output tone: ") &&
+						(attribute != "input tone: None")
+						)
 					{
 						if (strAttribs != "") { strAttribs += ", "; }
 						strAttribs += attribute;
