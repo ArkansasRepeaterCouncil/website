@@ -1,0 +1,34 @@
+ .repeaterListTable tr:nth-of-type(even) { background-color: rgba(153, 153, 153, 0.6); }
+
+.NOrepeaterListTable thead, .NOrepeaterListTable tfoot {
+	height: 24px;
+    font-size: 0.7em;
+	display: block;
+	background-color: rgba(102, 102, 102, 0.6);;
+}
+
+.NOrepeaterListTable tbody {
+	height: 350px;
+	overflow: auto;
+	display: block;
+}
+
+.repeaterListTableRow td { text-align: left; }
+
+.repeaterListTableRow td:nth-of-type(1), .repeaterListTableRow th:nth-of-type(1) { width: 70px; }
+.repeaterListTableRow td:nth-of-type(2), .repeaterListTableRow th:nth-of-type(2) { width: 75px; }
+.repeaterListTableRow td:nth-of-type(3), .repeaterListTableRow th:nth-of-type(3) { width: 75px; }
+.repeaterListTableRow td:nth-of-type(4), .repeaterListTableRow th:nth-of-type(4) { width: 100px; }
+.repeaterListTableRow td:nth-of-type(5), .repeaterListTableRow th:nth-of-type(5) { width: 100px; }
+.repeaterListTableRow td:nth-of-type(6), .repeaterListTableRow th:nth-of-type(6) { width: 100px; }
+.repeaterListTableRow td:nth-of-type(7), .repeaterListTableRow th:nth-of-type(7) { width: 120px; }
+.repeaterListTableRow td:nth-of-type(8), .repeaterListTableRow th:nth-of-type(8) { width: 437px; }
+
+.repeaterListTable {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}

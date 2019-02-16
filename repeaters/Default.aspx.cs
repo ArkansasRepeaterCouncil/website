@@ -8,17 +8,25 @@ using System.Web.UI.WebControls;
 
 public partial class repeaters_Default : System.Web.UI.Page
 {
+	string query = "";
+	int page = 1;
+
 	protected void Page_Load(object sender, EventArgs e)
 	{
-		if (!Page.IsPostBack)
+		query = Request.QueryString["q"];
+		if (query == null) { query = ""; }
+		if (txtSearch.Text != "") { query = txtSearch.Text; }
+
+		string pageTest = Request.QueryString["p"];
+		int intPage;
+		if (int.TryParse(pageTest, out intPage))
 		{
-			getPublicRepeaterList();
+			if (intPage > 1)
+			{
+				page = intPage;
+			}
 		}
-	}
 
-
-	protected void btnSearch_Click(object sender, EventArgs e)
-	{
 		getPublicRepeaterList();
 	}
 
@@ -37,7 +45,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 		}
 		else
 		{
-			uri += string.Format("&search={0}", txtSearch.Text);
+			uri += string.Format("&search={0}&pageNumber={1}&pageSize={2}", query, page.ToString(), "9");
 		}
 
 		using (var webClient = new System.Net.WebClient())
@@ -49,7 +57,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 			string rtn = "";
 			rtn += @"
 					<table class='repeaterListTable'>
-					<thead><tr>
+					<thead><tr class='repeaterListTableRow'>
 						<th>&nbsp;</th>
 						<th>Frequency</th>
 						<th>Offset</th>
@@ -63,7 +71,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 			foreach (dynamic obj in data)
 			{
-				rtn += "<tr>";
+				rtn += "<tr class='repeaterListTableRow'>";
 
 				rtn += "<td><a href='details/?id=" + obj.ID + "'>Details</a></td>";
 				rtn += "<td>" + obj.OutputFrequency + "</td>";
@@ -88,11 +96,17 @@ public partial class repeaters_Default : System.Web.UI.Page
 				Utilities.GetNameIfNotNull(obj.ARES, "ARES", attributes);
 				Utilities.GetNameIfNotNull(obj.Weather, "weather net", attributes);
 
+				string strAttribs = "";
 				for (int index = 0; index < attributes.Count; index++)
 				{
 					string attribute = attributes[index];
-					rtn += index < attributes.Count - 1 ? attribute + ", " : attribute;
+					if ((attribute.Trim() != "") && (attribute != "DMR ID: ") && (attribute != "D-Star module: "))
+					{
+						if (strAttribs != "") { strAttribs += ", "; }
+						strAttribs += attribute;
+					}
 				}
+				rtn += strAttribs;
 
 				rtn += "</td></tr>";
 			}
@@ -101,5 +115,25 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 			repeaterList.Text = rtn;
 		}
+	}
+
+	protected void btnSearch_Click(object sender, EventArgs e)
+	{
+		Response.Redirect(string.Format("~/repeaters/?q={0}", query));
+	}
+
+	protected void btnFirst_Click(object sender, EventArgs e)
+	{
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p=1", query));
+	}
+
+	protected void btnPrevious_Click(object sender, EventArgs e)
+	{
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}", query, page - 1));
+	}
+
+	protected void btnNext_Click(object sender, EventArgs e)
+	{
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}", query, page + 1));
 	}
 }

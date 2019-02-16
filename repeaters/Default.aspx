@@ -3,7 +3,7 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <link rel="stylesheet" href="/repeaters/repeaters.css">
+    <link rel="stylesheet" href="/css/repeaters.css">
     <script>
         function getLocation() {
             if (navigator.geolocation) {
@@ -46,7 +46,10 @@
             </div>
 		    <asp:Label ID="repeaterList" runat="server" Text=""></asp:Label>
             <br />
-            <br />
+            <asp:Button ID="btnFirst" runat="server" Text="First page" OnClick="btnFirst_Click" />
+&nbsp;<asp:Button ID="btnPrevious" runat="server" Text="Previous page" OnClick="btnPrevious_Click" />
+&nbsp;<asp:Button ID="btnNext" runat="server" Text="Next page" OnClick="btnNext_Click" />
+&nbsp;<br />
     </section>
 </asp:Content>
 
