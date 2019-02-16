@@ -27,7 +27,7 @@ public partial class request_Default : System.Web.UI.Page
 		Response.Redirect("~/Dashboard/");
 	}
 
-	protected void btnSubmit_Click(object sender, EventArgs e)
+	private void SubmitRequest()
 	{
 		if (Page.IsValid)
 		{
@@ -146,5 +146,12 @@ public partial class request_Default : System.Web.UI.Page
 	protected void bttnNext_Click(object sender, EventArgs e)
 	{
 		doNext();
+	}
+
+
+
+	protected void btnSubmit_Click(object sender, EventArgs e)
+	{
+		SubmitRequest();
 	}
 }
