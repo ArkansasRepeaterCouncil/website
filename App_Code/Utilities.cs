@@ -49,6 +49,10 @@ public static class Utilities
 		{
 			arr.Add(prefixString + val);
 		}
+		else if ((val is string) && ((string)val != ""))
+		{
+			arr.Add(prefixString + val);
+		}
 		else if (val != null)
 		{
 			arr.Add(prefixString + val);
