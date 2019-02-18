@@ -44,6 +44,19 @@
                 <br />
                 <div class="searchDescription">Frequency, city, callsign, or &#39;latitude, longitude&#39;</div><br />
             </div>
+		    <asp:Table ID="tableRepeaters" runat="server" CssClass="repeaterListTable">
+                <asp:TableRow runat="server" CssClass="repeaterListTableRow" TableSection="TableHeader">
+                    <asp:TableCell runat="server">&nbsp;</asp:TableCell>
+                    <asp:TableCell runat="server"><asp:LinkButton ID="LinkButton1" CommandArgument="OutputFrequency" OnClick="linkButton_Click" runat="server">Frequency</asp:LinkButton></asp:TableCell>
+                    <asp:TableCell runat="server">Offset</asp:TableCell>
+                    <asp:TableCell runat="server"><asp:LinkButton ID="LinkButton2" CommandArgument="Callsign" OnClick="linkButton_Click" runat="server">Callsign</asp:LinkButton></asp:TableCell>
+                    <asp:TableCell runat="server"><asp:LinkButton ID="LinkButton3" CommandArgument="Trustee" OnClick="linkButton_Click" runat="server">Trustee</asp:LinkButton></asp:TableCell>
+                    <asp:TableCell runat="server"><asp:LinkButton ID="LinkButton4" CommandArgument="Status" OnClick="linkButton_Click" runat="server">Status</asp:LinkButton></asp:TableCell>
+                    <asp:TableCell runat="server"><asp:LinkButton ID="LinkButton5" CommandArgument="City" OnClick="linkButton_Click" runat="server">City</asp:LinkButton></asp:TableCell>
+                    <asp:TableCell runat="server">Attributes</asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+            <br />
 		    <asp:Label ID="repeaterList" runat="server" Text=""></asp:Label>
             <br />
             <asp:Button ID="btnFirst" runat="server" Text="First page" OnClick="btnFirst_Click" />
