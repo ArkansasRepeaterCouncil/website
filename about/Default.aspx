@@ -48,7 +48,7 @@
 			</ul>
 		<p>Directors</p>
         <ul>
-            <li>Wayne Mahnker - WA5OOY (2019)
+            <li>Wayne Mahnker - WA5LUY (2019)
             </li><li>Michael Clay - AC5XV (2019)
             </li><li>Joe Giddons - N5IOZ (2020)
             </li><li>Tem Moore - N5KWL (2020)
