@@ -15,3 +15,14 @@ artifacts:
 - path: '**\*.css'
 - path: '**\*.js'
 - path: '**\*.png'
+deploy:
+- provider: FTP
+  host:
+    secure: 0kziSkQbILcxCj9ZVELOXDNOCWellJ3/+Ulko/QTA3U=
+  protocol: ftps
+  username:
+    secure: VKRpk2vE3yRprifVmi1VUw==
+  password:
+    secure: amZ10baC8+YOiKkg1B7l3K6jzOUeF1zwSnhgVFoRDNs=
+  on:
+    branch: master
