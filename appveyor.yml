@@ -20,8 +20,7 @@ deploy:
   host:
      secure: 0kziSkQbILcxCj9ZVELOXDNOCWellJ3/+Ulko/QTA3U=
   protocol: ftp
-  username:
-    secure: VKRpk2vE3yRprifVmi1VUw==
+  username: ftp79179158-2
   password:
     secure: amZ10baC8+YOiKkg1B7l3CWwM3YrOlyzVxfyX0yD+2Q=
   on:
