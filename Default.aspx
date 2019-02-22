@@ -55,14 +55,16 @@ amateur radio repeater frequencies in the state of Arkansas. We utilize availabl
             </div>
             <div class="stat">
                 <h1><asp:label id="lblCoordinationCount" runat="server" text="100"></asp:label></h1>
-                <span class="normalText">coordinations automatically processed</span>
+                <span class="normalText">coordinations automatically processed on this site</span>
             </div>
             <div class="stat">
                 <h1><asp:label id="lblAverageDaysPerCoordination" runat="server" text="10"></asp:label> days</h1>
-                <span class="normalText">average time to coordinate</span>
+                <span class="normalText">average time to coordinate a repeater</span>
             </div>
         </div>
         <div class="currentRepeaters" id="piechart"></div>
+    </section>
+    <section>
         <div style="clear: both;"><asp:label id="lblRecentChanges" runat="server" text="Ch-ch-ch-ch-changes"></asp:label></div>
     </section>
     <asp:HiddenField ID="hdnPercentCurrent" ClientIDMode="Static" runat="server" />
