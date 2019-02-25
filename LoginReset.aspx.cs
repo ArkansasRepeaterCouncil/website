@@ -13,7 +13,9 @@ public partial class LoginReset : System.Web.UI.Page
 
 	}
 
-	protected void btnSubmit_Click(object sender, EventArgs e)
+
+
+	protected void doReset()
 	{
 		if (IsValid)
 		{
@@ -52,7 +54,7 @@ public partial class LoginReset : System.Web.UI.Page
 					lblFeedback.Text = string.Format("Your request failed. {0}", message);
 				}
 
-				
+
 			}
 			catch (Exception ex)
 			{
@@ -62,5 +64,10 @@ public partial class LoginReset : System.Web.UI.Page
 				lblDirections.Text = "An error occurred while processing your reset request.  We have logged this error.  In the meantime you are welcome to browse to the home page, then back here to try again.";
 			}
 		}
+	}
+
+	protected void btnSubmit_Click(object sender, EventArgs e)
+	{
+		doReset();
 	}
 }
