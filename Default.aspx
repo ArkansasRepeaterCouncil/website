@@ -5,22 +5,19 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
-
-            var pctCurrent = document.getElementById("hdnPercentCurrent").value / 100;
-            var total = document.getElementById("lblCount").innerText;
-
-            var current = total * pctCurrent;
-            var pastDue = total - current;
+            var countCurrent = parseInt(document.getElementById("hdnCountCurrent").value);
+            var countExpired = parseInt(document.getElementById("hdnCountExpired").value);
 
             var data = google.visualization.arrayToDataTable([
-                ['Update status', 'Repeaters'],
-                ['Current', current],
-                ['Past due', pastDue]
+                ['Status', 'Repeaters'],
+                ['Current', countCurrent],
+                ['Expired', countExpired]
             ]);
+            console.log(data);
 
             var options = {
                 backgroundColor: 'transparent',
@@ -67,6 +64,7 @@ amateur radio repeater frequencies in the state of Arkansas. We utilize availabl
     <section>
         <div style="clear: both;"><asp:label id="lblRecentChanges" runat="server" text="Ch-ch-ch-ch-changes"></asp:label></div>
     </section>
-    <asp:HiddenField ID="hdnPercentCurrent" ClientIDMode="Static" runat="server" />
+    <asp:HiddenField ID="hdnCountCurrent" ClientIDMode="Static" runat="server" />
+    <asp:HiddenField ID="hdnCountExpired" ClientIDMode="Static" runat="server" />
 </asp:Content>
 
