@@ -72,7 +72,7 @@
                         <asp:Label ID="lblERP" runat="server" CssClass="formLabel" Text="Effective radiated power (ERP)"></asp:Label>
                         <asp:TextBox ID="txtERP" runat="server" CssClass="textInput"> watts</asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtERP_FilteredTextBoxExtender" runat="server" BehaviorID="txtERP_FilteredTextBoxExtender" TargetControlID="txtERP" ValidChars="1234567890." />
-                        <a href="https://www.everythingrf.com/rf-calculators/eirp-effective-isotropic-radiated-power" target="_blank">Calculator</a><br />
+                        <a href="http://antennas.ca/calc_ERP.htm" target="_blank">Calculator</a><br />
                         <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"> watts</asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtOutputPower_FilteredTextBoxExtender" runat="server" BehaviorID="txtOutputPower_FilteredTextBoxExtender" FilterType="Numbers" TargetControlID="txtOutputPower" ValidChars="0123456789" />
                         <asp:CustomValidator ID="validOutputPower" runat="server" ErrorMessage="Output power may not be more than 5 watts over the coordinated power." Text="*" OnServerValidate="validOutputPower_ServerValidate"></asp:CustomValidator><br />
