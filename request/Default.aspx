@@ -74,7 +74,7 @@
         <br />
         <div class="center">
             <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" Text="Next" />
-            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
+            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" Visible="false" />
 &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" /></div>
         <br />
     </section>
