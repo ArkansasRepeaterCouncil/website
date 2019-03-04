@@ -255,7 +255,7 @@ public partial class update_Default : System.Web.UI.Page
 
 			// Save repeater
 			newRepeater.Save(creds, repeater);
-			Response.Redirect("~/dashboard/");
+			lblChangesSaved.Visible = true;
 		}
 	}
 

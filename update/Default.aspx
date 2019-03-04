@@ -21,6 +21,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
         <h1><asp:Label ID="lblRepeaterName" runat="server" Text="Label"></asp:Label></h1>
+        <asp:Label ID="lblChangesSaved" runat="server" Text="Your changes have been saved." Visible="False" ForeColor="#66FF66"></asp:Label>
         <p>Every change is logged and can be seen on the <em>Notes</em> tab.</p>
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <asp:Panel ID="formPanel" runat="server" ClientIDMode="Static">
