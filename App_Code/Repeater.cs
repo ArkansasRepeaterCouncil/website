@@ -90,19 +90,30 @@ public class Repeater
 	{
 		Repeater repeater = new Repeater();
 
-		try
+		int intMaxAttempts = 5;
+		for (int i = 1; i < intMaxAttempts; i++)
 		{
-			using (var webClient = new System.Net.WebClient())
+			try
 			{
-				// Call web service to get all data for the repeater with this ID
-				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetails?callsign={0}&password={1}&repeaterid={2}", credentials.Username, credentials.Password, repeaterId);
-				string json = webClient.DownloadString(url);
-				repeater = JsonConvert.DeserializeObject<Repeater>(json);
+				using (var webClient = new System.Net.WebClient())
+				{
+					// Call web service to get all data for the repeater with this ID
+					string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetails?callsign={0}&password={1}&repeaterid={2}", credentials.Username, credentials.Password, repeaterId);
+					string json = webClient.DownloadString(url);
+					repeater = JsonConvert.DeserializeObject<Repeater>(json);
+					break;
+				}
 			}
-		}
-		catch (Exception ex)
-		{
-			new ExceptionReport(ex, "Exception while calling web service for repeater data", "Repeater ID: " + repeaterId);
+			catch (Exception ex)
+			{
+				// Try again
+			}
+
+			if (i == intMaxAttempts)
+			{
+				Exception ex = new Exception();
+				new ExceptionReport(ex, "Exception while calling web service for repeater data (ID: " + repeaterId + ")");
+			}
 		}
 		
 		return repeater;
