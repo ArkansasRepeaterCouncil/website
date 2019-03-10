@@ -152,6 +152,9 @@ public partial class request_Default : System.Web.UI.Page
 
 	protected void btnSubmit_Click(object sender, EventArgs e)
 	{
-		SubmitRequest();
+		if (ddlFrequency.SelectedValue.Trim() != "")
+		{
+			SubmitRequest();
+		}
 	}
 }
