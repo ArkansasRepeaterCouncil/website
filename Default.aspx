@@ -41,7 +41,7 @@
 		<h1>Arkansas Repeater Council</h1>
 		<p>
 			The Arkansas Repeater Council coordinates
-amateur radio repeater frequencies in the state of Arkansas. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a> and the <a href="http://nfcc.us/">National Frequency Coordinators Council</a>.
+amateur radio repeater frequencies in the state of Arkansas. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a>.
 		</p>
     </section>
     <section>
