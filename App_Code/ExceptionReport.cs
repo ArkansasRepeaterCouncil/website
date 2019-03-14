@@ -38,9 +38,8 @@ public class ExceptionReport
 			string serviceUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "LogError";
 			string result = Utilities.PostJsonToUrl(serviceUrl, this);
 
-			Issue issue = new Issue(ex);
-			issue.title = InnerExceptionMessage;
-			HttpContext.Current.Session["issue"] = issue;
+			Issue i = new Issue(ex);
+			IssueURL = i.Submit();
 		}
 	}
 
@@ -73,7 +72,7 @@ public class ExceptionReport
 				issue.body += "\r\n\r\n" + addlData[x];
 			}
 			issue.title = context;
-			HttpContext.Current.Session["issue"] = issue;
+			IssueURL = issue.Submit();
 		}
 	}
 }
