@@ -319,6 +319,20 @@ public partial class update_Default : System.Web.UI.Page
 
 	}
 
+	protected void validLocation2_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		try
+		{
+			double aLat = Double.Parse(repeater.CoordinatedLatitude);
+			double aLon = Double.Parse(repeater.CoordinatedLongitude);
+			args.IsValid = true;
+		}
+		catch (Exception)
+		{
+			args.IsValid = false;
+		}
+	}
+
 	protected void validAntennaHeight_ServerValidate(object source, ServerValidateEventArgs args)
 	{
 		if (enforceBusinessRules)
