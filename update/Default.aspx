@@ -56,8 +56,8 @@
                             <asp:ListItem></asp:ListItem>
                         </asp:DropDownList>
                         <br />
-                        <asp:Label ID="lblCity" CssClass="formLabel" runat="server" Text="City"></asp:Label><asp:TextBox ID="txtCity" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblSiteName" CssClass="formLabel" runat="server" Text="Site description"></asp:Label><asp:TextBox ID="txtSiteName" CssClass="textInput" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblCity" CssClass="formLabel" runat="server" Text="City"></asp:Label><asp:TextBox ID="txtCity" CssClass="textInput" runat="server" MaxLength="24"></asp:TextBox><br />
+                        <asp:Label ID="lblSiteName" CssClass="formLabel" runat="server" Text="Site description"></asp:Label><asp:TextBox ID="txtSiteName" CssClass="textInput" runat="server" MaxLength="255"></asp:TextBox><br />
                         <asp:Label ID="lblOutputFrequency" CssClass="formLabel" runat="server" Text="Transmit frequency"></asp:Label><asp:TextBox ID="txtOutputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblInputFrequency" CssClass="formLabel" runat="server" Text="Receive frequency"></asp:Label><asp:TextBox ID="txtInputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblSponsor" CssClass="formLabel" runat="server" Text="Sponsor/Club"></asp:Label><asp:TextBox ID="txtSponsor" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
@@ -126,7 +126,7 @@
                             <asp:ListItem Value="">Not applicable</asp:ListItem>
                         </asp:DropDownList>
                         <br />
-                        <asp:Label ID="lblDMR_ID" CssClass="formLabel" runat="server" Text="DMR ID"></asp:Label><asp:TextBox ID="txtDMR_ID" CssClass="textInput" placeholder="Leave blank if none" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblDMR_ID" CssClass="formLabel" runat="server" Text="DMR ID"></asp:Label><asp:TextBox ID="txtDMR_ID" CssClass="textInput" placeholder="Leave blank if none" MaxLength="20" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblDMR_Network" CssClass="formLabel" runat="server" Text="DMR network"></asp:Label>
                         <asp:DropDownList ID="ddlDMR_Network" runat="server" CssClass="textInput">
                             <asp:ListItem>Brandmeister</asp:ListItem>
@@ -135,9 +135,9 @@
                             <asp:ListItem Value="">Not applicable</asp:ListItem>
                         </asp:DropDownList>
                         <br />
-                        <asp:Label ID="lblP25_NAC" CssClass="formLabel" runat="server" Text="P25 NAC"></asp:Label><asp:TextBox ID="txtP25_NAC" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblNXDN_RAN" CssClass="formLabel" runat="server" Text="NXDN RAN"></asp:Label><asp:TextBox ID="txtNXDN_RAN" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblYSF_DSQ" CssClass="formLabel" runat="server" Text="YSF DSQ"></asp:Label><asp:TextBox ID="txtYSF_DSQ" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox>
+                        <asp:Label ID="lblP25_NAC" CssClass="formLabel" runat="server" Text="P25 NAC"></asp:Label><asp:TextBox ID="txtP25_NAC" placeholder="Leave blank if none" CssClass="textInput" MaxLength="4" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblNXDN_RAN" CssClass="formLabel" runat="server" Text="NXDN RAN"></asp:Label><asp:TextBox ID="txtNXDN_RAN" placeholder="Leave blank if none" CssClass="textInput" MaxLength="10" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblYSF_DSQ" CssClass="formLabel" runat="server" Text="YSF DSQ"></asp:Label><asp:TextBox ID="txtYSF_DSQ" placeholder="Leave blank if none" CssClass="textInput" MaxLength="10" runat="server"></asp:TextBox>
                     </ContentTemplate>
                 </ajaxToolkit:TabPanel>
                 <ajaxToolkit:TabPanel ID="tabOptions" runat="server" HeaderText="Options">
