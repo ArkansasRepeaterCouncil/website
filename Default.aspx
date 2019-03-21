@@ -58,6 +58,7 @@ amateur radio repeater frequencies in the state of Arkansas. We utilize availabl
                 <h1><asp:label id="lblAverageDaysPerCoordination" runat="server" text="10"></asp:label> days</h1>
                 <span class="normalText">average time to coordinate a repeater</span>
             </div>
+            <span class="stretch"></span>
         </div>
         <div class="currentRepeaters" id="piechart"></div>
     </section>

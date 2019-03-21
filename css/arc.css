@@ -180,27 +180,32 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
 #homeStatsContainer {
     height: 250px;
     text-align: justify;
-    font-size: 0.1px; /* IE 9/10 don't like font-size: 0; */
-    min-width: 600px;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+    min-width: 612px;
 }
 
-#homeStatsContainer .stat {
-    display: inline-block;
-    height: 250px;
-    width: 250px;
-    border: 1px solid #ffffff;
-    text-align: center;
-}
+    #homeStatsContainer .stat {
+        width: 250px;
+        height: 250px;
+        vertical-align: top;
+        border: 1px solid #ffffff;
+        text-align: center;
+        display: inline-block;
+        *display: inline;
+        zoom: 1
+    }
 
-#homeStatsContainer:after {
-    content: '';
-    width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
-    display: inline-block;
-}
+    #homeStatsContainer .stat span.normalText {
+        font-size: 23px;
+    }
 
-#homeStatsContainer .stat span.normalText {
-    font-size: 23px;
-}
+    #homeStatsContainer .stretch {
+        width: 100%;
+        display: inline-block;
+        font-size: 0;
+        line-height: 0
+    }
 
 #piechart.currentRepeaters {
     clear: both;
