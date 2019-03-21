@@ -326,7 +326,7 @@ public partial class update_Default : System.Web.UI.Page
 			double aLat = Double.Parse(repeater.CoordinatedLatitude);
 			double aLon = Double.Parse(repeater.CoordinatedLongitude);
 
-			if ((-91.0 < aLat) && (aLat < 91.0) && (-1.0 < aLon) && (aLon < 181.0))
+			if ((-91.0 < aLat) && (aLat < 91.0) && (-181.0 < aLon) && (aLon < 181.0))
 			{
 				args.IsValid = true;
 			}

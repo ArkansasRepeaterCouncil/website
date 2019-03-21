@@ -64,7 +64,7 @@
                         <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label><asp:TextBox ID="txtLatitude" CssClass="textInput" runat="server"></asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtLatitude_FilteredTextBoxExtender" runat="server" BehaviorID="txtLatitude_FilteredTextBoxExtender" TargetControlID="txtLatitude" ValidChars="1234567890." />
                         <asp:CustomValidator ID="validLocation" runat="server" ErrorMessage="Location may not be more than one mile from the repeater's coordinated location." OnServerValidate="validLocation_ServerValidate">*</asp:CustomValidator>
-                        <asp:CustomValidator ID="validLocation2" runat="server" ErrorMessage="The latitude / longitude provided is not valid. These must be in decimal format (i.e. 34.0000, -92.0000)" OnServerValidate="validLocation2_ServerValidate">*</asp:CustomValidator>
+                        <asp:CustomValidator ID="validLocation2" runat="server" ErrorMessage="The latitude / longitude provided is not valid. These must be in decimal format (i.e. 34.0000, -92.0000)" OnServerValidate="validLocation2_ServerValidate" ControlToValidate="txtLatitude">*</asp:CustomValidator>
                         <br />
                         <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label><asp:TextBox ID="txtLongitude" CssClass="textInput" runat="server"></asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtLongitude_FilteredTextBoxExtender" runat="server" BehaviorID="txtLongitude_FilteredTextBoxExtender" TargetControlID="txtLongitude" ValidChars="1234567890.-" />

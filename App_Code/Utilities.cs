@@ -140,4 +140,6 @@ public static class Utilities
 		var maskedString = string.Concat(firstPart, mask, lastPart);
 		return maskedString;
 	}
+
+
 }
