@@ -51,7 +51,7 @@
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Output power is required." ControlToValidate="txtOutputPower">*</asp:RequiredFieldValidator>
         <br />
         <asp:Label ID="Label8" runat="server" Text="Antenna height" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtAntennaHeight" runat="server" CssClass="textInput" placeholder="meters"></asp:TextBox> meters
-        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox6_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox6_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="0123456789" />
+        <ajaxToolkit:FilteredTextBoxExtender ID="TextBox6_FilteredTextBoxExtender" runat="server" BehaviorID="TextBox6_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="0123456789." />
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Antenna height is required." ControlToValidate="txtAntennaHeight">*</asp:RequiredFieldValidator>
         <br />
         <br />
