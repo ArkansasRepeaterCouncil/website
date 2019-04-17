@@ -141,5 +141,24 @@ public static class Utilities
 		return maskedString;
 	}
 
+	public static void AddCell(string cellContents)
+	{
+		System.Web.UI.WebControls.TableCell cell = new System.Web.UI.WebControls.TableCell();
+		cell.Text = cellContents;
+	}
 
+	public static void AddCell(this System.Web.UI.WebControls.TableRow row, string cellContents)
+	{
+		System.Web.UI.WebControls.TableCell cell = new System.Web.UI.WebControls.TableCell();
+		cell.Text = cellContents;
+		row.Cells.Add(cell);
+	}
+
+	public static void AddCell(this System.Web.UI.WebControls.TableRow row, string cellContents, int colSpan)
+	{
+		System.Web.UI.WebControls.TableCell cell = new System.Web.UI.WebControls.TableCell();
+		cell.Text = cellContents;
+		cell.ColumnSpan = colSpan;
+		row.Cells.Add(cell);
+	}
 }

@@ -149,6 +149,11 @@ section:first-of-type {
     margin-top: 100px;
 }
 
+.adminTab {
+    background-color: rgba(50,50,50,0.75);
+    color: #fff;
+}
+
 footer {
     margin-top: 20px;
     padding-top: 2px;

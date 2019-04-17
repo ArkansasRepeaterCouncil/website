@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="dashboard_Default" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <style type="text/css">
         .repeaterList {
@@ -23,6 +25,33 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">: Dashboard
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:Panel ID="pnlAdminTools" runat="server" Visible="true">
+    <section>
+	    <h2>Admin</h2>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="adminTab">
+            <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Tools" >
+                <ContentTemplate>
+                    <p>These don't work yet, don't bother.</p>
+                    <asp:Button ID="Button1" runat="server" Text="Reset a user's password" Enabled="false" />
+                    <asp:Button ID="Button2" runat="server" Text="Look up a user" Enabled="false" />
+                    <asp:Button ID="Button3" runat="server" Text="Edit a repeater" Enabled="false" />
+                </ContentTemplate>
+            </ajaxToolkit:TabPanel>
+            <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Expired repeaters" CssClass="adminTab" ForeColor="#FF9999">
+                <ContentTemplate>
+                    <asp:Button ID="btnRunReportExpiredRepeaters" runat="server" Text="Run report" OnClick="btnRunReportExpiredRepeaters_Click" />
+                    <asp:Panel ID="pnlRunReportExpiredRepeaters" runat="server"></asp:Panel>
+                </ContentTemplate>
+            </ajaxToolkit:TabPanel>
+            <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Open requests" CssClass="adminTab" ForeColor="#FF9999">
+                <ContentTemplate>
+                    <asp:Button ID="btnRunReportOpenRequests" runat="server" Text="Run report" OnClick="btnRunReportOpenRequests_Click" />
+                </ContentTemplate>
+            </ajaxToolkit:TabPanel>
+        </ajaxToolkit:TabContainer>
+    </section>
+    </asp:Panel>
     <section>
 	    <h2>Repeaters</h2>
         <asp:Table ID="RepeatersTable" runat="server" CssClass="repeaterList">
