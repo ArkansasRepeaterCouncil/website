@@ -109,71 +109,71 @@ public partial class dashboard_Default : System.Web.UI.Page
 
 	protected void btnRunReportExpiredRepeaters_Click(object sender, EventArgs e)
 	{
-		System.Web.UI.ControlCollection pnl = pnlRunReportExpiredRepeaters.Controls;
-		using (var webClient = new System.Net.WebClient())
-		{
-			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportExpiredRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
-			string json = webClient.DownloadString(url);
+		//System.Web.UI.ControlCollection pnl = pnlRunReportExpiredRepeaters.Controls;
+		//using (var webClient = new System.Net.WebClient())
+		//{
+		//	string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportExpiredRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
+		//	string json = webClient.DownloadString(url);
 
-			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+		//	dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
-			Table table = new Table();
+		//	Table table = new Table();
 
-			foreach (dynamic item in data.Report.Data)
-			{
-				dynamic repeater = item.Repeater;
+		//	foreach (dynamic item in data.Report.Data)
+		//	{
+		//		dynamic repeater = item.Repeater;
 
-				using (TableRow row = new TableRow())
-				{
-					row.AddCell((string)repeater.YearsExpired);
-					row.AddCell((string)repeater.ID);
-					row.AddCell((string)repeater.Callsign);
-					row.AddCell((string)repeater.Output);
-					row.AddCell((string)repeater.City);
-					row.AddCell((string)repeater.Sponsor);
-					row.AddCell((string)repeater.Trustee.Name);
-					row.AddCell((string)repeater.Trustee.Email);
-					row.AddCell((string)repeater.Trustee.CellPhone);
-					row.AddCell((string)repeater.Trustee.HomePhone);
-					row.AddCell((string)repeater.Trustee.WorkPhone);
-					table.Rows.Add(row);
-				}
+		//		using (TableRow row = new TableRow())
+		//		{
+		//			row.AddCell((string)repeater.YearsExpired);
+		//			row.AddCell((string)repeater.ID);
+		//			row.AddCell((string)repeater.Callsign);
+		//			row.AddCell((string)repeater.Output);
+		//			row.AddCell((string)repeater.City);
+		//			row.AddCell((string)repeater.Sponsor);
+		//			row.AddCell((string)repeater.Trustee.Name);
+		//			row.AddCell((string)repeater.Trustee.Email);
+		//			row.AddCell((string)repeater.Trustee.CellPhone);
+		//			row.AddCell((string)repeater.Trustee.HomePhone);
+		//			row.AddCell((string)repeater.Trustee.WorkPhone);
+		//			table.Rows.Add(row);
+		//		}
 
-				using (TableRow row = new TableRow())
-				{
-					string strNotes = "";
-					if (repeater.Notes != null)
-					{
-						strNotes = "<ul>";
-						foreach (dynamic obj in repeater.Notes)
-						{
-							strNotes += "<li>" + obj.Note.Text + " -" + obj.Note.User.Name + ", " + obj.Note.User.Callsign + " (" + obj.Note.Timestamp + ")</li>";
-						}
-						strNotes += "</ul>";
-					}
-					row.AddCell(strNotes, 11);
-					table.Rows.Add(row);
-				}
+		//		using (TableRow row = new TableRow())
+		//		{
+		//			string strNotes = "";
+		//			if (repeater.Notes != null)
+		//			{
+		//				strNotes = "<ul>";
+		//				foreach (dynamic obj in repeater.Notes)
+		//				{
+		//					strNotes += "<li>" + obj.Note.Text + " -" + obj.Note.User.Name + ", " + obj.Note.User.Callsign + " (" + obj.Note.Timestamp + ")</li>";
+		//				}
+		//				strNotes += "</ul>";
+		//			}
+		//			row.AddCell(strNotes, 11);
+		//			table.Rows.Add(row);
+		//		}
 
-				using (TableRow row = new TableRow())
-				{
-					TextBox textbox = new TextBox();
-					textbox.ID = repeater.ID;
-					Button button = new Button();
-					button.CommandArgument = repeater.ID;
-					button.Text = "Save";
+		//		using (TableRow row = new TableRow())
+		//		{
+		//			TextBox textbox = new TextBox();
+		//			textbox.ID = repeater.ID;
+		//			Button button = new Button();
+		//			button.CommandArgument = repeater.ID;
+		//			button.Text = "Save";
 
-					TableCell cell = new TableCell();
-					cell.Controls.Add(textbox);
-					cell.Controls.Add(button);
-					cell.ColumnSpan = 11;
-					row.Cells.Add(cell);
+		//			TableCell cell = new TableCell();
+		//			cell.Controls.Add(textbox);
+		//			cell.Controls.Add(button);
+		//			cell.ColumnSpan = 11;
+		//			row.Cells.Add(cell);
 					
-					table.Rows.Add(row);
-				}
-			}
-			pnlRunReportExpiredRepeaters.Controls.Add(table);
-		}
+		//			table.Rows.Add(row);
+		//		}
+		//	}
+		//	pnlRunReportExpiredRepeaters.Controls.Add(table);
+		//}
 	}
 
 
