@@ -25,12 +25,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">: Dashboard
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:Panel ID="pnlAdminTools" runat="server" Visible="true">
+    <asp:Panel ID="pnlAdminTools" runat="server" Visible="false">
     <section>
 	    <h2>Admin</h2>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="adminTab">
-            <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Tools" >
+        <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="noadminTab">
+            <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Tools" ForeColor="#fff" BackColor="#000" >
                 <ContentTemplate>
                     <p>These don't work yet, don't bother.</p>
                     <asp:Button ID="Button1" runat="server" Text="Reset a user's password" Enabled="false" />
@@ -38,13 +38,13 @@
                     <asp:Button ID="Button3" runat="server" Text="Edit a repeater" Enabled="false" />
                 </ContentTemplate>
             </ajaxToolkit:TabPanel>
-            <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Expired repeaters" CssClass="adminTab" ForeColor="#FF9999">
+            <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Expired repeaters" CssClass="adminTab" ForeColor="#fff" BackColor="#000">
                 <ContentTemplate>
                     <asp:Button ID="btnRunReportExpiredRepeaters" runat="server" Text="Run report" OnClick="btnRunReportExpiredRepeaters_Click" />
                     <asp:Panel ID="pnlRunReportExpiredRepeaters" runat="server"></asp:Panel>
                 </ContentTemplate>
             </ajaxToolkit:TabPanel>
-            <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Open requests" CssClass="adminTab" ForeColor="#FF9999">
+            <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Open requests" CssClass="adminTab" ForeColor="#fff" BackColor="#000">
                 <ContentTemplate>
                     <asp:Button ID="btnRunReportOpenRequests" runat="server" Text="Run report" OnClick="btnRunReportOpenRequests_Click" />
                 </ContentTemplate>

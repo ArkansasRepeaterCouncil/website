@@ -25,9 +25,9 @@ public partial class dashboard_Default : System.Web.UI.Page
 
 			foreach (dynamic obj in data)
 			{
-				if (obj.ID == -1)
+				if (obj.ID < 0)
 				{
-					TabPanel2.Visible = true;
+					pnlAdminTools.Visible = true;
 				}
 				else
 				{
