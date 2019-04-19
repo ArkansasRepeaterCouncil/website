@@ -132,7 +132,6 @@ public partial class dashboard_Default : System.Web.UI.Page
 					row.AddCell((string)repeater.City);
 					row.AddCell((string)repeater.Sponsor);
 					row.AddCell((string)repeater.Trustee.Name);
-					row.AddCell((string)repeater.Trustee.Email);
 
 					string strContact = "";
 					if ((string)repeater.Trustee.Email != string.Empty)
@@ -141,15 +140,15 @@ public partial class dashboard_Default : System.Web.UI.Page
 					}
 					if ((string)repeater.Trustee.CellPhone != string.Empty)
 					{
-						strContact += (string)repeater.Trustee.CellPhone + " (cell)";
+						strContact += (string)repeater.Trustee.CellPhone + " (cell) ";
 					}
 					if ((string)repeater.Trustee.HomePhone != string.Empty)
 					{
-						strContact += (string)repeater.Trustee.HomePhone + " (home)";
+						strContact += (string)repeater.Trustee.HomePhone + " (home) ";
 					}
 					if ((string)repeater.Trustee.WorkPhone != string.Empty)
 					{
-						strContact += (string)repeater.Trustee.WorkPhone + " (work)";
+						strContact += (string)repeater.Trustee.WorkPhone + " (work) ";
 					}
 					row.AddCell(strContact);
 
