@@ -133,9 +133,26 @@ public partial class dashboard_Default : System.Web.UI.Page
 					row.AddCell((string)repeater.Sponsor);
 					row.AddCell((string)repeater.Trustee.Name);
 					row.AddCell((string)repeater.Trustee.Email);
-					row.AddCell((string)repeater.Trustee.CellPhone);
-					row.AddCell((string)repeater.Trustee.HomePhone);
-					row.AddCell((string)repeater.Trustee.WorkPhone);
+
+					string strContact = "";
+					if ((string)repeater.Trustee.Email != string.Empty)
+					{
+						strContact += "<a href='mailto:" + (string)repeater.Trustee.Email + "'>" + (string)repeater.Trustee.Email + "</a> ";
+					}
+					if ((string)repeater.Trustee.CellPhone != string.Empty)
+					{
+						strContact += (string)repeater.Trustee.CellPhone + " (cell)";
+					}
+					if ((string)repeater.Trustee.HomePhone != string.Empty)
+					{
+						strContact += (string)repeater.Trustee.HomePhone + " (home)";
+					}
+					if ((string)repeater.Trustee.WorkPhone != string.Empty)
+					{
+						strContact += (string)repeater.Trustee.WorkPhone + " (work)";
+					}
+					row.AddCell(strContact);
+
 					table.Rows.Add(row);
 				}
 
@@ -151,12 +168,14 @@ public partial class dashboard_Default : System.Web.UI.Page
 						}
 						strNotes += "</ul>";
 					}
-					row.AddCell(strNotes, 11);
+					row.AddCell(strNotes, 8);
 					table.Rows.Add(row);
 				}
 
 				using (TableRow row = new TableRow())
 				{
+					Label label = new Label();
+					label.Text = "Note: ";
 					TextBox textbox = new TextBox();
 					textbox.ID = repeater.ID;
 					Button button = new Button();
@@ -164,9 +183,10 @@ public partial class dashboard_Default : System.Web.UI.Page
 					button.Text = "Save";
 
 					TableCell cell = new TableCell();
+					cell.Controls.Add(label);
 					cell.Controls.Add(textbox);
 					cell.Controls.Add(button);
-					cell.ColumnSpan = 11;
+					cell.ColumnSpan = 8;
 					row.Cells.Add(cell);
 
 					table.Rows.Add(row);
