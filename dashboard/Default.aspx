@@ -29,7 +29,7 @@
     <section>
 	    <h2>Admin</h2>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="1" CssClass="noadminTab">
+        <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" CssClass="noadminTab">
             <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Tools" ForeColor="#fff" BackColor="#000" >
                 <ContentTemplate>
                     <p>These don't work yet, don't bother.</p>
@@ -40,13 +40,12 @@
             </ajaxToolkit:TabPanel>
             <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Expired repeaters" CssClass="adminTab" ForeColor="#fff" BackColor="#000">
                 <ContentTemplate>
-                    <asp:Button ID="btnRunReportExpiredRepeaters" runat="server" Text="Run report" OnClick="btnRunReportExpiredRepeaters_Click" />
-                    <asp:Panel ID="pnlRunReportExpiredRepeaters" runat="server"></asp:Panel>
+                    <asp:Panel ID="pnlExpiredRepeaters" runat="server"></asp:Panel>
                 </ContentTemplate>
             </ajaxToolkit:TabPanel>
             <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Open requests" CssClass="adminTab" ForeColor="#fff" BackColor="#000">
                 <ContentTemplate>
-                    <asp:Button ID="btnRunReportOpenRequests" runat="server" Text="Run report" OnClick="btnRunReportOpenRequests_Click" />
+                    <asp:Panel ID="pnlOpenRequests" runat="server"></asp:Panel>
                 </ContentTemplate>
             </ajaxToolkit:TabPanel>
         </ajaxToolkit:TabContainer>
