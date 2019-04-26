@@ -6,11 +6,16 @@ public partial class dashboard_Default : System.Web.UI.Page
 {
 	Credentials creds;
 
-	protected void Page_Load(object sender, EventArgs e)
+	protected void Page_Init(object sender, EventArgs e)
 	{
 		creds = Utilities.GetExistingCredentials();
 		LoadUsersRepeaters();
 		LoadUsersCoordinationRequests();
+	}
+
+	protected void Page_Load(object sender, EventArgs e)
+	{
+
 	}
 
 	private void LoadUsersRepeaters()
@@ -28,6 +33,10 @@ public partial class dashboard_Default : System.Web.UI.Page
 				if (obj.ID < 0)
 				{
 					pnlAdminTools.Visible = true;
+					if (!Page.IsPostBack)
+					{
+						loadExpiredRepeatersReport();
+					}
 				}
 				else
 				{
@@ -89,7 +98,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 				pnlRequests.Visible = true;
 			}
 		}
-	} 
+	}
 
 	private void Button_Click(object sender, EventArgs e)
 	{
@@ -104,12 +113,12 @@ public partial class dashboard_Default : System.Web.UI.Page
 				break;
 		}
 
-		
+
 	}
 
-	protected void btnRunReportExpiredRepeaters_Click(object sender, EventArgs e)
+	protected void loadExpiredRepeatersReport()
 	{
-		System.Web.UI.ControlCollection pnl = pnlRunReportExpiredRepeaters.Controls;
+		System.Web.UI.ControlCollection pnl = pnlExpiredRepeaters.Controls;
 		using (var webClient = new System.Net.WebClient())
 		{
 			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportExpiredRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
@@ -123,9 +132,22 @@ public partial class dashboard_Default : System.Web.UI.Page
 			{
 				dynamic repeater = item.Repeater;
 
+				using (TableRow headerRow = new TableRow())
+				{
+					headerRow.AddCell("Expired");
+					headerRow.AddCell("ID");
+					headerRow.AddCell("Callsign");
+					headerRow.AddCell("Xmit freq");
+					headerRow.AddCell("City");
+					headerRow.AddCell("Sponsor");
+					headerRow.AddCell("Trustee");
+					headerRow.AddCell("Contact info");
+					table.Rows.Add(headerRow);
+				}
+
 				using (TableRow row = new TableRow())
 				{
-					row.AddCell((string)repeater.YearsExpired);
+					row.AddCell((string)repeater.YearsExpired + " years");
 					row.AddCell((string)repeater.ID);
 					row.AddCell((string)repeater.Callsign);
 					row.AddCell((string)repeater.Output);
@@ -133,22 +155,26 @@ public partial class dashboard_Default : System.Web.UI.Page
 					row.AddCell((string)repeater.Sponsor);
 					row.AddCell((string)repeater.Trustee.Name);
 
-					string strContact = "";
+					string strContact = string.Empty;
 					if ((string)repeater.Trustee.Email != string.Empty)
 					{
+						if (strContact != string.Empty) { strContact += ", "; }
 						strContact += "<a href='mailto:" + (string)repeater.Trustee.Email + "'>" + (string)repeater.Trustee.Email + "</a> ";
 					}
 					if ((string)repeater.Trustee.CellPhone != string.Empty)
 					{
-						strContact += (string)repeater.Trustee.CellPhone + " (cell) ";
+						if (strContact != string.Empty) { strContact += ", "; }
+						strContact += (string)repeater.Trustee.CellPhone + " (cell)";
 					}
 					if ((string)repeater.Trustee.HomePhone != string.Empty)
 					{
-						strContact += (string)repeater.Trustee.HomePhone + " (home) ";
+						if (strContact != string.Empty) { strContact += ", "; }
+						strContact += (string)repeater.Trustee.HomePhone + " (home)";
 					}
 					if ((string)repeater.Trustee.WorkPhone != string.Empty)
 					{
-						strContact += (string)repeater.Trustee.WorkPhone + " (work) ";
+						if (strContact != string.Empty) { strContact += ", "; }
+						strContact += (string)repeater.Trustee.WorkPhone + " (work)";
 					}
 					row.AddCell(strContact);
 
@@ -167,6 +193,10 @@ public partial class dashboard_Default : System.Web.UI.Page
 						}
 						strNotes += "</ul>";
 					}
+					else
+					{
+						strNotes = "<ul><li><em>There are no notes on record for this repeater.</em></li></ul>";
+					}
 					row.AddCell(strNotes, 8);
 					table.Rows.Add(row);
 				}
@@ -176,9 +206,10 @@ public partial class dashboard_Default : System.Web.UI.Page
 					Label label = new Label();
 					label.Text = "Note: ";
 					TextBox textbox = new TextBox();
-					textbox.ID = repeater.ID;
+					textbox.ID = "txt" + repeater.ID;
 					Button button = new Button();
 					button.CommandArgument = repeater.ID;
+					button.Click += SaveNoteButton_Click;
 					button.Text = "Save";
 
 					TableCell cell = new TableCell();
@@ -191,14 +222,22 @@ public partial class dashboard_Default : System.Web.UI.Page
 					table.Rows.Add(row);
 				}
 			}
-			pnlRunReportExpiredRepeaters.Controls.Add(table);
+			pnlExpiredRepeaters.Controls.Add(table);
 		}
 	}
 
-
-
-	protected void btnRunReportOpenRequests_Click(object sender, EventArgs e)
+	private void SaveNoteButton_Click(object sender, EventArgs e)
 	{
+		string repeaterId = ((Button)sender).CommandArgument;
+		TextBox tb = (TextBox)pnlExpiredRepeaters.FindControl("txt" + repeaterId);
+		string note = tb.Text;
 
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "AddRepeaterNote?callsign={0}&password={1}&repeaterid={2}&note={3}", creds.Username, creds.Password, repeaterId, note);
+			string json = webClient.DownloadString(url);
+		}
+
+		loadExpiredRepeatersReport();
 	}
 }
