@@ -226,6 +226,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 					label.Text = "Note: ";
 					TextBox textbox = new TextBox();
 					textbox.ID = "txt" + repeater.ID;
+					textbox.CssClass = "expiredRepeaterNote";
 					Button button = new Button();
 					button.CommandArgument = repeater.ID;
 					button.CommandName = "saveNote";

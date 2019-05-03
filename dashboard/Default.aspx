@@ -20,6 +20,9 @@
             padding-top: 0;
             font-size: 0.7em;
         }
+        .expiredRepeaterNote {
+            width: 80%;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">: Dashboard
