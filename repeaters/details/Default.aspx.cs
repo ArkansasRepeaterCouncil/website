@@ -41,27 +41,22 @@ public partial class update_Default : System.Web.UI.Page
 	private void disableForm()
 	{
 		// formPanel.Controls
-		foreach (Control tab in TabContainer1.Controls)
+		foreach (Control control in formPanel.Controls)
 		{
-			foreach (Control content in tab.Controls)
+			if (control is TextBox)
 			{
-				foreach (Control child in content.Controls)
-				{
-					if (child is TextBox)
-					{
-						((TextBox)child).ReadOnly = true;
-					}
-					else if (child is DropDownList)
-					{
-						((DropDownList)child).Enabled = false;
-					}
-					else if (child is CheckBox)
-					{
-						((CheckBox)child).Enabled = false;
-					}
-				}
+				((TextBox)control).ReadOnly = true;
+			}
+			else if (control is DropDownList)
+			{
+				((DropDownList)control).Enabled = false;
+			}
+			else if (control is CheckBox)
+			{
+				((CheckBox)control).Enabled = false;
 			}
 		}
+
 	}
 
 	private void LoadRepeaterDetails(string repeaterId)
