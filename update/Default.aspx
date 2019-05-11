@@ -25,9 +25,17 @@
         <p>Every change is logged and can be seen on the <em>Notes</em> tab.</p>
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
         <asp:Panel ID="formPanel" runat="server" ClientIDMode="Static">
-            <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" Height="400px" Width="80%" ScrollBars="Auto">
-                <ajaxToolkit:TabPanel ID="tabDetails" runat="server" HeaderText="Details">
-                    <ContentTemplate>
+            <div id="tabs">
+                <ul>
+                    <li><a href="#tab-1">Details</a></li>
+                    <li><a href="#tab-2">Digital modes</a></li>
+                    <li><a href="#tab-3">Options</a></li>
+                    <li><a href="#tab-4">Metadata</a></li>
+                    <li><a href="#tab-5">Notes</a></li>
+                    <li><a href="#tab-6">Users</a></li>
+                </ul>
+        
+                <div id="tab-1" >
                         <asp:Label ID="lblType" CssClass="formLabel" runat="server" Text="Type"></asp:Label>
                         <asp:DropDownList ID="ddlType" CssClass="textInput" runat="server">
                             <asp:ListItem Value="1">Repeater</asp:ListItem>
@@ -93,10 +101,8 @@
                         <br />
                         <asp:Label ID="lblAnalog_Width" CssClass="formLabel" runat="server" Text="Analog width"></asp:Label><asp:TextBox ID="txtAnalog_Width" CssClass="textInput" runat="server"></asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtAnalog_Width_FilteredTextBoxExtender" runat="server" BehaviorID="txtAnalog_Width_FilteredTextBoxExtender" TargetControlID="txtAnalog_Width" ValidChars="1234567890." />
-                    </ContentTemplate>
-                </ajaxToolkit:TabPanel>
-                <ajaxToolkit:TabPanel ID="tabDigital" runat="server" HeaderText="Digital modes">
-                    <ContentTemplate>
+                </div>
+                <div id="tab-2">
                        <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label>
                         <asp:DropDownList ID="ddlDSTARmodule" runat="server" CssClass="textInput">
                             <asp:ListItem>A</asp:ListItem>
@@ -138,10 +144,8 @@
                         <asp:Label ID="lblP25_NAC" CssClass="formLabel" runat="server" Text="P25 NAC"></asp:Label><asp:TextBox ID="txtP25_NAC" placeholder="Leave blank if none" CssClass="textInput" MaxLength="4" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblNXDN_RAN" CssClass="formLabel" runat="server" Text="NXDN RAN"></asp:Label><asp:TextBox ID="txtNXDN_RAN" placeholder="Leave blank if none" CssClass="textInput" MaxLength="10" runat="server"></asp:TextBox><br />
                         <asp:Label ID="lblYSF_DSQ" CssClass="formLabel" runat="server" Text="YSF DSQ"></asp:Label><asp:TextBox ID="txtYSF_DSQ" placeholder="Leave blank if none" CssClass="textInput" MaxLength="10" runat="server"></asp:TextBox>
-                    </ContentTemplate>
-                </ajaxToolkit:TabPanel>
-                <ajaxToolkit:TabPanel ID="tabOptions" runat="server" HeaderText="Options">
-                        <ContentTemplate>
+                </div>
+                <div id="tab-3">
                             <asp:Label ID="lblYSF_DSQ0" runat="server" CssClass="formLabel" Text="Autopatch"></asp:Label>
                             <asp:DropDownList ID="ddlAutopatch" runat="server" CssClass="textInput">
                                 <asp:ListItem Value="0">None</asp:ListItem>
@@ -157,10 +161,8 @@
                             <asp:CheckBox ID="chkWideArea" runat="server" Text="Wide area" TextAlign="Left" CssClass="chkInput" /><br />
                             <asp:CheckBox ID="chkWeather" runat="server" Text="Weather net" TextAlign="Left" CssClass="chkInput" /><br />
                             <asp:CheckBox ID="chkExperimental" runat="server" Text="Experimental" TextAlign="Left" CssClass="chkInput" />
-                        </ContentTemplate>
-                </ajaxToolkit:TabPanel>
-                <ajaxToolkit:TabPanel ID="tabMetadata" runat="server" HeaderText="Metadata">
-                    <ContentTemplate>
+                </div>
+                <div id="tab-4">
                         <asp:Label ID="lblID" CssClass="formLabel" runat="server" Text="Internal ID"></asp:Label><asp:TextBox ID="txtID" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblDateCoordinated" CssClass="formLabel" runat="server" Text="Date coordinated"></asp:Label><asp:TextBox ID="txtDateCoordinated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                         <asp:Label ID="lblDateUpdated" CssClass="formLabel" runat="server" Text="Date updated"></asp:Label><asp:TextBox ID="txtDateUpdated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
@@ -172,16 +174,12 @@
                         <asp:Label ID="Label1" CssClass="formLabel" runat="server" Text="Coordinated antenna height"></asp:Label><asp:TextBox ID="txtCoordinatedAntennaHeight" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
                         <asp:Label ID="Label2" CssClass="formLabel" runat="server" Text="Coordinated latitude"></asp:Label><asp:TextBox ID="txtCoordinatedLatitude" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
                         <asp:Label ID="Label3" CssClass="formLabel" runat="server" Text="Coordinated longitude"></asp:Label><asp:TextBox ID="txtCoordinatedLongitude" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox>
-                    </ContentTemplate>
-                </ajaxToolkit:TabPanel>
-                <ajaxToolkit:TabPanel ID="tabNotes" runat="server" HeaderText="Notes">
-                    <ContentTemplate>
+                </div>
+                <div id="tab-5">
                         <asp:TextBox CssClass="txtNote" ID="txtNote" runat="server" TextMode="MultiLine" placeholder="Enter new note, make any other changes, then click save below."></asp:TextBox>
                         <asp:Label ID="lblNotes" runat="server" Text="No notes have been added for this repeater"></asp:Label>
-                    </ContentTemplate>
-                </ajaxToolkit:TabPanel>
-                <ajaxToolkit:TabPanel ID="tabUsers" runat="server" HeaderText="Users">
-                    <ContentTemplate>
+                </div>
+                <div id="tab-6">
                         <p>Users listed here will be able to edit the details of this repeater.  You can not remove the repeater trustee.</p>
 
                         <asp:Panel ID="pnlAddUser" runat="server" Width="600px" CssClass="pnlAddUser" Visible="false">
@@ -190,9 +188,8 @@
                             <asp:Button ID="btnAddUser" runat="server" Text="Add user" OnClick="btnAddUser_Click" />
                         </asp:Panel>
                         <asp:Table CssClass="tblRepeaterUsers" ID="tblRepeaterUsers" runat="server"></asp:Table>
-                    </ContentTemplate>
-                </ajaxToolkit:TabPanel>
-            </ajaxToolkit:TabContainer>
+                </div>
+            </div>
         </asp:Panel>
         <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" /> &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
     </section>

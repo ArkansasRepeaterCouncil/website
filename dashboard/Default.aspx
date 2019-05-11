@@ -32,26 +32,26 @@
     <section>
 	    <h2>Admin</h2>
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <ajaxToolkit:TabContainer ID="TabContainer1" runat="server" ActiveTabIndex="0" CssClass="noadminTab">
-            <ajaxToolkit:TabPanel ID="TabPanel1" runat="server" HeaderText="Tools" ForeColor="#fff" BackColor="#000" >
-                <ContentTemplate>
-                    <p>These don't work yet, don't bother.</p>
-                    <asp:Button ID="Button1" runat="server" Text="Reset a user's password" Enabled="false" />
-                    <asp:Button ID="Button2" runat="server" Text="Look up a user" Enabled="false" />
-                    <asp:Button ID="Button3" runat="server" Text="Edit a repeater" Enabled="false" />
-                </ContentTemplate>
-            </ajaxToolkit:TabPanel>
-            <ajaxToolkit:TabPanel ID="TabPanel2" runat="server" HeaderText="Expired repeaters" CssClass="adminTab" ForeColor="#fff" BackColor="#000">
-                <ContentTemplate>
-                    <asp:Panel ID="pnlExpiredRepeaters" runat="server"></asp:Panel>
-                </ContentTemplate>
-            </ajaxToolkit:TabPanel>
-            <ajaxToolkit:TabPanel ID="TabPanel3" runat="server" HeaderText="Open requests" CssClass="adminTab" ForeColor="#fff" BackColor="#000">
-                <ContentTemplate>
-                    <asp:Panel ID="pnlOpenRequests" runat="server"></asp:Panel>
-                </ContentTemplate>
-            </ajaxToolkit:TabPanel>
-        </ajaxToolkit:TabContainer>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tab-1">Tools</a></li>
+                <li><a href="#tab-2">Expired repeaters</a></li>
+                <li><a href="#tab-3">Open requests</a></li>
+            </ul>
+        
+            <div id="tab-1" >
+                <p>These don't work yet, don't bother.</p>
+                <asp:Button ID="Button1" runat="server" Text="Reset a user's password" Enabled="false" />
+                <asp:Button ID="Button2" runat="server" Text="Look up a user" Enabled="false" />
+                <asp:Button ID="Button3" runat="server" Text="Edit a repeater" Enabled="false" />
+            </div>
+            <div id="tab-2">
+                <asp:Panel ID="pnlExpiredRepeaters" runat="server"></asp:Panel>
+            </div>
+            <div id="tab-3">
+                <asp:Panel ID="pnlOpenRequests" runat="server"></asp:Panel>
+            </div>
+        </div>
     </section>
     </asp:Panel>
     <section>

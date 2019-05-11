@@ -43,25 +43,19 @@ public partial class update_Default : System.Web.UI.Page
 			if (repeater.Status == "6")
 			{
 				// formPanel.Controls
-				foreach (Control tab in TabContainer1.Controls)
+				foreach (Control child in formPanel.Controls)
 				{
-					foreach (Control content in tab.Controls)
+					if (child is TextBox)
 					{
-						foreach (Control child in content.Controls)
-						{
-							if (child is TextBox)
-							{
-								((TextBox)child).Enabled = false;
-							}
-							else if (child is DropDownList)
-							{
-								((DropDownList)child).Enabled = false;
-							}
-							else if (child is CheckBox)
-							{
-								((CheckBox)child).Enabled = false;
-							}
-						}
+						((TextBox)child).Enabled = false;
+					}
+					else if (child is DropDownList)
+					{
+						((DropDownList)child).Enabled = false;
+					}
+					else if (child is CheckBox)
+					{
+						((CheckBox)child).Enabled = false;
 					}
 				}
 				btnChangeTrustee.Enabled = false;
