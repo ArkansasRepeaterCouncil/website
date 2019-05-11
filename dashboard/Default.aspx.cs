@@ -167,7 +167,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 				using (TableRow row = new TableRow())
 				{
 					row.AddCell((string)repeater.YearsExpired + " years");
-					row.AddCell((string)repeater.ID);
+					row.AddCell(string.Format("<a target='_blank' href='/update/?id={0}'>{0}</a>", (string)repeater.ID));
 					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{0}</a>", (string)repeater.Callsign));
 					row.AddCell((string)repeater.Output);
 					row.AddCell((string)repeater.City);
