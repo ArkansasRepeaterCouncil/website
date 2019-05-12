@@ -298,10 +298,11 @@ public partial class dashboard_Default : System.Web.UI.Page
 				{
 					row.AddCell((string)request.ID);
 					row.AddCell((string)request.RequestedDate);
-					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{0}</a>", (string)request.RequestedBy));
+					row.AddCell((string)request.RequestedBy);
 					row.AddCell((string)request.Latitude);
 					row.AddCell((string)request.Longitude);
 					row.AddCell((string)request.OutputFrequency);
+					row.CssClass = "requestDetails";
 					table.Rows.Add(row);
 				}
 
@@ -333,6 +334,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 						row.AddCell((string)workflow.TimeStamp);
 						row.AddCell((string)workflow.LastReminderSent);
 						row.AddCell((string)workflow.Note);
+						row.CssClass = "workflowDetails";
 						table.Rows.Add(row);
 					}
 				}
