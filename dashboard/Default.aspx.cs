@@ -341,5 +341,11 @@ public partial class dashboard_Default : System.Web.UI.Page
 			}
 			pnlOpenRequests.Controls.Add(table);
 		}
+		else
+		{
+			Label label = new Label();
+			label.Text = "There are no coordination requests currently open.";
+			pnlOpenRequests.Controls.Add(label);
+		}
 	}
 }
