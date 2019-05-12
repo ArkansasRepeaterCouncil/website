@@ -286,11 +286,12 @@ public partial class dashboard_Default : System.Web.UI.Page
 				using (TableRow headerRow = new TableRow())
 				{
 					headerRow.AddCell("ID", "requestHeader");
-					headerRow.AddCell("Requested on", "requestHeader");
-					headerRow.AddCell("Requested by", "requestHeader");
-					headerRow.AddCell("Latitude", "requestHeader");
-					headerRow.AddCell("Longitude", "requestHeader");
-					headerRow.AddCell("Transmit frequency", "requestHeader");
+					headerRow.AddCell("Requested on");
+					headerRow.AddCell("Requested by");
+					headerRow.AddCell("Latitude");
+					headerRow.AddCell("Longitude");
+					headerRow.AddCell("Transmit frequency");
+					headerRow.CssClass = "requestHeader";
 					table.Rows.Add(headerRow);
 				}
 
@@ -308,18 +309,20 @@ public partial class dashboard_Default : System.Web.UI.Page
 
 				using (TableRow row = new TableRow())
 				{
-					row.AddCell("Workflows", "workflowDivider", 6);
+					row.AddCell("Workflows", 6);
+					row.CssClass = "workflowDivider";
 					table.Rows.Add(row);
 				}
 
 				using (TableRow headerRow = new TableRow())
 				{
-					headerRow.AddCell("&nbsp;", "workflowHeader");
-					headerRow.AddCell("State", "workflowHeader");
-					headerRow.AddCell("Status", "workflowHeader");
-					headerRow.AddCell("Time stamp", "workflowHeader");
-					headerRow.AddCell("Last reminder sent", "workflowHeader");
-					headerRow.AddCell("Note", "workflowHeader");
+					headerRow.AddCell("&nbsp;");
+					headerRow.AddCell("State");
+					headerRow.AddCell("Status");
+					headerRow.AddCell("Time stamp");
+					headerRow.AddCell("Last reminder");
+					headerRow.AddCell("Note");
+					headerRow.CssClass = "workflowHeader";
 					table.Rows.Add(headerRow);
 				}
 
