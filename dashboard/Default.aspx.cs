@@ -27,13 +27,13 @@ public partial class dashboard_Default : System.Web.UI.Page
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 			string[] fields = { "Callsign", "OutputFrequency", "City", "Status", "DateUpdated" };
+			bool showAdminTools = false;
 
 			foreach (dynamic obj in data)
 			{
 				if (obj.ID < 0)
 				{
-					pnlAdminTools.Visible = true;
-					loadExpiredRepeatersReport();
+					showAdminTools = true;
 				}
 				else
 				{
@@ -57,6 +57,13 @@ public partial class dashboard_Default : System.Web.UI.Page
 
 					RepeatersTable.Rows.Add(row);
 				}
+			}
+
+			if (showAdminTools)
+			{
+				pnlAdminTools.Visible = true;
+				loadExpiredRepeatersReport();
+				loadOpenRequestsReport();
 			}
 		}
 	}
@@ -246,5 +253,91 @@ public partial class dashboard_Default : System.Web.UI.Page
 		}
 		pnlExpiredRepeaters.Controls.Add(table);
 
+	}
+
+	protected void loadOpenRequestsReport()
+	{
+		System.Web.UI.ControlCollection pnl = pnlExpiredRepeaters.Controls;
+		string json = "";
+
+		if (ViewState["ReportOpenCoordinationRequests"] == null)
+		{
+			using (var webClient = new System.Net.WebClient())
+			{
+				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportOpenCoordinationRequests?callsign={0}&password={1}", creds.Username, creds.Password);
+				json = webClient.DownloadString(url);
+				ViewState["ReportOpenCoordinationRequests"] = json;
+			}
+		}
+		else
+		{
+			json = ViewState["ReportOpenCoordinationRequests"].ToString();
+		}
+
+		dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+		Table table = new Table();
+		if (data.Report != null)
+		{
+			foreach (dynamic item in data.Report.Data)
+			{
+				dynamic request = item.Request;
+
+				using (TableRow headerRow = new TableRow())
+				{
+					headerRow.AddCell("ID", "requestHeader");
+					headerRow.AddCell("Requested on", "requestHeader");
+					headerRow.AddCell("Requested by", "requestHeader");
+					headerRow.AddCell("Latitude", "requestHeader");
+					headerRow.AddCell("Longitude", "requestHeader");
+					headerRow.AddCell("Transmit frequency", "requestHeader");
+					table.Rows.Add(headerRow);
+				}
+
+				using (TableRow row = new TableRow())
+				{
+					row.AddCell((string)request.ID);
+					row.AddCell((string)request.RequestedDate);
+					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{0}</a>", (string)request.RequestedBy));
+					row.AddCell((string)request.Latitude);
+					row.AddCell((string)request.Longitude);
+					row.AddCell((string)request.OutputFrequency);
+					table.Rows.Add(row);
+				}
+
+				using (TableRow row = new TableRow())
+				{
+					row.AddCell("Workflows", "workflowDivider", 6);
+					table.Rows.Add(row);
+				}
+
+				using (TableRow headerRow = new TableRow())
+				{
+					headerRow.AddCell("&nbsp;", "workflowHeader");
+					headerRow.AddCell("State", "workflowHeader");
+					headerRow.AddCell("Status", "workflowHeader");
+					headerRow.AddCell("Time stamp", "workflowHeader");
+					headerRow.AddCell("Last reminder sent", "workflowHeader");
+					headerRow.AddCell("Note", "workflowHeader");
+					table.Rows.Add(headerRow);
+				}
+
+				foreach (dynamic thing in request.Workflows)
+				{
+					dynamic workflow = thing.Workflow;
+					using (TableRow row = new TableRow())
+					{
+						row.AddCell((string)"&nbsp;");
+						row.AddCell((string)workflow.State);
+						row.AddCell((string)workflow.Status);
+						row.AddCell((string)workflow.TimeStamp);
+						row.AddCell((string)workflow.LastReminderSent);
+						row.AddCell((string)workflow.Note);
+						table.Rows.Add(row);
+					}
+				}
+			}
+			pnlOpenRequests.Controls.Add(table);
+		}
 	}
 }
