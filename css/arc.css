@@ -241,3 +241,27 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
 #pageContent table tr.workflowHeader td:nth-of-type(1), #pageContent table tr.workflowDetails td:nth-of-type(1) {
     border-style: none;
 }
+
+#pageContent table tr.expiredRepeaterHeader td {
+    border-style: none;
+    font-weight: bold;
+}
+
+#pageContent table tr.expiredRepeaterNotes td {
+    border-style: none;
+    padding-left: 30px;
+}
+
+    #pageContent table tr.expiredRepeaterNotes td ul {
+        margin-bottom: 10px;
+    }
+
+#pageContent table tr.expiredRepeaterNewNote td {
+    border-style: none;
+    padding-left: 60px;
+    padding-bottom: 60px;
+}
+
+    #pageContent table tr.expiredRepeaterNewNote td input {
+        margin-right: 10px;
+    }
