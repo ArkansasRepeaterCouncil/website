@@ -161,4 +161,21 @@ public static class Utilities
 		cell.ColumnSpan = colSpan;
 		row.Cells.Add(cell);
 	}
+
+	public static void AddCell(this System.Web.UI.WebControls.TableRow row, string cellContents, string cssClass)
+	{
+		System.Web.UI.WebControls.TableCell cell = new System.Web.UI.WebControls.TableCell();
+		cell.Text = cellContents;
+		cell.CssClass = cssClass;
+		row.Cells.Add(cell);
+	}
+
+	public static void AddCell(this System.Web.UI.WebControls.TableRow row, string cellContents, string cssClass, int colSpan)
+	{
+		System.Web.UI.WebControls.TableCell cell = new System.Web.UI.WebControls.TableCell();
+		cell.Text = cellContents;
+		cell.CssClass = cssClass;
+		cell.ColumnSpan = colSpan;
+		row.Cells.Add(cell);
+	}
 }
