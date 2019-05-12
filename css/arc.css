@@ -221,3 +221,25 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
     border: 1px solid #cecece;
     background-color: rgba(0, 0 , 0, 0.2);
 }
+
+#pageContent table tr.requestHeader td, #pageContent table tr.workflowHeader td {
+    border-style: none;
+    border-bottom: 1px #fff solid;
+    font-weight: bold;
+}
+
+    #pageContent table tr.requestHeader td:nth-of-type(n+2) {
+        padding-top: 0px;
+    }
+
+#pageContent table tr.workflowDivider {
+    display: none;
+}
+
+#pageContent table tr.workflowHeader td {
+    padding-top: 30px;
+}
+
+#pageContent table tr.workflowHeader td:nth-of-type(1), #pageContent table tr.workflowDetails td:nth-of-type(1) {
+    border-style: none;
+}
