@@ -31,7 +31,7 @@
     <asp:Panel ID="pnlAdminTools" runat="server" Visible="false">
     <section>
 	    <h2>Admin</h2>
-        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        
         <div id="tabs">
             <ul>
                 <li><a href="#tab-1">Tools</a></li>
