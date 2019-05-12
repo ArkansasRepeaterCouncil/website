@@ -6,11 +6,6 @@ public partial class dashboard_Default : System.Web.UI.Page
 {
 	Credentials creds;
 
-	protected void Page_Init(object sender, EventArgs e)
-	{
-
-	}
-
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		creds = Utilities.GetExistingCredentials();
@@ -168,6 +163,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 					headerRow.AddCell("Sponsor");
 					headerRow.AddCell("Trustee");
 					headerRow.AddCell("Contact info");
+					headerRow.CssClass = "expiredRepeaterHeader";
 					table.Rows.Add(headerRow);
 				}
 
@@ -203,7 +199,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 						strContact += (string)repeater.Trustee.WorkPhone + " (work)";
 					}
 					row.AddCell(strContact);
-
+					row.CssClass = "expiredRepeaterData";
 					table.Rows.Add(row);
 				}
 
@@ -224,6 +220,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 						strNotes = "<ul><li><em>There are no notes on record for this repeater.</em></li></ul>";
 					}
 					row.AddCell(strNotes, 8);
+					row.CssClass = "expiredRepeaterNotes";
 					table.Rows.Add(row);
 				}
 
@@ -246,7 +243,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 					cell.Controls.Add(button);
 					cell.ColumnSpan = 8;
 					row.Cells.Add(cell);
-
+					row.CssClass = "expiredRepeaterNewNote";
 					table.Rows.Add(row);
 				}
 			}
