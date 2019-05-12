@@ -211,7 +211,7 @@ public partial class dashboard_Default : System.Web.UI.Page
 						strNotes = "<ul>";
 						foreach (dynamic obj in repeater.Notes)
 						{
-							strNotes += "<li>" + obj.Note.Text + " -" + obj.Note.User.Name + ", " + obj.Note.User.Callsign + " (" + obj.Note.Timestamp + ")</li>";
+							strNotes += string.Format("<li>{0} - {1} ({2}, {3})</li>", obj.Note.Timestamp, obj.Note.Text, obj.Note.User.Name, obj.Note.User.Callsign);
 						}
 						strNotes += "</ul>";
 					}
