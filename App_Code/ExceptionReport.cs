@@ -23,6 +23,8 @@ public class ExceptionReport
 	public string IssueURL;
 	[JsonIgnore]
 	public string InnerExceptionMessage;
+	[JsonIgnore]
+	public Issue issue;
 
 	public ExceptionReport(Exception ex)
 	{
@@ -38,15 +40,14 @@ public class ExceptionReport
 			string serviceUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "LogError";
 			string result = Utilities.PostJsonToUrl(serviceUrl, this);
 
-			Issue i = new Issue(ex);
-			IssueURL = i.Submit();
+			issue = new Issue(ex);
 		}
 	}
 
 	public ExceptionReport(Exception ex, string context, params string[] addlData)
 	{
 		url = HttpContext.Current.Request.Url.ToString();
-		if (!url.StartsWith("http://localhost:"))
+		if (url.StartsWith("http://localhost:"))
 		{
 			querystring = HttpContext.Current.Request.QueryString.ToString();
 			message = ex.Message;
@@ -72,7 +73,7 @@ public class ExceptionReport
 				issue.body += "\r\n\r\n" + addlData[x];
 			}
 			issue.title = context;
-			IssueURL = issue.Submit();
+			issue = new Issue(ex);
 		}
 	}
 }

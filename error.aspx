@@ -1,22 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="error.aspx.cs" Inherits="error" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <style type="text/css">
+        .auto-style1 {
+            text-decoration: underline;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
         <section>
 		<h1>Hang on a sec...</h1>
-		<p>
-			Ok, stay calm and keep reading.  There's been an error - but before you freak out just know that the website has automatically told us about it.
-		</p>
-        <asp:label ID="lblDetails" runat="server" text=""></asp:label>
-        <p>In the meantime, here are some things you can try:</p>
+		<p>Ok, stay calm and keep reading.  There's been an error.</p>
+        <p>Here are some things you can try:</p>
         <ul>
             <li>Open the page you were on and try again. This hardly ever solves anything, but it's a simple thing to try.</li>
             <li>Make sure you aren't doing something <span style="text-decoration:line-through;">stupid</span> unexpected like entering a letter in a number field.</li>
-            <li>Wait a few days for us to address the problem then try again.  If you've already waited and you're still getting an error, you might try to contact one of us to make sure we're on it.</li>
         </ul>
+            
+        If you would like to open a support request, please do so at <a href="https://github.com/ArkansasRepeaterCouncil/website/issues" target="_blank">https://github.com/ArkansasRepeaterCouncil/website/issues</a>.
     </section>
 </asp:Content>
 
