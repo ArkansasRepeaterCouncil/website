@@ -16,6 +16,7 @@
     <section>
 		<h1>Procedures</h1>
 		<ul>
+            <li><a href="#faq">Frequently asked questions</a></li>
 			<li><a href="#principles">Principles</a></li>
 			<li><a href="#guidelines">Guidelines</a></li>
 			<li><a href="#procedures">Procedures</a><br />
@@ -27,6 +28,21 @@
 			</li>
 		</ul>
 	</section>
+
+	<a class="namedAnchor" name="faq"></a>
+	<section>
+		<h2>Frequently asked questions</h2>
+        <ol>
+            <li>I've heard that there are no frequencies available.  Is that true?<ul>
+                <li>In most cases, there are plently of frequencies available.&nbsp; It would be difficult for us to say one way or the other without access to all of the surrounding states&#39; databases.&nbsp; But from what we&#39;ve seen so far, there are frequencies available in all corners of the state.<br />&nbsp;</li>
+                </ul>
+            </li>
+            <li>Am I required to coordinate my repeater?<ul>
+                <li>No you are not.&nbsp; However, if someone else coordinates the frequency you are using, then we (and the ARRL) will side with the coordinated repeater.</li>
+                </ul>
+            </li>
+        </ol>
+    </section>
 
 	<a class="namedAnchor" name="procedures"></a>
 	<section>
