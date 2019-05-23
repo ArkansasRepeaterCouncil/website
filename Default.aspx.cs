@@ -17,6 +17,12 @@ public partial class _Default : System.Web.UI.Page
 			Response.Redirect("~/nopc/?nopc=" + urlKey);
 		}
 
+		string fbclid = Request.QueryString["fbclid"];
+		if ((fbclid != null) && (fbclid != ""))
+		{
+			Response.Redirect("~/");
+		}
+
 		string json = Utilities.GetResponseFromUrl(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterUpdateNumbers");
 		dynamic stats = JsonConvert.DeserializeObject<dynamic>(json);
 
