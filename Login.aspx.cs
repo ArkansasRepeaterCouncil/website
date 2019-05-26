@@ -17,7 +17,10 @@ public partial class Login : System.Web.UI.Page
 	{
 		using (var webClient = new System.Net.WebClient())
 		{
-			string parameters = string.Format("callsign={0}&password={1}", login1.UserName, login1.Password);
+			string username = login1.UserName.Trim();
+			string password = login1.Password.Trim();
+
+			string parameters = string.Format("callsign={0}&password={1}", username, password);
 			string strUrl = string.Format("{0}{1}{2}", System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"], "DoLogin?", parameters);
 			string json = webClient.DownloadString(strUrl);
 			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
@@ -26,7 +29,7 @@ public partial class Login : System.Web.UI.Page
 			{
 				e.Authenticated = true;
 
-				HttpCookie ckLogin = new HttpCookie("login", Utilities.Base64Encode(login1.UserName + "|" + login1.Password));
+				HttpCookie ckLogin = new HttpCookie("login", Utilities.Base64Encode(username + "|" + password));
 				if (login1.RememberMeSet)
 				{
 					ckLogin.Expires = DateTime.Now.AddDays(364);
