@@ -10,7 +10,7 @@ public partial class update_Default : System.Web.UI.Page
 	Credentials creds;
 	Repeater repeater;
 	string repeaterId;
-	bool enforceBusinessRules = false;
+	bool enforceBusinessRules = true;
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
