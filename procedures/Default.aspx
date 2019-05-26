@@ -17,15 +17,29 @@
 		<h1>Procedures</h1>
 		<ul>
             <li><a href="#faq">Frequently asked questions</a></li>
-			<li><a href="#principles">Principles</a></li>
-			<li><a href="#guidelines">Guidelines</a></li>
 			<li><a href="#procedures">Procedures</a><br />
                 <ul>
-                    <li><a href="coordinationprocedure">Coordination requests</a></li>
-                    <li><a href="updateprocedure">Updates</a></li>
-                    <li><a href="transferprocedure">Transfers</a></li>
+                    <li><a href="#coordinationprocedure">Coordination requests</a></li>
+                    <li><a href="#updateprocedure">Updates</a></li>
+                    <li><a href="#transferprocedure">Transfers</a></li>
                 </ul>
 			</li>
+			<li><a href="#principles">Principles</a><br />
+                <ul>
+                    <li><a href="#deviationlimits">Deviation limits</a></li>
+                </ul>
+			</li>
+			<li><a href="#guidelines">Guidelines</a><br />
+                <ul>
+                    <li><a href="#bandplans">Band plans</a></li>
+                    <li><a href="#geographicalseparation">Geographical separation of repeaters</a></li>
+                    <li><a href="#adjacentfrequency">Adjacent frequency separation</a></li>
+                    <li><a href="#miscspec">Miscellaneous specification & definitions</a></li>
+                    <li><a href="#constructionperiod">Repeater construction period</a></li>
+                    <li><a href="#coordinationmodification">Modification to existing coordination</a></li>
+                </ul>
+			</li>
+
 		</ul>
 	</section>
 
@@ -109,8 +123,11 @@ their input.
             After the coordination is completed and the repeater is on the air, if there is any change to the operating parameters (transmit power, antenna height, ERP,
 location, or frequency) outside of the published deviation limits below, the coordination is automatically
 void and the frequency will be returned to the pool for reassignment. 
-</p><p>
-Deviation limits are as follows:</p>
+</p>
+<a name="deviationlimits" class="namedAnchor"></a>
+        <h3>Deviation limits</h3>
+<p>
+Repeaters may be changed, but the following specifications are only allowed deviations as follows:</p>
     <ul>
     <li>Power - No more than 5 watts from coordinated power (at duplexer output)</li>
     <li>Antenna height - No more than +50 ft. from coordinated height</li>
@@ -142,16 +159,18 @@ pre-set level.</p>
 	<section>
 		<h2>Guidelines</h2>
 		The Arkansas Repeater Council requires that repeater records be updated every 3 years.
+        <a class="namedAnchor" name="bandplans"></a>
 		<h3>Band plans</h3>
 The member state coordinators shall adhere as closely as possible to the use of the various
 band plans as adopted by the Mid-America Coordination Council.
 Use of the modified band plans is at the option of the local State coordinators with the consent of adjacent MACC state coordinators.
+        <a class="namedAnchor" name="geographicalseparation"></a>
 		<h3>Geographical separation of repeaters</h3>
 The minimum geographical spacing between the two closest points of the systems in question
 shall be 90 miles (effective 03-02-2013 per vote at annual membership meeting).
 This spacing is considered valid for systems on the 52, 144, 220, 440, 902 and
 1215 MHz bands. This applies to separations in and out of the state.
-
+        <a class="namedAnchor" name="adjacentfrequency"></a>
 		<h3>Adjacent frequency separation</h3>
 		<table>
 			<tr><td class="auto-style2">Band (MHz)</td><td class="auto-style2">Spacing</td><td class="auto-style2">Separation</td><td class="auto-style1">&nbsp;</td><td class="auto-style2">Band (MHz)</td><td class="auto-style2">Spacing</td><td class="auto-style2">Separation</td></tr>
@@ -165,7 +184,7 @@ This spacing is considered valid for systems on the 52, 144, 220, 440, 902 and
 			<tr><td>&nbsp;</td><td>60 kHz</td><td>No minimum</td><td class="auto-style1">&nbsp;</td><td>&nbsp;</td><td>50 kHz</td><td>1 mile</td></tr>
 			<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="auto-style1">&nbsp;</td><td>&nbsp;</td><td>75 kHz</td><td>No minimum</td></tr>
 			</table>
-
+        <a class="namedAnchor" name="miscspec"></a>
 		<h3>Miscellaneous specifications &amp; definitions</h3>
 		<ul>
 			<li>Closed repeater: Applications will be coordinated as SNP repeaters.</li>
@@ -176,6 +195,7 @@ This spacing is considered valid for systems on the 52, 144, 220, 440, 902 and
       be granted by the coordinator upon request by the repeater owner / trustee. After repairs are
       completed, the repeater must be returned to its coordinated site within 72 hours. </li>
 		</ul>
+        <a class="namedAnchor" name="constructionperiod"></a>
 	    <h3>Repeater Construction Period</h3>
 		    Upon approval of a request for coordination, a period of 180 days is allowed to place the repeater into operation. Operation is defined as "fully tested repeater operation from the final repeater location or site". If the system is not in operation after this construction period, the coordination is automatically
     withdrawn. If however, during this 180 day period, the applicant determines that he will be unable to place the repeater on the assigned frequency into operation, he may request an extension of no more than 60 days. If the construction and installation of the repeater system is not completed within this 
@@ -184,7 +204,7 @@ This spacing is considered valid for systems on the 52, 144, 220, 440, 902 and
     The applicant must update the repeater&#39;s record online at the time the repeater is placed into regular
     service for the applicant to retain coordination.
     If a previously constructed repeater system is rendered inoperative for more than 60 days, the sponsor must update the repeater&#39;s record to reflect its status as &quot;Temporarily off the air&quot;. The sponsor will then have 90 days to return the repeater system to the air. The sponsor will update the repeater&#39;s record when the system is returned to operation.
-		
+		    <a class="namedAnchor" name="coordinationmodification"></a>
 		    <h3>Modification to existing coordination</h3>
 
     Any modification or change in the original coordination (i.e.- TX Power, Ant. Height, ERP, Location or Frequency) will automatically void the coordination. Deviations allowed are set forth in the coordination guidelines, however the repeater&#39;s record must be updated online within 30 days of any allowed changes. 
