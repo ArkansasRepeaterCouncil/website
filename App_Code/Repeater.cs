@@ -249,7 +249,11 @@ public class Repeater
 					oldValue = "";
 				}
 
-				if ((!object.Equals(oldValue, newValue)) && (fieldInfo.Name != "DateUpdated") && (fieldInfo.Name != "Note"))
+				if (fieldInfo.Name == "Status")
+				{
+					strReturn += String.Format("• {0} was changed from `{1}` to `{2}`\r\n", fieldInfo.Name, GetRepeaterStatusDescription(oldValue.ToString()), GetRepeaterStatusDescription(newValue.ToString()));
+				}
+				else if ((!object.Equals(oldValue, newValue)) && (fieldInfo.Name != "DateUpdated") && (fieldInfo.Name != "Note"))
 				{
 					strReturn += String.Format("• {0} was changed from `{1}` to `{2}`\r\n", fieldInfo.Name, oldValue.ToString(), newValue.ToString());
 				}
@@ -272,5 +276,34 @@ public class Repeater
 		password = "";
 		Latitude = Latitude.Substring(0, Latitude.IndexOf('.')) + "xxxx";
 		Longitude = Longitude.Substring(0, Longitude.IndexOf('.')) + "xxxx";
+	}
+
+	public string GetRepeaterStatusDescription(string statusID)
+	{
+		string strStatus = string.Empty;
+		switch (statusID)
+		{
+			case "1":
+				strStatus = "Proposed";
+				break;
+			case "2":
+				strStatus = "Under construction";
+				break;
+			case "3":
+				strStatus = "Operational";
+				break;
+			case "4":
+				strStatus = "Temporarily off-the-air";
+				break;
+			case "5":
+				strStatus = "Suspected off-the-air";
+				break;
+			case "6":
+				strStatus = "De-coordinated";
+				break;
+			default:
+				break;
+		}
+		return strStatus;
 	}
 }
