@@ -30,10 +30,10 @@
 		<p>
 			Repeater coordination and the day-to-day operations of the Council is done by a team of volunteers.  The coordination team consists of:
 			<ul id="volunteerList">
-				<li><img src="/images/tem.png" alt="Drawing of Tem" class="avatar">Tem Moore, N5KWL<br>Chief Cat Herder In Charge</li>
-                <li><img src="/images/luke.png" alt="Drawing of Luke" class="avatar">Luke Williams, AE5AU<br>Executive Information Sensei</li>
-				<li><img src="/images/joshua.png" alt="Drawing of Joshua" class="avatar">Joshua Carroll, N5JLC<br>Galactic Viceroy of Programming</li>
-                <li><img src="/images/nopic.png" alt="Faceless outline of a person" class="avatar">John Nordlund, AD5FU<br>Terrestrial Electromagnetic Wave Guide</li>
+				<li><img src="/images/tem.png" alt="Drawing of Tem" class="avatar">Tem Moore, N5KWL (<a href="https://www.qrz.com/db/n5kwl">QRZ</a>)<br>Chief Cat Herder In Charge</li>
+                <li><img src="/images/luke.png" alt="Drawing of Luke" class="avatar">Luke Williams, AE5AU (<a href="https://www.qrz.com/db/ae5au">QRZ</a>)<br>Executive Information Sensei</li>
+				<li><img src="/images/joshua.png" alt="Drawing of Joshua" class="avatar">Joshua Carroll, N5JLC (<a href="https://www.qrz.com/db/n5jlc">QRZ</a>)<br>Galactic Viceroy of Programming</li>
+                <li><img src="/images/nopic.png" alt="Faceless outline of a person" class="avatar">John Nordlund, AD5FU (<a href="https://www.qrz.com/db/ad5fu">QRZ</a>)<br>Terrestrial Electromagnetic Wave Guide</li>
 			</ul>
 		</p>
 	</section>
