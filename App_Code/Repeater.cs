@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Reflection;
 
 /// <summary>
@@ -211,11 +212,6 @@ public class Repeater
 		{
 			ChangeLog = CreateChangeLog(credentials, originalRepeater);
 
-			if (Analog_Width.Trim() == string.Empty)
-			{
-				Analog_Width = "0";
-			}
-
 			callsign = credentials.Username;
 			password = credentials.Password;
 			DateUpdated = DateTime.UtcNow.ToString();
@@ -233,7 +229,6 @@ public class Repeater
 
 	private string CreateChangeLog(Credentials credentials, Repeater oldRepeater)
 	{
-		//Type thisType = this.GetType();
 		string strReturn = "";
 
 		// only use public properties
@@ -249,13 +244,23 @@ public class Repeater
 					oldValue = "";
 				}
 
+				string fieldInfoName = fieldInfo.Name;
+				string oldValueToString = oldValue.ToString();
+				string newValueToString = newValue.ToString();
+
 				if (fieldInfo.Name == "Status")
 				{
-					strReturn += String.Format("• {0} was changed from `{1}` to `{2}`\r\n", fieldInfo.Name, GetRepeaterStatusDescription(oldValue.ToString()), GetRepeaterStatusDescription(newValue.ToString()));
+					oldValueToString = GetRepeaterStatusDescription(oldValue.ToString());
+					newValueToString = GetRepeaterStatusDescription(newValue.ToString());
 				}
-				else if ((!object.Equals(oldValue, newValue)) && (fieldInfo.Name != "DateUpdated") && (fieldInfo.Name != "Note"))
-				{
-					strReturn += String.Format("• {0} was changed from `{1}` to `{2}`\r\n", fieldInfo.Name, oldValue.ToString(), newValue.ToString());
+
+				string[] strArrDontNotate = { "DateUpdated", "Note", "TrusteeID" };
+
+				if (!object.Equals(oldValue, newValue)) {
+					if (!strArrDontNotate.Any(fieldInfo.Name.Contains))
+					{
+						strReturn += String.Format(" • {0} was changed from `{1}` to `{2}`\r\n", fieldInfoName, oldValueToString, newValueToString);
+					}
 				}
 			}
 		}
