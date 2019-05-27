@@ -254,6 +254,12 @@ public class Repeater
 					newValueToString = GetRepeaterStatusDescription(newValue.ToString());
 				}
 
+				if (fieldInfoName == "Autopatch")
+				{
+					oldValueToString = GetRepeaterAutopatchDescription(oldValue.ToString());
+					newValueToString = GetRepeaterAutopatchDescription(newValue.ToString());
+				}
+
 				string[] strArrDontNotate = { "DateUpdated", "Note", "TrusteeID" };
 
 				if (!object.Equals(oldValue, newValue)) {
@@ -310,5 +316,25 @@ public class Repeater
 				break;
 		}
 		return strStatus;
+	}
+
+	public string GetRepeaterAutopatchDescription(string autopatch)
+	{
+		string strDesc = string.Empty;
+		switch (autopatch)
+		{
+			case "0":
+				strDesc = "None";
+				break;
+			case "1":
+				strDesc = "Open";
+				break;
+			case "3":
+				strDesc = "Closed";
+				break;
+			default:
+				break;
+		}
+		return strDesc;
 	}
 }
