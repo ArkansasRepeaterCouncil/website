@@ -247,9 +247,21 @@ public partial class update_Default : System.Web.UI.Page
 			// Create repeater object from fields
 			Repeater newRepeater = new Repeater(txtID.Text, ddlType.SelectedValue, txtRepeaterCallsign.Text, trusteeId, trusteeCallsign, ddlStatus.SelectedValue, txtCity.Text, txtSiteName.Text, txtOutputFrequency.Text, txtInputFrequency.Text, txtSponsor.Text, txtLatitude.Text, txtLongitude.Text, txtAMSL.Text, txtERP.Text, txtOutputPower.Text, txtAntennaGain.Text, txtAntennaHeight.Text, txtAnalog_InputAccess.Text, txtAnalog_OutputAccess.Text, txtAnalog_Width.Text, ddlDSTARmodule.SelectedValue, ddlDMR_ColorCode.SelectedValue, txtDMR_ID.Text, ddlDMR_Network.SelectedValue, txtP25_NAC.Text, txtNXDN_RAN.Text, txtYSF_DSQ.Text, ddlAutopatch.SelectedValue, chkEmergencyPower.Checked, chkLinked.Checked, chkRACES.Checked, chkARES.Checked, chkWideArea.Checked, chkWeather.Checked, chkExperimental.Checked, txtDateCoordinated.Text, txtDateUpdated.Text, txtDateDecoordinated.Text, txtDateCoordinationSource.Text, txtDateConstruction.Text, txtState.Text, repeater.CoordinatedLatitude, repeater.CoordinatedLongitude, repeater.CoordinatedOutputPower, repeater.CoordinatedAntennaHeight, txtNote.Text.Trim());
 
+			if (chkOverride.Checked) {
+				if (newRepeater.Note.Trim() != string.Empty)
+				{
+					newRepeater.Note += "\r\n\r\n";
+				}
+				newRepeater.Note += "** Coordinator override **";
+			}
+
 			// Save repeater
 			newRepeater.Save(creds, repeater);
 			lblChangesSaved.Visible = true;
+
+			// Reset override
+			pnlOverride.Visible = false;
+			chkOverride.Checked = false;
 		}
 	}
 
@@ -278,7 +290,7 @@ public partial class update_Default : System.Web.UI.Page
 
 	protected void validLocation_ServerValidate(object source, ServerValidateEventArgs args)
 	{
-		if (enforceBusinessRules)
+		if ((enforceBusinessRules) && (!chkOverride.Checked))
 		{
 			try
 			{
@@ -299,6 +311,7 @@ public partial class update_Default : System.Web.UI.Page
 				else
 				{
 					args.IsValid = false;
+					ShowOverrideIfIsCoordinatorForRepeater();
 				}
 			}
 			catch (Exception)
@@ -337,7 +350,7 @@ public partial class update_Default : System.Web.UI.Page
 
 	protected void validAntennaHeight_ServerValidate(object source, ServerValidateEventArgs args)
 	{
-		if (enforceBusinessRules)
+		if ((enforceBusinessRules) && (!chkOverride.Checked))
 		{
 			Double newHeight = Double.Parse(txtAntennaHeight.Text);
 			Double allowedHeight = Double.Parse(repeater.CoordinatedAntennaHeight) + 15.24;
@@ -349,6 +362,7 @@ public partial class update_Default : System.Web.UI.Page
 			else
 			{
 				args.IsValid = false;
+				ShowOverrideIfIsCoordinatorForRepeater();
 			}
 		}
 		else
@@ -359,7 +373,7 @@ public partial class update_Default : System.Web.UI.Page
 
 	protected void validOutputPower_ServerValidate(object source, ServerValidateEventArgs args)
 	{
-		if (enforceBusinessRules)
+		if ((enforceBusinessRules) && (!chkOverride.Checked))
 		{
 			int newPower = int.Parse(txtOutputPower.Text);
 			int allowedPower = int.Parse(repeater.CoordinatedOutputPower) + 5;
@@ -371,6 +385,7 @@ public partial class update_Default : System.Web.UI.Page
 			else
 			{
 				args.IsValid = false;
+				ShowOverrideIfIsCoordinatorForRepeater();
 			}
 		}
 		else
@@ -417,5 +432,38 @@ public partial class update_Default : System.Web.UI.Page
 
 		LoadRepeaterUsers(repeaterId);
 		pnlAddUser.Visible = false;
+	}
+
+	protected void ShowOverrideIfIsCoordinatorForRepeater()
+	{
+		if (hdnIsCoordinatorForRepeater.Value == "")
+		{
+			try
+			{
+				// Check if they are a coordinator
+				using (var webClient = new System.Net.WebClient())
+				{
+					string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+					string url = String.Format("{0}IsCoordinatorForRepeater?callsign={1}&password={2}&repeaterid={3}", rootUrl, creds.Username, creds.Password, repeaterId);
+					string json = webClient.DownloadString(url);
+					dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+					if (data.IsCoordinatorForRepeater == "true")
+					{
+						hdnIsCoordinatorForRepeater.Value = "true";
+						pnlOverride.Visible = true;
+					}
+					else
+					{
+						hdnIsCoordinatorForRepeater.Value = "false";
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				throw ex;
+			}
+
+		}
 	}
 }

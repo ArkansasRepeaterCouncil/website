@@ -77,3 +77,18 @@ input[readonly="readonly"]:after {
     background-color: #444;
     border: solid 1px #808080;
 }
+
+.pnlOverride p {
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+.pnlOverride {
+    border: 1px #ff0000 solid;
+    background-color: #511a19;
+    padding: 15px;
+}
+
+    .pnlOverride label {
+        font-weight: bold;
+    }

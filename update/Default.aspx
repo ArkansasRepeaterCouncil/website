@@ -24,6 +24,11 @@
         <asp:Label ID="lblChangesSaved" runat="server" Text="Your changes have been saved." Visible="False" ForeColor="#66FF66"></asp:Label>
         <p>Every change is logged and can be seen on the <em>Notes</em> tab.</p>
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
+        <asp:HiddenField ID="hdnIsCoordinatorForRepeater" Value="" runat="server" />
+        <asp:Panel ID="pnlOverride" runat="server" CssClass="pnlOverride" Visible="false">
+            <p>This change is in violation of the standard procedures which require that this repeater be re-coordinated.&nbsp; However, as a coordinator if there are extenuating circumstances you may override this policy.&nbsp; By doing so you must accept that if a neighboring state receives interference, it will be all your fault and people will probably yell at you.</p>
+            <asp:CheckBox ID="chkOverride" runat="server" Text="I understand and accept. Continue with override." />
+        </asp:Panel>
         <asp:Panel ID="formPanel" runat="server" ClientIDMode="Static">
             <div id="tabs">
                 <ul>
