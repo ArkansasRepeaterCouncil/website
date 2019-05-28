@@ -136,13 +136,12 @@ public partial class update_Default : System.Web.UI.Page
 			string output = "";
 			foreach (dynamic obj in data)
 			{
-				string description = obj["ChangeDescription"].ToString();
-				if (description.StartsWith("â€¢"))
-				{
-					description = description.Replace("â€¢", "<li>");
-					description = String.Format("<ul>{0}</ul>", description);
-				}
-				output += String.Format("<div class='noteTop'>{0} - {1} ({2})</div><div class='noteBottom'>{3}</div>", obj["ChangeDateTime"], obj["FullName"], obj["callsign"], description);
+				string note = obj["ChangeDescription"].ToString();
+				note = note.Replace("• ", "&bull;");
+				note = note.Replace("â€¢", "&bull;");
+				note = note.Replace("\r\n", "<br>");
+
+				output += String.Format("<div class='noteTop'>{0} - {1} ({2})</div><div class='noteBottom'>{3}</div>", obj["ChangeDateTime"], obj["FullName"], obj["callsign"], note);
 			}
 			lblNotes.Text = output;
 		}
