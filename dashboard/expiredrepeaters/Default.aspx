@@ -22,6 +22,11 @@
             width: 80%;
         }
     </style>
+    <script>
+        document.addEventListener('scroll', function (event) {
+            $("#scrollPosition").attr("value", $("html").scrollTop());
+        }, true /*Capture event*/);
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">: Expired repeaters report
 </asp:Content>
@@ -29,11 +34,8 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <section>
 	    <h2>Expired repeaters report</h2>
-        <asp:UpdatePanel ID="pnlExpiredRepeaters" runat="server" ChildrenAsTriggers="true" UpdateMode="Conditional">
-            <ContentTemplate>
-
-            </ContentTemplate>
-        </asp:UpdatePanel>
+        <asp:Panel ID="pnlExpiredRepeaters" runat="server"></asp:Panel>
+        <asp:HiddenField ID="scrollPosition" ClientIDMode="Static" runat="server" />
     </section>
 </asp:Content>
 

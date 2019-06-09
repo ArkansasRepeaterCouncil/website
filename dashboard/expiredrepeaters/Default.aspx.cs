@@ -14,25 +14,41 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 	{
 		creds = Utilities.GetExistingCredentials();
 		loadExpiredRepeatersReport();
+
+		if (Request.QueryString["s"] != null)
+		{
+			// Define the name and type of the client scripts on the page.
+			String csName = "onloadScrollTo";
+			Type csType = this.GetType();
+
+			// Get a ClientScriptManager reference from the Page class.
+			ClientScriptManager cs = Page.ClientScript;
+
+			// Check to see if the startup script is already registered.
+			if (!cs.IsStartupScriptRegistered(csType, csName))
+			{
+				cs.RegisterStartupScript(csType, csName, string.Format("$(function() {0} $('html').animate({0} scrollTop: {2} {1}, 0);{1});", "{", "}", Request.QueryString["s"].ToString()), true);
+			}
+		}
 	}
 
 	protected void loadExpiredRepeatersReport()
 	{
-		System.Web.UI.ControlCollection pnl = pnlExpiredRepeaters.ContentTemplateContainer.Controls;
+		System.Web.UI.ControlCollection pnl = pnlExpiredRepeaters.Controls;
 		string json = "";
 
-		if (ViewState["expiredRepeatersReport"] == null)
+		if (ViewState["expiredRepeaters"] == null)
 		{
 			using (var webClient = new System.Net.WebClient())
 			{
 				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportExpiredRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
 				json = webClient.DownloadString(url);
-				ViewState["expiredRepeatersReport"] = json;
+				ViewState["expiredRepeaters"] = json;
 			}
 		}
 		else
 		{
-			json = ViewState["expiredRepeatersReport"].ToString();
+			json = ViewState["expiredRepeaters"].ToString();
 		}
 
 		dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
@@ -139,7 +155,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 				}
 			}
 		}
-		pnlExpiredRepeaters.ContentTemplateContainer.Controls.Add(table);
+		pnlExpiredRepeaters.Controls.Add(table);
 
 	}
 
@@ -148,19 +164,17 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 		Button btn = (Button)sender;
 		switch (btn.CommandName)
 		{
-			case "getRequest":
-				Response.Redirect(string.Format("~/request/details/?id={0}", btn.CommandArgument.ToString()));
-				break;
 			case "saveNote":
 				string repeaterId = ((Button)sender).CommandArgument;
-				TextBox tb = (TextBox)pnlExpiredRepeaters.ContentTemplateContainer.FindControl("txt" + repeaterId);
+				TextBox tb = (TextBox)pnlExpiredRepeaters.FindControl("txt" + repeaterId);
 				string note = tb.Text;
 				using (var webClient = new System.Net.WebClient())
 				{
 					string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "AddRepeaterNote?callsign={0}&password={1}&repeaterid={2}&note={3}", creds.Username, creds.Password, repeaterId, note);
 					string json = webClient.DownloadString(url);
 				}
-				ViewState["expiredRepeatersReport"] = null;
+				ViewState["expiredRepeaters"] = null;
+				Response.Redirect(string.Format("{0}?s={1}", Request.Url.AbsolutePath, scrollPosition.Value));
 				break;
 		}
 	}
