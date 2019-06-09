@@ -43,7 +43,16 @@ public partial class Login : System.Web.UI.Page
 
 			if (e.Authenticated)
 			{
-				Response.Redirect("/Dashboard/");
+				HttpCookie hc = HttpContext.Current.Request.Cookies["redirectAfterLogin"];
+				if ((hc != null) && (hc.Value != string.Empty))
+				{
+					Response.Redirect(hc.Value);
+					Response.Cookies.Remove("redirectAfterLogin");
+				}
+				else
+				{
+					Response.Redirect("/Dashboard/");
+				}
 			}
 		}
 	}

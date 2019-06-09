@@ -33,6 +33,9 @@ public static class Utilities
 		}
 		else
 		{
+			HttpCookie redirectCookie = new HttpCookie("redirectAfterLogin", HttpContext.Current.Request.Url.ToString());
+			redirectCookie.Expires = DateTime.Now.AddDays(364);
+			HttpContext.Current.Response.Cookies.Add(hc);
 			HttpContext.Current.Response.Redirect("~/Login.aspx");
 		}
 
