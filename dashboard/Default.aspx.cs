@@ -25,25 +25,28 @@ public partial class dashboard_Default : System.Web.UI.Page
 
 			foreach (dynamic obj in data)
 			{
-				TableRow row = new TableRow();
-				TableCell cell = new TableCell();
-				Button btn = new Button();
-				btn.Text = "Update";
-				btn.CausesValidation = false;
-				btn.CommandArgument = obj.ID;
-				btn.CommandName = "getRepeater";
-				btn.Click += Button_Click;
-				cell.Controls.Add(btn);
-				row.Cells.Add(cell);
-
-				for (int i = 0; i < fields.Length; i++)
+				if (obj.ID > 0)
 				{
-					cell = new TableCell();
-					cell.Text = obj[fields[i]];
+					TableRow row = new TableRow();
+					TableCell cell = new TableCell();
+					Button btn = new Button();
+					btn.Text = "Update";
+					btn.CausesValidation = false;
+					btn.CommandArgument = obj.ID;
+					btn.CommandName = "getRepeater";
+					btn.Click += Button_Click;
+					cell.Controls.Add(btn);
 					row.Cells.Add(cell);
-				}
 
-				RepeatersTable.Rows.Add(row);
+					for (int i = 0; i < fields.Length; i++)
+					{
+						cell = new TableCell();
+						cell.Text = obj[fields[i]];
+						row.Cells.Add(cell);
+					}
+
+					RepeatersTable.Rows.Add(row);
+				}
 			}
 		}
 	}
