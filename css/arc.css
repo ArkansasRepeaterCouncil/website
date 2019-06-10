@@ -32,7 +32,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-#headerTitle, #pageTitle, #headerLinks nav, #pageContent, footer {
+#pageContent, footer {
 	margin-left: 10%;
 	margin-right: 10%;
 }
@@ -40,9 +40,9 @@ a:hover {
 #header {
     position: fixed;
     display: block;
-    background: rgba(225, 225, 225, 0.9);
+    background: rgb(200, 200, 200);
     width: 100%;
-    top: 15px;
+    top: 0px;
     text-align: left;
     z-index: 9998;
     border-top-style: solid;
@@ -50,72 +50,64 @@ a:hover {
     border-bottom-style: solid;
     border-bottom-width: 1px;
     border-color: #bfbfbf;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 18px 11px 0 rgba(0, 0, 0, 0.75);
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5px;
 }
 
-#headerTitle {
-	float: left;
-	font-family: 'Cinzel Decorative', cursive;
-	margin-top: 5px;
-	padding-left: 10px;
-	margin-right: 0px;
-	opacity: 0.01;
-	transition: all 1s;
-	transition-delay: 0s;
+#header #headerTitle {
+    float: left;
+    font-family: 'Cinzel Decorative', cursive;
+    width: 400px;
+    font-size: 25px;
+    line-height: 22px;
+    margin-top: 8px;
 }
 
-html.scrolled #headerTitle {
-	opacity: 1;
-	transition: all 1s;
-	transition-delay: 0.4s;
+#header #headerTitle #headerSubTitle {
+    font-size: 18px;
+    margin-left: 8px;
 }
 
-#headerLinks {
-	position: relative;
-	left: -150px;
-	transition: all 1s;
-	transition-delay: 0.6s;
+#header nav ul {
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-ul.loggedInLinks {
-    margin-left: 200px;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    padding: 0;
+#header nav ul li {
+    display: inline-block;
+}
+
+#header ul.loggedInLinks, #header ul.adminLinks {
     font-size: 0.8em;
 }
-#headerLinks ul.loggedInLinks li a {
+
+#header #headerLinks {
+    display: block;
+    float: left;
+}
+
+#header #headerLinks ul li {
+    margin-left: 25px;
+}
+
+#header #headerLinks ul li {
+    margin-left: 25px;
+}
+
+#header #headerLinks ul li a {
+    color: #000;
+}
+
+#header #headerLinks ul.loggedInLinks li a {
     color: #777;
 }
 
-ul.adminLinks {
-    margin-left: 245px;
-    margin-top: 6px;
-    margin-bottom: 6px;
-    padding: 0;
-    font-size: 0.8em;
-}
-
-#headerLinks ul.adminLinks li a {
+#header #headerLinks ul.adminLinks li a {
     color: #c14545;
 }
 
-
-html.scrolled #headerLinks {
-	position: relative;
-	left: 50px;
-	transition: all 1s;
-	transition-delay: 0s;
-}
-
-#headerLinks ul li {
-    display: inline-block;
-    margin-right: 50px;
-}
-
-#headerLinks ul li a {
-	color:  #000;
-}
 
 
 h1, h2, h3, h4 {

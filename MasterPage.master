@@ -17,8 +17,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <nav id="header">
-	        <div id="headerTitle">Arkansas Repeater<br>Council<asp:ContentPlaceHolder id="ContentPlaceHolderTitle" runat="server"></asp:ContentPlaceHolder></div>
+        <div id="header">
+	        <div id="headerTitle">Arkansas Repeater Council<br /><span id="headerSubTitle"><asp:ContentPlaceHolder id="ContentPlaceHolderTitle" runat="server"></asp:ContentPlaceHolder></span></div>
 	        <div id="headerLinks">
                 <nav role="navigation">
 			        <ul class="primaryLinks">
@@ -29,12 +29,6 @@
                         <li><asp:LinkButton ID="lbLogin" runat="server" OnClick="lbLogin_Click" Text="Login"></asp:LinkButton></li>
 			        </ul>
                     <asp:Panel ID="pnlLoggedInNav" Visible="false" runat="server">
-                        <style type="text/css">
-                            #headerLinks ul.primaryLinks { 
-                                margin-bottom: 0px; 
-                                margin-top: 10px;
-                            }
-                        </style>
                         <ul class="loggedInLinks">
 				            <li><a href="/dashboard/">Dashboard</a></li>
                             <li><a href="/request/">Request coordination</a></li>
@@ -52,7 +46,7 @@
                     </asp:Panel>
                 </nav>
 	        </div>
-        </nav>
+        </div>
         <div id="pageContent">
             <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
                 
