@@ -32,7 +32,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-#headerTitle, #pageTitle, #pageContent, footer {
+#headerTitle, #pageTitle, #headerLinks nav, #pageContent, footer {
 	margin-left: 10%;
 	margin-right: 10%;
 }
@@ -78,12 +78,26 @@ html.scrolled #headerTitle {
 }
 
 ul.loggedInLinks {
-    position: relative;
-    left: 200px;
+    margin-left: 200px;
     margin-top: 6px;
     margin-bottom: 6px;
     padding: 0;
     font-size: 0.8em;
+}
+#headerLinks ul.loggedInLinks li a {
+    color: #777;
+}
+
+ul.adminLinks {
+    margin-left: 245px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    padding: 0;
+    font-size: 0.8em;
+}
+
+#headerLinks ul.adminLinks li a {
+    color: #c14545;
 }
 
 
@@ -103,9 +117,6 @@ html.scrolled #headerLinks {
 	color:  #000;
 }
 
-#headerLinks ul.loggedInLinks li a {
-    color: #777;
-}
 
 h1, h2, h3, h4 {
 	font-family: 'Cinzel Decorative', cursive;
