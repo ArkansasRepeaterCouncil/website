@@ -34,7 +34,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
 		else
 		{
 			// They want to logout
-			Response.Cookies.Remove("login");
+			HttpCookie cookie = HttpContext.Current.Request.Cookies["login"];
+			cookie.Expires = DateTime.Now.AddDays(-1);
+			cookie.Value = null;
+			HttpContext.Current.Response.SetCookie(cookie);
+
 			Response.Redirect("~/");
 		}
 	}
