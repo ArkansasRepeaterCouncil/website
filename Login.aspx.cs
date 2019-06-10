@@ -35,6 +35,18 @@ public partial class Login : System.Web.UI.Page
 					ckLogin.Expires = DateTime.Now.AddDays(364);
 				}
 				Response.Cookies.Add(ckLogin);
+
+				if ((int)data[0].isReportViewer == 1)
+				{
+					HttpCookie peanutbutter = new HttpCookie("peanutbutter", "1");
+					Response.Cookies.Add(peanutbutter);
+				}
+
+				if ((int)data[0].isAdmin == 1)
+				{
+					HttpCookie chocolatechip = new HttpCookie("chocolatechip", "1");
+					Response.Cookies.Add(chocolatechip);
+				}
 			}
 			else
 			{
@@ -46,8 +58,14 @@ public partial class Login : System.Web.UI.Page
 				HttpCookie hc = HttpContext.Current.Request.Cookies["redirectAfterLogin"];
 				if ((hc != null) && (hc.Value != string.Empty))
 				{
-					Response.Redirect(hc.Value);
-					Response.Cookies.Remove("redirectAfterLogin");
+					string url = hc.Value;
+
+					HttpCookie cookie = HttpContext.Current.Request.Cookies["redirectAfterLogin"];
+					cookie.Expires = DateTime.Now.AddDays(-1);
+					cookie.Value = null;
+					HttpContext.Current.Response.SetCookie(cookie);
+
+					Response.Redirect(url);
 				}
 				else
 				{
