@@ -20,6 +20,19 @@ public partial class MasterPage : System.Web.UI.MasterPage
 		{
 			lbLogin.Text = "Logout";
 			pnlLoggedInNav.Visible = true;
+
+			HttpCookie peanutbutter = Request.Cookies["peanutbutter"];
+			if ((peanutbutter != null) && (peanutbutter.Value == "1"))
+			{
+				pnlAdminAndReportLinks.Visible = true;
+			}
+
+			HttpCookie chocolatechip = Request.Cookies["chocolatechip"];
+			if ((chocolatechip != null) && (chocolatechip.Value == "1"))
+			{
+				pnlAdminAndReportLinks.Visible = true;
+				pnlAdminLinks.Visible = true;
+			}
 		}
 	}
 
@@ -34,10 +47,19 @@ public partial class MasterPage : System.Web.UI.MasterPage
 		else
 		{
 			// They want to logout
-			HttpCookie cookie = HttpContext.Current.Request.Cookies["login"];
-			cookie.Expires = DateTime.Now.AddDays(-1);
-			cookie.Value = null;
-			HttpContext.Current.Response.SetCookie(cookie);
+			String[] snackbag = { "login", "peanutbutter", "chocolatechip" };
+
+			foreach (string cheese in snackbag) // See what I did there? And yes... I am drinking.
+			{
+				HttpCookie cookie = HttpContext.Current.Request.Cookies[cheese];
+				if (cookie != null)
+				{
+					cookie.Expires = DateTime.Now.AddDays(-1);
+					cookie.Value = null;
+					HttpContext.Current.Response.SetCookie(cookie);
+				}
+			}
+
 
 			Response.Redirect("~/");
 		}
