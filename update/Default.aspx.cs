@@ -30,9 +30,12 @@ public partial class update_Default : System.Web.UI.Page
 			throw new HttpParseException("Unable to load and parse data for requested repeater. Please try again. If the problem persists please report it.");
 		}
 
-		LoadRepeaterDetails(repeaterId);
-		LoadRepeaterNotes(repeaterId);
-		LoadRepeaterUsers(repeaterId);
+		if (repeaterId != "0")
+		{
+			LoadRepeaterDetails(repeaterId);
+			LoadRepeaterNotes(repeaterId);
+			LoadRepeaterUsers(repeaterId);
+		}
 	}
 
 	private void LoadRepeaterDetails(string repeaterId)
@@ -374,17 +377,24 @@ public partial class update_Default : System.Web.UI.Page
 	{
 		if ((enforceBusinessRules) && (!chkOverride.Checked))
 		{
-			int newPower = int.Parse(txtOutputPower.Text);
-			int allowedPower = int.Parse(repeater.CoordinatedOutputPower) + 5;
-
-			if (newPower <= allowedPower)
+			try
 			{
-				args.IsValid = true;
+				int newPower = int.Parse(txtOutputPower.Text);
+				int allowedPower = int.Parse(repeater.CoordinatedOutputPower) + 5;
+
+				if (newPower <= allowedPower)
+				{
+					args.IsValid = true;
+				}
+				else
+				{
+					args.IsValid = false;
+					ShowOverrideIfIsCoordinatorForRepeater();
+				}
 			}
-			else
+			catch
 			{
 				args.IsValid = false;
-				ShowOverrideIfIsCoordinatorForRepeater();
 			}
 		}
 		else
