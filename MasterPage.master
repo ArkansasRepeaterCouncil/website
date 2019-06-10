@@ -36,9 +36,18 @@
                             }
                         </style>
                         <ul class="loggedInLinks">
-				            <li><a href="/Dashboard/">Dashboard</a></li>
+				            <li><a href="/dashboard/">Dashboard</a></li>
                             <li><a href="/request/">Request coordination</a></li>
 				            <li><a href="/profile/">Profile</a></li>
+			            </ul>
+                    </asp:Panel>
+                    <asp:Panel ID="pnlAdminAndReportLinks" Visible="false" runat="server">
+                        <ul class="adminLinks">
+                            <li><a href="/dashboard/expiredrepeaters">Expired repeaters</a></li>
+                            <li><a href="/dashboard/openrequests">Open requests</a></li>
+                            <asp:PlaceHolder ID="pnlAdminLinks" runat="server">
+                                <!-- <li><a href="#">Admin link</a></li> for future use -->
+                            </asp:PlaceHolder>
 			            </ul>
                     </asp:Panel>
                 </nav>
