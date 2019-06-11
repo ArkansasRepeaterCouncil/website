@@ -16,6 +16,7 @@ artifacts:
 - path: '**\*.js'
 - path: '**\*.png'
 - path: '**\*.cs'
+- path: '**\*.kml'
 deploy:
 - provider: FTP
   host:
