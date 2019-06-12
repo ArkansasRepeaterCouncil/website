@@ -85,7 +85,6 @@ public class Repeater
 	private string callsign = "";
 	[JsonProperty]
 	private string password = "";
-	
 
 	public static Repeater Load(Credentials credentials, string repeaterId)
 	{

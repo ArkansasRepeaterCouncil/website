@@ -36,6 +36,19 @@ public partial class update_Default : System.Web.UI.Page
 				}
 			}
 		}
+
+		HttpCookie hc = Request.Cookies["login"];
+		if ((hc != null) && (hc.Value != string.Empty))
+		{
+			btnReport.Enabled = true;
+
+			HttpCookie chocolatechip = Request.Cookies["chocolatechip"];
+			if ((chocolatechip != null) && (chocolatechip.Value == "1"))
+			{
+				btnUpdate.Visible = true;
+				btnUpdate.PostBackUrl = string.Format("~/update/?id={0}", repeaterId);
+			}
+		}
 	}
 
 	private void disableForm()
@@ -107,5 +120,12 @@ public partial class update_Default : System.Web.UI.Page
 		txtCoordinatedLatitude.Text = repeater.CoordinatedLatitude;
 		txtCoordinatedLongitude.Text = repeater.CoordinatedLongitude;
 		txtCoordinatedOutputPower.Text = repeater.CoordinatedOutputPower;
+	}
+
+	protected void btnReport_Click(object sender, EventArgs e)
+	{
+		Credentials credentials = Utilities.GetExistingCredentials();
+		new RepeaterOfflineReport(credentials, int.Parse(repeaterId));
+		lblOffTheAir.Visible = true;
 	}
 }

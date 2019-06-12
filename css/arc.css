@@ -159,6 +159,10 @@ section:first-of-type {
     color: #fff;
 }
 
+#repeaterActionButtons  {
+    text-align: right;
+}
+
 footer {
     margin-top: 20px;
     padding-top: 2px;

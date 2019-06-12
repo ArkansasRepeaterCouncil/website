@@ -25,6 +25,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
         <h1><asp:Label ID="lblRepeaterName" runat="server" Text="Label"></asp:Label></h1>
+        <div id="repeaterActionButtons">
+            <asp:Label ID="lblOffTheAir" runat="server" ForeColor="#3399FF" Text="Repeater reported to be off-the-air." Visible="False"></asp:Label>
+            &nbsp;<asp:LinkButton ID="btnUpdate" runat="server" Visible="False">Edit</asp:LinkButton>
+            <asp:Button ID="btnReport" runat="server" Text="Report as off-the-air" Enabled="false" ToolTip="Must be logged in" OnClick="btnReport_Click" OnClientClick="return confirm('This will inform the coordinators that you are reporting this repeater to be off-the-air.\r\n\r\nAre you sure?');" />
+        </div>
         <asp:Panel ID="formPanel" runat="server" ClientIDMode="Static">
             <div id="tabs">
                 <ul>
