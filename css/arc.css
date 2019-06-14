@@ -240,7 +240,8 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
     }
 
 #pageContent table tr.workflowDivider {
-    display: none;
+    color: rgba(0,0,0,0);
+    border: none;
 }
 
 #pageContent table tr.workflowHeader td {
