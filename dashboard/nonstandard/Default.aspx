@@ -28,12 +28,11 @@
         }, true /*Capture event*/);
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">Expired repeaters report
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server"><asp:Label ID="lblTitle2" runat="server" Text="Report Title" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <section>
-	    <h2>Expired repeaters report</h2>
+	    <h2><asp:Label ID="lblTitle" runat="server" Text="Report Title"></asp:Label></h2>
         <asp:Panel ID="pnlExpiredRepeaters" runat="server"></asp:Panel>
         <asp:HiddenField ID="scrollPosition" ClientIDMode="Static" runat="server" />
     </section>
