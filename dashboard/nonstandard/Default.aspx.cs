@@ -52,6 +52,8 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 		}
 
 		dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+		lblTitle.Text = data.Report.Title;
+		lblTitle2.Text = data.Report.Title;
 
 		Table table = new Table();
 		if (data.Report != null)
@@ -62,10 +64,10 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 
 				using (TableRow headerRow = new TableRow())
 				{
-					headerRow.AddCell("Expired");
 					headerRow.AddCell("ID");
 					headerRow.AddCell("Callsign");
 					headerRow.AddCell("Xmit freq");
+					headerRow.AddCell("Rcv freq");
 					headerRow.AddCell("City");
 					headerRow.AddCell("Sponsor");
 					headerRow.AddCell("Trustee");
@@ -76,10 +78,10 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 
 				using (TableRow row = new TableRow())
 				{
-					row.AddCell((string)repeater.YearsExpired + " years");
 					row.AddCell(string.Format("<a target='_blank' href='/update/?id={0}'>{0}</a>", (string)repeater.ID));
 					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{0}</a>", (string)repeater.Callsign));
 					row.AddCell((string)repeater.Output);
+					row.AddCell((string)repeater.Input);
 					row.AddCell((string)repeater.City);
 					row.AddCell((string)repeater.Sponsor);
 					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{1}</a>", (string)repeater.Trustee.Callsign, (string)repeater.Trustee.Name));
