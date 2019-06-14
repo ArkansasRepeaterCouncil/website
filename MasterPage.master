@@ -37,7 +37,9 @@
                     </asp:Panel>
                     <asp:Panel ID="pnlAdminAndReportLinks" Visible="false" runat="server">
                         <ul class="adminLinks">
-                            <li><a href="/dashboard/expiredrepeaters">Expired repeaters</a></li>
+                            <li><a href="/dashboard/expiredrepeaters">Expired</a></li>
+                            <li><a href="/dashboard/nonstandard">Non-standard</a></li>
+                            <li><a href="/dashboard/inoperational">Inoperational</a></li>
                             <li><a href="/dashboard/openrequests">Open requests</a></li>
                             <asp:PlaceHolder ID="pnlAdminLinks" runat="server">
                                 <!-- <li><a href="#">Admin link</a></li> for future use -->
