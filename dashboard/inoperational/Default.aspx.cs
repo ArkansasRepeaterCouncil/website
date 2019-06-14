@@ -52,6 +52,8 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 		}
 
 		dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+		lblTitle.Text = data.Report.Title;
+		lblTitle2.Text = data.Report.Title;
 
 		Table table = new Table();
 		if (data.Report != null)
@@ -62,7 +64,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 
 				using (TableRow headerRow = new TableRow())
 				{
-					headerRow.AddCell("Expired");
+					headerRow.AddCell("Status");
 					headerRow.AddCell("ID");
 					headerRow.AddCell("Callsign");
 					headerRow.AddCell("Xmit freq");
@@ -76,7 +78,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 
 				using (TableRow row = new TableRow())
 				{
-					row.AddCell((string)repeater.YearsExpired + " years");
+					row.AddCell((string)repeater.Status);
 					row.AddCell(string.Format("<a target='_blank' href='/update/?id={0}'>{0}</a>", (string)repeater.ID));
 					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{0}</a>", (string)repeater.Callsign));
 					row.AddCell((string)repeater.Output);
