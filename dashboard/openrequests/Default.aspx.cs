@@ -86,8 +86,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 
 				using (TableRow row = new TableRow())
 				{
-					row.AddCell("Workflows", 6);
-					row.CssClass = "workflowDivider";
+					row.AddCell("", "workflowDivider", 6);
 					table.Rows.Add(row);
 				}
 
@@ -117,6 +116,12 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 						row.CssClass = "workflowDetails";
 						table.Rows.Add(row);
 					}
+				}
+
+				using (TableRow row = new TableRow())
+				{
+					row.AddCell("", "workflowDivider", 6);
+					table.Rows.Add(row);
 				}
 			}
 			pnl.Add(table);
