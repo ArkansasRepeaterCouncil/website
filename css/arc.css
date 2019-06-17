@@ -108,8 +108,6 @@ a:hover {
     color: #c14545;
 }
 
-
-
 h1, h2, h3, h4 {
 	font-family: 'Cinzel Decorative', cursive;
 }
@@ -142,7 +140,7 @@ h1 {
 }
 
 section {
-	margin-top: 60px;
+	margin-top: 40px;
 	background-color: rgba(50,50,50,0.75);
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -178,6 +176,7 @@ footer {
     padding-top: 3px;
     padding-left: 30px;
 }
+
 footer div a, footer div a:visited, footer div a:active, footer div a:hover, footer div a:link {
     color: rgba(255,255,255,0.4);
 }
@@ -218,6 +217,16 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
         font-size: 0;
         line-height: 0
     }
+
+.homepageListing {
+    display: inline-block;
+    border: solid 1px #fff;
+    width: 45%;
+    height: 850px;
+    margin: 1%;
+    padding: 1%;
+    vertical-align: top;
+}
 
 #piechart.currentRepeaters {
     clear: both;

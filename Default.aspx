@@ -63,7 +63,10 @@ amateur radio repeater frequencies in the state of Arkansas. We utilize availabl
         <div class="currentRepeaters" id="piechart"></div>
     </section>
     <section>
-        <div style="clear: both;"><asp:label id="lblRecentChanges" runat="server" text="Ch-ch-ch-ch-changes"></asp:label></div>
+        <div class="homepageListing mostWanted">
+            <asp:Panel ID="pnlMostWanted" runat="server"></asp:Panel>
+        </div>
+        <div class="homepageListing recentChanges"><asp:label id="lblRecentChanges" runat="server" text="Ch-ch-ch-ch-changes"></asp:label></div>
     </section>
     <asp:HiddenField ID="hdnCountCurrent" ClientIDMode="Static" runat="server" />
     <asp:HiddenField ID="hdnCountExpired" ClientIDMode="Static" runat="server" />
