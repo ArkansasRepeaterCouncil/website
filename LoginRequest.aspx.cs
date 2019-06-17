@@ -22,7 +22,7 @@ public partial class LoginRequest : System.Web.UI.Page
 			{
 				using (var webClient = new System.Net.WebClient())
 				{
-					string parameters = string.Format("callsign={0}&email={1}&name={2}&address={3}&city={4}&state={5}&zip={6}", txtCallsign.Text, txtEmail.Text, hdnName.Value, hdnAddress.Value, hdnCity.Value, hdnState.Value, hdnZip.Value);
+					string parameters = string.Format("callsign={0}&email={1}&fullname={2}&address={3}&city={4}&state={5}&zip={6}", txtCallsign.Text, txtEmail.Text, hdnName.Value, hdnAddress.Value, hdnCity.Value, hdnState.Value, hdnZip.Value);
 					string strUrl = string.Format("{0}{1}{2}", System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"], "CreateNewUser?", parameters);
 					string json = webClient.DownloadString(strUrl);
 					dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
