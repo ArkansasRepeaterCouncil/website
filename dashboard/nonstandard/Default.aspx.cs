@@ -120,7 +120,8 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 						strNotes = "<ul>";
 						foreach (dynamic obj in repeater.Notes)
 						{
-							strNotes += string.Format("<li>{0} - {1} ({2}, {3})</li>", obj.Note.Timestamp, obj.Note.Text, obj.Note.User.Name, obj.Note.User.Callsign);
+							string note = ((string)obj.Note.Text).Replace("â€¢", "<br>&bull;");
+							strNotes += string.Format("<li>{0} - {1} ({2}, {3})</li>", obj.Note.Timestamp, note, obj.Note.User.Name, obj.Note.User.Callsign);
 						}
 						strNotes += "</ul>";
 					}
