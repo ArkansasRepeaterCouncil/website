@@ -29,7 +29,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 			{
 				cs.RegisterStartupScript(csType, csName, string.Format("$(function() {0} $('html').animate({0} scrollTop: {2} {1}, 0);{1});", "{", "}", Request.QueryString["s"].ToString()), true);
 			}
-		}
+		} 
 	}
 
 	protected void loadExpiredRepeatersReport()
@@ -77,12 +77,12 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 				using (TableRow row = new TableRow())
 				{
 					row.AddCell((string)repeater.YearsExpired + " years");
-					row.AddCell(string.Format("<a target='_blank' href='/update/?id={0}'>{0}</a>", (string)repeater.ID));
-					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{0}</a>", (string)repeater.Callsign));
-					row.AddCell((string)repeater.Output);
+					row.AddCell(string.Format("<a target='_blank' title='Update' href='/update/?id={0}'>{0}</a>", (string)repeater.ID));
+					row.AddCell(string.Format("<a target='_blank' title='QRZ' href='https://qrz.com/db/{0}'>{0}</a>", (string)repeater.Callsign));
+					row.AddCell(string.Format("<a target='_blank' title='RepeaterBook' href='https://repeaterbook.com/repeaters/msResult.php?state_id%5B%5D=05&band=%25&freq={0}&loc=&call=&features=%25&emcomm=%25&coverage=%25&status_id=%25&order=%60freq%60%2C+%60state_abbrev%60+ASC'>{0}</a>", (string)repeater.Output));
 					row.AddCell((string)repeater.City);
 					row.AddCell((string)repeater.Sponsor);
-					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{1}</a>", (string)repeater.Trustee.Callsign, (string)repeater.Trustee.Name));
+					row.AddCell(string.Format("<a target='_blank' title='QRZ' href='https://qrz.com/db/{0}'>{1}</a>", (string)repeater.Trustee.Callsign, (string)repeater.Trustee.Name));
 
 					string strContact = string.Empty;
 					if ((string)repeater.Trustee.Email != string.Empty)
