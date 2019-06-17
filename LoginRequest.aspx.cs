@@ -38,6 +38,8 @@ public partial class LoginRequest : System.Web.UI.Page
 			btnSubmit.Visible = false;
 			txtCallsign.Visible = false;
 			txtEmail.Visible = false;
+			Label1.Visible = false;
+			Label2.Visible = false;
 		}
 	}
 
@@ -54,7 +56,6 @@ public partial class LoginRequest : System.Web.UI.Page
 				args.IsValid = true;
 				hdnAddress.Value = data.address.line1;
 				hdnName.Value = data.name;
-
 
 				// Parse line2 to get other address values
 				string address2 = data.address.line2;
