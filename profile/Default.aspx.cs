@@ -27,6 +27,11 @@ public partial class profile_Default : System.Web.UI.Page
 			txtPhoneCell.Text = user.PhoneCell;
 			txtPhoneHome.Text = user.PhoneHome;
 			txtPhoneWork.Text = user.PhoneWork;
+
+			if (Request.QueryString["ip"] != null)
+			{
+				lblFeedback.Text = "Please complete your profile by providing your name, address, email, and at least one phone number.";
+			}
 		}
 	}
 

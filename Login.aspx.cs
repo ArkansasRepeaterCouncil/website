@@ -47,6 +47,8 @@ public partial class Login : System.Web.UI.Page
 					HttpCookie chocolatechip = new HttpCookie("chocolatechip", "1");
 					Response.Cookies.Add(chocolatechip);
 				}
+
+
 			}
 			else
 			{
@@ -69,7 +71,14 @@ public partial class Login : System.Web.UI.Page
 				}
 				else
 				{
-					Response.Redirect("/Dashboard/");
+					if ((int)data[0].profileIncomplete == 1)
+					{
+						Response.Redirect("/profile/?ip=1");
+					}
+					else
+					{
+						Response.Redirect("/Dashboard/");
+					}
 				}
 			}
 		}
