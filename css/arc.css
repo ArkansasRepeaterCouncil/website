@@ -244,8 +244,8 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
     color: rgba(0,0,0,0);
 }
 
-#pageContent table tr.workflowHeader td {
-    
+#pageContent table tr.workflowHeader td, #pageContent table tr.workflowDetails td {
+    font-size: 0.7em;
 }
 
 #pageContent table tr.workflowHeader td:nth-of-type(1), #pageContent table tr.workflowDetails td:nth-of-type(1) {
