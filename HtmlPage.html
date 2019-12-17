@@ -1,0 +1,44 @@
+﻿<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script>
+            function sendRequest() {
+                var obj = {
+                    "uid": "28283",
+                    "key": "dd46d9cf85bfbd7145321c741a88bc3ddbfb2263",
+                    "lat": "36.3608640", "lon": "-93.7490610",
+                    "txh": "90.00",
+                    "frq": "146.865000",
+                    "rxh": "90.00",
+                    "dis": "m",
+                    "txw": "25",
+                    "txg": "6.00000",
+                    "rxg": "6.00000",
+                    "pm": "1",
+                    "pe": "1",
+                    "res": "90", "rad": "250", "out": "2", "rxh": "1.5", "rxg": "0", "rxs": "-110", "azi": "0", "bwi": "0.0125", "cli": "5",
+                    "file": "kmz", "nam": "DEMO", "out": "2", "pol": "v", "ter": "15", "tlt": "0", "vbw": "0", "col": "10", "ant": "39"
+                };
+
+                var settings = {
+                    "url": "https://cloudrf.com/API/area",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    "data": obj
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="sendRequest()">CALCULATE</button>
+        <div id="out"></div>
+        <div id="image"></div>
+    </body>
+</html>
