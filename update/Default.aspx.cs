@@ -354,18 +354,26 @@ public partial class update_Default : System.Web.UI.Page
 	{
 		if ((enforceBusinessRules) && (!chkOverride.Checked))
 		{
-			Double newHeight = Double.Parse(txtAntennaHeight.Text);
-			Double allowedHeight = Double.Parse(repeater.CoordinatedAntennaHeight) + 15.24;
+            try
+            {
+                Double newHeight = Double.Parse(txtAntennaHeight.Text);
+                Double allowedHeight = Double.Parse(repeater.CoordinatedAntennaHeight) + 15.24;
 
-			if (newHeight <= allowedHeight)
-			{
-				args.IsValid = true;
-			}
-			else
-			{
-				args.IsValid = false;
-				ShowOverrideIfIsCoordinatorForRepeater();
-			}
+                if (newHeight <= allowedHeight)
+                {
+                    args.IsValid = true;
+                }
+                else
+                {
+                    args.IsValid = false;
+                    ShowOverrideIfIsCoordinatorForRepeater();
+                }
+            }
+            catch (Exception)
+            {
+                args.IsValid = false;
+            }
+
 		}
 		else
 		{

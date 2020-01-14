@@ -97,7 +97,7 @@
                         <br />
                         <asp:Label ID="lblAntennaHeight" CssClass="formLabel" runat="server" Text="Antenna height"></asp:Label><asp:TextBox ID="txtAntennaHeight" CssClass="textInput" runat="server" placeholder="meters"></asp:TextBox> 
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtAntennaHeight_FilteredTextBoxExtender" runat="server" BehaviorID="txtAntennaHeight_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="1234567890." />
-                        meters<asp:CustomValidator ID="validAntennaHeight" runat="server" ErrorMessage="Antenna height may not be more than 15.24 meters (50 feet) over the coordinated antenna height." Text="*" OnServerValidate="validAntennaHeight_ServerValidate"></asp:CustomValidator><br />
+                        meters<asp:CustomValidator ID="validAntennaHeight" runat="server" ErrorMessage="Antenna height is required, and may not be more than 15.24 meters (50 feet) over the coordinated antenna height." Text="*" OnServerValidate="validAntennaHeight_ServerValidate"></asp:CustomValidator><br />
                         <asp:Label ID="lblAnalog_InputAccess" CssClass="formLabel" runat="server" Text="Input PL tone"></asp:Label><asp:TextBox ID="txtAnalog_InputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server" MaxLength="7"></asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtAnalog_InputAccess_FilteredTextBoxExtender" runat="server" BehaviorID="txtAnalog_InputAccess_FilteredTextBoxExtender" TargetControlID="txtAnalog_InputAccess" ValidChars="1234567890." />
                         <br />
