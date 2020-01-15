@@ -284,3 +284,21 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
     #pageContent table tr.expiredRepeaterNewNote td input {
         margin-right: 10px;
     }
+
+blockquote {
+    font-style: italic;
+    border-left: 4px solid #bfbfbf;
+    padding-left: 10px;
+}
+
+blockquote cite {
+    display: block;
+    font-size: 0.8em;
+    margin-left: 2em;
+    color: #777;
+}
+
+blockquote cite:before {
+    content: '— ';
+    color: #777;
+}

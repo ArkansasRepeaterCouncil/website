@@ -52,7 +52,9 @@
                 </ul>
             </li>
             <li>Am I required to coordinate my repeater?<ul>
-                <li>No you are not.&nbsp; However, if someone else coordinates the frequency you are using, then we (and the ARRL) will side with the coordinated repeater.</li>
+                <li>No you are not.&nbsp; However, if someone else coordinates the frequency you are using, then we (the ARRL, and the FCC) will side with the coordinated repeater.<br /><br />
+                    <blockquote>Where the transmissions of a repeater cause harmful interference to another repeater, the two station licensees are equally and fully responsible for resolving the interference unless the operation of one station is recommended by a frequency coordinator and the operation of the other station is not. In that case, the licensee of the non-coordinated repeater has primary responsibility to resolve the interference.<cite>§97, Section 205, Item C</cite></blockquote>
+                </li>
                 </ul>
             </li>
         </ol>
