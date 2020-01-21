@@ -36,7 +36,7 @@ public partial class request_Default : System.Web.UI.Page
 
             Panel1.Visible = false;
             Panel2.Visible = true;
-            lblAnswer.Text = string.Format("Your request to coordinate a repeater at {0}, {1} transmitting on {2} and receiving on {3} is {4}. {5}", txtLatitude.Text, txtLongitude.Text, answer.TransmitFrequency.ToString(), answer.ReceiveFrequency.ToString(), answer.Answer, answer.Comment);
+            lblAnswer.Text = string.Format("Your request to coordinate a repeater at {0}, {1} transmitting on {2} and receiving on {3} is {4}. {5}", txtLatitude.Text, txtLongitude.Text, answer.TransmitFrequency.ToString(), answer.ReceiveFrequency.ToString(), answer.Answer.ToUpper(), answer.Comment);
 		}
 	}
 
@@ -87,6 +87,6 @@ public partial class request_Default : System.Web.UI.Page
 
 	protected void btnSubmit_Click(object sender, EventArgs e)
 	{
-
+        SubmitRequest();
 	}
 }

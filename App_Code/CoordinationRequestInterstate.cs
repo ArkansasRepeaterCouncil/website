@@ -8,20 +8,20 @@ using System.Web;
 /// </summary>
 public class CoordinationRequestInterstate
 {
-	public string Latitude;
-	public string Longitude;
-	public string TransmitFrequency;
-    public string ReceiveFrequency;
+	public decimal Latitude;
+	public decimal Longitude;
+	public decimal TransmitFrequency;
+    public decimal ReceiveFrequency;
     public string callsign;
 	public string password;
 
 
 	public CoordinationRequestInterstate(string latitude, string longitude, string transmitFrequency, string receiveFrequency, Credentials creds)
 	{
-		Latitude = latitude;
-		Longitude = longitude;
-        TransmitFrequency = transmitFrequency;
-        ReceiveFrequency = receiveFrequency;
+		Latitude = decimal.Parse(latitude);
+		Longitude = decimal.Parse(longitude);
+        TransmitFrequency = decimal.Parse(transmitFrequency);
+        ReceiveFrequency = decimal.Parse(receiveFrequency);
 		callsign = creds.Username;
 		password = creds.Password;
 	}
