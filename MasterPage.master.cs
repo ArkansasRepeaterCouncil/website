@@ -21,7 +21,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
 			lbLogin.Text = "Logout";
 			pnlLoggedInNav.Visible = true;
 
-			HttpCookie peanutbutter = Request.Cookies["peanutbutter"];
+            HttpCookie oatmeal = Request.Cookies["oatmeal"];
+            if ((oatmeal != null) && (oatmeal.Value == "1"))
+            {
+                lbCoordination.Visible = false;
+                lbNopc.Visible = true;
+            }
+
+            HttpCookie peanutbutter = Request.Cookies["peanutbutter"];
 			if ((peanutbutter != null) && (peanutbutter.Value == "1"))
 			{
 				pnlAdminAndReportLinks.Visible = true;
