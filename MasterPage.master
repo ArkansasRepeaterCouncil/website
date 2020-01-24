@@ -31,8 +31,8 @@
                     <asp:Panel ID="pnlLoggedInNav" Visible="false" runat="server">
                         <ul class="loggedInLinks">
 				            <li><a href="/dashboard/">Dashboard</a></li>
-                            <asp:LinkButton ID="lbCoordination" runat="server" PostBackUrl="~/request/">Request coordination</asp:LinkButton>
-                            <asp:LinkButton ID="lbNopc" Visible="false" runat="server" PostBackUrl="~/request-interstate/">Submit NOPC</asp:LinkButton>
+                            <asp:Label ID="lblCoordination" runat="server" Text="<li><a href='/request/'>Request coordination</a></li>"></asp:Label>
+                            <asp:Label ID="lblNopc" runat="server" Visible="false" Text="<li><a href='/request-interstate/'>Submit NOPC</a></li>"></asp:Label>
 				            <li><a href="/profile/">Profile</a></li>
 			            </ul>
                     </asp:Panel>

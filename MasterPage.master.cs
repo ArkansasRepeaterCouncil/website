@@ -24,8 +24,8 @@ public partial class MasterPage : System.Web.UI.MasterPage
             HttpCookie oatmeal = Request.Cookies["oatmeal"];
             if ((oatmeal != null) && (oatmeal.Value == "1"))
             {
-                lbCoordination.Visible = false;
-                lbNopc.Visible = true;
+                lblCoordination.Visible = false;
+                lblNopc.Visible = true;
             }
 
             HttpCookie peanutbutter = Request.Cookies["peanutbutter"];

@@ -48,8 +48,14 @@ public partial class Login : System.Web.UI.Page
 					Response.Cookies.Add(chocolatechip);
 				}
 
+                if ((int)data[0].isCoordinator == 1)
+                {
+                    HttpCookie chocolatechip = new HttpCookie("oatmeal", "1");
+                    Response.Cookies.Add(chocolatechip);
+                }
 
-			}
+
+            }
 			else
 			{
 				e.Authenticated = false;
