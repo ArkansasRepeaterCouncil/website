@@ -8,6 +8,8 @@ using System.Web.UI.WebControls;
 
 public partial class Login : System.Web.UI.Page
 {
+    private bool isCoordinator = false;
+
 	protected void Page_Load(object sender, EventArgs e)
 	{
 
@@ -50,11 +52,10 @@ public partial class Login : System.Web.UI.Page
 
                 if ((int)data[0].isCoordinator == 1)
                 {
+                    isCoordinator = true;
                     HttpCookie chocolatechip = new HttpCookie("oatmeal", "1");
                     Response.Cookies.Add(chocolatechip);
                 }
-
-
             }
 			else
 			{
@@ -83,7 +84,14 @@ public partial class Login : System.Web.UI.Page
 					}
 					else
 					{
-						Response.Redirect("/Dashboard/");
+                        if (isCoordinator)
+                        {
+                            Response.Redirect("/request-interstate/");
+                        }
+                        else
+                        {
+                            Response.Redirect("/Dashboard/");
+                        }
 					}
 				}
 			}
