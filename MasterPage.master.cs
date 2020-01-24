@@ -54,7 +54,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 		else
 		{
 			// They want to logout
-			String[] snackbag = { "login", "peanutbutter", "chocolatechip", "outmeal" };
+			String[] snackbag = { "login", "peanutbutter", "chocolatechip", "oatmeal" };
 
 			foreach (string cheese in snackbag) // See what I did there? And yes... I am drinking.
 			{

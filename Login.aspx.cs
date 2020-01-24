@@ -53,8 +53,8 @@ public partial class Login : System.Web.UI.Page
                 if ((int)data[0].isCoordinator == 1)
                 {
                     isCoordinator = true;
-                    HttpCookie chocolatechip = new HttpCookie("oatmeal", "1");
-                    Response.Cookies.Add(chocolatechip);
+                    HttpCookie oatmeal = new HttpCookie("oatmeal", "1");
+                    Response.Cookies.Add(oatmeal);
                 }
             }
 			else
