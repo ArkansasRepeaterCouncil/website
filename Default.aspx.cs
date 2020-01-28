@@ -83,21 +83,33 @@ public partial class _Default : System.Web.UI.Page
 				table.Rows.Add(headerRow);
 			}
 
-			foreach (dynamic item in data.Report.Data)
-			{
-				dynamic repeater = item.Repeater;
+            if (data.Report.Data != null)
+            {
+                foreach (dynamic item in data.Report.Data)
+                {
+                    dynamic repeater = item.Repeater;
 
-				using (TableRow row = new TableRow())
-				{
-					row.AddCell((string)repeater.YearsExpired + " yrs");
-					row.AddCell(string.Format("<a target='_blank' title='Details' href='/repeaters/details/?id={0}'>{1}<br>{2}</a>", (string)repeater.ID, (string)repeater.Output, (string)repeater.Callsign));
-					row.AddCell((string)repeater.City);
-					row.AddCell((string)repeater.Sponsor);
-					row.AddCell(string.Format("<a target='_blank' title='QRZ' href='https://qrz.com/db/{0}'>{1}</a>", (string)repeater.Trustee.Callsign, (string)repeater.Trustee.Name));
-					row.CssClass = "expiredRepeaterData";
-					table.Rows.Add(row);
-				}
-			}
+                    using (TableRow row = new TableRow())
+                    {
+                        row.AddCell((string)repeater.YearsExpired + " yrs");
+                        row.AddCell(string.Format("<a target='_blank' title='Details' href='/repeaters/details/?id={0}'>{1}<br>{2}</a>", (string)repeater.ID, (string)repeater.Output, (string)repeater.Callsign));
+                        row.AddCell((string)repeater.City);
+                        row.AddCell((string)repeater.Sponsor);
+                        row.AddCell(string.Format("<a target='_blank' title='QRZ' href='https://qrz.com/db/{0}'>{1}</a>", (string)repeater.Trustee.Callsign, (string)repeater.Trustee.Name));
+                        row.CssClass = "expiredRepeaterData";
+                        table.Rows.Add(row);
+                    }
+                }
+            }
+            else
+            {
+                using (TableRow row = new TableRow())
+                {
+                    row.AddCell("None! We're all current! Yay!", 5);
+                    row.CssClass = "expiredRepeaterData";
+                    table.Rows.Add(row);
+                }
+            }
 			pnl.Add(table);
 		}
 	}
