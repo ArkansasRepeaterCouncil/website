@@ -16,8 +16,15 @@ public partial class repeaters_Default : System.Web.UI.Page
 	{
 		query = Request.QueryString["q"];
 		if (query == null) { query = ""; }
-        //if (txtSearch.Text != "") { query = txtSearch.Text; }
-        txtSearch.Text = query;
+
+        if (txtSearch.Text != "")
+        {
+            query = txtSearch.Text;
+        }
+        else
+        {
+            txtSearch.Text = query;
+        }
 
 		string pageTest = Request.QueryString["p"];
 		int intPage;
