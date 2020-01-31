@@ -16,7 +16,8 @@ public partial class repeaters_Default : System.Web.UI.Page
 	{
 		query = Request.QueryString["q"];
 		if (query == null) { query = ""; }
-		if (txtSearch.Text != "") { query = txtSearch.Text; }
+        //if (txtSearch.Text != "") { query = txtSearch.Text; }
+        txtSearch.Text = query;
 
 		string pageTest = Request.QueryString["p"];
 		int intPage;
@@ -45,7 +46,8 @@ public partial class repeaters_Default : System.Web.UI.Page
 			MatchCollection matches = rxLatLon.Matches(txtSearch.Text);
 			Match match = matches[0];
 			GroupCollection groups = match.Groups;
-			uri += string.Format("&latitude={0}&longitude={1}&miles={2}&orderBy={3}", groups[1], groups[2], "40", orderBy);
+            orderBy = "Distance";
+            uri += string.Format("&latitude={0}&longitude={1}&miles={2}&orderBy={3}", groups[1], groups[2], "40", orderBy);
 		}
 		else
 		{
