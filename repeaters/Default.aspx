@@ -40,7 +40,7 @@
                 <asp:Label ID="Label1" CssClass="lblSearch" runat="server" Text="Search:"></asp:Label>
                 <asp:TextBox ID="txtSearch" runat="server" Width="468px"></asp:TextBox>
             &nbsp;<asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
-                <input id="btnDetect" type="button" value="Detect my location" onclick="getLocation();" />
+                <input id="btnDetect" type="button" value="Search for repeaters near me" onclick="getLocation();" />
                 <br />
                 <div class="searchDescription">Frequency, city, callsign, or &#39;latitude, longitude&#39;</div><br />
             </div>
