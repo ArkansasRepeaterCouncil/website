@@ -40,9 +40,10 @@ public partial class update_Default : System.Web.UI.Page
 		HttpCookie hc = Request.Cookies["login"];
 		if ((hc != null) && (hc.Value != string.Empty))
 		{
-			btnReport.Enabled = true;
+			btnReport.Visible = true;
+            btnReport_notLoggedIn.Visible = false;
 
-			HttpCookie chocolatechip = Request.Cookies["chocolatechip"];
+            HttpCookie chocolatechip = Request.Cookies["chocolatechip"];
 			if ((chocolatechip != null) && (chocolatechip.Value == "1"))
 			{
 				btnUpdate.Visible = true;
