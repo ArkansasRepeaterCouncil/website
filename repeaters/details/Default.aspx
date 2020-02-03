@@ -19,6 +19,12 @@
             appearance: none;
         }
     </style>
+    <script type="text/javascript">
+        function mustBeLoggedIn() {
+            alert('You must be logged in to report repeaters off-the-air.  Please click Login to create an account or login.');
+            return false;
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
 </asp:Content>
@@ -29,7 +35,7 @@
             <asp:Label ID="lblOffTheAir" runat="server" ForeColor="#3399FF" Text="Repeater reported to be off-the-air." Visible="False"></asp:Label>
             &nbsp;<asp:LinkButton ID="btnUpdate" runat="server" Visible="False">Edit</asp:LinkButton>
             <asp:Button ID="btnReport" runat="server" Text="Report as off-the-air" Visible="false" ToolTip="You must be logged in" OnClick="btnReport_Click" OnClientClick="return confirm('This will inform the coordinators, and the repeater trustee, that you are reporting this repeater to be off-the-air. Your callsign will be noted in the report.\r\n\r\nAre you sure?');" />
-            <asp:Button ID="btnReport_notLoggedIn" runat="server" Text="Report as off-the-air" Visible="true" ToolTip="You must be logged in" OnClientClick="alert('You must be logged in to report repeaters off-the-air.  Please create an account (if you don't have one) and login.');return false;" />
+            <asp:Button ID="btnReport_notLoggedIn" runat="server" Text="Report as off-the-air" Visible="true" ToolTip="You must be logged in" OnClientClick="return mustBeLoggedIn();" />
         </div>
         <asp:Panel ID="formPanel" runat="server" ClientIDMode="Static">
             <div id="tabs">
