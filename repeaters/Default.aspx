@@ -9,7 +9,7 @@
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(getLocation_callback);
             } else {
-                alert("Geolocation is not supported by this browser.");
+                alert("Geolocation is not supported by this browser, or you did not allow access to it.");
             }
         }
 
