@@ -21,8 +21,7 @@ public class RepeaterOfflineReport
 		{
 			using (var webClient = new System.Net.WebClient())
 			{
-				string note = "*Repeater reported to be off-the-air*";
-				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "AddRepeaterNote?callsign={0}&password={1}&repeaterid={2}&note={3}", creds.Username, creds.Password, repeaterId, note);
+				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "NoteRepeaterOffline?callsign={0}&password={1}&repeaterid={2}", creds.Username, creds.Password, repeaterId);
 				string json = webClient.DownloadString(url);
 			}
 		}
