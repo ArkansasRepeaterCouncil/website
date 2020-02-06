@@ -1,215 +1,320 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="procedures_Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-    <style type="text/css">
-        .auto-style1 {
-        width: 209px;
+<style type="text/css">
+    #docContainer ol { counter-reset: item; }
+    #docContainer li { 
+	    display: block;
+	    margin-top: 0.5em;
     }
-    .auto-style2 {
-        text-decoration: underline;
+    #docContainer li:before {
+      content: counters(item, ".") " ";
+      counter-increment: item
     }
-    </style>
-</asp:Content>
+
+    #docContainer > ol > li { 
+	    margin-bottom: 2em; 
+	    font-size: 24px;
+    }
+    #docContainer > ol > li:before { content: "§" counters(item, ".") ". "; }
+    #docContainer ol li ol { font-size: 18px; }
+
+    #docContainer ol.alpha { list-style-type: lower-alpha; }
+    #docContainer ol.alpha > li { display: list-item; }
+    #docContainer ol.alpha > li:before { content: ""; }
+
+    #docContainer > ol > li > ol > li > ol { list-style-type: lower-alpha; }
+    #docContainer > ol > li > ol > li > ol > li { display: list-item; }
+    #docContainer > ol > li > ol > li > ol > li:before { content: ""; }
+
+    #docContainer > ol > li > ol > li > ol > li > ol { list-style-type: decimal; }
+    #docContainer > ol > li > ol > li > ol > li > ol > li { display: list-item; }
+    #docContainer > ol > li > ol > li > ol > li > ol > li:before { content: ""; }
+
+    #docContainer blockquote { 
+	    background-color: rgba(0,0,0,0.1); 
+	    padding: 5px;
+	    border-radius: 10px;
+	    font-style: italic;
+    }
+
+    #docContainer table, #docContainer td, #docContainer th {
+	    border: 1px solid;
+	    padding: 5px;
+	    border-collapse: collapse
+    }
+
+    #docContainer table {
+	    margin: 15px;
+    }
+</style>
+    </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">Procedures
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <a class="namedAnchor" name="procedures"></a>
     <section>
-		<h1>Procedures</h1>
-		<ul>
-            <li><a href="#faq">Frequently asked questions</a></li>
-			<li><a href="#procedures">Procedures</a><br />
-                <ul>
-                    <li><a href="#coordinationprocedure">Coordination requests</a></li>
-                    <li><a href="#updateprocedure">Updates</a></li>
-                    <li><a href="#transferprocedure">Transfers</a></li>
-                </ul>
-			</li>
-			<li><a href="#principles">Principles</a><br />
-                <ul>
-                    <li><a href="#deviationlimits">Deviation limits</a></li>
-                </ul>
-			</li>
-			<li><a href="#guidelines">Guidelines</a><br />
-                <ul>
-                    <li><a href="#bandplans">Band plans</a></li>
-                    <li><a href="#geographicalseparation">Geographical separation of repeaters</a></li>
-                    <li><a href="#adjacentfrequency">Adjacent frequency separation</a></li>
-                    <li><a href="#miscspec">Miscellaneous specification & definitions</a></li>
-                    <li><a href="#constructionperiod">Repeater construction period</a></li>
-                    <li><a href="#coordinationmodification">Modification to existing coordination</a></li>
-                </ul>
-			</li>
+        <h1>Arkansas Repeater Council Procedures and Standards</h1>
 
-		</ul>
-	</section>
-
-	<a class="namedAnchor" name="faq"></a>
-	<section>
-		<h2>Frequently asked questions</h2>
-        <ol>
-            <li>I've heard that there are no frequencies available.  Is that true?<ul>
-                <li>In most cases, there are plently of frequencies available.&nbsp; It would be difficult for us to say one way or the other without access to all of the surrounding states&#39; databases.&nbsp; But from what we&#39;ve seen so far, there are frequencies available in all corners of the state.<br />&nbsp;</li>
-                </ul>
+        <div id="docContainer">
+         <ol>
+          <li>Purpose
+           <ol class="alpha">
+            <li>The Arkansas Repeater Council is the body recognized to coordinate amateur radio repeaters in the state of
+             Arkansas.</li>
+            <li>The purpose of coordinating a repeater or frequency is to reduce harmful interference to other fixed operations.
+             Coordinating a repeater or frequency with other fixed operations demonstrates good engineering and amateur
+             practice.</li>
+            <li>
+             Part 97, Section 205, Item C provides a clear purpose for frequency coordinators:
+             <blockquote>Where the transmissions of a repeater cause harmful interference to another repeater, the two station
+              licensees are equally and fully responsible for resolving the interference unless the operation of one station is
+              recommended by a frequency coordinator and the operation of the other station is not. In that case, the licensee
+              of the non-coordinated repeater has primary responsibility to resolve the interference.</blockquote>
             </li>
-            <li>Am I required to coordinate my repeater?<ul>
-                <li>No you are not.&nbsp; However, if someone else coordinates the frequency you are using, then we (the ARRL, and the FCC) will side with the coordinated repeater.<br /><br />
-                    <blockquote>Where the transmissions of a repeater cause harmful interference to another repeater, the two station licensees are equally and fully responsible for resolving the interference unless the operation of one station is recommended by a frequency coordinator and the operation of the other station is not. In that case, the licensee of the non-coordinated repeater has primary responsibility to resolve the interference.<cite>§97, Section 205, Item C</cite></blockquote>
+           </ol>
+          </li>
+          <li>Processes
+           <ol>
+            <li>Account creation procedure
+             <ol>
+              <li>To login to this website you must first create an account. This can be done by anyone with a valid FCC license
+               by following these steps:
+               <ol>
+                <li>Browse to arkansasrepeatercouncil.org.</li>
+                <li>Click &quot;Login&quot;.</li>
+                <li>Click &quot;Request an account&quot;.</li>
+                <li>Enter your callsign and email address.</li>
+                <li>Click &quot;Submit&quot;.</li>
+                <li>Check your email for a password, then return to this site to login.</li>
+               </ol>
+              </li>
+             </ol>
+            </li>
+            <li>Coordination request procedure
+             <ol>
+              <li>In order to request a new coordination for a repeater, anyone with a valid amateur radio license issued by the
+               FCC may complete the following steps:
+               <ol>
+                <li>Login to the Arkansas Repeater Council site at arkansasrepeatercouncil.org/Login.aspx.</li>
+                <li>Once logged-in, click the "Request coordination" link in the menu.</li>
+                <li>Complete and submit the request form.</li>
+               </ol>
+              </li>
+              <li>
+               After submitting the form, the following automated process will begin:
+               <ol>
+                <li>The website will determine which states are within 90 miles of the proposed repeater site.</li>
+                <li>It will then email each of the coordinators for each of those states with a link that they can use to give
+                 you a response.</li>
+                <li>If a coordinator has to decline a request, they are required to provide a reason.</li>
+                <li>If any coordinator takes longer than 30 days to reply to a proposed coordination, it will be automatically
+                 approved.</li>
+               </ol>
+              </li>
+             </ol>
+            </li>
+            <li>Coordination update procedure
+             <ol>
+              <li>Coordination records are required to be updated at least once every three years.</li>
+              <li>Coordination records must be updated within sixty (60) days of a change in trustee.</li>
+              <li>In order to update a coordination, complete the following steps:
+               <ol>
+                <li>Login to the Arkansas Repeater Council site at arkansasrepeatercouncil.org/Login.aspx.</li>
+                <li>Once logged-in, click the "Update" button next to the repeater you need to update.<br>
+                 (Note: This button is only shown if you have a repeater for which you are a trustee.)</li>
+                <li>Review the repeater information and make any needed changes.</li>
+                <li>Even if no changes were made, click "Save".</li>
+               </ol>
+              </li>
+             </ol>
+            </li>
+            <li>Coordination transfer procedure
+             <ol>
+              <li>A coordination may be transferred only under certain conditions. If a coordinated repeater system that is
+               currently in complete operation is sold or otherwise transfers ownership, the coordination will transfer with the
+               repeater system. Any such sale or transfer must include the actual equipment that comprises the repeater system.
+              </li>
+              <li>Both parties must work together to complete the following process to complete the transfer:
+               <ol>
+                <li>Contact the individual to whom you want to transfer a repeater, and ensure they are registered on this site.
                 </li>
-                </ul>
+                <li>Login to the Arkansas Repeater Council site at arkansasrepeatercouncil.org/Login.aspx.</li>
+                <li>Once logged-in, click the "Update" button next to the repeater you need to update. <br>
+                 (Note: This button is only shown if you have a repeater for which you are a trustee.)</li>
+                <li>Next to the trustee textbox, click the button labelled, "Change" - this will populate the list of options.
+                </li>
+                <li>Select the new trustee in the list.</li>
+                <li>Click "Save".</li>
+               </ol>
+              </li>
+             </ol>
             </li>
-        </ol>
+            <li>Procedure for adding additional users to your coordination
+             <ol>
+              <li>Most repeaters have a single trustee. This creates problems if the trustee becomes unable to maintain their
+               coordination. The Arkansas Repeater Council web site enables trustees to add secondary users to their repeater
+               coordinations. These users can perform any of the same tasks as the trustee to keep their coordination up to
+               date.</li>
+              <li>In order to add an additional user to a coordination, follow these steps:
+               <ol>
+                <li>Contact the individual you want to add to a repeater, and ensure they are registered on this site.</li>
+                <li>Login to the Arkansas Repeater Council site at arkansasrepeatercouncil.org/Login.aspx.</li>
+                <li>Once logged-in, click the "Update" button next to the repeater you need to update. <br>
+                 (Note: This button is only shown if you have a repeater for which you are a trustee.)</li>
+                <li>Click the “Users” tab, then click the “Add new” button.</li>
+                <li>Select the new user from the list.</li>
+                <li>Click "Save".</li>
+               </ol>
+              </li>
+             </ol>
+            </li>
+           </ol>
+          <li>Guidelines
+           <ol>
+            <li>General
+             <ol>
+              <li>Repeater records are required to be updated at least once every 3 years.</li>
+              <li>A minimal fee for coordination is charged once every three years to pay for the website and associated fees.
+               The non-refundable fee is $3. The coordinators may decrease or disregard this fee if there are sufficient funds
+               for the foreseeable future.</li>
+              <li>The coordinators will maintain a band-plan in consultation with those of the Mid-America Coordination Council
+               and neighboring states.</li>
+             </ol>
+            </li>
+            <li>Geographical separation of repeaters
+             <ol>
+              <li>Co-channel repeaters (those on the same frequency) must be at least be 90 miles apart. This applies to systems
+               on the 52, 144, 220, 440, 902, and 1215 MHz bands.</li>
+              <li>Repeaters on adjacent frequencies also have physical separation requirements. Refer to the following table for
+               those requirements:
+               <table>
+                <tr>
+                 <th>Band (MHz)</th>
+                 <th>Spacing</th>
+                 <th>Separation</th>
+                </tr>
+                <tr>
+                 <td>52</td>
+                 <td>20 kHz</td>
+                 <td>20 miles</td>
+                </tr>
+                <tr>
+                 <td>144</td>
+                 <td>15 kHz</td>
+                 <td>40 miles</td>
+                </tr>
+                <tr>
+                 <td> </td>
+                 <td>20 kHz</td>
+                 <td>25 miles</td>
+                </tr>
+                <tr>
+                 <td> </td>
+                 <td>30 kHz</td>
+                 <td>20 miles</td>
+                </tr>
+                <tr>
+                 <td>220</td>
+                 <td>20 kHz</td>
+                 <td>40 miles</td>
+                </tr>
+                <tr>
+                 <td> </td>
+                 <td>40 kHz</td>
+                 <td>5 miles</td>
+                </tr>
+                <tr>
+                 <td>440</td>
+                 <td>25 kHz</td>
+                 <td>5 miles</td>
+                </tr>
+                <tr>
+                 <td> </td>
+                 <td>40 kHz</td>
+                 <td>1 miles</td>
+                </tr>
+                <tr>
+                 <td>902</td>
+                 <td>25 kHz</td>
+                 <td>5 miles</td>
+                </tr>
+                <tr>
+                 <td> </td>
+                 <td>50 kHz</td>
+                 <td>1 mile</td>
+                </tr>
+                <tr>
+                 <td>1215</td>
+                 <td>25 kHz</td>
+                 <td>5 miles</td>
+                </tr>
+                <tr>
+                 <td> </td>
+                 <td>50 kHz</td>
+                 <td>1 mile</td>
+                </tr>
+               </table>
+              </li>
+             </ol>
+            </li>
+            <li>Changes to a coordination
+             <ol>
+              <li>Coordination records must be updated within sixty (60) days of a change in trustee.</li>
+              <li>A coordination may be transferred to another trustee only if a coordinated repeater system, that is currently
+               in complete operation, is sold or otherwise transfers ownership. The coordination will transfer with the repeater
+               system. Any such sale or transfer must include the actual equipment that comprises the repeater system. Both
+               parties must work together to complete the transfer process online within 15 days of the transfer of ownership.
+              </li>
+              <li>If there is any change to the operating parameters of a coordinated repeater (transmit power, antenna height,
+               ERP, location, or frequency) outside of the allowed deviation limits, the coordination is automatically void and
+               the frequency will be returned to the pool for reassignment.</li>
+              <li>Certain deviations to the operating parameters of a coordinated repeater are allowed. These deviations are
+               based on the values given when the repeater was initially coordinated. The allowed deviations are as follows:
+               <ol>
+                <li>Power may not be increased more than 5 watts from the originally coordinated power at duplexer output</li>
+                <li>Antenna height may not be increased more than 50 feet (15 meters) from the originally coordinated height
+                </li>
+                <li>Effective radiated power may not be more than 300 watts.</li>
+                <li>Location may not change more than 1 mile in any direction from the originally coordinated location</li>
+                <li>Frequency may not be changed at all without re-coordination.</li>
+               </ol>
+              </li>
+             </ol>
+            </li>
+            <li>Unused frequencies and construction
+             <ol>
+              <li>If the frequency of a coordinated repeater is stopped being used, the coordination will be automatically
+               voided after 15 days. This action ensures that frequencies remain available as much as possible.</li>
+              <li>If a repeater must be taken offline, or it has a malfunction, then the trustee should immediately update its
+               coordination record to show it is temporarily off-the-air for 30 days. The trustee may extend this by adding a
+               note to the record once every 30 days. A coordination can be held in these cases for a maximum of 180 days after
+               which, if the repeater is still not back in service, the coordination will be void. The trustee must update the
+               repeater's record online at the time the repeater is placed into regular service to retain coordination.</li>
+              <li>After a coordination request has been approved, the applicant has 180 days to complete the repeater
+               installation and update the repeater's record that the repeater is operational. If problems arise and more than
+               180 days are required, then a coordinator must be notified to request an extension of 60 days. Only one extension
+               may be granted. The trustee must update the repeater's record online at the time the repeater is placed into
+               regular service to retain coordination.</li>
+             </ol>
+            </li>
+            <li>Miscellaneous specification and definitions
+             <ol>
+              <li>A portable repeater is a repeater which can be placed on a location 72 hours before and after an event. The
+               repeater may be a coordinated repeater. It may also be set up for an emergency. It must stay within state
+               boundaries.</li>
+              <li>A temporary repeater is used when a coordinated repeater has experienced a site failure (fallen tower, fire,
+               etc.). It can be placed up to 25 miles from its coordinated site for no more than 30 days. An extension can be
+               granted by the coordinator upon request by the trustee. After repairs are completed, the repeater must be
+               returned to its coordinated site within 72 hours.</li>
+             </ol>
+            </li>
+           </ol>
+          </li>
+         </ol>
+        </div>
     </section>
 
-	<a class="namedAnchor" name="procedures"></a>
-	<section>
-		<h2>Procedures</h2>
-		Any individual or organization desiring to establish an amateur radio repeater in Arkansas should first submit a coordination request.&nbsp; This section will outline that process.
-		
-		<a class="namedAnchor" name="coordinationprocedure"></a><h3>Coordination request procedure</h3>
-        <ol>
-            <li>Login to the Arkansas Repeater Council site at <a href="https://www.arkansasrepeatercouncil.org/Login.aspx">arkansasrepeatercouncil.org/Login.aspx</a>. (Create an account if you don't already have one.)</li>
-            <li>Once logged-in, click the &quot;Request coordination&quot; link in the menu.</li>
-            <li>Complete and submit the request form.</li>
-            <li>Wait for the magic to happen.&nbsp; What&#39;s the magic?&nbsp; I&#39;m so glad you asked...</li>
-        </ol>
-
-        <p>Once your request is submitted, the website will automatically determine which states are within 90 miles of your proposed repeater site.&nbsp; It will then email each of the coordinators for each of those states with a link that they can use to give you a response.&nbsp; If a coordinator has to decline a request they will provide a reason.</p>
-
-        <div style="width: 644px; font-size: 0.75em; margin-left: auto; margin-right: auto; background-color: rgba(255, 255, 255, 0.4);">
-        Coordination workflow, including automated parts of the process:<br />
-        <a href="../images/CoordinationWorkflow.jpg" target="_blank"><img alt="" src="../images/CoordinationWorkflow.jpg" style="margin: 5px; height: 328px; width: 634px" /></a>
-		</div>
-
-        <a class="namedAnchor" name="updateprocedure"></a><h3>Update procedure</h3>
-        <p>The Arkansas Repeater Council requires that all records be updated at least every three years. Repeater records must be updated within sixty (60) days of a change in trustee.</p>
-        <ol>
-            <li>Login to the Arkansas Repeater Council site at <a href="https://www.arkansasrepeatercouncil.org/Login.aspx">arkansasrepeatercouncil.org/Login.aspx</a>. (Create an account if you don't already have one.</li>
-            <li>Once logged-in, click the &quot;Update&quot; button next to the repeater you need to update. (Note: This button is only shown if you have a repeater for which you are a trustee.)</li>
-            <li>Review the repeater information and make any needed changes.</li>
-            <li>Even if no changes were made... click &quot;Save&quot;. That's it.</li>
-        </ol>
-
-        <a class="namedAnchor" name="transferprocedure"></a><h3>Transfer procedure</h3>
-        <p>A frequency coordination may be transferred under certain conditions. If a coordinated repeater system
-    that is currently in complete operation is sold, the coordination will transfer with the repeater system.
-    Any such sale or transfer must include the actual equipment that comprises the repeater system. </p>
-        <ol>
-            <li>Contact the individual to whom you want to transfer a repeater, and ensure they are registered on this site.</li>
-            <li>Login to the Arkansas Repeater Council site at <a href="https://www.arkansasrepeatercouncil.org/Login.aspx">arkansasrepeatercouncil.org/Login.aspx</a>. (Create an account if you don't already have one.</li>
-            <li>Once logged-in, click the &quot;Update&quot; button next to the repeater you need to update. (Note: This button is only shown if you have a repeater for which you are a trustee.)</li>
-            <li>Next to the trustee textbox, click the button labelled, &quot;Change&quot; - this will populate the list of options.</li>
-            <li>Select the new trustee in the list.</li>
-            <li>Click &quot;Save&quot;.</li>
-        </ol>
-	</section>
-
-	<a class="namedAnchor" name="principles"></a>
-	<section>
-		<h2>Principles</h2>
-		<p>
-Frequency coordination exists for the purpose of reducing or eliminating interference between amateur radio repeaters. In Arkansas, the Arkansas Repeater Council is the recognized
-Coordinator.
-		</p><p>
-Frequency coordination is voluntary. By obtaining coordination, you avail yourself the protection of the FCC if there is a problem between your repeater and an uncoordinated
-repeater. The uncoordinated machine is responsible for correcting the problem, not you.
-</p><p>
-The ARC adheres to regional (MACC) and national (NFCC) standards of coordination.
-This requires working with other states to prevent interference to everyone. Since the different
-organizations are voluntary, not everybody replies promptly. The ARC tries to provide
-coordination within a sixty-day time frame. This time frame starts from the date of receipt by the
-            coordinator, till responses from surrounding states that are affected by the coordination and
-notification is sent back to the repeater owner or trustee. If a coordination response is not
-received, the coordinator advises the state involved that the coordination is proceeding without
-their input.
-</p><p>
-            After the coordination is completed and the repeater is on the air, if there is any change to the operating parameters (transmit power, antenna height, ERP,
-location, or frequency) outside of the published deviation limits below, the coordination is automatically
-void and the frequency will be returned to the pool for reassignment. 
-</p>
-<a name="deviationlimits" class="namedAnchor"></a>
-        <h3>Deviation limits</h3>
-<p>
-Repeaters may be changed, but the following specifications are only allowed deviations as follows:</p>
-    <ul>
-    <li>Power - No more than 5 watts from coordinated power (at duplexer output)</li>
-    <li>Antenna height - No more than +50 ft. from coordinated height</li>
-    <li>ERP - 300 Watts maximum</li>
-    <li>Location - Not more than 1 mile in any direction from coordinated location</li>
-    <li>Frequency - No changes without re-coordination</li>
-    </ul>
-<p>
-If a frequency is not used or has stopped being used, the coordination will be voided 15 days
-after receipt of notification to the repeater owner or trustee that this action will be taken unless
-the repeater is put back into service. This action insures that frequencies remain available as
-much as possible. 
-</p><p>
-After a coordination request has been approved, the applicant has 180 days to
-complete the repeater installation and update the repeater&#39;s record that the repeater is operational. If problems arise and more than 180
-days are required, then the coordinator must be notified to request an extension of 60 days.
-</p><p>
-Coordination is voluntary and depends on you to help keep interference to a minimum.
-When interference occurs between two coordinated repeaters, the ARC will work with all parties
-involved to try and resolve the problem to everyone's satisfaction. The FCC has final jurisdiction
-on any and all complaints.
-</p><p>
-The ARC charges a minimal fee for coordination to offset mailing and telephone charges.
-The non-refundable fee is $10.00. ARC members pay $5.00.
-Currently, fees for coordination have been suspended unless the council funds drop below a
-pre-set level.</p>
-</section>
-	<a class="namedAnchor" name="guidelines"></a>
-	<section>
-		<h2>Guidelines</h2>
-		The Arkansas Repeater Council requires that repeater records be updated every 3 years.
-        <a class="namedAnchor" name="bandplans"></a>
-		<h3>Band plans</h3>
-The member state coordinators shall adhere as closely as possible to the use of the various
-band plans as adopted by the Mid-America Coordination Council.
-Use of the modified band plans is at the option of the local State coordinators with the consent of adjacent MACC state coordinators.
-        <a class="namedAnchor" name="geographicalseparation"></a>
-		<h3>Geographical separation of repeaters</h3>
-The minimum geographical spacing between the two closest points of the systems in question
-shall be 90 miles (effective 03-02-2013 per vote at annual membership meeting).
-This spacing is considered valid for systems on the 52, 144, 220, 440, 902 and
-1215 MHz bands. This applies to separations in and out of the state.
-        <a class="namedAnchor" name="adjacentfrequency"></a>
-		<h3>Adjacent frequency separation</h3>
-		<table>
-			<tr><td class="auto-style2">Band (MHz)</td><td class="auto-style2">Spacing</td><td class="auto-style2">Separation</td><td class="auto-style1">&nbsp;</td><td class="auto-style2">Band (MHz)</td><td class="auto-style2">Spacing</td><td class="auto-style2">Separation</td></tr>
-			<tr><td>52</td><td>20 kHz</td><td>20 miles</td><td class="auto-style1">&nbsp;</td><td>440</td><td>25 kHz</td><td>5 miles</td></tr>
-			<tr><td>&nbsp;</td><td>40 kHz</td><td>No minimum</td><td class="auto-style1">&nbsp;</td><td>&nbsp;</td><td>40 kHz</td><td>1 mile</td></tr>
-			<tr><td>144</td><td>15 kHz</td><td>40 miles</td><td class="auto-style1">&nbsp;</td><td>&nbsp;</td><td>50 kHz</td><td>No minimum</td></tr>
-			<tr><td>&nbsp;</td><td>20 kHz</td><td>25 miles</td><td class="auto-style1">&nbsp;</td><td>902</td><td>25 kHz</td><td>5 miles</td></tr>
-			<tr><td>&nbsp;</td><td>30 kHz</td><td>20 miles</td><td class="auto-style1">&nbsp;</td><td>&nbsp;</td><td>50 kHz</td><td>1 mile</td></tr>
-			<tr><td>220</td><td>20 kHz</td><td>40 miles</td><td class="auto-style1">&nbsp;</td><td>&nbsp;</td><td>75 kHz</td><td>No minimum</td></tr>
-			<tr><td>&nbsp;</td><td>40 kHz</td><td>5 miles</td><td class="auto-style1">&nbsp;</td><td>1215</td><td>25 kHz</td><td>5 miles</td></tr>
-			<tr><td>&nbsp;</td><td>60 kHz</td><td>No minimum</td><td class="auto-style1">&nbsp;</td><td>&nbsp;</td><td>50 kHz</td><td>1 mile</td></tr>
-			<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="auto-style1">&nbsp;</td><td>&nbsp;</td><td>75 kHz</td><td>No minimum</td></tr>
-			</table>
-        <a class="namedAnchor" name="miscspec"></a>
-		<h3>Miscellaneous specifications &amp; definitions</h3>
-		<ul>
-			<li>Closed repeater: Applications will be coordinated as SNP repeaters.</li>
-			<li>Portable repeater: A repeater which can be placed on a location 72 hours before and after
-      an event. The repeater may be a coordinated repeater. It may also be set up for an emergency. It must stay within state boundaries.</li>
-			<li>Temporary repeater: A repeater that had a site failure (fallen tower, fire, etc.). It can be
-      moved up to 25 miles from it's coordinated site for no more than 30 days. An extension can
-      be granted by the coordinator upon request by the repeater owner / trustee. After repairs are
-      completed, the repeater must be returned to its coordinated site within 72 hours. </li>
-		</ul>
-        <a class="namedAnchor" name="constructionperiod"></a>
-	    <h3>Repeater Construction Period</h3>
-		    Upon approval of a request for coordination, a period of 180 days is allowed to place the repeater into operation. Operation is defined as "fully tested repeater operation from the final repeater location or site". If the system is not in operation after this construction period, the coordination is automatically
-    withdrawn. If however, during this 180 day period, the applicant determines that he will be unable to place the repeater on the assigned frequency into operation, he may request an extension of no more than 60 days. If the construction and installation of the repeater system is not completed within this 
-    extended period, the frequency assignment is automatically withdrawn. The applicant may then re-apply for the coordination, but there is no guarantee that the previously coordinated frequency will be available.
-    This allows for efficient use of valuable spectrum and ensures that frequency pairs are not wasted by holding assignments for protracted periods when applicants fail to construct in a timely manner.
-    The applicant must update the repeater&#39;s record online at the time the repeater is placed into regular
-    service for the applicant to retain coordination.
-    If a previously constructed repeater system is rendered inoperative for more than 60 days, the sponsor must update the repeater&#39;s record to reflect its status as &quot;Temporarily off the air&quot;. The sponsor will then have 90 days to return the repeater system to the air. The sponsor will update the repeater&#39;s record when the system is returned to operation.
-		    <a class="namedAnchor" name="coordinationmodification"></a>
-		    <h3>Modification to existing coordination</h3>
-
-    Any modification or change in the original coordination (i.e.- TX Power, Ant. Height, ERP, Location or Frequency) will automatically void the coordination. Deviations allowed are set forth in the coordination guidelines, however the repeater&#39;s record must be updated online within 30 days of any allowed changes. 
-    If a repeater is to be moved from its coordinated location, the sponsor of the system must submit a request for relocation. The coordinator will confirm that the proposed change in location meets all the criteria set forth in the coordination guidelines. If it is determined that the proposed relocation of the repeater will not conform to the applicable coordination guidelines, the application for relocation will not be granted. If a sponsor begins operation of the repeater system prior to receiving an approval of the change of location from the coordinator, then the repeater&#39;s coordination is forfeit.</section>
-</asp:Content>
+	
+	</asp:Content>
 
