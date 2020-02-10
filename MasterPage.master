@@ -26,7 +26,7 @@
 				        <li><a href="/repeaters/">Repeater directory</a></li>
 				        <li><a href="/about/">About us</a></li>
 				        <li><a href="/procedures/">Procedures</a></li>
-                        <li><asp:LinkButton ID="lbLogin" runat="server" OnClick="lbLogin_Click" Text="Login"></asp:LinkButton></li>
+                        <li><asp:LinkButton ID="lbLogin" runat="server" OnClick="lbLogin_Click" Text="Login/Register"></asp:LinkButton></li>
 			        </ul>
                     <asp:Panel ID="pnlLoggedInNav" Visible="false" runat="server">
                         <ul class="loggedInLinks">
