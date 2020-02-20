@@ -89,6 +89,7 @@
         <br />
         </asp:Panel>
         <asp:Panel ID="Panel2" runat="server">
+            <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
             <asp:Label ID="lblAnswer" runat="server" Text=""></asp:Label>
         </asp:Panel>
     </section>
