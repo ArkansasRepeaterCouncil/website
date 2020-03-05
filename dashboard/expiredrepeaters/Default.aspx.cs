@@ -90,22 +90,28 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 						if (strContact != string.Empty) { strContact += ", "; }
 						strContact += "<a href='mailto:" + (string)repeater.Trustee.Email + "'>" + (string)repeater.Trustee.Email + "</a> ";
 					}
-					if ((string)repeater.Trustee.CellPhone != string.Empty)
-					{
-						if (strContact != string.Empty) { strContact += ", "; }
-						strContact += (string)repeater.Trustee.CellPhone + " (cell)";
-					}
-					if ((string)repeater.Trustee.HomePhone != string.Empty)
-					{
-						if (strContact != string.Empty) { strContact += ", "; }
-						strContact += (string)repeater.Trustee.HomePhone + " (home)";
-					}
-					if ((string)repeater.Trustee.WorkPhone != string.Empty)
-					{
-						if (strContact != string.Empty) { strContact += ", "; }
-						strContact += (string)repeater.Trustee.WorkPhone + " (work)";
-					}
-					row.AddCell(strContact);
+
+                    string strPhone = string.Empty;
+                    if ((string)repeater.Trustee.CellPhone != string.Empty)
+                    {
+                        if (strContact != string.Empty) { strContact += ", "; }
+                        strPhone = (string)repeater.Trustee.CellPhone;
+                        strContact += "<a href='tel:" + strPhone + "'>" + strPhone + "</a> (cell)";
+                    }
+                    if ((string)repeater.Trustee.HomePhone != string.Empty)
+                    {
+                        if (strContact != string.Empty) { strContact += ", "; }
+                        strPhone = (string)repeater.Trustee.HomePhone;
+                        strContact += "<a href='tel:" + strPhone + "'>" + strPhone + "</a> (home)";
+                    }
+                    if ((string)repeater.Trustee.WorkPhone != string.Empty)
+                    {
+                        if (strContact != string.Empty) { strContact += ", "; }
+                        strPhone = (string)repeater.Trustee.WorkPhone;
+                        strContact += "<a href='tel:" + strPhone + "'>" + strPhone + "</a> (work)";
+                    }
+
+                    row.AddCell(strContact);
 					row.CssClass = "expiredRepeaterData";
 					table.Rows.Add(row);
 				}
