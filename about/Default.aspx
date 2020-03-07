@@ -32,7 +32,7 @@
 			<ul id="volunteerList">
 				<li><img src="/images/tem.png" alt="Drawing of Tem" class="avatar">Tem Moore, N5KWL (<a href="https://www.qrz.com/db/n5kwl">QRZ</a>)<br>Chief Cat Herder In Charge</li>
                 <li><img src="/images/luke.png" alt="Drawing of Luke" class="avatar">Luke Williams, AE5AU (<a href="https://www.qrz.com/db/ae5au">QRZ</a>)<br>Executive Information Sensei</li>
-				<li><img src="/images/joshua.png" alt="Drawing of Joshua" class="avatar">Joshua Carroll, N5JLC (<a href="https://www.qrz.com/db/n5jlc">QRZ</a>)<br>Galactic Viceroy of Programming</li>
+				<li><img src="/images/joshua.png" alt="Drawing of Joshua" class="avatar">Joshua Carroll, AA5JC (<a href="https://www.qrz.com/db/aa5jc">QRZ</a>)<br>Galactic Viceroy of Programming</li>
 			</ul>
 	</section>
 	<section>
@@ -48,10 +48,10 @@
         <ul>
             <li>Wayne Mahnker - WA5LUY (2022)</li>
             <li>Michael Clay - AC5XV (2022)</li>
-            <li>Joe Giddons - N5IOZ (2020)</li>
-            <li>Tem Moore - N5KWL (2020)</li>
+            <li>Chris Daniels - W5AWX (2023)</li>
+            <li>Joshua Carroll - AA5JC (2023)</li>
             <li>Joel Echols - N5QLC (2021)</li>
-            <li>Johnathan Williams - K5DVT (2021)</li>
+            <li>Jon Williams - K5DVT (2021)</li>
         </ul>
 	</section>
 </asp:Content>
