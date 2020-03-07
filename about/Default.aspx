@@ -48,7 +48,7 @@
         <ul>
             <li>Wayne Mahnker - WA5LUY (2022)</li>
             <li>Michael Clay - AC5XV (2022)</li>
-            <li>Chris Daniels - W5AWX (2023)</li>
+            <li>Chris Daniel - W5AWX (2023)</li>
             <li>Joshua Carroll - AA5JC (2023)</li>
             <li>Joel Echols - N5QLC (2021)</li>
             <li>Jon Williams - K5DVT (2021)</li>
