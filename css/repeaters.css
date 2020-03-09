@@ -1,10 +1,14 @@
- .repeaterListTable tr:nth-of-type(even) { background-color: rgba(153, 153, 153, 0.6); }
+.repeaterListTable tr.De-coordinated {
+    background-image: url('/images/void.png');
+    background-repeat: repeat-x;
+    background-color: rgba(153, 153, 153, 0.6);
+}
 
 .NOrepeaterListTable thead, .NOrepeaterListTable tfoot {
 	height: 24px;
     font-size: 0.7em;
 	display: block;
-	background-color: rgba(102, 102, 102, 0.6);;
+	background-color: rgba(102, 102, 102, 0.6);
 }
 
 .NOrepeaterListTable tbody {

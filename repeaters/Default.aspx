@@ -28,11 +28,6 @@
             margin-left: 105px;
             font-size: 0.6em;
         }
-        .De-coordinated {
-            font-size: 0.7em;
-            background-image: url('/images/void.png');
-            background-repeat: repeat-x;
-        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">Repeater directory
