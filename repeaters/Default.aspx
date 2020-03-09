@@ -28,6 +28,11 @@
             margin-left: 105px;
             font-size: 0.6em;
         }
+        .De-coordinated {
+            font-size: 0.7em;
+            background-image: url('/images/void.png');
+            background-repeat: repeat-x;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">Repeater directory
@@ -42,7 +47,10 @@
             &nbsp;<asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
                 <input id="btnDetect" type="button" value="Search for repeaters near me" onclick="getLocation();" />
                 <br />
-                <div class="searchDescription">Frequency, city, callsign, or &#39;latitude, longitude&#39;</div><br />
+                <div class="searchDescription">
+                    Frequency, city, callsign, or &#39;latitude, longitude&#39;<br /><br />
+                    <asp:CheckBox ID="chkIncludeDecoordinated" runat="server" Checked="true" Text="Include decoordinated repeaters" />
+                </div><br />
             </div>
 		    <asp:Table ID="tableRepeaters" runat="server" CssClass="repeaterListTable">
                 <asp:TableRow runat="server" CssClass="repeaterListTableRow" TableSection="TableHeader">

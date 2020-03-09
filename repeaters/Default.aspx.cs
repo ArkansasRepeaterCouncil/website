@@ -44,7 +44,12 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 	protected void getPublicRepeaterList()
 	{
-		string uri = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=ar";
+        int includeDecoordinated = 0;
+        if (!chkIncludeDecoordinated.Checked) {
+            includeDecoordinated = 6;  // 6 is the internet ID for repeater_status decoordinated. This is used to NOT include those in the dataset
+        }
+
+        string uri = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=ar";
 
 		Regex rxLatLon = new Regex(@"([-+]?(?:[0-9]|[1-9][0-9])\.\d+),\s*([-+]?(?:[0-9]|[1-9][0-9]|[1-9][0-9][0-9])\.\d+)");
 
@@ -54,11 +59,11 @@ public partial class repeaters_Default : System.Web.UI.Page
 			Match match = matches[0];
 			GroupCollection groups = match.Groups;
             orderBy = "Distance";
-            uri += string.Format("&latitude={0}&longitude={1}&miles={2}&orderBy={3}", groups[1], groups[2], "40", orderBy);
+            uri += string.Format("&latitude={0}&longitude={1}&miles={2}&orderBy={3}&includeDecoordinated={4}", groups[1], groups[2], "40", orderBy, includeDecoordinated);
 		}
 		else
 		{
-			uri += string.Format("&search={0}&pageNumber={1}&pageSize={2}&orderBy={3}", query, page.ToString(), "9", orderBy);
+			uri += string.Format("&search={0}&pageNumber={1}&pageSize={2}&orderBy={3}&includeDecoordinated={4}", query, page.ToString(), "9", orderBy, includeDecoordinated);
 		}
 
 		using (var webClient = new System.Net.WebClient())
@@ -70,7 +75,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 			foreach (dynamic obj in data)
 			{
 				TableRow row = new TableRow();
-				row.CssClass = "repeaterListTableRow";
+				row.CssClass = "repeaterListTableRow " + obj.Status;
 
 				using (TableCell cell = new TableCell())
 				{
