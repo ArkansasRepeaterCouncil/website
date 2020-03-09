@@ -54,7 +54,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 		dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
 
 		Table table = new Table();
-		if (data.Report != null)
+		if ((data.Report != null) && (data.Report.Data != null))
 		{
 			foreach (dynamic item in data.Report.Data)
 			{
