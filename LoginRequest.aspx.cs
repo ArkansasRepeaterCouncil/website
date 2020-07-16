@@ -83,4 +83,17 @@ public partial class LoginRequest : System.Web.UI.Page
 	{
 		sendNewAccountRequest();
 	}
+
+	protected void CustomValidator2_ServerValidate(object source, ServerValidateEventArgs args)
+	{
+		if (txtEmail.Text.ToLower().EndsWith("@arrl.net"))
+		{
+			args.IsValid = false;
+		}
+		else
+		{
+			args.IsValid = true;
+		}
+		
+	}
 }

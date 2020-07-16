@@ -24,6 +24,7 @@
         <asp:Label ID="Label2" CssClass="label" runat="server" Text="Email address: " AssociatedControlID="txtEmail"></asp:Label><asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" ControlToValidate="txtEmail" runat="server" ErrorMessage="Email address provided is not valid." ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*">*</asp:RegularExpressionValidator>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Email address is required." ControlToValidate="txtEmail">*</asp:RequiredFieldValidator>
+        <asp:CustomValidator ID="CustomValidator2" runat="server" ErrorMessage="Please do not use an arrl.net email address. <a target='_blank' href='https://github.com/ArkansasRepeaterCouncil/website/issues/639'>Why?</a>" ControlToValidate="txtEmail" OnServerValidate="CustomValidator2_ServerValidate">*</asp:CustomValidator>
         <br />
         <asp:HiddenField ID="hdnName" runat="server" />
         <asp:HiddenField ID="hdnAddress" runat="server" />
