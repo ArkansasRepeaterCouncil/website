@@ -427,6 +427,8 @@ public partial class update_Default : System.Web.UI.Page
 				ddlAddUser.Items.Add(li);
 			}
 		}
+
+		ScriptManager.RegisterClientScriptBlock(this, typeof(Page),"alertScript", "$( '#tabs' ).tabs({ active: 5 });", true);
 	}
 
 	protected void btnRemoveRepeaterUser(object sender, EventArgs e, string userid)
@@ -449,6 +451,7 @@ public partial class update_Default : System.Web.UI.Page
 
 		LoadRepeaterUsers(repeaterId);
 		pnlAddUser.Visible = false;
+		ScriptManager.RegisterClientScriptBlock(this, typeof(Page), "alertScript", "$( '#tabs' ).tabs({ active: 5 });", true);
 	}
 
 	protected void ShowOverrideIfIsCoordinatorForRepeater()
