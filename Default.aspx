@@ -37,6 +37,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0&appId=783508345330087&autoLogAppEvents=1"></script>
+
     <section>
 		<h1>Arkansas Repeater Council</h1>
 		<p>
@@ -63,10 +66,15 @@ amateur radio repeater frequencies in the state of Arkansas. We utilize availabl
         <div class="currentRepeaters" id="piechart"></div>
     </section>
     <section>
+        <div class="homepageListing facebook">
+            <div class="fb-page" data-href="https://www.facebook.com/ArkansasRepeaters" data-tabs="timeline" data-width="100%" data-height="850" data-small-header="true" data-adapt-container-width="true" data-hide-cover="true" data-show-facepile="true"><blockquote cite="https://www.facebook.com/ArkansasRepeaters" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/ArkansasRepeaters">Arkansas Repeater Council</a></blockquote></div>
+        </div>
+        <div class="homepageListing recentChanges"><asp:label id="lblRecentChanges" runat="server" text="Ch-ch-ch-ch-changes"></asp:label></div>
+    </section>
+    <section>
         <div class="homepageListing mostWanted">
             <asp:Panel ID="pnlMostWanted" runat="server"></asp:Panel>
         </div>
-        <div class="homepageListing recentChanges"><asp:label id="lblRecentChanges" runat="server" text="Ch-ch-ch-ch-changes"></asp:label></div>
     </section>
     <asp:HiddenField ID="hdnCountCurrent" ClientIDMode="Static" runat="server" />
     <asp:HiddenField ID="hdnCountExpired" ClientIDMode="Static" runat="server" />
