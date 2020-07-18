@@ -1,7 +1,8 @@
 .repeaterListTable tr.De-coordinated {
     background-image: url('/images/void.png');
-    background-repeat: repeat-x;
-    background-color: rgba(153, 153, 153, 0.6);
+    background-repeat: repeat;
+    background-color: rgba(153, 153, 153, 0.15);
+    color: #aaaaaa;
 }
 
 .NOrepeaterListTable thead, .NOrepeaterListTable tfoot {
