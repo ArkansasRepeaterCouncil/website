@@ -10,6 +10,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 {
 	string query = "";
 	int page = 1;
+	bool includeDecoordinated = false;
 	string orderBy = "OutputFrequency";
 
 	protected void Page_Load(object sender, EventArgs e)
@@ -25,6 +26,9 @@ public partial class repeaters_Default : System.Web.UI.Page
         {
             txtSearch.Text = query;
         }
+
+		includeDecoordinated = (Request.QueryString["dc"] == "true");
+		chkIncludeDecoordinated.Checked = includeDecoordinated;
 
 		string pageTest = Request.QueryString["p"];
 		int intPage;
@@ -162,27 +166,27 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 	protected void btnSearch_Click(object sender, EventArgs e)
 	{
-		Response.Redirect(string.Format("~/repeaters/?q={0}", query));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&dc={1}", query, includeDecoordinated));
 	}
 
 	protected void btnFirst_Click(object sender, EventArgs e)
 	{
-		Response.Redirect(string.Format("~/repeaters/?q={0}&p=1", query));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p=1&dc={1}", query, includeDecoordinated));
 	}
 
 	protected void btnPrevious_Click(object sender, EventArgs e)
 	{
-		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}", query, page - 1));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&dc={2}", query, page - 1, includeDecoordinated));
 	}
 
 	protected void btnNext_Click(object sender, EventArgs e)
 	{
-		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}", query, page + 1));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&dc={2}", query, page + 1, includeDecoordinated));
 	}
 
 	protected void linkButton_Click(object sender, EventArgs e)
 	{
 		LinkButton lb = (LinkButton)sender;
-		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&o={2}", query, page, lb.CommandArgument));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&o={2}&dc={2}", query, page, lb.CommandArgument, includeDecoordinated));
 	}
 }

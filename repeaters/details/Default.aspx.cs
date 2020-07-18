@@ -14,7 +14,6 @@ public partial class update_Default : System.Web.UI.Page
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		disableForm();
-
 		repeaterId = "0";
 
 		if (Request.QueryString["id"] != null)
