@@ -77,8 +77,8 @@ public partial class update_Default : System.Web.UI.Page
 		lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 		txtID.Text = repeater.ID.ToString();
 		ddlType.SelectedValue = repeater.Type;
-		txtRepeaterCallsign.Text = repeater.RepeaterCallsign;
-		txtTrusteeCallsign.Text = repeater.TrusteeCallsign;
+		txtRepeaterCallsign.Text = string.Format("<a href='https://qrz.com/db/{0}' target='_blank'>{0}</a>", repeater.RepeaterCallsign);
+		txtTrusteeCallsign.Text = string.Format("<a href='https://qrz.com/db/{0}' target='_blank'>{0}</a>", repeater.TrusteeCallsign);
 		ddlStatus.SelectedValue = repeater.Status;
 		txtCity.Text = repeater.City;
 		txtSiteName.Text = repeater.SiteName;

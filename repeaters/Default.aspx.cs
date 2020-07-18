@@ -108,13 +108,13 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 				using (TableCell cell = new TableCell())
 				{
-					cell.Text = obj.Callsign;
+					cell.Text = string.Format("<a href='https://qrz.com/db/{0}' target='_blank'>{0}</a>", obj.Callsign);
 					row.Cells.Add(cell);
 				}
 
 				using (TableCell cell = new TableCell())
 				{
-					cell.Text = obj.Trustee;
+					cell.Text = string.Format("<a href='https://qrz.com/db/{0}' target='_blank'>{0}</a>", obj.Trustee);
 					row.Cells.Add(cell);
 				}
 
