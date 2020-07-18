@@ -44,7 +44,7 @@
                 <br />
                 <div class="searchDescription">
                     Frequency, city, callsign, or &#39;latitude, longitude&#39;<br /><br />
-                    <asp:CheckBox ID="chkIncludeDecoordinated" runat="server" Checked="true" Text="Include decoordinated repeaters" />
+                    <asp:CheckBox ID="chkIncludeDecoordinated" runat="server" Text="Include decoordinated repeaters" />
                 </div><br />
             </div>
 		    <asp:Table ID="tableRepeaters" runat="server" CssClass="repeaterListTable">
