@@ -27,7 +27,7 @@ public partial class repeaters_Default : System.Web.UI.Page
             txtSearch.Text = query;
         }
 
-		includeDecoordinated = ((Request.QueryString["dc"] == "True") || (chkIncludeDecoordinated.Checked));
+		includeDecoordinated = (Request.QueryString["dc"] == "True");
 		chkIncludeDecoordinated.Checked = includeDecoordinated;
 
 		string pageTest = Request.QueryString["p"];
