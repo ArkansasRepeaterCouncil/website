@@ -106,6 +106,8 @@
                         <br />
                         <asp:Label ID="lblAnalog_Width" CssClass="formLabel" runat="server" Text="Analog width"></asp:Label><asp:TextBox ID="txtAnalog_Width" CssClass="textInput" runat="server"></asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtAnalog_Width_FilteredTextBoxExtender" runat="server" BehaviorID="txtAnalog_Width_FilteredTextBoxExtender" TargetControlID="txtAnalog_Width" ValidChars="1234567890." />
+                        <br />
+                        <asp:Label ID="lblAdditionalInformation" CssClass="formLabel" runat="server" Text="Additional info"></asp:Label><asp:TextBox ID="txtAdditionalInformation" CssClass="textInput" runat="server"></asp:TextBox>
                 </div>
                 <div id="tab-2">
                        <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label>

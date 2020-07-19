@@ -79,6 +79,7 @@ public class Repeater
 	public string CoordinatedOutputPower = "";
 	public string CoordinatedAntennaHeight = "";
 	public string Note = "";
+	public string AdditionalInformation = "";
 	[JsonProperty]
 	private string ChangeLog = "";
 	[JsonProperty]

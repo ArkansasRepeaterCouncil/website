@@ -112,6 +112,7 @@ public partial class update_Default : System.Web.UI.Page
 			txtCoordinatedLatitude.Text = repeater.CoordinatedLatitude;
 			txtCoordinatedLongitude.Text = repeater.CoordinatedLongitude;
 			txtCoordinatedOutputPower.Text = repeater.CoordinatedOutputPower;
+			txtAdditionalinformation.Text = repeater.AdditionalInformation;
 		}
 		else
 		{
