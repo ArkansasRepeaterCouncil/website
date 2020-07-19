@@ -155,7 +155,8 @@ public class Repeater
 		string autopatch, bool emergencypower, bool linked, bool races, bool ares, bool widearea, bool weather, 
 		bool experimental, string datecoordinated, string dateupdated, string datedecoordinated, 
 		string datecoordinationsource, string dateconstruction, string state, string coordinatedLatitude, 
-		string coordinatedLongitude, string coordinatedOutputPower, string coordinatedAntennaHeight, string note)
+		string coordinatedLongitude, string coordinatedOutputPower, string coordinatedAntennaHeight, string note, 
+		string additionalInformation)
 	{
 		ID = int.Parse(id);
 		Type = type;
@@ -204,6 +205,7 @@ public class Repeater
 		CoordinatedOutputPower = coordinatedOutputPower;
 		CoordinatedAntennaHeight = coordinatedAntennaHeight;
 		Note = note;
+		AdditionalInformation = additionalInformation;
 }
 
 	public void Save(Credentials credentials, Repeater originalRepeater)
