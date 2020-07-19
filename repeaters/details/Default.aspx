@@ -60,8 +60,13 @@
                         <asp:ListItem></asp:ListItem>
                     </asp:DropDownList>
                     <br />
-                    <asp:Label ID="lblRepeaterCallsign" CssClass="formLabel" runat="server" Text="Repeater callsign"></asp:Label><asp:TextBox ID="txtRepeaterCallsign" CssClass="textInput" runat="server"></asp:TextBox><br />
-                    <asp:Label ID="lblTrusteeID" CssClass="formLabel" runat="server" Text="Trustee"></asp:Label><asp:TextBox ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <!--
+                        <asp:Label ID="lblRepeaterCallsign" CssClass="formLabel" runat="server" Text="Repeater callsign"></asp:Label><asp:TextBox ID="txtRepeaterCallsign" CssClass="textInput" runat="server"></asp:TextBox><br />
+                        <asp:Label ID="lblTrusteeID" CssClass="formLabel" runat="server" Text="Trustee"></asp:Label><asp:TextBox ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    -->
+                    <asp:Label ID="lblRepeaterCallsign" CssClass="formLabel" runat="server" Text="Repeater callsign"></asp:Label><asp:Label ID="txtRepeaterCallsign" CssClass="textInput" runat="server"></asp:Label><br />
+                    <asp:Label ID="lblTrusteeID" CssClass="formLabel" runat="server" Text="Trustee"></asp:Label><asp:Label ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:Label><br />
+                    <!-- -->
                     <asp:Label ID="lblStatus" CssClass="formLabel" runat="server" Text="Status"></asp:Label><asp:DropDownList ID="ddlStatus" runat="server" CssClass="textInput">
                         <asp:ListItem Value="1">Proposed</asp:ListItem>
                         <asp:ListItem Value="2">Under construction</asp:ListItem>
