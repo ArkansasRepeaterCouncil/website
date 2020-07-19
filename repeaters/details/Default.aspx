@@ -88,8 +88,8 @@
                     <asp:Label ID="lblAntennaHeight" CssClass="formLabel" runat="server" Text="Antenna height"></asp:Label><asp:TextBox ID="txtAntennaHeight" CssClass="textInput" runat="server" placeholder="meters"></asp:TextBox><br />
                     <asp:Label ID="lblAnalog_InputAccess" CssClass="formLabel" runat="server" Text="Input PL tone"></asp:Label><asp:TextBox ID="txtAnalog_InputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
                     <asp:Label ID="lblAnalog_OutputAccess" CssClass="formLabel" runat="server" Text="Output PL tone"></asp:Label><asp:TextBox ID="txtAnalog_OutputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
-                    <asp:Label ID="lblAnalog_Width" CssClass="formLabel" runat="server" Text="Analog width"></asp:Label><asp:TextBox ID="txtAnalog_Width" CssClass="textInput" runat="server"></asp:TextBox></br>
-                    <asp:Label ID="lblAdditionalInformation" CssClass="formLabel" runat="server" Text="Additional info"></asp:Label><asp:TextBox ID="txtAdditionalInformation" CssClass="textInput" runat="server"></asp:TextBox>
+                    <asp:Label ID="lblAnalog_Width" CssClass="formLabel" runat="server" Text="Analog width"></asp:Label><asp:TextBox ID="txtAnalog_Width" CssClass="textInput" runat="server"></asp:TextBox><br />
+                    <asp:Label ID="lblAdditionalInformation" CssClass="formLabel" runat="server" Text="Additional info"></asp:Label><asp:TextBox ID="txtAdditionalInformation" CssClass="textInput" runat="server" OnTextChanged="txtAdditionalInformation_TextChanged"></asp:TextBox>
                 </div>
                 <div id="tab-2">
                     <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label>
