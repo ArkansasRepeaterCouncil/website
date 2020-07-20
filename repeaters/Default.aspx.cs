@@ -173,27 +173,27 @@ public partial class repeaters_Default : System.Web.UI.Page
 
 	protected void btnSearch_Click(object sender, EventArgs e)
 	{
-		Response.Redirect(string.Format("~/repeaters/?q={0}&dc={1}", query, includeDecoordinated));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&dc={1}&o={2}", query, includeDecoordinated, orderBy));
 	}
 
 	protected void btnFirst_Click(object sender, EventArgs e)
 	{
-		Response.Redirect(string.Format("~/repeaters/?q={0}&p=1&dc={1}", query, includeDecoordinated));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p=1&dc={1}&o={2}", query, includeDecoordinated, orderBy));
 	}
 
 	protected void btnPrevious_Click(object sender, EventArgs e)
 	{
-		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&dc={2}", query, page - 1, includeDecoordinated));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&dc={2}&o={3}", query, page - 1, includeDecoordinated, orderBy));
 	}
 
 	protected void btnNext_Click(object sender, EventArgs e)
 	{
-		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&dc={2}", query, page + 1, includeDecoordinated));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&dc={2}&o={3}", query, page + 1, includeDecoordinated, orderBy));
 	}
 
 	protected void linkButton_Click(object sender, EventArgs e)
 	{
 		LinkButton lb = (LinkButton)sender;
-		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&o={2}&dc={2}", query, page, lb.CommandArgument, includeDecoordinated));
+		Response.Redirect(string.Format("~/repeaters/?q={0}&p={1}&o={2}&dc={3}", query, page, lb.CommandArgument, includeDecoordinated));
 	}
 }
