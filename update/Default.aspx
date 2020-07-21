@@ -33,11 +33,12 @@
             <div id="tabs">
                 <ul>
                     <li><a href="#tab-1">Details</a></li>
-                    <li><a href="#tab-2">Digital modes</a></li>
-                    <li><a href="#tab-3">Options</a></li>
-                    <li><a href="#tab-4">Metadata</a></li>
-                    <li><a href="#tab-5">Notes</a></li>
-                    <li><a href="#tab-6">Users</a></li>
+                    <li><a href="#tab-2">Links</a></li>
+                    <li><a href="#tab-3">Digital modes</a></li>
+                    <li><a href="#tab-4">Options</a></li>
+                    <li><a href="#tab-5">Metadata</a></li>
+                    <li><a href="#tab-6">Notes</a></li>
+                    <li><a href="#tab-7">Users</a></li>
                 </ul>
         
                 <div id="tab-1" >
@@ -110,91 +111,101 @@
                         <asp:Label ID="lblAdditionalInformation" CssClass="formLabel" runat="server" Text="Additional info"></asp:Label><asp:TextBox ID="txtAdditionalInformation" CssClass="textInput" runat="server"></asp:TextBox>
                 </div>
                 <div id="tab-2">
-                       <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label>
-                        <asp:DropDownList ID="ddlDSTARmodule" runat="server" CssClass="textInput">
-                            <asp:ListItem>A</asp:ListItem>
-                            <asp:ListItem>B</asp:ListItem>
-                            <asp:ListItem>C</asp:ListItem>
-                            <asp:ListItem Value="">Not applicable</asp:ListItem>
-                        </asp:DropDownList>
-                        <br />
-                        <asp:Label ID="lblDMR_ColorCode" CssClass="formLabel" runat="server" Text="DMR color code"></asp:Label>
-                        <asp:DropDownList ID="ddlDMR_ColorCode" runat="server" CssClass="textInput">
-                            <asp:ListItem>0</asp:ListItem>
-                            <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
-                            <asp:ListItem>6</asp:ListItem>
-                            <asp:ListItem>7</asp:ListItem>
-                            <asp:ListItem>8</asp:ListItem>
-                            <asp:ListItem>9</asp:ListItem>
-                            <asp:ListItem>10</asp:ListItem>
-                            <asp:ListItem>11</asp:ListItem>
-                            <asp:ListItem>12</asp:ListItem>
-                            <asp:ListItem>13</asp:ListItem>
-                            <asp:ListItem>14</asp:ListItem>
-                            <asp:ListItem>15</asp:ListItem>
-                            <asp:ListItem Value="">Not applicable</asp:ListItem>
-                        </asp:DropDownList>
-                        <br />
-                        <asp:Label ID="lblDMR_ID" CssClass="formLabel" runat="server" Text="DMR ID"></asp:Label><asp:TextBox ID="txtDMR_ID" CssClass="textInput" placeholder="Leave blank if none" MaxLength="20" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblDMR_Network" CssClass="formLabel" runat="server" Text="DMR network"></asp:Label>
-                        <asp:DropDownList ID="ddlDMR_Network" runat="server" CssClass="textInput">
-                            <asp:ListItem>Brandmeister</asp:ListItem>
-                            <asp:ListItem>DMR-MARC</asp:ListItem>
-                            <asp:ListItem>Other</asp:ListItem>
-                            <asp:ListItem Value="">Not applicable</asp:ListItem>
-                        </asp:DropDownList>
-                        <br />
-                        <asp:Label ID="lblP25_NAC" CssClass="formLabel" runat="server" Text="P25 NAC"></asp:Label><asp:TextBox ID="txtP25_NAC" placeholder="Leave blank if none" CssClass="textInput" MaxLength="4" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblNXDN_RAN" CssClass="formLabel" runat="server" Text="NXDN RAN"></asp:Label><asp:TextBox ID="txtNXDN_RAN" placeholder="Leave blank if none" CssClass="textInput" MaxLength="10" runat="server"></asp:TextBox><br />
-                        <asp:Label ID="lblYSF_DSQ" CssClass="formLabel" runat="server" Text="YSF DSQ"></asp:Label><asp:TextBox ID="txtYSF_DSQ" placeholder="Leave blank if none" CssClass="textInput" MaxLength="10" runat="server"></asp:TextBox>
+                    <p>Repeaters listed here are shown to the public as being linked to this repeater.</p>
+
+                    <asp:Button ID="btnLoadLinks" runat="server" Text="Load list of possible links" OnClick="btnLoadLinks_Click" /><br />
+                    <asp:DropDownList ID="ddlLinks" runat="server" Enabled="false"></asp:DropDownList><br />
+                    <br />
+                    <asp:Button ID="btnAddLink" runat="server" Text="Add user" Enabled="false" OnClick="btnAddUser_Click" />
+                    <hr />
+                    <asp:Table ID="tblLinks" runat="server"></asp:Table>
                 </div>
                 <div id="tab-3">
-                            <asp:Label ID="lblYSF_DSQ0" runat="server" CssClass="formLabel" Text="Autopatch"></asp:Label>
-                            <asp:DropDownList ID="ddlAutopatch" runat="server" CssClass="textInput">
-                                <asp:ListItem Value="0">None</asp:ListItem>
-                                <asp:ListItem Value="1">Open</asp:ListItem>
-                                <asp:ListItem Value="3">Closed</asp:ListItem>
-                            </asp:DropDownList>
-                            <br />
-                            <br />
-                            <asp:CheckBox ID="chkEmergencyPower" runat="server" Text="Emergency power" TextAlign="Left" CssClass="chkInput" /><br />
-                            <asp:CheckBox ID="chkLinked" runat="server" Text="Linked" TextAlign="Left" CssClass="chkInput" /><br />
-                            <asp:CheckBox ID="chkRACES" runat="server" Text="RACES" TextAlign="Left" CssClass="chkInput" /><br />
-                            <asp:CheckBox ID="chkARES" runat="server" Text="ARES" TextAlign="Left" CssClass="chkInput" /><br />
-                            <asp:CheckBox ID="chkWideArea" runat="server" Text="Wide area" TextAlign="Left" CssClass="chkInput" /><br />
-                            <asp:CheckBox ID="chkWeather" runat="server" Text="Weather net" TextAlign="Left" CssClass="chkInput" /><br />
-                            <asp:CheckBox ID="chkExperimental" runat="server" Text="Experimental" TextAlign="Left" CssClass="chkInput" />
+                    <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label>
+                    <asp:DropDownList ID="ddlDSTARmodule" runat="server" CssClass="textInput">
+                        <asp:ListItem>A</asp:ListItem>
+                        <asp:ListItem>B</asp:ListItem>
+                        <asp:ListItem>C</asp:ListItem>
+                        <asp:ListItem Value="">Not applicable</asp:ListItem>
+                    </asp:DropDownList>
+                    <br />
+                    <asp:Label ID="lblDMR_ColorCode" CssClass="formLabel" runat="server" Text="DMR color code"></asp:Label>
+                    <asp:DropDownList ID="ddlDMR_ColorCode" runat="server" CssClass="textInput">
+                        <asp:ListItem>0</asp:ListItem>
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>3</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                        <asp:ListItem>5</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>7</asp:ListItem>
+                        <asp:ListItem>8</asp:ListItem>
+                        <asp:ListItem>9</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                        <asp:ListItem>11</asp:ListItem>
+                        <asp:ListItem>12</asp:ListItem>
+                        <asp:ListItem>13</asp:ListItem>
+                        <asp:ListItem>14</asp:ListItem>
+                        <asp:ListItem>15</asp:ListItem>
+                        <asp:ListItem Value="">Not applicable</asp:ListItem>
+                    </asp:DropDownList>
+                    <br />
+                    <asp:Label ID="lblDMR_ID" CssClass="formLabel" runat="server" Text="DMR ID"></asp:Label><asp:TextBox ID="txtDMR_ID" CssClass="textInput" placeholder="Leave blank if none" MaxLength="20" runat="server"></asp:TextBox><br />
+                    <asp:Label ID="lblDMR_Network" CssClass="formLabel" runat="server" Text="DMR network"></asp:Label>
+                    <asp:DropDownList ID="ddlDMR_Network" runat="server" CssClass="textInput">
+                        <asp:ListItem>Brandmeister</asp:ListItem>
+                        <asp:ListItem>DMR-MARC</asp:ListItem>
+                        <asp:ListItem>Other</asp:ListItem>
+                        <asp:ListItem Value="">Not applicable</asp:ListItem>
+                    </asp:DropDownList>
+                    <br />
+                    <asp:Label ID="lblP25_NAC" CssClass="formLabel" runat="server" Text="P25 NAC"></asp:Label><asp:TextBox ID="txtP25_NAC" placeholder="Leave blank if none" CssClass="textInput" MaxLength="4" runat="server"></asp:TextBox><br />
+                    <asp:Label ID="lblNXDN_RAN" CssClass="formLabel" runat="server" Text="NXDN RAN"></asp:Label><asp:TextBox ID="txtNXDN_RAN" placeholder="Leave blank if none" CssClass="textInput" MaxLength="10" runat="server"></asp:TextBox><br />
+                    <asp:Label ID="lblYSF_DSQ" CssClass="formLabel" runat="server" Text="YSF DSQ"></asp:Label><asp:TextBox ID="txtYSF_DSQ" placeholder="Leave blank if none" CssClass="textInput" MaxLength="10" runat="server"></asp:TextBox>
                 </div>
                 <div id="tab-4">
-                        <asp:Label ID="lblID" CssClass="formLabel" runat="server" Text="Internal ID"></asp:Label><asp:TextBox ID="txtID" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
-                        <asp:Label ID="lblDateCoordinated" CssClass="formLabel" runat="server" Text="Date coordinated"></asp:Label><asp:TextBox ID="txtDateCoordinated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
-                        <asp:Label ID="lblDateUpdated" CssClass="formLabel" runat="server" Text="Date updated"></asp:Label><asp:TextBox ID="txtDateUpdated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
-                        <asp:Label ID="lblDateDecoordinated" CssClass="formLabel" runat="server" Text="Date decoordinated"></asp:Label><asp:TextBox ID="txtDateDecoordinated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
-                        <asp:Label ID="lblDateCoordinationSource" CssClass="formLabel" runat="server" Text="Date coordination source"></asp:Label><asp:TextBox ID="txtDateCoordinationSource" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
-                        <asp:Label ID="lblDateConstruction" CssClass="formLabel" runat="server" Text="Date construction"></asp:Label><asp:TextBox ID="txtDateConstruction" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
-                        <asp:Label ID="lblState" CssClass="formLabel" runat="server" Text="State"></asp:Label><asp:TextBox ID="txtState" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
-                        <asp:Label ID="lblCoordinatedOutputPower" CssClass="formLabel" runat="server" Text="Coordinated output power"></asp:Label><asp:TextBox ID="txtCoordinatedOutputPower" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
-                        <asp:Label ID="Label1" CssClass="formLabel" runat="server" Text="Coordinated antenna height"></asp:Label><asp:TextBox ID="txtCoordinatedAntennaHeight" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
-                        <asp:Label ID="Label2" CssClass="formLabel" runat="server" Text="Coordinated latitude"></asp:Label><asp:TextBox ID="txtCoordinatedLatitude" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
-                        <asp:Label ID="Label3" CssClass="formLabel" runat="server" Text="Coordinated longitude"></asp:Label><asp:TextBox ID="txtCoordinatedLongitude" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox>
+                    <asp:Label ID="lblYSF_DSQ0" runat="server" CssClass="formLabel" Text="Autopatch"></asp:Label>
+                    <asp:DropDownList ID="ddlAutopatch" runat="server" CssClass="textInput">
+                        <asp:ListItem Value="0">None</asp:ListItem>
+                        <asp:ListItem Value="1">Open</asp:ListItem>
+                        <asp:ListItem Value="3">Closed</asp:ListItem>
+                    </asp:DropDownList>
+                    <br />
+                    <br />
+                    <asp:CheckBox ID="chkEmergencyPower" runat="server" Text="Emergency power" TextAlign="Left" CssClass="chkInput" /><br />
+                    <asp:CheckBox ID="chkLinked" runat="server" Text="Linked" TextAlign="Left" CssClass="chkInput" /><br />
+                    <asp:CheckBox ID="chkRACES" runat="server" Text="RACES" TextAlign="Left" CssClass="chkInput" /><br />
+                    <asp:CheckBox ID="chkARES" runat="server" Text="ARES" TextAlign="Left" CssClass="chkInput" /><br />
+                    <asp:CheckBox ID="chkWideArea" runat="server" Text="Wide area" TextAlign="Left" CssClass="chkInput" /><br />
+                    <asp:CheckBox ID="chkWeather" runat="server" Text="Weather net" TextAlign="Left" CssClass="chkInput" /><br />
+                    <asp:CheckBox ID="chkExperimental" runat="server" Text="Experimental" TextAlign="Left" CssClass="chkInput" />
                 </div>
                 <div id="tab-5">
-                        <asp:TextBox CssClass="txtNote" ID="txtNote" runat="server" TextMode="MultiLine" placeholder="Enter new note, make any other changes, then click save below."></asp:TextBox>
-                        <asp:Label ID="lblNotes" runat="server" Text="No notes have been added for this repeater"></asp:Label>
+                    <asp:Label ID="lblID" CssClass="formLabel" runat="server" Text="Internal ID"></asp:Label><asp:TextBox ID="txtID" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblDateCoordinated" CssClass="formLabel" runat="server" Text="Date coordinated"></asp:Label><asp:TextBox ID="txtDateCoordinated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblDateUpdated" CssClass="formLabel" runat="server" Text="Date updated"></asp:Label><asp:TextBox ID="txtDateUpdated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblDateDecoordinated" CssClass="formLabel" runat="server" Text="Date decoordinated"></asp:Label><asp:TextBox ID="txtDateDecoordinated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblDateCoordinationSource" CssClass="formLabel" runat="server" Text="Date coordination source"></asp:Label><asp:TextBox ID="txtDateCoordinationSource" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblDateConstruction" CssClass="formLabel" runat="server" Text="Date construction"></asp:Label><asp:TextBox ID="txtDateConstruction" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblState" CssClass="formLabel" runat="server" Text="State"></asp:Label><asp:TextBox ID="txtState" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblCoordinatedOutputPower" CssClass="formLabel" runat="server" Text="Coordinated output power"></asp:Label><asp:TextBox ID="txtCoordinatedOutputPower" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
+                    <asp:Label ID="Label1" CssClass="formLabel" runat="server" Text="Coordinated antenna height"></asp:Label><asp:TextBox ID="txtCoordinatedAntennaHeight" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
+                    <asp:Label ID="Label2" CssClass="formLabel" runat="server" Text="Coordinated latitude"></asp:Label><asp:TextBox ID="txtCoordinatedLatitude" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox><br />
+                    <asp:Label ID="Label3" CssClass="formLabel" runat="server" Text="Coordinated longitude"></asp:Label><asp:TextBox ID="txtCoordinatedLongitude" runat="server" CssClass="textInput" ReadOnly="true"></asp:TextBox>
                 </div>
                 <div id="tab-6">
-                        <p>Users listed here will be able to edit the details of this repeater.  You can not remove the repeater trustee.</p>
+                    <asp:TextBox CssClass="txtNote" ID="txtNote" runat="server" TextMode="MultiLine" placeholder="Enter new note, make any other changes, then click save below."></asp:TextBox>
+                    <asp:Label ID="lblNotes" runat="server" Text="No notes have been added for this repeater"></asp:Label>
+                </div>
+                <div id="tab-7">
+                    <p>Users listed here will be able to edit the details of this repeater.  You can not remove the repeater trustee.</p>
 
-                        <asp:Panel ID="pnlAddUser" runat="server" Width="600px" CssClass="pnlAddUser" Visible="false">
-                            <asp:DropDownList ID="ddlAddUser" runat="server"></asp:DropDownList><br />
-                            <br />
-                            <asp:Button ID="btnAddUser" runat="server" Text="Add user" OnClick="btnAddUser_Click" />
-                        </asp:Panel>
-                        <asp:Table CssClass="tblRepeaterUsers" ID="tblRepeaterUsers" runat="server"></asp:Table>
+                    <asp:Panel ID="pnlAddUser" runat="server" Width="600px" CssClass="pnlAddUser" Visible="false">
+                        <asp:DropDownList ID="ddlAddUser" runat="server"></asp:DropDownList><br />
+                        <br />
+                        <asp:Button ID="btnAddUser" runat="server" Text="Add user" OnClick="btnAddUser_Click" />
+                    </asp:Panel>
+                    <asp:Table CssClass="tblRepeaterUsers" ID="tblRepeaterUsers" runat="server"></asp:Table>
                 </div>
             </div>
         </asp:Panel>

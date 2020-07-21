@@ -11,6 +11,8 @@ public partial class update_Default : System.Web.UI.Page
 	Repeater repeater;
 	string repeaterId;
 	bool enforceBusinessRules = true;
+	int indexOfLinksTab = 1;
+	int indexOfUsersTab = 6;
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -429,7 +431,7 @@ public partial class update_Default : System.Web.UI.Page
 			}
 		}
 
-		ScriptManager.RegisterStartupScript(this, typeof(Page),"alertScript", "$( '#tabs' ).tabs({ active: 5 });", true);
+		ScriptManager.RegisterStartupScript(this, typeof(Page),"alertScript", "$( '#tabs' ).tabs({ active: 6 });", true);
 	}
 
 	protected void btnRemoveRepeaterUser(object sender, EventArgs e, string userid)
@@ -452,7 +454,7 @@ public partial class update_Default : System.Web.UI.Page
 
 		LoadRepeaterUsers(repeaterId);
 		pnlAddUser.Visible = false;
-		ScriptManager.RegisterStartupScript(this, typeof(Page), "alertScript", "$( '#tabs' ).tabs({ active: 5 });", true);
+		ScriptManager.RegisterStartupScript(this, typeof(Page), "alertScript", "$( '#tabs' ).tabs({ active: " + indexOfUsersTab.ToString() + " });", true);
 	}
 
 	protected void ShowOverrideIfIsCoordinatorForRepeater()
@@ -486,5 +488,30 @@ public partial class update_Default : System.Web.UI.Page
 			}
 
 		}
+	}
+
+	protected void btnLoadLinks_Click(object sender, EventArgs e)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+			string url = String.Format("{0}GetPossibleLinks_Json", rootUrl);
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+			ddlLinks.Items.Clear();
+
+			foreach (dynamic obj in data)
+			{
+				ListItem li = new ListItem(obj["Link"]["Description"].ToString(), obj["Link"]["Value"].ToString());
+				ddlLinks.Items.Add(li);
+			}
+
+			ddlLinks.Enabled = true;
+			btnAddLink.Enabled = true;
+			btnLoadLinks.Enabled = false;
+		}
+
+		ScriptManager.RegisterStartupScript(this, typeof(Page), "alertScript", "$( '#tabs' ).tabs({ active: " + indexOfLinksTab.ToString() + " });", true);
 	}
 }
