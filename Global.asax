@@ -16,15 +16,15 @@
 
     void Application_Error(object sender, EventArgs e)
     {
-        Exception exception = Server.GetLastError();
-        ExceptionReport exReport;
-        if ((exception != null) && (!HttpContext.Current.Request.Url.ToString().StartsWith("http://localhost:")))
-        {
-            exReport = new ExceptionReport(exception, exception.InnerException.Message);
-            Context.Session["exception"] = exReport;
-        }
-        Server.ClearError();
-        Server.Transfer("~/error.aspx");
+        //Exception exception = Server.GetLastError();
+        //ExceptionReport exReport;
+        //if ((exception != null) && (!HttpContext.Current.Request.Url.ToString().StartsWith("http://localhost:")))
+        //{
+        //    exReport = new ExceptionReport(exception, exception.InnerException.Message);
+        //    Context.Session["exception"] = exReport;
+        //}
+        //Server.ClearError();
+        //Server.Transfer("~/error.aspx");
     }
 
     void Session_Start(object sender, EventArgs e)
