@@ -20,6 +20,11 @@
         </ul>
             
         If you would like to open a support request, please do so at <a href="https://github.com/ArkansasRepeaterCouncil/website/issues" target="_blank">https://github.com/ArkansasRepeaterCouncil/website/issues</a>.
+
+            <br />
+            <br />
+
+        <asp:TextBox ID="txtException" runat="server" TextMode="MultiLine" Width="1198px"></asp:TextBox>
     </section>
 </asp:Content>
 

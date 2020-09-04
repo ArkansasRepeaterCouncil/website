@@ -21,7 +21,7 @@
         if ((exception != null) && (!HttpContext.Current.Request.Url.ToString().StartsWith("http://localhost:")))
         {
             exReport = new ExceptionReport(exception, exception.InnerException.Message);
-            //Context.Session["exception"] = exReport;
+            Context.Session["exception"] = exReport;
         }
         Server.ClearError();
         Server.Transfer("~/error.aspx");
