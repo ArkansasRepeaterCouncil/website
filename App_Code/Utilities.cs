@@ -75,8 +75,8 @@ public static class Utilities
 	{
 		string result = "";
 
-		try
-		{
+		//try
+		//{
 			var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 			httpWebRequest.ContentType = "application/json";
 			httpWebRequest.Method = "POST";
@@ -89,24 +89,24 @@ public static class Utilities
 				System.Diagnostics.Debug.WriteLine(json);
 			}
 
-			try
-			{
+			//try
+			//{
 				var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
 				using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
 				{
 					result = streamReader.ReadToEnd();
 				}
-			}
-			catch (Exception ex)
-			{
-				new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "URL: " + url);
-			}
+		//	}
+		//	catch (Exception ex)
+		//	{
+		//		new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "URL: " + url);
+		//	}
 
-		}
-		catch (Exception ex)
-		{
-			new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "URL: " + url);
-		}
+		//}
+		//catch (Exception ex)
+		//{
+		//	new ExceptionReport(ex, "Exception thrown while trying to post JSON to url", "URL: " + url);
+		//}
 
 		return result;
 	}
@@ -115,8 +115,8 @@ public static class Utilities
 	{
 		string result = "";
 
-		try
-		{
+		//try
+		//{
 			var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
 			httpWebRequest.Method = "GET";
 
@@ -125,17 +125,17 @@ public static class Utilities
 			{
 				result = streamReader.ReadToEnd();
 			}
-		}
-		catch (Exception ex)
-		{
-			string safeUrl = url;
-			if (safeUrl.Contains("?"))
-			{
-				safeUrl = safeUrl.Substring(0, safeUrl.IndexOf('?'));
-			}
-			new ExceptionReport(ex, "Exception thrown while trying to get content from URL", "URL: " + safeUrl);
+		//}
+		//catch (Exception ex)
+		//{
+			//string safeUrl = url;
+			//if (safeUrl.Contains("?"))
+			//{
+			//	safeUrl = safeUrl.Substring(0, safeUrl.IndexOf('?'));
+			//}
+			//new ExceptionReport(ex, "Exception thrown while trying to get content from URL", "URL: " + safeUrl);
 			// throw ex;
-		}
+		//}
 
 		return result;
 	}
