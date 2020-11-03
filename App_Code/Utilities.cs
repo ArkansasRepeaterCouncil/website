@@ -128,7 +128,12 @@ public static class Utilities
 		}
 		catch (Exception ex)
 		{
-			new ExceptionReport(ex, "Exception thrown while trying to get content from URL", "URL: " + url.Substring(0, url.IndexOf('?')));
+			string safeUrl = url;
+			if (safeUrl.Contains("?"))
+			{
+				safeUrl = safeUrl.Substring(0, safeUrl.IndexOf('?'));
+			}
+			new ExceptionReport(ex, "Exception thrown while trying to get content from URL", "URL: " + safeUrl);
 			// throw ex;
 		}
 
