@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
@@ -43,7 +43,7 @@
 			The Arkansas Repeater Council coordinates
 amateur radio repeater frequencies in the state of Arkansas. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a>.
 		</p>
-        <p><em>Site build status:</em> <a href="https://ci.appveyor.com/project/ArkansasRepeaterCouncil/website/branch/master"><img src="https://ci.appveyor.com/api/projects/status/cl1x6fkp47w7t4pb" alt="site build status" /></a></p>
+        <p><em>Site build status:</em> <a href="https://ci.appveyor.com/project/ArkansasRepeaterCouncil/website/branch/master"><img src="https://ci.appveyor.com/api/projects/status/223bhwjxe9h8ndn0" alt="site build status" /></a></p>
     </section>
     <section>
         <div id="homeStatsContainer">
