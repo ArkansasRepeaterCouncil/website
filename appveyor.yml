@@ -19,12 +19,13 @@ artifacts:
 - path: '**\*.kml'
 deploy:
 - provider: FTP
-  host:
-    secure: 0kziSkQbILcxCj9ZVELOXDNOCWellJ3/+Ulko/QTA3U=
+  host: 
+    secure: lRXTUgMflVVq7hv4gk86rFXXLWdSbw74VZG3KgkCaSLz3ltLmgx2DbDsncMoDbvb
   protocol: ftps
-  username:
-    secure: VKRpk2vE3yRprifVmi1VUw==
+  username: 
+    secure: bjwzJRDCwsfxkDOf1Uoxbcr5DbpY/Y064geWYllpoWkFbkGis6HyZInqwsiPgr+KBWAWXicOJ4eNWZH2oGMsRQ==
   password:
-    secure: amZ10baC8+YOiKkg1B7l3K6jzOUeF1zwSnhgVFoRDNs=
+    secure: RFPBFH5nVNZIhPnKsmHIKefQs0f7KtOeWTDQaHXWyla12FvBdPZsbBfPgOkirkzhlf2mXDu7Lz3WJXmbWRCRvg==
+  folder: /site/wwwroot
   on:
     branch: master
