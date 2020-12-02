@@ -40,7 +40,11 @@ public partial class nopc_Default : System.Web.UI.Page
 			string strJson = webClient.DownloadString(url);
 			dynamic json = JsonConvert.DeserializeObject<dynamic>(strJson);
 
-			lblAltitude.Text = Utilities.GetValueIfNotNull(json.Request.Altitude);
+			if (json.Request.Altitude != null)
+			{
+				lblAltitude.Text = json.Request.Altitude;
+			}
+			
 			lblAntennaHeight.Text = json.Request.AntennaHeight;
 			lblID.Text = String.Format("NOPC #{0}{1}", json.Request.State, json.Request.ID);
 			lblLatitude.Text = json.Request.Latitude;
