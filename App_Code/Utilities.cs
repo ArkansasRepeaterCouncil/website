@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Net.Http.Headers;
 using System.Web;
 
 /// <summary>
@@ -61,25 +60,6 @@ public static class Utilities
 		{
 			arr.Add(prefixString + val);
 		}
-	}
-
-	public static string GetValueIfNotNull(object val)
-	{
-		string strVal = string.Empty;
-
-		if (val != null)
-		{
-			try
-			{
-				strVal = val.ToString();
-				return strVal;
-			}
-			catch (Exception)
-			{
-			}
-		}
-
-		return strVal;
 	}
 
 	public static void GetNameIfNotNull(object val, string name, List<string> arr)
