@@ -93,7 +93,7 @@
                         <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"> watts</asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtOutputPower_FilteredTextBoxExtender" runat="server" BehaviorID="txtOutputPower_FilteredTextBoxExtender" FilterType="Numbers" TargetControlID="txtOutputPower" ValidChars="0123456789" />
                         <asp:CustomValidator ID="validOutputPower" runat="server" ErrorMessage="Output power may not be more than 5 watts over the coordinated power." Text="*" OnServerValidate="validOutputPower_ServerValidate"></asp:CustomValidator><br />
-                        <asp:Label ID="lblAntennaGain" CssClass="formLabel" runat="server" Text="Antenna gain"></asp:Label><asp:TextBox ID="txtAntennaGain" CssClass="textInput" runat="server"> DBi</asp:TextBox>
+                        <asp:Label ID="lblAntennaGain" CssClass="formLabel" runat="server" Text="Antenna gain"></asp:Label><asp:TextBox ID="txtAntennaGain" CssClass="textInput" runat="server"> DBi</asp:TextBox> DBi
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtAntennaGain_FilteredTextBoxExtender" runat="server" BehaviorID="txtAntennaGain_FilteredTextBoxExtender" TargetControlID="txtAntennaGain" ValidChars="1234567890." />
                         <br />
                         <asp:Label ID="lblAntennaHeight" CssClass="formLabel" runat="server" Text="Antenna height"></asp:Label><asp:TextBox ID="txtAntennaHeight" CssClass="textInput" runat="server" placeholder="meters"></asp:TextBox> 
