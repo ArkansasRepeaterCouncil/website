@@ -62,7 +62,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 			{
 				dynamic repeater = item.Repeater;
 				
-				if (((string)repeater.City).Trim() == "") {
+				if ((repeater.City == null) || (((string)repeater.City).Trim() == "")) {
 					repeater.City = "[blank]";
 				}
 
