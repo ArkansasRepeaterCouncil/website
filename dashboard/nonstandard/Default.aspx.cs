@@ -61,6 +61,10 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 			foreach (dynamic item in data.Report.Data)
 			{
 				dynamic repeater = item.Repeater;
+				
+				if ((repeater.City == null) || (((string)repeater.City).Trim() == "")) {
+					repeater.City = "[blank]";
+				}
 
 				using (TableRow headerRow = new TableRow())
 				{
@@ -82,7 +86,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{0}</a>", (string)repeater.Callsign));
 					row.AddCell((string)repeater.Output);
 					row.AddCell((string)repeater.Input);
-					row.AddCell((string)repeater.City);
+					row.AddCell(string.Format("<a target='_blank' href='https://www.google.com/maps/search/?api=1&query={1},{2}'>{0}</a>", (string)repeater.City, (string)repeater.Latitude, (string)repeater.Longitude));
 					row.AddCell((string)repeater.Sponsor);
 					row.AddCell(string.Format("<a target='_blank' href='https://qrz.com/db/{0}'>{1}</a>", (string)repeater.Trustee.Callsign, (string)repeater.Trustee.Name));
 

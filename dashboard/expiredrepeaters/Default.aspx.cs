@@ -59,6 +59,10 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 			foreach (dynamic item in data.Report.Data)
 			{
 				dynamic repeater = item.Repeater;
+				
+				if ((repeater.City == null) || (((string)repeater.City).Trim() == "")) {
+					repeater.City = "[blank]";
+				}
 
 				using (TableRow headerRow = new TableRow())
 				{
@@ -80,7 +84,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 					row.AddCell(string.Format("<a target='_blank' title='Update' href='/update/?id={0}'>{0}</a>", (string)repeater.ID));
 					row.AddCell(string.Format("<a target='_blank' title='QRZ' href='https://qrz.com/db/{0}'>{0}</a>", (string)repeater.Callsign));
 					row.AddCell(string.Format("<a target='_blank' title='RepeaterBook' href='https://repeaterbook.com/repeaters/msResult.php?state_id%5B%5D=05&band=%25&freq={0}&loc=&call=&features=%25&emcomm=%25&coverage=%25&status_id=%25&order=%60freq%60%2C+%60state_abbrev%60+ASC'>{0}</a>", (string)repeater.Output));
-					row.AddCell((string)repeater.City);
+					row.AddCell(string.Format("<a target='_blank' href='https://www.google.com/maps/search/?api=1&query={1},{2}'>{0}</a>", (string)repeater.City, (string)repeater.Latitude, (string)repeater.Longitude));
 					row.AddCell((string)repeater.Sponsor);
 					row.AddCell(string.Format("<a target='_blank' title='QRZ' href='https://qrz.com/db/{0}'>{1}</a>", (string)repeater.Trustee.Callsign, (string)repeater.Trustee.Name));
 
