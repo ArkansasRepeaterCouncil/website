@@ -61,6 +61,10 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 			foreach (dynamic item in data.Report.Data)
 			{
 				dynamic repeater = item.Repeater;
+				
+				if (((string)repeater.City).Trim() == "") {
+					repeater.City = "[blank]";
+				}
 
 				using (TableRow headerRow = new TableRow())
 				{
