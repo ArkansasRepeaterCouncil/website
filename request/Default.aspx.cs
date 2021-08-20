@@ -42,8 +42,7 @@ public partial class request_Default : System.Web.UI.Page
 	private decimal GetAltitude(string latitude, string longitude)
 	{
 		decimal output = 0M;
-		string apiKey = System.Configuration.ConfigurationManager.AppSettings["googleMapApiKey"];
-		string url = String.Format("https://maps.googleapis.com/maps/api/elevation/json?key={0}&locations={1},{2}", apiKey, latitude, longitude);
+		string url = String.Format("https://api.opentopodata.org/v1/eudem25m?locations={0},{1}", latitude, longitude);
 
 		try
 		{
