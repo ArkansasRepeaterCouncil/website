@@ -278,22 +278,43 @@ public partial class update_Default : System.Web.UI.Page
 				}
 
 				cell = new TableCell();
-				cell.Text = obj["OutputFrequency"].ToString();
+				cell.Text = stringify(obj["OutputFrequency"]);
 				row.Cells.Add(cell);
 
 				row.Cells.Add(cell);
 				cell = new TableCell();
-				cell.Text = obj["Callsign"].ToString();
+				cell.Text = stringify(obj["Callsign"]);
 				row.Cells.Add(cell);
 
 				cell = new TableCell();
-				cell.Text = obj["City"].ToString();
+				cell.Text = stringify(obj["City"]);
 				row.Cells.Add(cell);
 
 				tblLinks.Rows.Add(row);
 			}
 		}
 	}
+
+	private string stringify(dynamic val)
+    {
+		string ret = string.Empty;
+
+		if (val == null)
+        {
+			return "";
+        }
+		else
+        {
+            try
+            {
+				return val.ToString();
+            }
+            catch (Exception)
+            {
+				return "?? ERROR: Object can't be displayed as a string.";
+            }
+        }
+    }
 
 	protected void btnCancel_Click(object sender, EventArgs e)
 	{
@@ -592,6 +613,8 @@ public partial class update_Default : System.Web.UI.Page
 			string json = webClient.DownloadString(url);
 		}
 
+		LoadRepeaterLinks(repeaterId);
+
 		ScriptManager.RegisterStartupScript(this, typeof(Page), "alertScript", "$( '#tabs' ).tabs({ active: " + indexOfLinksTab.ToString() + " });", true);
 	}
 
@@ -602,6 +625,6 @@ public partial class update_Default : System.Web.UI.Page
 			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "RemoveRepeaterLink?callsign={0}&password={1}&repeaterid={2}&linkrepeaterid={3}", creds.Username, creds.Password, repeater.ID.ToString(), linkrepeaterid);
 			string json = webClient.DownloadString(url);
 		}
-		LoadRepeaterUsers(repeaterId);
+		LoadRepeaterLinks(repeaterId);
 	}
 }
