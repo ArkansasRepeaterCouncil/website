@@ -601,9 +601,7 @@ public partial class update_Default : System.Web.UI.Page
 				ddlLinks.Items.Add(li);
 			}
 
-			ddlLinks.Enabled = true;
-			btnAddLink.Enabled = true;
-			btnLoadLinks.Enabled = false;
+			pnlAddLink.Visible = true;
 		}
 
 		ScriptManager.RegisterStartupScript(this, typeof(Page), "alertScript", "$( '#tabs' ).tabs({ active: " + indexOfLinksTab.ToString() + " });", true);

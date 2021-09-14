@@ -114,7 +114,7 @@
                     <p>Repeaters listed here are shown to the public as being linked to this repeater.</p>
 
                     <asp:Panel ID="pnlAddLink" runat="server" Visible="false">
-                        <asp:DropDownList ID="ddlLinks" runat="server" Enabled="false"></asp:DropDownList><br />
+                        <asp:DropDownList ID="ddlLinks" runat="server"></asp:DropDownList><br />
                         <asp:Button ID="btnLoadLinks" runat="server" Text="Add this link" OnClick="btnAddLink_Click" />
                         <hr />
                     </asp:Panel>
