@@ -118,7 +118,7 @@
                         <asp:Button ID="btnAddLink" runat="server" Text="Add this link" OnClick="btnAddLink_Click" />
                         <hr />
                     </asp:Panel>
-                    <asp:Table ID="tblLinks" runat="server"></asp:Table>
+                    <asp:Table CssClass="tblRepeaterUsers" ID="tblLinks" runat="server"></asp:Table>
                 </div>
                 <div id="tab-3">
                     <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label>
