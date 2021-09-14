@@ -116,7 +116,7 @@
                     <asp:Button ID="btnLoadLinks" runat="server" Text="Load list of possible links" OnClick="btnLoadLinks_Click" /><br />
                     <asp:DropDownList ID="ddlLinks" runat="server" Enabled="false"></asp:DropDownList><br />
                     <br />
-                    <asp:Button ID="btnAddLink" runat="server" Text="Add user" Enabled="false" OnClick="btnAddUser_Click" />
+                    <asp:Button ID="btnAddLink" runat="server" Text="Add link" Enabled="false" OnClick="btnAddLink_Click" />
                     <hr />
                     <asp:Table ID="tblLinks" runat="server"></asp:Table>
                 </div>

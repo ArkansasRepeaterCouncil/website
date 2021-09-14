@@ -37,10 +37,11 @@ public partial class update_Default : System.Web.UI.Page
 			LoadRepeaterDetails(repeaterId);
 			LoadRepeaterNotes(repeaterId);
 			LoadRepeaterUsers(repeaterId);
+			LoadRepeaterLinks(repeaterId);
 		}
 	}
 
-	private void LoadRepeaterDetails(string repeaterId)
+    private void LoadRepeaterDetails(string repeaterId)
 	{
 		if (!IsPostBack)
 		{
@@ -222,6 +223,74 @@ public partial class update_Default : System.Web.UI.Page
 				row.Cells.Add(cell);
 
 				tblRepeaterUsers.Rows.Add(row);
+			}
+		}
+	}
+
+	private void LoadRepeaterLinks(string repeaterId)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+			string url = String.Format("{0}ListRepeaterLinks?repeaterid={1}", rootUrl, repeaterId);
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+			tblLinks.Rows.Clear();
+			using (TableHeaderRow thr = new TableHeaderRow())
+			{
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "&nbsp;";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Frequency";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Callsign";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "City";
+					thr.Cells.Add(thc);
+				}
+				tblRepeaterUsers.Rows.Add(thr);
+			}
+
+			foreach (dynamic obj in data)
+			{
+				TableRow row = new TableRow();
+
+				TableCell cell = new TableCell();
+
+				if (repeater.Status != "6")
+				{
+					Button btn = new Button();
+					btn.Text = "Remove";
+					string userid = obj["ID"].ToString();
+					btn.Click += (sender, e) => btnRemoveRepeaterLink(sender, e, userid);
+					cell.Controls.Add(btn);
+				}
+
+				cell = new TableCell();
+				cell.Text = obj["OutputFrequency"].ToString();
+				row.Cells.Add(cell);
+
+				row.Cells.Add(cell);
+				cell = new TableCell();
+				cell.Text = obj["Callsign"].ToString();
+				row.Cells.Add(cell);
+
+				cell = new TableCell();
+				cell.Text = obj["City"].ToString();
+				row.Cells.Add(cell);
+
+				tblLinks.Rows.Add(row);
 			}
 		}
 	}
@@ -513,5 +582,26 @@ public partial class update_Default : System.Web.UI.Page
 		}
 
 		ScriptManager.RegisterStartupScript(this, typeof(Page), "alertScript", "$( '#tabs' ).tabs({ active: " + indexOfLinksTab.ToString() + " });", true);
+	}
+
+	protected void btnAddLink_Click(object sender, EventArgs e)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "AddRepeaterLink?callsign={0}&password={1}&repeaterid={2}&linkrepeaterid={3}", creds.Username, creds.Password, repeater.ID.ToString(), ddlLinks.SelectedValue);
+			string json = webClient.DownloadString(url);
+		}
+
+		ScriptManager.RegisterStartupScript(this, typeof(Page), "alertScript", "$( '#tabs' ).tabs({ active: " + indexOfLinksTab.ToString() + " });", true);
+	}
+
+	protected void btnRemoveRepeaterLink(object sender, EventArgs e, string linkrepeaterid)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "RemoveRepeaterLink?callsign={0}&password={1}&repeaterid={2}&linkrepeaterid={3}", creds.Username, creds.Password, repeater.ID.ToString(), linkrepeaterid);
+			string json = webClient.DownloadString(url);
+		}
+		LoadRepeaterUsers(repeaterId);
 	}
 }
