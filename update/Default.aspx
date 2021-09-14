@@ -115,7 +115,7 @@
 
                     <asp:Panel ID="pnlAddLink" runat="server" Visible="false">
                         <asp:DropDownList ID="ddlLinks" runat="server"></asp:DropDownList><br />
-                        <asp:Button ID="btnLoadLinks" runat="server" Text="Add this link" OnClick="btnAddLink_Click" />
+                        <asp:Button ID="btnAddLink" runat="server" Text="Add this link" OnClick="btnAddLink_Click" />
                         <hr />
                     </asp:Panel>
                     <asp:Table ID="tblLinks" runat="server"></asp:Table>
