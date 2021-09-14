@@ -113,11 +113,11 @@
                 <div id="tab-2">
                     <p>Repeaters listed here are shown to the public as being linked to this repeater.</p>
 
-                    <asp:Button ID="btnLoadLinks" runat="server" Text="Load list of possible links" OnClick="btnLoadLinks_Click" /><br />
-                    <asp:DropDownList ID="ddlLinks" runat="server" Enabled="false"></asp:DropDownList><br />
-                    <br />
-                    <asp:Button ID="btnAddLink" runat="server" Text="Add link" Enabled="false" OnClick="btnAddLink_Click" />
-                    <hr />
+                    <asp:Panel ID="pnlAddLink" runat="server" Visible="false">
+                        <asp:DropDownList ID="ddlLinks" runat="server" Enabled="false"></asp:DropDownList><br />
+                        <asp:Button ID="btnLoadLinks" runat="server" Text="Add this link" OnClick="btnAddLink_Click" />
+                        <hr />
+                    </asp:Panel>
                     <asp:Table ID="tblLinks" runat="server"></asp:Table>
                 </div>
                 <div id="tab-3">

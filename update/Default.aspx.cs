@@ -241,7 +241,11 @@ public partial class update_Default : System.Web.UI.Page
 			{
 				using (TableHeaderCell thc = new TableHeaderCell())
 				{
-					thc.Text = "&nbsp;";
+					Button btnAddRepeaterLink = new Button();
+					btnAddRepeaterLink.ID = "btnLoadLinks";
+					btnAddRepeaterLink.Click += btnLoadLinks_Click;
+					btnAddRepeaterLink.Text = "Add new";
+					thc.Controls.Add(btnAddRepeaterLink);
 					thr.Cells.Add(thc);
 				}
 				using (TableHeaderCell thc = new TableHeaderCell())
@@ -259,7 +263,7 @@ public partial class update_Default : System.Web.UI.Page
 					thc.Text = "City";
 					thr.Cells.Add(thc);
 				}
-				tblRepeaterUsers.Rows.Add(thr);
+				tblLinks.Rows.Add(thr);
 			}
 
 			foreach (dynamic obj in data)
