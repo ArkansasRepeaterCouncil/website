@@ -271,21 +271,17 @@ public partial class update_Default : System.Web.UI.Page
 				TableRow row = new TableRow();
 
 				TableCell cell = new TableCell();
-
-				if (repeater.Status != "6")
-				{
-					Button btn = new Button();
-					btn.Text = "Remove";
-					string userid = obj["ID"].ToString();
-					btn.Click += (sender, e) => btnRemoveRepeaterLink(sender, e, userid);
-					cell.Controls.Add(btn);
-				}
+				Button btn = new Button();
+				btn.Text = "Remove";
+				string userid = obj["ID"].ToString();
+				btn.Click += (sender, e) => btnRemoveRepeaterLink(sender, e, userid);
+				cell.Controls.Add(btn);
+				row.Cells.Add(cell);
 
 				cell = new TableCell();
 				cell.Text = stringify(obj["OutputFrequency"]);
 				row.Cells.Add(cell);
 
-				row.Cells.Add(cell);
 				cell = new TableCell();
 				cell.Text = stringify(obj["Callsign"]);
 				row.Cells.Add(cell);
