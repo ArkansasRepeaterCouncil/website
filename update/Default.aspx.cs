@@ -269,14 +269,28 @@ public partial class update_Default : System.Web.UI.Page
 			foreach (dynamic obj in data)
 			{
 				TableRow row = new TableRow();
-
 				TableCell cell = new TableCell();
-				Button btn = new Button();
-				btn.Text = "Remove";
-				string userid = obj["ID"].ToString();
-				btn.Click += (sender, e) => btnRemoveRepeaterLink(sender, e, userid);
-				cell.Controls.Add(btn);
-				row.Cells.Add(cell);
+
+				if (stringify(obj["DirectlyLinked"]) == "1")
+                {
+					cell = new TableCell();
+					Button btn = new Button();
+					btn.Text = "Remove";
+					string userid = obj["ID"].ToString();
+					btn.Click += (sender, e) => btnRemoveRepeaterLink(sender, e, userid);
+					cell.Controls.Add(btn);
+					row.Cells.Add(cell);
+				}
+				else
+                {
+					cell = new TableCell();
+					Button btn = new Button();
+					btn.Text = "Indirect Link";
+					btn.ToolTip = "This is linked through a linked repeater. You can't delete this.";
+					btn.Enabled = false;
+					cell.Controls.Add(btn);
+					row.Cells.Add(cell);
+				}
 
 				cell = new TableCell();
 				cell.Text = stringify(obj["OutputFrequency"]);
