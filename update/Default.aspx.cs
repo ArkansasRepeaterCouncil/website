@@ -271,7 +271,7 @@ public partial class update_Default : System.Web.UI.Page
 				TableRow row = new TableRow();
 				TableCell cell = new TableCell();
 
-				if (stringify(obj["DirectlyLinked"]) == "1")
+				if (obj["DirectlyLinked"] == true)
                 {
 					cell = new TableCell();
 					Button btn = new Button();
