@@ -178,15 +178,15 @@ public partial class update_Default : System.Web.UI.Page
 				}
 
 				cell = new TableCell();
-				cell.Text = stringify(obj["OutputFrequency"]);
+				cell.Text = string.Format("<a href=\"/repeaters/details/?id={0}\">{1}</a>", obj["ID"], stringify(obj["OutputFrequency"]));
 				row.Cells.Add(cell);
 
 				cell = new TableCell();
-				cell.Text = stringify(obj["Callsign"]);
+				cell.Text = string.Format("<a href=\"/repeaters/details/?id={0}\">{1}</a>", obj["ID"], stringify(obj["Callsign"]));
 				row.Cells.Add(cell);
 
 				cell = new TableCell();
-				cell.Text = stringify(obj["City"]);
+				cell.Text = string.Format("<a href=\"/repeaters/details/?id={0}\">{1}</a>", obj["ID"], stringify(obj["City"]));
 				row.Cells.Add(cell);
 
 				tblLinks.Rows.Add(row);
