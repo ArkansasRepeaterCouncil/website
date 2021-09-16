@@ -93,7 +93,7 @@
                     <asp:Label ID="lblAdditionalInformation" CssClass="formLabel" runat="server" Text="Additional info"></asp:Label><asp:TextBox ID="txtAdditionalInformation" CssClass="textInput" runat="server"></asp:TextBox>
                 </div>
                 <div id="tab-2">
-                    <p>Repeaters listed here are linked to this repeater accorind to their respective trustees.</p>
+                    <p>Repeaters listed here are linked to this repeater according to their respective trustees.</p>
                     <asp:Table CssClass="tblRepeaterUsers" ID="tblLinks" runat="server"></asp:Table>
                 </div>
                 <div id="tab-3">
