@@ -41,9 +41,10 @@
             <div id="tabs">
                 <ul>
                     <li><a href="#tab-1">Details</a></li>
-                    <li><a href="#tab-2">Digital modes</a></li>
-                    <li><a href="#tab-3">Options</a></li>
-                    <li><a href="#tab-4">Metadata</a></li>
+                    <li><a href="#tab-2">Links</a></li>
+                    <li><a href="#tab-3">Digital modes</a></li>
+                    <li><a href="#tab-4">Options</a></li>
+                    <li><a href="#tab-5">Metadata</a></li>
                 </ul>
             
                 <div id="tab-1">
@@ -92,6 +93,10 @@
                     <asp:Label ID="lblAdditionalInformation" CssClass="formLabel" runat="server" Text="Additional info"></asp:Label><asp:TextBox ID="txtAdditionalInformation" CssClass="textInput" runat="server"></asp:TextBox>
                 </div>
                 <div id="tab-2">
+                    <p>Repeaters listed here are linked to this repeater accorind to their respective trustees.</p>
+                    <asp:Table CssClass="tblRepeaterUsers" ID="tblLinks" runat="server"></asp:Table>
+                </div>
+                <div id="tab-3">
                     <asp:Label ID="lblDSTAR_Module" CssClass="formLabel" runat="server" Text="D-STAR module"></asp:Label>
                     <asp:DropDownList ID="ddlDSTARmodule" runat="server" CssClass="textInput">
                         <asp:ListItem>A</asp:ListItem>
@@ -134,7 +139,7 @@
                     <asp:Label ID="lblNXDN_RAN" CssClass="formLabel" runat="server" Text="NXDN RAN"></asp:Label><asp:TextBox ID="txtNXDN_RAN" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
                     <asp:Label ID="lblYSF_DSQ" CssClass="formLabel" runat="server" Text="YSF DSQ"></asp:Label><asp:TextBox ID="txtYSF_DSQ" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox>
                 </div>
-                <div id="tab-3">
+                <div id="tab-4">
                         <asp:Label ID="lblYSF_DSQ0" runat="server" CssClass="formLabel" Text="Autopatch"></asp:Label>
                         <asp:DropDownList ID="ddlAutopatch" runat="server" CssClass="textInput">
                             <asp:ListItem Value="0">None</asp:ListItem>
@@ -151,7 +156,7 @@
                         <asp:CheckBox ID="chkWeather" runat="server" Text="Weather net" TextAlign="Left" CssClass="chkInput" /><br />
                         <asp:CheckBox ID="chkExperimental" runat="server" Text="Experimental" TextAlign="Left" CssClass="chkInput" />
                 </div>
-                <div id="tab-4">
+                <div id="tab-5">
                     <asp:Label ID="lblID" CssClass="formLabel" runat="server" Text="Internal ID"></asp:Label><asp:TextBox ID="txtID" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                     <asp:Label ID="lblDateCoordinated" CssClass="formLabel" runat="server" Text="Date coordinated"></asp:Label><asp:TextBox ID="txtDateCoordinated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                     <asp:Label ID="lblDateUpdated" CssClass="formLabel" runat="server" Text="Date updated"></asp:Label><asp:TextBox ID="txtDateUpdated" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />

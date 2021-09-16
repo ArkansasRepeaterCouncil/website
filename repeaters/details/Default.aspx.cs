@@ -123,10 +123,101 @@ public partial class update_Default : System.Web.UI.Page
 		txtAdditionalInformation.Text = repeater.AdditionalInformation;
 	}
 
+	private void LoadRepeaterLinks(string repeaterId)
+	{
+		using (var webClient = new System.Net.WebClient())
+		{
+			string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+			string url = String.Format("{0}ListRepeaterLinks?repeaterid={1}", rootUrl, repeaterId);
+			string json = webClient.DownloadString(url);
+			dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+
+			tblLinks.Rows.Clear();
+			using (TableHeaderRow thr = new TableHeaderRow())
+			{
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Direct link?";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Frequency";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "Callsign";
+					thr.Cells.Add(thc);
+				}
+				using (TableHeaderCell thc = new TableHeaderCell())
+				{
+					thc.Text = "City";
+					thr.Cells.Add(thc);
+				}
+				tblLinks.Rows.Add(thr);
+			}
+
+			foreach (dynamic obj in data)
+			{
+				TableRow row = new TableRow();
+				TableCell cell = new TableCell();
+
+				if (obj["DirectlyLinked"] == true)
+				{
+					cell = new TableCell();
+					cell.Text = "Yes";
+					row.Cells.Add(cell);
+				}
+				else
+				{
+					cell = new TableCell();
+					cell.Text = "No";
+					row.Cells.Add(cell);
+				}
+
+				cell = new TableCell();
+				cell.Text = stringify(obj["OutputFrequency"]);
+				row.Cells.Add(cell);
+
+				cell = new TableCell();
+				cell.Text = stringify(obj["Callsign"]);
+				row.Cells.Add(cell);
+
+				cell = new TableCell();
+				cell.Text = stringify(obj["City"]);
+				row.Cells.Add(cell);
+
+				tblLinks.Rows.Add(row);
+			}
+		}
+	}
+
 	protected void btnReport_Click(object sender, EventArgs e)
 	{
 		Credentials credentials = Utilities.GetExistingCredentials();
 		new RepeaterOfflineReport(credentials, int.Parse(repeaterId));
 		lblOffTheAir.Visible = true;
+	}
+
+	private string stringify(dynamic val)
+	{
+		string ret = string.Empty;
+
+		if (val == null)
+		{
+			return "";
+		}
+		else
+		{
+			try
+			{
+				return val.ToString();
+			}
+			catch (Exception)
+			{
+				return "?? ERROR: Object can't be displayed as a string.";
+			}
+		}
 	}
 }
