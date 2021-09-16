@@ -28,6 +28,7 @@ public partial class update_Default : System.Web.UI.Page
 				{
 					repeater = Repeater.LoadPublic(repeaterId);
 					LoadRepeaterDetails(repeaterId);
+					LoadRepeaterLinks(repeaterId);
 				}
 				catch (Exception ex)
 				{
