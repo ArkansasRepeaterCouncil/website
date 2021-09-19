@@ -80,6 +80,7 @@ public class Repeater
 	public string CoordinatedAntennaHeight = "";
 	public string Note = "";
 	public string AdditionalInformation = "";
+	public string MapUrl = "";
 	[JsonProperty]
 	private string ChangeLog = "";
 	[JsonProperty]
