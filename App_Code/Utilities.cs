@@ -186,4 +186,18 @@ public static class Utilities
 		cell.ColumnSpan = colSpan;
 		row.Cells.Add(cell);
 	}
+
+	public static string CreateMapUrl(params string[] pointsToShow)
+    {
+		string centerPoint = "34.6884554,-93.5156763";
+		string zoomLevel = "7.44";
+
+		string ret = "https://www.google.com/maps/dir/";
+		for (int i = 0; i < pointsToShow.Length; i++) {
+			ret += pointsToShow[i] + "/";
+		}
+		ret += string.Format("/@{0},{1}z", centerPoint, zoomLevel);
+
+		return ret;
+    }
 }

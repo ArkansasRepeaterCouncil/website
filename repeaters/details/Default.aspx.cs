@@ -73,6 +73,20 @@ public partial class update_Default : System.Web.UI.Page
 
 	}
 
+	private string sterilizeLocation(string latORlon)
+    {
+		string ret = "";
+
+		double dblLatOrLon;
+		if (!double.TryParse(latORlon, out dblLatOrLon))
+        {
+			dblLatOrLon = Math.Round(dblLatOrLon, 1);
+			ret = dblLatOrLon.ToString();
+		}
+
+		return ret;
+    }
+
 	private void LoadRepeaterDetails(string repeaterId)
 	{
 		lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
@@ -86,13 +100,17 @@ public partial class update_Default : System.Web.UI.Page
 		txtOutputFrequency.Text = repeater.OutputFrequency;
 		txtInputFrequency.Text = repeater.InputFrequency;
 		txtSponsor.Text = repeater.Sponsor;
-		txtLatitude.Text = "*********"; //repeater.Latitude;
-		txtLongitude.Text = "*********"; //repeater.Longitude;
+
+		string sterileLat = sterilizeLocation(repeater.Latitude);
+		string sterileLong = sterilizeLocation(repeater.Longitude);
+		txtLatitude.Text = sterileLat;
+		txtLongitude.Text = sterileLong + string.Format(" <a href='{0}' target='_blank'>Display on map</a>", Utilities.CreateMapUrl(sterileLong + "," + sterileLat));
+
 		txtAMSL.Text = repeater.AMSL;
 		txtERP.Text = repeater.ERP;
 		txtOutputPower.Text = repeater.OutputPower;
 		txtAntennaGain.Text = repeater.AntennaGain;
-		txtAntennaHeight.Text = repeater.AntennaHeight + " meters";
+		txtAntennaHeight.Text = repeater.AntennaHeight + " <a target='_blank' href='https://sciencing.com/do-use-metric-system-science-5501930.html'>meters</a>";
 		txtAnalog_InputAccess.Text = repeater.Analog_InputAccess;
 		txtAnalog_OutputAccess.Text = repeater.Analog_OutputAccess;
 		txtAnalog_Width.Text = repeater.Analog_Width;
