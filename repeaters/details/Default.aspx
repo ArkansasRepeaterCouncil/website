@@ -61,8 +61,8 @@
                         <asp:ListItem></asp:ListItem>
                     </asp:DropDownList>
                     <br />
-                    <asp:Label ID="lblRepeaterCallsign" CssClass="formLabel" runat="server" Text="Repeater callsign"></asp:Label><asp:Label ID="txtRepeaterCallsign" CssClass="textInput" runat="server"></asp:Label><br />
-                    <asp:Label ID="lblTrusteeID" CssClass="formLabel" runat="server" Text="Trustee"></asp:Label><asp:Label ID="txtTrusteeCallsign" CssClass="textInput" runat="server" ReadOnly="True"></asp:Label><br />
+                    <asp:Label ID="lblRepeaterCallsign" CssClass="formLabel" runat="server" Text="Repeater callsign"></asp:Label><asp:Label ID="txtRepeaterCallsign" CssClass="valueLabel" runat="server"></asp:Label><br />
+                    <asp:Label ID="lblTrusteeID" CssClass="formLabel" runat="server" Text="Trustee"></asp:Label><asp:Label ID="txtTrusteeCallsign" CssClass="valueLabel" runat="server" ReadOnly="True"></asp:Label><br />
                     <!-- -->
                     <asp:Label ID="lblStatus" CssClass="formLabel" runat="server" Text="Status"></asp:Label><asp:DropDownList ID="ddlStatus" runat="server" CssClass="textInput">
                         <asp:ListItem Value="1">Proposed</asp:ListItem>
@@ -76,14 +76,14 @@
                     <br />
                     <asp:Label ID="lblCity" CssClass="formLabel" runat="server" Text="City"></asp:Label><asp:TextBox ID="txtCity" CssClass="textInput" runat="server"></asp:TextBox><br />
                     <asp:Label ID="lblSiteName" CssClass="formLabel" runat="server" Text="Site description"></asp:Label><asp:TextBox ID="txtSiteName" CssClass="textInput" runat="server"></asp:TextBox><br />
-                    <asp:Label ID="lblOutputFrequency" CssClass="formLabel" runat="server" Text="Transmit frequency"></asp:Label><asp:TextBox ID="txtOutputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
-                    <asp:Label ID="lblInputFrequency" CssClass="formLabel" runat="server" Text="Receive frequency"></asp:Label><asp:TextBox ID="txtInputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblOutputFrequency" CssClass="formLabel" runat="server" Text="Transmit frequency"></asp:Label><asp:TextBox ID="txtOutputFrequency" CssClass="valueLabel" runat="server" ReadOnly="True"></asp:TextBox><br />
+                    <asp:Label ID="lblInputFrequency" CssClass="formLabel" runat="server" Text="Receive frequency"></asp:Label><asp:TextBox ID="txtInputFrequency" CssClass="valueLabel" runat="server" ReadOnly="True"></asp:TextBox><br />
                     <asp:Label ID="lblSponsor" CssClass="formLabel" runat="server" Text="Sponsor/Club"></asp:Label><asp:TextBox ID="txtSponsor" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
                     <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label>
-                    <asp:Label ID="txtLatitude" runat="server" Text="" CssClass="textInput"></asp:Label>
+                    <asp:Label ID="txtLatitude" runat="server" Text="" CssClass="valueLabel"></asp:Label>
                     <br />
                     <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label>
-                    <asp:Label ID="txtLongitude" runat="server" Text="" CssClass="textInput"></asp:Label>
+                    <asp:Label ID="txtLongitude" runat="server" Text="" CssClass="valueLabel"></asp:Label>
                     <br />
                     <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server" placeholder="meters"> meters</asp:TextBox> <a target='_blank' href='https://sciencing.com/do-use-metric-system-science-5501930.html'>Why meters?</a>
                     <br />
