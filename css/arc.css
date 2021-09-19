@@ -24,13 +24,21 @@ body {
     font-weight: bold;
 }
 
-a, a:hover, a:link, a:visited { 
+a, a:hover, a:link, a:visited, .contentLink { 
 	color: #508ced;
 	text-decoration: none;
 }
-a:hover {
-	text-decoration: underline;
+a:hover, .contentLink:hover {
+    text-decoration: underline;
 }
+
+.contentLink {
+    font-size: 0.8em;
+}
+
+    #ctl00_ContentPlaceHolder1_linkMap:hover {
+        text-decoration: underline;
+    }
 
 #pageContent, footer {
 	margin-left: 10%;

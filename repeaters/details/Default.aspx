@@ -83,9 +83,9 @@
                     <asp:Label ID="txtLatitude" runat="server" Text="" CssClass="valueLabel"></asp:Label>
                     <br />
                     <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label>
-                    <asp:Label ID="txtLongitude" runat="server" Text="" CssClass="valueLabel"></asp:Label><asp:HyperLink ID="linkMap" runat="server" Target="_blank">Show on a map</asp:HyperLink>
+                    <asp:Label ID="txtLongitude" runat="server" Text="" CssClass="valueLabel"></asp:Label><asp:HyperLink ID="linkMap" runat="server" Target="_blank" CssClass="contentLink">Show on a map</asp:HyperLink>
                     <br />
-                    <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server" placeholder="meters"> meters</asp:TextBox><asp:HyperLink ID="linkMeters" NavigateUrl="https://sciencing.com/do-use-metric-system-science-5501930.html" runat="server" Target="_blank">Why meters?</asp:HyperLink>
+                    <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server" placeholder="meters"> meters</asp:TextBox><asp:HyperLink ID="linkMeters" NavigateUrl="https://sciencing.com/do-use-metric-system-science-5501930.html" CssClass="contentLink" runat="server" Target="_blank">Why meters?</asp:HyperLink>
                     <br />
                     <asp:Label ID="lblERP" CssClass="formLabel" runat="server" Text="Effective radiated power (ERP)"></asp:Label><asp:TextBox ID="txtERP" CssClass="textInput" runat="server"> watts</asp:TextBox><br />
                     <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"> watts</asp:TextBox><br />
