@@ -87,7 +87,8 @@ public partial class update_Default : System.Web.UI.Page
 		txtInputFrequency.Text = repeater.InputFrequency;
 		txtSponsor.Text = repeater.Sponsor;
 		txtLatitude.Text = repeater.Latitude;
-		txtLongitude.Text = repeater.Longitude + string.Format(" <a href='{0}' target='_blank'>Display on map</a>", repeater.MapUrl);
+		txtLongitude.Text = repeater.Longitude;
+		linkMap.NavigateUrl = repeater.MapUrl;
 		txtAMSL.Text = repeater.AMSL;
 		txtERP.Text = repeater.ERP;
 		txtOutputPower.Text = repeater.OutputPower;
