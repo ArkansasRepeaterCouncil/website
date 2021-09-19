@@ -8,8 +8,6 @@ using System.Web.UI.WebControls;
 
 public partial class error : System.Web.UI.Page
 {
-	ExceptionReport ex;
-
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		try
@@ -19,7 +17,6 @@ public partial class error : System.Web.UI.Page
 		}
 		catch (Exception)
 		{
-
 			// throw;  // Let's not.  Could cause a cycle of hell.
 		}
 	}
