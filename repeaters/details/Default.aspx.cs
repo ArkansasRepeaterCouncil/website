@@ -73,20 +73,6 @@ public partial class update_Default : System.Web.UI.Page
 
 	}
 
-	private string sterilizeLocation(string latORlon)
-    {
-		string ret = "";
-
-		double dblLatOrLon;
-		if (!double.TryParse(latORlon, out dblLatOrLon))
-        {
-			dblLatOrLon = Math.Round(dblLatOrLon, 1);
-			ret = dblLatOrLon.ToString();
-		}
-
-		return ret;
-    }
-
 	private void LoadRepeaterDetails(string repeaterId)
 	{
 		lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
@@ -100,12 +86,8 @@ public partial class update_Default : System.Web.UI.Page
 		txtOutputFrequency.Text = repeater.OutputFrequency;
 		txtInputFrequency.Text = repeater.InputFrequency;
 		txtSponsor.Text = repeater.Sponsor;
-
-		string sterileLat = sterilizeLocation(repeater.Latitude);
-		string sterileLong = sterilizeLocation(repeater.Longitude);
-		txtLatitude.Text = sterileLat;
-		txtLongitude.Text = sterileLong + string.Format(" <a href='{0}' target='_blank'>Display on map</a>", Utilities.CreateMapUrl(sterileLat + "," + sterileLong));
-
+		txtLatitude.Text = repeater.Latitude;
+		txtLongitude.Text = repeater.Longitude + string.Format(" <a href='{0}' target='_blank'>Display on map</a>", repeater.MapUrl);
 		txtAMSL.Text = repeater.AMSL;
 		txtERP.Text = repeater.ERP;
 		txtOutputPower.Text = repeater.OutputPower;
