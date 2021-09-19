@@ -79,9 +79,13 @@
                     <asp:Label ID="lblOutputFrequency" CssClass="formLabel" runat="server" Text="Transmit frequency"></asp:Label><asp:TextBox ID="txtOutputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                     <asp:Label ID="lblInputFrequency" CssClass="formLabel" runat="server" Text="Receive frequency"></asp:Label><asp:TextBox ID="txtInputFrequency" CssClass="textInput" runat="server" ReadOnly="True"></asp:TextBox><br />
                     <asp:Label ID="lblSponsor" CssClass="formLabel" runat="server" Text="Sponsor/Club"></asp:Label><asp:TextBox ID="txtSponsor" placeholder="Leave blank if none" CssClass="textInput" runat="server"></asp:TextBox><br />
-                    <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label><asp:TextBox ID="txtLatitude" CssClass="textInput" runat="server"></asp:TextBox><br />
-                    <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label><asp:TextBox ID="txtLongitude" CssClass="textInput" runat="server"></asp:TextBox><br />
-                    <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server" placeholder="meters"> meters</asp:TextBox>
+                    <asp:Label ID="lblLatitude" CssClass="formLabel" runat="server" Text="Latitude"></asp:Label>
+                    <asp:Label ID="txtLatitude" runat="server" Text="" CssClass="textInput"></asp:Label>
+                    <br />
+                    <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label>
+                    <asp:Label ID="txtLongitude" runat="server" Text="" CssClass="textInput"></asp:Label>
+                    <br />
+                    <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server" placeholder="meters"> meters</asp:TextBox> <a target='_blank' href='https://sciencing.com/do-use-metric-system-science-5501930.html'>Why meters?</a>
                     <br />
                     <asp:Label ID="lblERP" CssClass="formLabel" runat="server" Text="Effective radiated power (ERP)"></asp:Label><asp:TextBox ID="txtERP" CssClass="textInput" runat="server"> watts</asp:TextBox><br />
                     <asp:Label ID="lblOutputPower" CssClass="formLabel" runat="server" Text="Output power"></asp:Label><asp:TextBox ID="txtOutputPower" CssClass="textInput" runat="server"> watts</asp:TextBox><br />

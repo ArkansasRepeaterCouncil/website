@@ -104,13 +104,13 @@ public partial class update_Default : System.Web.UI.Page
 		string sterileLat = sterilizeLocation(repeater.Latitude);
 		string sterileLong = sterilizeLocation(repeater.Longitude);
 		txtLatitude.Text = sterileLat;
-		txtLongitude.Text = sterileLong + string.Format(" <a href='{0}' target='_blank'>Display on map</a>", Utilities.CreateMapUrl(sterileLong + "," + sterileLat));
+		txtLongitude.Text = sterileLong + string.Format(" <a href='{0}' target='_blank'>Display on map</a>", Utilities.CreateMapUrl(sterileLat + "," + sterileLong));
 
 		txtAMSL.Text = repeater.AMSL;
 		txtERP.Text = repeater.ERP;
 		txtOutputPower.Text = repeater.OutputPower;
 		txtAntennaGain.Text = repeater.AntennaGain;
-		txtAntennaHeight.Text = repeater.AntennaHeight + " <a target='_blank' href='https://sciencing.com/do-use-metric-system-science-5501930.html'>meters</a>";
+		txtAntennaHeight.Text = repeater.AntennaHeight + " meters";
 		txtAnalog_InputAccess.Text = repeater.Analog_InputAccess;
 		txtAnalog_OutputAccess.Text = repeater.Analog_OutputAccess;
 		txtAnalog_Width.Text = repeater.Analog_Width;
