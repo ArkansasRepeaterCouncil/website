@@ -89,7 +89,7 @@ public partial class update_Default : System.Web.UI.Page
 		txtLatitude.Text = repeater.Latitude;
 		txtLongitude.Text = repeater.Longitude;
 		linkMap.NavigateUrl = repeater.MapUrl;
-		txtAMSL.Text = repeater.AMSL;
+		txtAMSL.Text = repeater.AMSL + " meters";
 		txtERP.Text = repeater.ERP;
 		txtOutputPower.Text = repeater.OutputPower;
 		txtAntennaGain.Text = repeater.AntennaGain;
