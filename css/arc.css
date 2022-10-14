@@ -233,6 +233,7 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
     margin: 1%;
     padding: 1%;
     vertical-align: top;
+    min-width: min-content;
 }
 
 #piechart.currentRepeaters {
