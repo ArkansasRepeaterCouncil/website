@@ -230,10 +230,10 @@ footer div a, footer div a:visited, footer div a:active, footer div a:hover, foo
     display: inline-block;
     border: solid 1px #fff;
     width: 45%;
-    height: 850px;
     margin: 1%;
     padding: 1%;
     vertical-align: top;
+    min-width: min-content;
 }
 
 #piechart.currentRepeaters {
@@ -307,6 +307,6 @@ blockquote cite {
 }
 
 blockquote cite:before {
-    content: '— ';
+    content: '- ';
     color: #777;
 }
