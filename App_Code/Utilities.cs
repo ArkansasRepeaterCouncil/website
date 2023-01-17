@@ -24,7 +24,7 @@ public static class Utilities
 			{
                 HttpCookie hcState = HttpContext.Current.Request.Cookies["state"];
 
-				if (hcState.Value == null || hcState.Value == string.Empty)
+				if (hcState == null || hcState.Value == null || hcState.Value == string.Empty)
 				{
                     string domainName = HttpContext.Current.Request.Url.DnsSafeHost;
                     switch (domainName)
