@@ -1,16 +1,60 @@
 ﻿using Newtonsoft.Json;
+using Octokit;
+using Octokit.Internal;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Web;
+using System.Web.UI.WebControls;
 
 /// <summary>
 /// Summary description for Utilities
 /// </summary>
 public static class Utilities
 {
-	public static string Base64Encode(string plainText)
+
+	private static string stateToDisplay;
+
+    public static string StateToDisplay
+	{
+		get
+		{
+			if (stateToDisplay == null || stateToDisplay == string.Empty)
+			{
+                HttpCookie hcState = HttpContext.Current.Request.Cookies["state"];
+
+				if (hcState.Value == null || hcState.Value == string.Empty)
+				{
+                    string domainName = HttpContext.Current.Request.Url.DnsSafeHost;
+                    switch (domainName)
+                    {
+                        case "al.repeatercouncil.org":
+                            stateToDisplay = "AL";
+                            break;
+                        default:
+                            stateToDisplay = "AR";
+                            break;
+                    }
+
+                    HttpCookie newState = new HttpCookie("state", stateToDisplay);
+                    newState.Expires = DateTime.Now.AddDays(364);
+                    HttpContext.Current.Response.Cookies.Add(newState);
+                }
+				else
+				{
+					stateToDisplay = hcState.Value;
+
+                }
+            }
+
+			return stateToDisplay;
+
+        }
+	}
+
+
+    public static string Base64Encode(string plainText)
 	{
 		var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
 		return System.Convert.ToBase64String(plainTextBytes);

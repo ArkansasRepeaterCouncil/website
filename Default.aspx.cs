@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -23,16 +24,18 @@ public partial class _Default : System.Web.UI.Page
 			Response.Redirect("~/");
 		}
 
-		string json = Utilities.GetResponseFromUrl(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterUpdateNumbers");
-		dynamic stats = JsonConvert.DeserializeObject<dynamic>(json);
+        string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+        string url = String.Format("{0}GetRepeaterUpdateNumbers?state={1}", rootUrl, Utilities.StateToDisplay);
+        string json = Utilities.GetResponseFromUrl(url);
+        dynamic stats = JsonConvert.DeserializeObject<dynamic>(json);
 
-		lblCount.Text = stats.TotalRepeaters;
+        lblCount.Text = stats.TotalRepeaters;
 		hdnCountCurrent.Value = stats.RepeatersCurrent;
 		hdnCountExpired.Value = stats.RepeatersExpired;
 		lblCoordinationCount.Text = stats.TotalCoordinationRequests;
 		lblAverageDaysPerCoordination.Text = stats.AverageDays;
 
-		json = Utilities.GetResponseFromUrl(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListRecentChangesPublic");
+		json = Utilities.GetResponseFromUrl(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListRecentChangesPublic?state=" + Utilities.StateToDisplay);
 		dynamic changes = JsonConvert.DeserializeObject<dynamic>(json);
 
 		lblRecentChanges.Text = "<h3>Recent updates</h3><ul>";
@@ -58,7 +61,7 @@ public partial class _Default : System.Web.UI.Page
 
 		using (var webClient = new System.Net.WebClient())
 		{
-			string url = String.Format("{0}{1}", System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"], "ReportExpiredRepeaters");
+			string url = String.Format("{0}{1}", System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"], "ReportExpiredRepeaters?state=" + Utilities.StateToDisplay);
 			json = webClient.DownloadString(url);
 			ViewState["expiredRepeaters"] = json;
 		}
