@@ -750,7 +750,7 @@ public static class Utilities
                 return "Oregon";
 
             case "PW":
-                return Palau;
+                return "Palau";
 
             case "PA":
                 return "Pennsylvania";
