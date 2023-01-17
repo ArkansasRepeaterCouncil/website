@@ -38,10 +38,10 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
-		<h1>Arkansas Repeater Council</h1>
+		<h1>Arkansas Repeater Council - <asp:label id="Label1" runat="server" text=""></asp:label></h1>
 		<p>
-			The Arkansas Repeater Council coordinates
-amateur radio repeater frequencies in the state of Arkansas. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a>.
+			The repeater council coordinates
+amateur radio repeater frequencies. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a>.
 		</p>
         <p><em>Site build status:</em> <a href="https://ci.appveyor.com/project/ArkansasRepeaterCouncil/website/branch/master"><img src="https://ci.appveyor.com/api/projects/status/223bhwjxe9h8ndn0" alt="site build status" /></a></p>
     </section>
