@@ -24,7 +24,7 @@ public partial class _Default : System.Web.UI.Page
 			Response.Redirect("~/");
 		}
 
-		Label1.Text = HttpContext.Current.Request.Url.DnsSafeHost;
+		Label1.Text = HttpContext.Current.Request.Url.DnsSafeHost + " / " + Utilities.StateToDisplay;
 
         string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
         string url = String.Format("{0}GetRepeaterUpdateNumbers?state={1}", rootUrl, Utilities.StateToDisplay);

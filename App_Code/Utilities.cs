@@ -26,7 +26,7 @@ public static class Utilities
 
 				if (hcState == null || hcState.Value == null || hcState.Value == string.Empty)
 				{
-                    string domainName = HttpContext.Current.Request.Url.DnsSafeHost;
+					string domainName = HttpContext.Current.Request.Url.DnsSafeHost.ToLower();
                     switch (domainName)
                     {
                         case "al.repeatercouncil.org":
