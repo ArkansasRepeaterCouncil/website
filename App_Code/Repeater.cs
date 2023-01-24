@@ -106,7 +106,7 @@ public class Repeater
 					break;
 				}
 			}
-			catch (Exception ex)
+			catch
 			{
 				// Try again
 			}
