@@ -14,6 +14,7 @@ using System.Web.UI.WebControls;
 public static class Utilities
 {
     #region Specific to repeater council
+
     private static string stateToDisplay;
 
     public static string StateToDisplay
@@ -30,6 +31,7 @@ public static class Utilities
                     switch (domainName)
                     {
                         case "al.repeatercouncil.org":
+                        case "localhost":
                             stateToDisplay = "AL";
                             break;
                         default:
@@ -159,27 +161,30 @@ public static class Utilities
     {
         string result = "";
 
-        //try
-        //{
         var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
         httpWebRequest.Method = "GET";
+        ServicePointManager.Expect100Continue = true;
+        ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
 
-        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+        try
         {
-            result = streamReader.ReadToEnd();
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                result = streamReader.ReadToEnd();
+            }
         }
-        //}
-        //catch (Exception ex)
-        //{
-        //string safeUrl = url;
-        //if (safeUrl.Contains("?"))
-        //{
-        //	safeUrl = safeUrl.Substring(0, safeUrl.IndexOf('?'));
-        //}
-        //new ExceptionReport(ex, "Exception thrown while trying to get content from URL", "URL: " + safeUrl);
-        // throw ex;
-        //}
+        catch (WebException ex)
+        {
+            string safeUrl = url;
+            if (safeUrl.Contains("?"))
+            {
+                safeUrl = safeUrl.Substring(0, safeUrl.IndexOf('?'));
+            }
+            new ExceptionReport(ex, "Exception thrown while trying to get content from URL", "URL: " + safeUrl);
+            throw ex;
+        }
 
         return result;
     }
