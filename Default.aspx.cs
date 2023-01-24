@@ -25,7 +25,7 @@ public partial class _Default : System.Web.UI.Page
 		}
 
 		string stateName = Utilities.GetStateNameByAbbr(Utilities.StateToDisplay);
-        lblState1.Text = stateName;
+        lblState1.Text = stateName + " ( " + stateName + ")" ;
 		lblState2.Text = stateName;
 
         string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
