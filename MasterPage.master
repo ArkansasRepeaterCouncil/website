@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <title>Arkansas Repeater Council</title>
+    <title>Repeater Council</title>
 	<link rel="stylesheet" href="/css/arc.css">
     <link href="js/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
@@ -18,7 +18,7 @@
     <form id="form1" runat="server">
     <div>
         <div id="header">
-	        <div id="headerTitle">Arkansas Repeater Council<br /><span id="headerSubTitle"><asp:ContentPlaceHolder id="ContentPlaceHolderTitle" runat="server"></asp:ContentPlaceHolder></span></div>
+	        <div id="headerTitle"><asp:Label ID="lblHeaderTitle" runat="server" Text="Repeater Council"></asp:Label><br /><span id="headerSubTitle"><asp:ContentPlaceHolder id="ContentPlaceHolderTitle" runat="server"></asp:ContentPlaceHolder></span></div>
 	        <div id="headerLinks">
                 <nav role="navigation">
 			        <ul class="primaryLinks">
