@@ -136,12 +136,12 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 		}
 	}
 
-	private void Button_Click(object sender, EventArgs e)
-	{
-		Button btn = (Button)sender;
-		switch (btn.CommandName)
-		{
+	//private void Button_Click(object sender, EventArgs e)
+	//{
+	//	Button btn = (Button)sender;
+	//	switch (btn.CommandName)
+	//	{
 
-		}
-	}
+	//	}
+	//}
 }
