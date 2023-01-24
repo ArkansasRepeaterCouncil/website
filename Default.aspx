@@ -43,7 +43,6 @@
 			The <asp:label id="lblState2" runat="server" text=""></asp:label> Repeater Council coordinates
 amateur radio repeater frequencies. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a>.
 		</p>
-        <p><em>Site build status:</em> <a href="https://ci.appveyor.com/project/ArkansasRepeaterCouncil/website/branch/master"><img src="https://ci.appveyor.com/api/projects/status/223bhwjxe9h8ndn0" alt="site build status" /></a></p>
     </section>
     <section>
         <div id="homeStatsContainer">
@@ -69,6 +68,7 @@ amateur radio repeater frequencies. We utilize available data from our own datab
         </div>
         <div class="homepageListing recentChanges"><asp:label id="lblRecentChanges" runat="server" text="Ch-ch-ch-ch-changes"></asp:label></div>
     </section>
+
     <asp:HiddenField ID="hdnCountCurrent" ClientIDMode="Static" runat="server" />
     <asp:HiddenField ID="hdnCountExpired" ClientIDMode="Static" runat="server" />
 </asp:Content>
