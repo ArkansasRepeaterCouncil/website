@@ -84,28 +84,29 @@ public class Issue
 
 	public string Submit()
 	{
-		string strReturn = "";
-		var client = new GitHubClient(new ProductHeaderValue("ArkansasRepeaterCouncil-site"));
-		string githubUsername = System.Configuration.ConfigurationManager.AppSettings["githubUsername"];
-		string githubPassword = System.Configuration.ConfigurationManager.AppSettings["githubPassword"];
-		var basicAuth = new Octokit.Credentials(githubUsername, githubPassword);
-		client.Credentials = basicAuth;
-		var newIssue = new NewIssue(this.title);
-		newIssue.Body = this.body;
-		Task<Octokit.Issue> issue = client.Issue.Create("ArkansasRepeaterCouncil", "website", newIssue);
-		issue.Wait(15000);
+		//string strReturn = "";
+		//var client = new GitHubClient(new ProductHeaderValue("ArkansasRepeaterCouncil-site"));
+		//string githubUsername = System.Configuration.ConfigurationManager.AppSettings["githubUsername"];
+		//string githubPassword = System.Configuration.ConfigurationManager.AppSettings["githubPassword"];
+		//var basicAuth = new Octokit.Credentials(githubUsername, githubPassword);
+		//client.Credentials = basicAuth;
+		//var newIssue = new NewIssue(this.title);
+		//newIssue.Body = this.body;
+		//Task<Octokit.Issue> issue = client.Issue.Create("ArkansasRepeaterCouncil", "website", newIssue);
+		//issue.Wait(15000);
 
-		try
-		{
-			strReturn = issue.Result.HtmlUrl;
-		}
-		catch (Exception)
-		{
-			strReturn = "";
-		}
-		
+		//try
+		//{
+		//	strReturn = issue.Result.HtmlUrl;
+		//}
+		//catch (Exception)
+		//{
+		//	strReturn = "";
+		//}
 
-		return strReturn;
+
+		//return strReturn;
+		return "";
 	}
 
 }
