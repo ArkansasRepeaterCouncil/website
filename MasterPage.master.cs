@@ -8,8 +8,6 @@ public partial class MasterPage : System.Web.UI.MasterPage
 {
 	protected void Page_Load(object sender, EventArgs e)
 	{
-
-
 		if (!Request.IsLocal && !Request.IsSecureConnection)
 		{
 			string redirectUrl = Request.Url.ToString().Replace("http:", "https:");
@@ -43,7 +41,12 @@ public partial class MasterPage : System.Web.UI.MasterPage
 				pnlAdminLinks.Visible = true;
 			}
 		}
-	}
+
+		string siteName = Utilities.GetStateNameByAbbr(Utilities.StateToDisplay) + " Repeater Council";
+		Page.Title = siteName;
+        lblHeaderTitle.Text = siteName;
+
+    }
 
 	protected void lbLogin_Click(object sender, EventArgs e)
 	{
