@@ -15,3 +15,5 @@ images/.portraits.psd.icloud
 
 .vs/*
 ARC-website.sln
+
+packages/*
