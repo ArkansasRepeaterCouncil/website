@@ -9,7 +9,6 @@ public partial class update_Default : System.Web.UI.Page
 {
 	Repeater repeater;
 	string repeaterId;
-	bool enforceBusinessRules = false;
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -30,7 +29,7 @@ public partial class update_Default : System.Web.UI.Page
 					LoadRepeaterDetails(repeaterId);
 					LoadRepeaterLinks(repeaterId);
 				}
-				catch (Exception ex)
+				catch 
 				{
 					lblRepeaterName.Text= "Unable to load and parse data for requested repeater. If the problem persists please report it using the link at the bottom of the page.";
 				}
