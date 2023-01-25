@@ -14,22 +14,35 @@ jobs:
     runs-on: windows-latest
 
     steps:
-	    uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with: dotnet-version: 4.8.1
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 4.8.1
 
-      - name: Build web site
-        run: dotnet build --configuration Release
-		
-      - name: Publish web site
-        run: dotnet publish --configuration Release
+    - name: Build web site
+      run: dotnet build --configuration Release
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: ASP-app
-          path: './bin/Release/net48/publish/**'
+    - name: Publish web site
+      run: dotnet publish --configuration Release -p:PublishDir=.\publish 
 
-  
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: ASP-app
+        path: '.\publish\**'
+
+
+
+
+
+
+
+
+
+
+
+
+
