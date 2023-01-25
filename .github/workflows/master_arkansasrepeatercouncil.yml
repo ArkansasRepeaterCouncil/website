@@ -17,22 +17,18 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install Nuget
-      uses: nuget/setup-nuget@v1
-      with:
-        nuget-version: '6.4.0'
-		
-    - name: List workspace contents
-      run: |
-	    dir ${{ github.workspace }}
-
-    - name: NuGet to restore dependencies
-      run: nuget restore ${{ github.workspace }}\ARC-website.sln
+#    - name: Install Nuget
+#      uses: nuget/setup-nuget@v1
+#      with:
+#        nuget-version: '6.4.0'
+#
+#    - name: NuGet to restore dependencies
+#      run: nuget restore ${{ github.workspace }}\ARC-website.sln
 
     - name: Setup msbuild
       uses: microsoft/setup-msbuild@v1.0.2
 
     - name: Run msbuild
-      run: msbuild ${{ github.workspace }}\ARC-website.sln
+      run: msbuild ARC-website.sln
 
 
