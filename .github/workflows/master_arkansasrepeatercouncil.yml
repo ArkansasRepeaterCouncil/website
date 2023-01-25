@@ -23,7 +23,8 @@ jobs:
         nuget-version: '6.4.0'
 		
     - name: List workspace contents
-      run: dir ${{ github.workspace }}
+      run: |
+	    dir ${{ github.workspace }}
 
     - name: NuGet to restore dependencies
       run: nuget restore ${{ github.workspace }}\ARC-website.sln
