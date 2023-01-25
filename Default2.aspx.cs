@@ -24,6 +24,7 @@ public partial class Default2 : System.Web.UI.Page
         switch (domainName)
         {
             case "al.repeatercouncil.org":
+            case "alabama.repeatercouncil.org":
             case "localhost":
                 stateToDisplay = "AL";
                 break;
