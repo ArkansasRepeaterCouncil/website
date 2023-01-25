@@ -1,8 +1,6 @@
 <h1>Arkansas Repeater Council</h1>
 http://www.arkansasrepeatercouncil.org/
 
-[![Build status](https://ci.appveyor.com/api/projects/status/223bhwjxe9h8ndn0?svg=true)](https://ci.appveyor.com/project/ArkansasRepeaterCouncil/website)
-
 <h2 id="support">Support</h2>
 <p>This website is open-source.  This typically means, and is true in this case, that it is community supported.  If you find a bug, check to see if there is already an issue open to address it before you submit one.  If you have a suggestion please open an issue and share your idea.  Or better yet... contribute to the project (keep reading).</p>
 <h2 id="contributing">Contributing</h2>
