@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: windows-latest
 
     steps:
@@ -28,11 +28,13 @@ jobs:
     - name: Publish web site
       run: dotnet publish --configuration Release -p:PublishDir=.\publish 
 
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v2
+    - name: Deploy to Azure App Service
+      uses: azure/webapps-deploy@v2
       with:
-        name: ASP-app
-        path: '.\publish\**'
+        app-name: arkansasrepeatercouncil
+        slot-name: production
+        package: '.\publish'
+        publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
 
 
 
