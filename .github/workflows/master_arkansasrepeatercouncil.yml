@@ -16,9 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
-
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
