@@ -1,45 +1,33 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy ASP app to Azure Web App - arkansasrepeatercouncil
+name: ASP.NET Build and Deploy
 
 on:
   push:
     branches:
-      - master
-  workflow_dispatch:
+      - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: windows-latest
 
     steps:
-      - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: ASP-app
-          path: '/published/**'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 4.8.1
 
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    - name: Build web site
+      run: dotnet build --configuration Release
 
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: ASP-app
+    - name: Publish web site
+      run: dotnet publish --configuration Release
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'arkansasrepeatercouncil'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CFE061484A654E9F8E3AF8265FEF19F2 }}
-          package: .
+    - name: Deploy to Azure App Service
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: my-web-app
+        slot-name: production
+        package: './bin/Release/net48/publish'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CFE061484A654E9F8E3AF8265FEF19F2 }
