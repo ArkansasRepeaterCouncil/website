@@ -27,7 +27,7 @@ jobs:
     - name: Deploy to Azure App Service
       uses: azure/webapps-deploy@v2
       with:
-        app-name: my-web-app
+        app-name: arkansasrepeatercouncil
         slot-name: production
         package: './bin/Release/net48/publish'
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CFE061484A654E9F8E3AF8265FEF19F2 }
