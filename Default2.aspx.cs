@@ -14,7 +14,7 @@ public partial class Default2 : System.Web.UI.Page
 
         HttpCookie hcState = HttpContext.Current.Request.Cookies["state"];
 
-        lbl.Text += "HttpContext.Current.Request.Cookies[\"state\"] : " + hcState + "<br>";
+        lbl.Text += "HttpContext.Current.Request.Cookies[\"state\"] : " + hcState.Value + "<br>";
 
         string domainName = HttpContext.Current.Request.Url.DnsSafeHost.ToLower();
 
