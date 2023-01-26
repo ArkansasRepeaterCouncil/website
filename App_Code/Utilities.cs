@@ -28,15 +28,24 @@ public static class Utilities
                 if (hcState == null || hcState.Value == null || hcState.Value == string.Empty)
                 {
                     string domainName = HttpContext.Current.Request.Url.DnsSafeHost.ToLower();
-                    switch (domainName)
+
+                    if (domainName.Substring(2) == ".repeatercouncil.org")
                     {
-                        case "al.repeatercouncil.org":
-                        case "localhost":
-                            stateToDisplay = "AL";
-                            break;
-                        default:
-                            stateToDisplay = "AR";
-                            break;
+                        stateToDisplay = domainName.Substring(0, 2);
+                    }
+                    else
+                    {
+                        switch (domainName)
+                        {
+                            case "localhost":
+                                stateToDisplay = "AL";
+                                break;
+                            case "www.arkansasrepeatercouncil.org":
+                            case "arkansasrepeatercouncil.org":
+                            default:
+                                stateToDisplay = "AR";
+                                break;
+                        }
                     }
 
                     HttpCookie newState = new HttpCookie("state", stateToDisplay);
@@ -46,7 +55,6 @@ public static class Utilities
                 else
                 {
                     stateToDisplay = hcState.Value;
-
                 }
             }
 
