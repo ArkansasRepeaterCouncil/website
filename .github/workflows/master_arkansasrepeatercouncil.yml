@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-publish:
     runs-on: windows-latest
 
     steps:
@@ -31,25 +31,12 @@ jobs:
     - name: Run msbuild
       run: msbuild './ARC-website.sln'
 
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-      - name: Download artifacts from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: ASP-app
-
-      - name: Deploy to Azure
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'arkansasrepeatercouncil'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_88658FEB29494F8CBF1027D2BB721CD5 }}
-          package: .
+    - name: Deploy to Azure
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'arkansasrepeatercouncil'
+        slot-name: 'Production'
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_88658FEB29494F8CBF1027D2BB721CD5 }}
+        package: .
 
