@@ -15,47 +15,44 @@ public static class Utilities
 {
     #region Specific to repeater council
 
-    private static string stateToDisplay;
-
     public static string StateToDisplay
     {
         get
         {
-            if (stateToDisplay == null || stateToDisplay == string.Empty)
+            string stateToDisplay = "";
+            
+            HttpCookie hcState = HttpContext.Current.Request.Cookies["state"];
+
+            if (hcState == null || hcState.Value == null || hcState.Value == string.Empty)
             {
-                HttpCookie hcState = HttpContext.Current.Request.Cookies["state"];
+                string domainName = HttpContext.Current.Request.Url.DnsSafeHost.ToLower();
 
-                if (hcState == null || hcState.Value == null || hcState.Value == string.Empty)
+                if (domainName.Substring(2) == ".repeatercouncil.org")
                 {
-                    string domainName = HttpContext.Current.Request.Url.DnsSafeHost.ToLower();
-
-                    if (domainName.Substring(2) == ".repeatercouncil.org")
-                    {
-                        stateToDisplay = domainName.Substring(0, 2);
-                    }
-                    else
-                    {
-                        switch (domainName)
-                        {
-                            case "localhost":
-                                stateToDisplay = "AL";
-                                break;
-                            case "www.arkansasrepeatercouncil.org":
-                            case "arkansasrepeatercouncil.org":
-                            default:
-                                stateToDisplay = "AR";
-                                break;
-                        }
-                    }
-
-                    HttpCookie newState = new HttpCookie("state", stateToDisplay);
-                    newState.Expires = DateTime.Now.AddDays(364);
-                    HttpContext.Current.Response.Cookies.Add(newState);
+                    stateToDisplay = domainName.Substring(0, 2);
                 }
                 else
                 {
-                    stateToDisplay = hcState.Value;
+                    switch (domainName)
+                    {
+                        case "localhost":
+                            stateToDisplay = "AL";
+                            break;
+                        case "www.arkansasrepeatercouncil.org":
+                        case "arkansasrepeatercouncil.org":
+                        default:
+                            stateToDisplay = "AR";
+                            break;
+                    }
                 }
+
+                HttpCookie newState = new HttpCookie("state", stateToDisplay);
+                newState.Expires = DateTime.Now.AddDays(364);
+                HttpContext.Current.Response.Cookies.Add(newState);
+            }
+            else
+            {
+                stateToDisplay = hcState.Value;
             }
 
             return stateToDisplay;
