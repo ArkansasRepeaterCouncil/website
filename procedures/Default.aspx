@@ -54,14 +54,15 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <a class="namedAnchor" name="procedures"></a>
     <section>
-        <h1>Arkansas Repeater Council Procedures and Standards</h1>
+        <h1>
+            <asp:Label ID="lblState1" runat="server" Text="Label"></asp:Label> Repeater Council Procedures and Standards</h1>
 
         <div id="docContainer">
          <ol>
           <li>Purpose
            <ol class="alpha">
-            <li>The Arkansas Repeater Council is the body recognized to coordinate amateur radio repeaters in the state of
-             Arkansas.</li>
+            <li>The <asp:Label ID="lblState2" runat="server" Text="Label"></asp:Label> Repeater Council is the body recognized to coordinate amateur radio repeaters in the state of
+             <asp:Label ID="lblState3" runat="server" Text="Label"></asp:Label>.</li>
             <li>The purpose of coordinating a repeater or frequency is to reduce harmful interference to other fixed operations.
              Coordinating a repeater or frequency with other fixed operations demonstrates good engineering and amateur
              practice.</li>
@@ -81,7 +82,7 @@
               <li>To login to this website you must first create an account. This can be done by anyone with a valid FCC license
                by following these steps:
                <ol>
-                <li>Browse to arkansasrepeatercouncil.org.</li>
+                <li>Browse to <asp:Label ID="lblSiteAddress5" runat="server" Text="Label"></asp:Label>.</li>
                 <li>Click &quot;Login&quot;.</li>
                 <li>Click &quot;Request an account&quot;.</li>
                 <li>Enter your callsign and email address.</li>
@@ -96,7 +97,7 @@
               <li>In order to request a new coordination for a repeater, anyone with a valid amateur radio license issued by the
                FCC may complete the following steps:
                <ol>
-                <li>Login to the Arkansas Repeater Council site at arkansasrepeatercouncil.org/Login.aspx.</li>
+                <li>Login to the <asp:Label ID="lblState4" runat="server" Text="Label"></asp:Label> Repeater Council site at <asp:Label ID="lblSiteAddress1" runat="server" Text="Label"></asp:Label>/Login.aspx.</li>
                 <li>Once logged-in, click the "Request coordination" link in the menu.</li>
                 <li>Complete and submit the request form.</li>
                </ol>
@@ -120,7 +121,7 @@
               <li>Coordination records must be updated within sixty (60) days of a change in trustee.</li>
               <li>In order to update a coordination, complete the following steps:
                <ol>
-                <li>Login to the Arkansas Repeater Council site at arkansasrepeatercouncil.org/Login.aspx.</li>
+                <li>Login to the <asp:Label ID="lblState5" runat="server" Text="Label"></asp:Label> Repeater Council site at <asp:Label ID="lblSiteAddress2" runat="server" Text="Label"></asp:Label>/Login.aspx.</li>
                 <li>Once logged-in, click the "Update" button next to the repeater you need to update.<br>
                  (Note: This button is only shown if you have a repeater for which you are a trustee.)</li>
                 <li>Review the repeater information and make any needed changes.</li>
@@ -139,7 +140,7 @@
                <ol>
                 <li>Contact the individual to whom you want to transfer a repeater, and ensure they are registered on this site.
                 </li>
-                <li>Login to the Arkansas Repeater Council site at arkansasrepeatercouncil.org/Login.aspx.</li>
+                <li>Login to the <asp:Label ID="lblState6" runat="server" Text="Label"></asp:Label> Repeater Council site at <asp:Label ID="lblSiteAddress3" runat="server" Text="Label"></asp:Label>/Login.aspx.</li>
                 <li>Once logged-in, click the "Update" button next to the repeater you need to update. <br>
                  (Note: This button is only shown if you have a repeater for which you are a trustee.)</li>
                 <li>Next to the trustee textbox, click the button labelled, "Change" - this will populate the list of options.
@@ -153,13 +154,13 @@
             <li>Procedure for adding additional users to your coordination
              <ol>
               <li>Most repeaters have a single trustee. This creates problems if the trustee becomes unable to maintain their
-               coordination. The Arkansas Repeater Council web site enables trustees to add secondary users to their repeater
+               coordination. The <asp:Label ID="lblState7" runat="server" Text="Label"></asp:Label> Repeater Council web site enables trustees to add secondary users to their repeater
                coordinations. These users can perform any of the same tasks as the trustee to keep their coordination up to
                date.</li>
               <li>In order to add an additional user to a coordination, follow these steps:
                <ol>
                 <li>Contact the individual you want to add to a repeater, and ensure they are registered on this site.</li>
-                <li>Login to the Arkansas Repeater Council site at arkansasrepeatercouncil.org/Login.aspx.</li>
+                <li>Login to the <asp:Label ID="lblState8" runat="server" Text="Label"></asp:Label> Repeater Council site at <asp:Label ID="lblSiteAddress4" runat="server" Text="Label"></asp:Label>/Login.aspx.</li>
                 <li>Once logged-in, click the "Update" button next to the repeater you need to update. <br>
                  (Note: This button is only shown if you have a repeater for which you are a trustee.)</li>
                 <li>Click the “Users” tab, then click the “Add new” button.</li>
