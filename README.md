@@ -1,6 +1,5 @@
-<h1>Arkansas Repeater Council</h1>
-http://www.arkansasrepeatercouncil.org/
-
+<h1>Repeater Council</h1>
+<h2>Repeater coordination and data management</h2>
 [![Build and Deploy](https://github.com/ArkansasRepeaterCouncil/website/actions/workflows/master_arkansasrepeatercouncil.yml/badge.svg)](https://github.com/ArkansasRepeaterCouncil/website/actions/workflows/master_arkansasrepeatercouncil.yml)
 
 <h2 id="support">Support</h2>
