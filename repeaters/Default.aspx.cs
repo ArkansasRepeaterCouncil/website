@@ -57,10 +57,10 @@ public partial class repeaters_Default : System.Web.UI.Page
 	{
         int includeDecoordinated = 0;
         if (!chkIncludeDecoordinated.Checked) {
-            includeDecoordinated = 6;  // 6 is the internet ID for repeater_status decoordinated. This is used to NOT include those in the dataset
+            includeDecoordinated = 6;  // 6 is the internal ID for repeater_status decoordinated. This is used to NOT include those in the dataset
         }
 
-        string uri = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=ar";
+        string uri = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=" + Utilities.StateToDisplay;
 
 		Regex rxLatLon = new Regex(@"([-+]?(?:[0-9]|[1-9][0-9])\.\d+),\s*([-+]?(?:[0-9]|[1-9][0-9]|[1-9][0-9][0-9])\.\d+)");
 
