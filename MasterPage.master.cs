@@ -38,14 +38,17 @@ public partial class MasterPage : System.Web.UI.MasterPage
 			if ((chocolatechip != null) && (chocolatechip.Value == "1"))
 			{
 				pnlAdminAndReportLinks.Visible = true;
-				pnlAdminLinks.Visible = true;
 			}
 		}
-
-		string siteName = Utilities.GetStateNameByAbbr(Utilities.StateToDisplay) + " Repeater Council";
+		string stateAbbr = Utilities.StateToDisplay;
+        string siteName = Utilities.GetStateNameByAbbr(stateAbbr) + " Repeater Council";
 		Page.Title = siteName;
         lblHeaderTitle.Text = siteName;
-
+		
+		if (stateAbbr != "AR")
+		{
+			lblAboutLink.Visible = false;
+		}
     }
 
 	protected void lbLogin_Click(object sender, EventArgs e)

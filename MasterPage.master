@@ -24,7 +24,7 @@
 			        <ul class="primaryLinks">
 				        <li><a href="/">Home</a></li>
 				        <li><a href="/repeaters/">Repeater directory</a></li>
-				        <li><a href="/about/">About us</a></li>
+                        <asp:Label ID="lblAboutLink" runat="server" Text="<li><a href='/about/'>About us</a></li>"></asp:Label>
 				        <li><a href="/procedures/">Procedures</a></li>
                         <li><asp:LinkButton ID="lbLogin" runat="server" OnClick="lbLogin_Click" Text="Login/Register"></asp:LinkButton></li>
 			        </ul>
@@ -42,9 +42,6 @@
                             <li><a href="/dashboard/nonstandard">Non-standard</a></li>
                             <li><a href="/dashboard/inoperational">Inoperational</a></li>
                             <li><a href="/dashboard/openrequests">Open requests</a></li>
-                            <asp:PlaceHolder ID="pnlAdminLinks" runat="server">
-                                <!-- <li><a href="#">Admin link</a></li> for future use -->
-                            </asp:PlaceHolder>
 			            </ul>
                     </asp:Panel>
                 </nav>
