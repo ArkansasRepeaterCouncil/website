@@ -41,7 +41,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 		{
 			using (var webClient = new System.Net.WebClient())
 			{
-				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportExpiredRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
+				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportExpiredRepeaters?callsign={0}&password={1}&state={2}", creds.Username, creds.Password, Utilities.StateToDisplay);
 				json = webClient.DownloadString(url);
 				ViewState["expiredRepeaters"] = json;
 			}
