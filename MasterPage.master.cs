@@ -44,11 +44,20 @@ public partial class MasterPage : System.Web.UI.MasterPage
         string siteName = Utilities.GetStateNameByAbbr(stateAbbr) + " Repeater Council";
 		Page.Title = siteName;
         lblHeaderTitle.Text = siteName;
-		
-		if (stateAbbr != "AR")
+
+		switch (stateAbbr)
 		{
-			lblAboutLink.Visible = false;
+			case "AR":
+                lblChatScript.Text = "<script src=\"https://embed.small.chat/TCD7HSEEAGJ6ET8ZLL.js\" async></script>";
+				break;
+			case "AL":
+                lblAboutLink.Visible = false;
+				lblChatScript.Text = "<script src=\"https://embed.small.chat/T04LVU5GT8BC04LT4SKDGD.js\" async></script>";
+                break;
+            default:
+				break;
 		}
+
     }
 
 	protected void lbLogin_Click(object sender, EventArgs e)
