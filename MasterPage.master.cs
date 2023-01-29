@@ -45,7 +45,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 		Page.Title = siteName;
         lblHeaderTitle.Text = siteName;
 
-		switch (stateAbbr)
+		switch (stateAbbr.ToUpper())
 		{
 			case "AR":
                 lblChatScript.Text = "<script src=\"https://embed.small.chat/TCD7HSEEAGJ6ET8ZLL.js\" async></script>";

@@ -10,11 +10,11 @@ public partial class Default2 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         lbl.Text = string.Empty;
-        lbl.Text += "Utilities.StateToDisplay : " + Utilities.StateToDisplay + "<br>";
 
         HttpCookie hcState = HttpContext.Current.Request.Cookies["state"];
-
         lbl.Text += "HttpContext.Current.Request.Cookies[\"state\"] : " + hcState.Value + "<br>";
+
+        lbl.Text += "Utilities.StateToDisplay : " + Utilities.StateToDisplay + "<br>";
 
         string domainName = HttpContext.Current.Request.Url.DnsSafeHost.ToLower();
 
