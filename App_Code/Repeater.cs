@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Web.UI.WebControls;
 
 /// <summary>
 /// Summary description for Repeater
@@ -103,6 +104,10 @@ public class Repeater
 					string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetails?callsign={0}&password={1}&repeaterid={2}", credentials.Username, credentials.Password, repeaterId);
 					string json = webClient.DownloadString(url);
 					repeater = JsonConvert.DeserializeObject<Repeater>(json);
+
+					
+					repeater.MapUrl = BuildGeojson(repeater.Longitude, repeater.Latitude);
+                    
 					break;
 				}
 			}
@@ -121,6 +126,15 @@ public class Repeater
 		return repeater;
 	}
 
+	public static string BuildGeojson(string longitude, string latitude)
+	{
+        decimal x = decimal.Parse(longitude);
+        decimal y = decimal.Parse(latitude);
+        decimal d = 0.075M;
+        string geojson = string.Format(@"{""type"":""FeatureCollection"",""features"":[{""type"":""Feature"",""properties"":{},""geometry"":{""coordinates"":[[[{0},{1}],[{0},{2}],[{3},{2}],[{3},{1}],[{0},{1}]]],""type"":""Polygon""}}]}", (x - d).ToString(), (y - d).ToString(), (y + d).ToString(), (x + d).ToString());
+        return Uri.EscapeDataString(geojson);
+    }
+
 	public static Repeater LoadPublic(string repeaterId)
 	{
 		Repeater repeater = new Repeater();
@@ -133,7 +147,9 @@ public class Repeater
 				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "GetRepeaterDetailsPublic?id={0}", repeaterId);
 				string json = webClient.DownloadString(url);
 				repeater = JsonConvert.DeserializeObject<Repeater>(json);
-			}
+
+                repeater.MapUrl = BuildGeojson(repeater.Longitude, repeater.Latitude);
+            }
 		}
 		catch (Exception ex)
 		{
