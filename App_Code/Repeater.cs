@@ -269,19 +269,21 @@ public class Repeater
 				string oldValueToString = oldValue.ToString();
 				string newValueToString = newValue.ToString();
 
-				if (fieldInfo.Name == "Status")
+				switch (fieldInfoName)
 				{
-					oldValueToString = GetRepeaterStatusDescription(oldValue.ToString());
-					newValueToString = GetRepeaterStatusDescription(newValue.ToString());
+					case "Status":
+                        oldValueToString = GetRepeaterStatusDescription(oldValueToString);
+                        newValueToString = GetRepeaterStatusDescription(newValueToString);
+						break;
+					case "Autopatch":
+                        oldValueToString = GetRepeaterAutopatchDescription(oldValueToString);
+                        newValueToString = GetRepeaterAutopatchDescription(newValueToString);
+                        break;
+                    default:
+						break;
 				}
 
-				if (fieldInfoName == "Autopatch")
-				{
-					oldValueToString = GetRepeaterAutopatchDescription(oldValue.ToString());
-					newValueToString = GetRepeaterAutopatchDescription(newValue.ToString());
-				}
-
-				string[] strArrDontNotate = { "DateUpdated", "Note", "TrusteeID" };
+				string[] strArrDontNotate = { "DateUpdated", "Note", "TrusteeID", "MapURL" };
 
 				if (!object.Equals(oldValue, newValue)) {
 					if (!strArrDontNotate.Any(fieldInfo.Name.Contains))
