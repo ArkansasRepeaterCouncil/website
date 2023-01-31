@@ -59,6 +59,13 @@ public static class Utilities
 
         }
     }
+    public static string StateToDisplayFullName
+    {
+        get
+        {
+            return GetStateNameByAbbr(StateToDisplay);
+        }
+    }
     #endregion
 
     public static string Base64Encode(string plainText)

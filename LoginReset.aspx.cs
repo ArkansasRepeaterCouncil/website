@@ -21,11 +21,14 @@ public partial class LoginReset : System.Web.UI.Page
 		{
 			try
 			{
-				string email = "";
+				string state = Utilities.StateToDisplayFullName;
+				string website = HttpContext.Current.Request.Url.DnsSafeHost.ToLower();
+
+                string email = "";
 				string message = "";
 				using (var webClient = new System.Net.WebClient())
 				{
-					string parameters = string.Format("callsign={0}", txtCallsign.Text);
+					string parameters = string.Format("callsign={0}&state={1}&website={2}", txtCallsign.Text, state, website);
 					string strUrl = string.Format("{0}{1}{2}", System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"], "ResetPassword?", parameters);
 					string json = webClient.DownloadString(strUrl);
 					dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
