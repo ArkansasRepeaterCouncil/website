@@ -105,7 +105,6 @@ public class Repeater
 					string json = webClient.DownloadString(url);
 					repeater = JsonConvert.DeserializeObject<Repeater>(json);
 
-					
 					repeater.MapUrl = BuildGeojson(repeater.Longitude, repeater.Latitude);
                     
 					break;
@@ -283,10 +282,10 @@ public class Repeater
 						break;
 				}
 
-				string[] strArrDontNotate = { "DateUpdated", "Note", "TrusteeID", "MapURL" };
+				string[] strArrDontNotate = { "dateupdated", "note", "trusteeid", "mapurl" };
 
 				if (!object.Equals(oldValue, newValue)) {
-					if (!strArrDontNotate.Any(fieldInfo.Name.Contains))
+					if (!strArrDontNotate.Any(fieldInfo.Name.ToLower().Contains))
 					{
 						strReturn += String.Format(" • {0} was changed from `{1}` to `{2}`\r\n", fieldInfoName, oldValueToString, newValueToString);
 					}
