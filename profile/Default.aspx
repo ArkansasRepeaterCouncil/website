@@ -34,7 +34,7 @@
         <br />
         <label>City:</label> <asp:TextBox ID="txtCity" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="City is required." ControlToValidate="txtCity">*</asp:RequiredFieldValidator>
         <br />
-        <label>State:</label> <asp:TextBox ID="txtState" runat="server">AR</asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="State is required." ControlToValidate="txtState">*</asp:RequiredFieldValidator>
+        <label>State:</label> <asp:TextBox ID="txtState" runat="server"></asp:TextBox>&nbsp;<asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ErrorMessage="State is required." ControlToValidate="txtState">*</asp:RequiredFieldValidator>
         <br />
         <label>ZIP code:</label> <asp:TextBox ID="txtZip" runat="server"></asp:TextBox>
         <ajaxToolkit:FilteredTextBoxExtender ID="txtZip_FilteredTextBoxExtender" runat="server" BehaviorID="txtZip_FilteredTextBoxExtender" FilterType="Numbers" TargetControlID="txtZip">

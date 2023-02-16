@@ -27,6 +27,7 @@ public partial class profile_Default : System.Web.UI.Page
 			txtPhoneCell.Text = user.PhoneCell;
 			txtPhoneHome.Text = user.PhoneHome;
 			txtPhoneWork.Text = user.PhoneWork;
+			txtState.Text = user.State;
 
 			if (Request.QueryString["ip"] != null)
 			{
