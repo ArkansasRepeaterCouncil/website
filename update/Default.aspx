@@ -83,9 +83,10 @@
                         <asp:Label ID="lblLongitude" CssClass="formLabel" runat="server" Text="Longitude"></asp:Label><asp:TextBox ID="txtLongitude" CssClass="textInput" runat="server"></asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtLongitude_FilteredTextBoxExtender" runat="server" BehaviorID="txtLongitude_FilteredTextBoxExtender" TargetControlID="txtLongitude" ValidChars="1234567890.-" />
                         <br />
-                        <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server" placeholder="meters"> meters</asp:TextBox>
+                        <asp:Label ID="lblAMSL" CssClass="formLabel" runat="server" Text="Altitude"></asp:Label><asp:TextBox ID="txtAMSL" CssClass="textInput" runat="server"></asp:TextBox>
+                        <asp:DropDownList ID="ddlAltitudeUnit" runat="server"><asp:ListItem Text="meters" Value="meters" Selected="True" /><asp:ListItem Text="feet" Value="feet" /></asp:DropDownList>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtAMSL_FilteredTextBoxExtender" runat="server" BehaviorID="txtAMSL_FilteredTextBoxExtender" TargetControlID="txtAMSL" ValidChars="1234567890." />
-                        meters<br />
+                        <br />
                         <asp:Label ID="lblERP" runat="server" CssClass="formLabel" Text="Effective radiated power (ERP)"></asp:Label>
                         <asp:TextBox ID="txtERP" runat="server" CssClass="textInput"> watts</asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtERP_FilteredTextBoxExtender" runat="server" BehaviorID="txtERP_FilteredTextBoxExtender" TargetControlID="txtERP" ValidChars="1234567890." />
@@ -98,6 +99,7 @@
                         <br />
                         <asp:Label ID="lblAntennaHeight" CssClass="formLabel" runat="server" Text="Antenna height"></asp:Label><asp:TextBox ID="txtAntennaHeight" CssClass="textInput" runat="server" placeholder="meters"></asp:TextBox> 
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtAntennaHeight_FilteredTextBoxExtender" runat="server" BehaviorID="txtAntennaHeight_FilteredTextBoxExtender" TargetControlID="txtAntennaHeight" ValidChars="1234567890." />
+                        <asp:DropDownList ID="ddlAntennaHeightUnit" runat="server"><asp:ListItem Text="meters" Value="meters" Selected="True" /><asp:ListItem Text="feet" Value="feet" /></asp:DropDownList>
                         meters<asp:CustomValidator ID="validAntennaHeight" runat="server" ErrorMessage="Antenna height is required, and may not be more than 15.24 meters (50 feet) over the coordinated antenna height." Text="*" OnServerValidate="validAntennaHeight_ServerValidate"></asp:CustomValidator><br />
                         <asp:Label ID="lblAnalog_InputAccess" CssClass="formLabel" runat="server" Text="Input PL tone"></asp:Label><asp:TextBox ID="txtAnalog_InputAccess" placeholder="Leave blank if none" CssClass="textInput" runat="server" MaxLength="7"></asp:TextBox>
                         <ajaxToolkit:FilteredTextBoxExtender ID="txtAnalog_InputAccess_FilteredTextBoxExtender" runat="server" BehaviorID="txtAnalog_InputAccess_FilteredTextBoxExtender" TargetControlID="txtAnalog_InputAccess" ValidChars="1234567890." />

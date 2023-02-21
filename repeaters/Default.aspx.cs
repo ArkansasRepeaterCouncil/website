@@ -57,7 +57,7 @@ public partial class repeaters_Default : System.Web.UI.Page
 	{
         int includeDecoordinated = 0;
         if (!chkIncludeDecoordinated.Checked) {
-            includeDecoordinated = 6;  // 6 is the internal ID for repeater_status decoordinated. This is used to NOT include those in the dataset
+            includeDecoordinated = 6;  // 6 is the internal ID for repeater_status decoordinated.
         }
 
         string uri = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ListPublicRepeaters?state=" + Utilities.StateToDisplay;
