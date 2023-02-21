@@ -118,10 +118,6 @@ public partial class request_Default : System.Web.UI.Page
 		}
 	}
 
-
-
-
-
 	protected void validatorLatitude_ServerValidate(object source, ServerValidateEventArgs args)
 	{
 		args.IsValid = false;
@@ -142,7 +138,27 @@ public partial class request_Default : System.Web.UI.Page
 		}
 	}
 
-	protected void bttnNext_Click(object sender, EventArgs e)
+    protected void validatorLatitude_ServerValidate2(object source, ServerValidateEventArgs args)
+    {
+        args.IsValid = false;
+        
+        if (txtLatitude.Text.Length - txtLatitude.Text.IndexOf(".") >= 5)
+        {
+            args.IsValid = true;
+        }
+    }
+
+    protected void validatorLongitude_ServerValidate2(object source, ServerValidateEventArgs args)
+    {
+        args.IsValid = false;
+
+        if (txtLongitude.Text.Length - txtLongitude.Text.IndexOf(".") >= 5)
+        {
+            args.IsValid = true;
+        }
+    }
+
+    protected void bttnNext_Click(object sender, EventArgs e)
 	{
 		doNext();
 	}
