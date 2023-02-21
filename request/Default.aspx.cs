@@ -42,7 +42,7 @@ public partial class request_Default : System.Web.UI.Page
 	private decimal GetAltitude(string latitude, string longitude)
 	{
 		decimal output = 0M;
-		string url = String.Format("https://api.opentopodata.org/v1/eudem25m?locations={0},{1}", latitude, longitude);
+		string url = String.Format("https://api.opentopodata.org/v1/ned10m?locations={0},{1}", latitude, longitude);
 
 		try
 		{
