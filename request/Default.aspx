@@ -22,7 +22,7 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <section>
         <p>Complete the form below to submit a coordination request.</p>
-		<p>NOTE: If you are a coordinator from outside of Arkansas, this is not the correct form. Please log out and log back in.  If you continue to have problems please contact us using the blue &quot;Let's Chat&quot; button in the bottom right corner of every page.</p>
+		<p>NOTE: If you are a coordinator from outside of our state, this is not the correct form. Please log out and log back in.  If you continue to have problems please contact us using the blue button in the bottom right corner of any page.</p>
 
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
