@@ -185,77 +185,15 @@
             </li>
             <li>Geographical separation of repeaters
              <ol>
-              <li>Co-channel repeaters (those on the same frequency) must be at least be 90 miles apart. This applies to systems
-               on the 52, 144, 220, 440, 902, and 1215 MHz bands.</li>
-              <li>Repeaters on adjacent frequencies also have physical separation requirements. Refer to the following table for
-               those requirements:
-               <table>
-                <tr>
-                 <th>Band (MHz)</th>
-                 <th>Spacing</th>
-                 <th>Separation</th>
-                </tr>
-                <tr>
-                 <td>52</td>
-                 <td>20 kHz</td>
-                 <td>20 miles</td>
-                </tr>
-                <tr>
-                 <td>144</td>
-                 <td>15 kHz</td>
-                 <td>40 miles</td>
-                </tr>
-                <tr>
-                 <td> </td>
-                 <td>20 kHz</td>
-                 <td>25 miles</td>
-                </tr>
-                <tr>
-                 <td> </td>
-                 <td>30 kHz</td>
-                 <td>20 miles</td>
-                </tr>
-                <tr>
-                 <td>220</td>
-                 <td>20 kHz</td>
-                 <td>40 miles</td>
-                </tr>
-                <tr>
-                 <td> </td>
-                 <td>40 kHz</td>
-                 <td>5 miles</td>
-                </tr>
-                <tr>
-                 <td>440</td>
-                 <td>25 kHz</td>
-                 <td>5 miles</td>
-                </tr>
-                <tr>
-                 <td> </td>
-                 <td>40 kHz</td>
-                 <td>1 miles</td>
-                </tr>
-                <tr>
-                 <td>902</td>
-                 <td>25 kHz</td>
-                 <td>5 miles</td>
-                </tr>
-                <tr>
-                 <td> </td>
-                 <td>50 kHz</td>
-                 <td>1 mile</td>
-                </tr>
-                <tr>
-                 <td>1215</td>
-                 <td>25 kHz</td>
-                 <td>5 miles</td>
-                </tr>
-                <tr>
-                 <td> </td>
-                 <td>50 kHz</td>
-                 <td>1 mile</td>
-                </tr>
-               </table>
+              <li>Repeaters on the same frequency, or a nearby frequency, must be a certain number of miles apart.  Refer to the following table for
+               details:
+                  <asp:Table ID="tblBusinessRulesFrequencies" runat="server">
+                      <asp:TableHeaderRow>
+                          <asp:TableHeaderCell>Frequency Range</asp:TableHeaderCell>
+                          <asp:TableHeaderCell>Spacing</asp:TableHeaderCell>
+                          <asp:TableHeaderCell>Distance</asp:TableHeaderCell>
+                      </asp:TableHeaderRow>
+                  </asp:Table>
               </li>
              </ol>
             </li>
