@@ -54,9 +54,9 @@ public partial class procedures_Default : System.Web.UI.Page
             }
             else
             {
-				row.AddCell(rule.SpacingMhz);
+                row.AddCell(string.Format("{0} MHz", rule.SpacingMhz));
             }
-            row.AddCell(string.Format("{0} MHz", rule.SpacingMhz));
+
 			row.AddCell(string.Format("{0} miles", rule.SeparationMiles));
 			tblBusinessRulesFrequencies.Rows.Add(row);
         }
