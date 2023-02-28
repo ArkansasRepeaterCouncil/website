@@ -55,7 +55,15 @@ public class BusinessRuleFrequency
 	{
 		FrequencyStart= rule.FrequencyStart;
 		FrequencyEnd= rule.FrequencyEnd;
-		SpacingMhz= rule.SpacingMhz;
+		if (rule.SpacingMhz == 0)
+		{
+			SpacingMhz = "same frequency";
+		}
+		else
+		{
+            SpacingMhz = rule.SpacingMhz;
+        }
+		
 		SeparationMiles= rule.SeparationMiles;
 	}
 }
