@@ -32,11 +32,23 @@ public partial class procedures_Default : System.Web.UI.Page
         string json = Utilities.GetResponseFromUrl(url);
         dynamic stats = JsonConvert.DeserializeObject<dynamic>(json);
 
+		string lastFrequencyRange = string.Empty;
         foreach (dynamic obj in stats)
 		{
 			BusinessRuleFrequency rule = new BusinessRuleFrequency(obj);
 			TableRow row = new TableRow();
-			row.AddCell(string.Format("{0} - {1}", rule.FrequencyStart, rule.FrequencyEnd));
+			string thisFrequencyRange = string.Format("{0} - {1}", rule.FrequencyStart, rule.FrequencyEnd);
+
+			if (thisFrequencyRange == lastFrequencyRange)
+			{
+                row.AddCell("");
+            }
+			else
+			{
+                row.AddCell(thisFrequencyRange);
+                lastFrequencyRange = thisFrequencyRange;
+            }
+
 			row.AddCell(string.Format("{0} MHz", rule.SpacingMhz));
 			row.AddCell(string.Format("{0} miles", rule.SeparationMiles));
 			tblBusinessRulesFrequencies.Rows.Add(row);
