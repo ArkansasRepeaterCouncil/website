@@ -48,8 +48,15 @@ public partial class procedures_Default : System.Web.UI.Page
                 row.AddCell(thisFrequencyRange);
                 lastFrequencyRange = thisFrequencyRange;
             }
-
-			row.AddCell(string.Format("{0} MHz", rule.SpacingMhz));
+            if (rule.SpacingMhz == "0")
+            {
+                row.AddCell("same frequency");
+            }
+            else
+            {
+				row.AddCell(rule.SpacingMhz);
+            }
+            row.AddCell(string.Format("{0} MHz", rule.SpacingMhz));
 			row.AddCell(string.Format("{0} miles", rule.SeparationMiles));
 			tblBusinessRulesFrequencies.Rows.Add(row);
         }
@@ -67,15 +74,7 @@ public class BusinessRuleFrequency
 	{
 		FrequencyStart= rule.FrequencyStart;
 		FrequencyEnd= rule.FrequencyEnd;
-		if (rule.SpacingMhz == 0)
-		{
-			SpacingMhz = "same frequency";
-		}
-		else
-		{
-            SpacingMhz = rule.SpacingMhz;
-        }
-		
+        SpacingMhz = rule.SpacingMhz;
 		SeparationMiles= rule.SeparationMiles;
 	}
 }
