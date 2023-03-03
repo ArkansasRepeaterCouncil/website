@@ -3,6 +3,7 @@
 <%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+    <link type="text/css" rel="stylesheet" href="../css/loading.css" />
     <style type="text/css">
         .textInput {
             margin-left: 5px;
@@ -15,6 +16,11 @@
             width: 300px;
         }
     </style>
+    <script type="text/javascript">
+        function onclientclick() {
+            document.getElementById("loadingAnimation").classList.add("go");
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
     Coordination request
@@ -77,10 +83,13 @@
         <br />
         <div class="center">
             <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" Text="Next" />
-            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" Visible="false" />
+            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" OnClientClick="onclientclick()" Text="Submit" Visible="false" />
 &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" /></div>
         <br />
     </section>
+    <div id="loadingAnimation">
+	    <p></p>
+    </div>
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 </asp:Content>
 
