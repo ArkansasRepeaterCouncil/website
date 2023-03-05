@@ -49,12 +49,12 @@
 			</ul>
 		<p>Directors</p>
         <ul>
-			<li>Wayne Mahnker - <a href="https://www.qrz.com/db/wa5luy">WA5LUY</a> (2022)</li>
-			<li>Michael Clay - <a href="https://www.qrz.com/db/ac5xv">AC5XV</a> (2022)</li>
-			<li>Chris Daniel - <a href="https://www.qrz.com/db/w5awx">W5AWX</a> (2023)</li>
-			<li>Joshua Carroll - <a href="https://www.qrz.com/db/aa5jc">AA5JC</a> (2023)</li>
-			<li>Joel Echols - <a href="https://www.qrz.com/db/n5qlc">N5QLC</a> (2021)</li>
-			<li>Jon Williams - <a href="https://www.qrz.com/db/k5dvt">K5DVT</a> (2021)</li>
+			<li>Bill Nicholson - <a href="https://www.qrz.com/db/w5wpn">W5WPN</a> (2026)</li>
+			<li>Joshua Carroll - <a href="https://www.qrz.com/db/aa5jc">AA5JC</a> (2026)</li>
+			<li>Joel Echols - <a href="https://www.qrz.com/db/n5qlc">N5QLC</a> (2025)</li>
+			<li>Wayne Mahnker - <a href="https://www.qrz.com/db/wa5luy">WA5LUY</a> (2025)</li>
+			<li>Jon Williams - <a href="https://www.qrz.com/db/k5dvt">K5DVT</a> (2024)</li>
+			<li>Tem Moore - <a href="https://www.qrz.com/db/n5kwl">N5KWL</a> (2024)</li>
         </ul>
 	</section>
 </asp:Content>
