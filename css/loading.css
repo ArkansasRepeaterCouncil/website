@@ -3,15 +3,16 @@
 #loadingAnimation {
     font-family: "Azeret Mono", monospace;
     background-color: rgba(5, 30, 62, 0.6);
-    height: 70px;
-    width: 500px;
+    height: 140px;
+    width: 600px;
     position: fixed;
-    top: 25%;
-    left: 37.4%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
     display: none;
     justify-content: center;
-    align-items: left;
+    align-items: center;
     backdrop-filter: blur(5px);
     padding: 10px;
 }
@@ -31,99 +32,99 @@
 
 @keyframes loading {
     0% {
-        content: "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Packing request into a JSON payload";
+        content: "Loading.\A\A░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Packing request into a JSON payload";
     }
 
     5% {
-        content: "█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Sending request to web service";
+        content: "Loading..\A\A█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Sending request to web service";
     }
 
     5% {
-        content: "█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Sending request to web service";
+        content: "Loading...\A\A█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Sending request to web service";
     }
 
     7% {
-        content: "██░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Sending request to web service";
+        content: "Loading.\A\A██░░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Sending request to web service";
     }
 
     12% {
-        content: "███░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Loading states within range of request";
+        content: "Loading..\A\A███░░░░░░░░░░░░░░░░░░░░░░░░░░░\A Loading states within range of request";
     }
 
     20% {
-        content: "████░░░░░░░░░░░░░░░░░░░░░░░░░░\A Loading coordination rules";
+        content: "Loading...\A\A████░░░░░░░░░░░░░░░░░░░░░░░░░░\A Loading coordination rules";
     }
 
     24% {
-        content: "█████░░░░░░░░░░░░░░░░░░░░░░░░░\A Loading frequency allocation table";
+        content: "Loading.\A\A█████░░░░░░░░░░░░░░░░░░░░░░░░░\A Loading frequency allocation table";
     }
 
     25% {
-        content: "██████░░░░░░░░░░░░░░░░░░░░░░░░\A Loading open requests for coordinations";
+        content: "Loading..\A\A██████░░░░░░░░░░░░░░░░░░░░░░░░\A Loading open requests for coordinations";
     }
 
     26% {
-        content: "███████░░░░░░░░░░░░░░░░░░░░░░░\A Loading open requests for coordinations";
+        content: "Loading...\A\A███████░░░░░░░░░░░░░░░░░░░░░░░\A Loading open requests for coordinations";
     }
 
     27% {
-        content: "█████████░░░░░░░░░░░░░░░░░░░░░\A Loading open requests for coordinations";
+        content: "Loading.\A\A█████████░░░░░░░░░░░░░░░░░░░░░\A Loading open requests for coordinations";
     }
 
     29.7% {
-        content: "█████████░░░░░░░░░░░░░░░░░░░░░\A Loading open requests for coordinations";
+        content: "Loading..\A\A█████████░░░░░░░░░░░░░░░░░░░░░\A Loading open requests for coordinations";
     }
 
     30% {
-        content: "██████████░░░░░░░░░░░░░░░░░░░░\A Checking for repeaters on the same frequency";
+        content: "Loading...\A\A██████████░░░░░░░░░░░░░░░░░░░░\A Checking for repeaters on the same frequency";
     }
 
     35% {
-        content: "███████████░░░░░░░░░░░░░░░░░░░\A Comparing locations";
+        content: "Loading.\A\A███████████░░░░░░░░░░░░░░░░░░░\A Comparing locations";
     }
 
     37% {
-        content: "████████████░░░░░░░░░░░░░░░░░░\A Comparing locations";
+        content: "Loading..\A\A████████████░░░░░░░░░░░░░░░░░░\A Comparing locations";
     }
 
     40% {
-        content: "█████████████░░░░░░░░░░░░░░░░░\A Checking for repeaters on nearby frequencies";
+        content: "Loading...\A\A█████████████░░░░░░░░░░░░░░░░░\A Checking for repeaters on nearby frequencies";
     }
 
     45% {
-        content: "██████████████░░░░░░░░░░░░░░░░\A Checking for repeaters on nearby frequencies";
+        content: "Loading.\A\A██████████████░░░░░░░░░░░░░░░░\A Checking for repeaters on nearby frequencies";
     }
 
     50% {
-        content: "███████████████░░░░░░░░░░░░░░░\A Applying rules for height above average terrain";
+        content: "Loading..\A\A███████████████░░░░░░░░░░░░░░░\A Applying rules for height above average terrain";
     }
 
     60% {
-        content: "█████████████████░░░░░░░░░░░░░\A Checking power restrictions";
+        content: "Loading...\A\ALoading...\A\A█████████████████░░░░░░░░░░░░░\A Checking power restrictions";
     }
 
     70% {
-        content: "███████████████████░░░░░░░░░░░\A Sending dataset to web service";
+        content: "Loading.\A\A███████████████████░░░░░░░░░░░\A Sending dataset to web service";
     }
 
     80% {
-        content: "████████████████████████░░░░░░\A Converting data to JSON";
+        content: "Loading..\A\A████████████████████████░░░░░░\A Converting data to JSON";
     }
 
     85% {
-        content: "█████████████████████████░░░░░\A Encryting payload for transmission";
+        content: "Loading...\A\A█████████████████████████░░░░░\A Encryting payload for transmission";
     }
 
     90% {
-        content: "███████████████████████████░░░\A Receiving encrypted data payload";
+        content: "Loading.\A\A███████████████████████████░░░\A Receiving encrypted data payload";
     }
 
     94% {
-        content: "████████████████████████████░░\A Decrypting data";
+        content: "Loading..\A\A████████████████████████████░░\A Decrypting data";
     }
 
     99% {
-        content: "█████████████████████████████░\A Asking Chuck Norris for permission";
+        content: "Loading...\A\A█████████████████████████████░\A Asking Chuck Norris for permission";
     }
 
     100% {
