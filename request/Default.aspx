@@ -34,7 +34,7 @@
         <p>Complete the form below to submit a coordination request.</p>
 		<p>NOTE: If you are a coordinator from outside of our state, this is not the correct form. Please log out and log back in.  If you continue to have problems please contact us using the blue button in the bottom right corner of any page.</p>
 
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" EnableClientScript="False" />
+        <asp:ValidationSummary ID="ValidationSummary1" runat="server" />
 
         <asp:Label ID="Label9" runat="server" Text="Name" CssClass="formLabel"></asp:Label><asp:TextBox ID="txtPersonName" runat="server" CssClass="textInput" ReadOnly="True"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ErrorMessage="Name is required, but you must enter that on the Profile page." ControlToValidate="txtPersonName">*</asp:RequiredFieldValidator>
@@ -86,7 +86,7 @@
         Please keep in mind that the frequencies listed are those that our database show to be available - there may be someone using a frequency that is not coordinated. Please monitor the desired frequency before submitting your request.<br />
         <br />
         <div class="center">
-            <button ID="btnNext_client" onclick="onclientclick()" Text="Next" />
+            <asp:Button ID="btnNext_client" runat="server" onclientclick="onclientclick()" Text="Next" />
             <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" ClientIDMode="Static" CssClass="hideme" Text="Next" />
             <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Visible="false" Text="Submit" />
             
