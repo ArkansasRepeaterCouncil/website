@@ -20,9 +20,10 @@
         }
     </style>
     <script type="text/javascript">
-        function onclientclick() {
-            document.getElementById("loadingAnimation").classList.add("go");
-            document.getElementById("btnSubmitToServer").click();
+        function onformsubmit() {
+            window.setTimeout(function () {
+                document.getElementById("loadingAnimation").classList.add("go");
+            }, 500);
         }
     </script>
 </asp:Content>
@@ -87,8 +88,7 @@
         <br />
         <div class="center">
             <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" Text="Next" />
-            <asp:Button ID="btnSubmitToServer" runat="server" OnClick="btnSubmit_Click" CssClass="hideme" Text="Submit" />
-            <asp:Button ID="btnSubmit" runat="server" onclientclick="onclientclick()" Text="Submit" Visible="false" />
+            <asp:Button ID="btnSubmitToServer" runat="server" OnClick="btnSubmit_Click" Text="Submit" Visible="false" />
 &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" /></div>
         <br />
     </section>
