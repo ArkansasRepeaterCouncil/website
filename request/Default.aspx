@@ -22,7 +22,7 @@
     <script type="text/javascript">
         function onclientclick() {
             document.getElementById("loadingAnimation").classList.add("go");
-            document.getElementById("btnSubmitToServer").click();
+            document.getElementById("bttnNext").click();
         }
     </script>
 </asp:Content>
@@ -86,9 +86,10 @@
         Please keep in mind that the frequencies listed are those that our database show to be available - there may be someone using a frequency that is not coordinated. Please monitor the desired frequency before submitting your request.<br />
         <br />
         <div class="center">
-            <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" Text="Next" />
-            <asp:Button ID="btnSubmitToServer" runat="server" OnClick="btnSubmit_Click" CssClass="hideme" Text="Submit" />
-            <asp:Button ID="btnSubmit" runat="server" onclientclick="onclientclick()" Text="Submit" Visible="false" />
+            <asp:Button ID="btnNext_client" runat="server" onclientclick="onclientclick()" Text="Next" />
+            <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" ClientIDMode="Static" CssClass="hideme" Text="Next" />
+            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Visible="false" Text="Submit" />
+            
 &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" /></div>
         <br />
     </section>
