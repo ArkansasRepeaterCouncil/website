@@ -20,10 +20,18 @@
         }
     </style>
     <script type="text/javascript">
-        function onformsubmit() {
-            window.setTimeout(function () {
+        function btnNext_onclick() {
+            if (typeof (Page_ClientValidate) == 'function') {
+                Page_ClientValidate();
+            }
+
+            if (Page_IsValid) {
                 document.getElementById("loadingAnimation").classList.add("go");
-            }, 500);
+                document.getElementById("bttnNext").click();
+            }
+            else {
+                // Don't do anything. Let it display the validation exceptions
+            }
         }
     </script>
 </asp:Content>
@@ -87,7 +95,8 @@
         Please keep in mind that the frequencies listed are those that our database show to be available - there may be someone using a frequency that is not coordinated. Please monitor the desired frequency before submitting your request.<br />
         <br />
         <div class="center">
-            <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" Text="Next" />
+            <button id="btnNext" onclick="btnNext_onclick">Next</button>
+            <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" CssClass="hideme" ClientIDMode="Predictable" Text="Next" />
             <asp:Button ID="btnSubmitToServer" runat="server" OnClick="btnSubmit_Click" Text="Submit" Visible="false" />
 &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" /></div>
         <br />
