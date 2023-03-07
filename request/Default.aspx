@@ -95,7 +95,7 @@
         Please keep in mind that the frequencies listed are those that our database show to be available - there may be someone using a frequency that is not coordinated. Please monitor the desired frequency before submitting your request.<br />
         <br />
         <div class="center">
-            <button id="btnNext" onclick="btnNext_onclick()">Next</button>
+            <button id="btnNext" onclick="btnNext_onclick();return false;">Next</button>
             <asp:Button ID="bttnNext" runat="server" OnClick="bttnNext_Click" CssClass="hideme" ClientIDMode="Predictable" Text="Next" />
             <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" ClientIDMode="Predictable" Visible="false" />
 &nbsp;<asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" /></div>
