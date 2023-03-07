@@ -105,7 +105,7 @@
 	    <p></p>
     </div>
     <script type="text/javascript">
-        if (document.getElementById("ctl00_ContentPlaceHolder1_btnSubmit") != 'null') {
+        if (document.getElementById("ctl00_ContentPlaceHolder1_btnSubmit") != null) {
             document.getElementById("btnNext").classList.add("hideme");
         }
     </script>
