@@ -9,8 +9,9 @@ using System.Web.UI.WebControls;
 public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 {
 	Credentials creds;
+	string stateAbbr = Utilities.StateToDisplay;
 
-	protected void Page_Load(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
 	{
 		creds = Utilities.GetExistingCredentials();
 		loadExpiredRepeatersReport();
@@ -41,7 +42,7 @@ public partial class dashboard_expiredrepeaters_Default : System.Web.UI.Page
 		{
 			using (var webClient = new System.Net.WebClient())
 			{
-				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportInoperationalRepeaters?callsign={0}&password={1}", creds.Username, creds.Password);
+				string url = String.Format(System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"] + "ReportInoperationalRepeaters?callsign={0}&password={1}&state={2}", creds.Username, creds.Password, stateAbbr);
 				json = webClient.DownloadString(url);
 				ViewState["expiredRepeaters"] = json;
 			}
