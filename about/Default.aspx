@@ -36,6 +36,7 @@
 				<li><img src="/images/tem.png" alt="Drawing of Tem" class="avatar">Tem Moore, <a href="https://www.qrz.com/db/n5kwl">N5KWL</a><br>Chief Cat Herder In Charge</li>
                 <li><img src="/images/luke.png" alt="Drawing of Luke" class="avatar">Luke Williams, <a href="https://www.qrz.com/db/ae5au">AE5AU</a><br>Executive Information Sensei</li>
 				<li><img src="/images/joshua.png" alt="Drawing of Joshua" class="avatar">Joshua Carroll, <a href="https://www.qrz.com/db/aa5jc">AA5JC</a><br>Galactic Viceroy of Programming</li>
+				<li><img src="/images/hunter.jpg" alt="Drawing of Hunter" class="avatar">Hunter Fountain, <a href="https://qrz.com/db/ki5wuj">KI5WUJ</a><br>Self-Certified Bug Crusher</li>
 			</ul>
 	</section>
 	<section>
