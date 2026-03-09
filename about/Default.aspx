@@ -50,13 +50,14 @@
 			</ul>
 		<p>Directors</p>
         <ul>
-			<li>Bill Nicholson - <a href="https://www.qrz.com/db/w5wpn">W5WPN</a> (2026)</li>
-			<li>Joshua Carroll - <a href="https://www.qrz.com/db/aa5jc">AA5JC</a> (2026)</li>
-			<li>Joel Echols - <a href="https://www.qrz.com/db/n5qlc">N5QLC</a> (2025)</li>
-			<li>Wayne Mahnker - <a href="https://www.qrz.com/db/wa5luy">WA5LUY</a> (2025)</li>
-			<li>Jon Williams - <a href="https://www.qrz.com/db/k5dvt">K5DVT</a> (2024)</li>
-			<li>Tem Moore - <a href="https://www.qrz.com/db/n5kwl">N5KWL</a> (2024)</li>
+			<li>Tom May - <a href="https://qrz.com/db/wb5ukw">WB5UKW</a> (2029)</li>
+			<li>Hunter Fountain - <a href="https://qrz.com/db/ki5wuj">KI5WUJ</a> (2029)</li>
+			<li>Joel Echols - <a href="https://www.qrz.com/db/n5qlc">N5QLC</a> (2028)</li>
+			<li>Justin Morris - <a href="https://www.qrz.com/db/kc5mmw">KC5MMW</a> (2028)</li>
+			<li>Jon Williams - <a href="https://www.qrz.com/db/k5dvt">K5DVT</a> (2027)</li>
+			<li>Tem Moore - <a href="https://www.qrz.com/db/n5kwl">N5KWL</a> (2027)</li>
         </ul>
 	</section>
 </asp:Content>
+
 
