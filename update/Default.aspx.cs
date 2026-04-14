@@ -70,6 +70,28 @@ public partial class update_Default : System.Web.UI.Page
 
 			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 			txtID.Text = repeater.ID.ToString();
+
+			if (repeater.State == "AR") {
+				if (repeater.FeePaidThrough == "")
+				{
+					txtFeePaidThrough.Text = "UNPAID";
+				}
+				else if (DateTime.TryParse(repeater.FeePaidThrough, out DateTime feeDate) && feeDate > DateTime.Now)
+				{
+					txtFeePaidThrough.Text = "OVERDUE (due " + feeDate.ToShortDateString() + ")";
+				}
+				else
+				{
+					txtFeePaidThrough.Text = "PAID (expires " + repeater.FeePaidThrough + ")";
+				}
+				txtFeePaidThrough.Enabled = false;
+			}
+			else
+			{
+				lblFeePaidThrough.Visible = false;
+				txtFeePaidThrough.Visible = false;
+			}
+
 			ddlType.SelectedValue = repeater.Type;
 			txtRepeaterCallsign.Text = repeater.RepeaterCallsign;
 			txtTrusteeCallsign.Text = repeater.TrusteeCallsign;

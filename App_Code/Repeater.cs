@@ -35,6 +35,7 @@ public class Repeater
 
 	public int ID = 0;
 	public string Type = "";
+	public string FeePaidThrough = "";
 	public string RepeaterCallsign = "";
 	public string TrusteeID = "";
 	public string TrusteeCallsign = "";

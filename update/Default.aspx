@@ -42,6 +42,9 @@
                 </ul>
         
                 <div id="tab-1" >
+                        <asp:Label ID="lblFeePaidThrough" CssClass="formLabel" runat="server" Text="Coordination fee"></asp:Label>
+                        <asp:TextBox ID="txtFeePaidThrough" CssClass="textInput" runat="server"></asp:TextBox> USD<br />
+
                         <asp:Label ID="lblType" CssClass="formLabel" runat="server" Text="Type"></asp:Label>
                         <asp:DropDownList ID="ddlType" CssClass="textInput" runat="server">
                             <asp:ListItem Value="1">Repeater</asp:ListItem>
