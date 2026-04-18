@@ -10,6 +10,7 @@ using System.Web.UI.WebControls;
 
 public partial class _Default : System.Web.UI.Page
 {
+    
 	protected void Page_Load(object sender, EventArgs e)
 	{
 		string urlKey = Request.QueryString["nopc"];
@@ -28,9 +29,17 @@ public partial class _Default : System.Web.UI.Page
         lblState1.Text = stateName;
 		lblState2.Text = stateName;
 
-        string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
+// Addition 041626 ghcjr - set PayPal link
+		string payPalEmail = System.Configuration.ConfigurationManager.AppSettings["PayPalEmail"];
+		lnkPayPal.NavigateUrl = string.Format(
+			"https://www.paypal.com/donate?business={0}&item_name=Donation&currency_code=USD",
+			payPalEmail);
+
+
+		string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
         string url = String.Format("{0}GetRepeaterUpdateNumbers?state={1}", rootUrl, Utilities.StateToDisplay);
         string json = Utilities.GetResponseFromUrl(url);
+// Addition 041626 ghcjr 
         dynamic stats = JsonConvert.DeserializeObject<dynamic>(json);
 
         lblCount.Text = stats.TotalRepeaters;
