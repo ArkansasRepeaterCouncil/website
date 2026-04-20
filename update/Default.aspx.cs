@@ -70,6 +70,49 @@ public partial class update_Default : System.Web.UI.Page
 
 			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 			txtID.Text = repeater.ID.ToString();
+
+			if (repeater.State == "AR") {
+				bool feeOwed = false;
+				if (repeater.FeePaidThrough == "")
+				{
+					txtFeePaidThrough.Text = "UNPAID";
+					feeOwed = true;
+				}
+				else if (DateTime.TryParse(repeater.FeePaidThrough, out DateTime feeDate) && feeDate > DateTime.Now)
+				{
+					txtFeePaidThrough.Text = "OVERDUE (due " + feeDate.ToShortDateString() + ")";
+					feeOwed = true;
+				}
+				else
+				{
+					txtFeePaidThrough.Text = "PAID (expires " + repeater.FeePaidThrough + ")";
+				}
+				txtFeePaidThrough.Enabled = false;
+
+				if (feeOwed)
+				{
+				string paypalBusinessId = System.Configuration.ConfigurationManager.AppSettings["PayPalMerchantId"];
+				string ipnUrl = System.Configuration.ConfigurationManager.AppSettings["PayPalIpnUrl"];
+				string returnUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/update/?id=" + repeaterId;
+				string itemName = HttpUtility.UrlEncode("Coordination Fee - " + repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")");
+
+					lnkPayNow.NavigateUrl = string.Format(
+						"https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business={0}&item_name={1}&amount=5.00&currency_code=USD&notify_url={2}&return={3}&cancel_return={3}&custom={4}&no_shipping=1",
+						HttpUtility.UrlEncode(paypalBusinessId),
+						itemName,
+						HttpUtility.UrlEncode(ipnUrl),
+						HttpUtility.UrlEncode(returnUrl),
+						repeaterId
+					);
+					lnkPayNow.Visible = true;
+				}
+			}
+			else
+			{
+				lblFeePaidThrough.Visible = false;
+				txtFeePaidThrough.Visible = false;
+			}
+
 			ddlType.SelectedValue = repeater.Type;
 			txtRepeaterCallsign.Text = repeater.RepeaterCallsign;
 			txtTrusteeCallsign.Text = repeater.TrusteeCallsign;
