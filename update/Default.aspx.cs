@@ -73,12 +73,13 @@ public partial class update_Default : System.Web.UI.Page
 
 			if (repeater.State == "AR") {
 				bool feeOwed = false;
+				DateTime feeDate;
 				if (repeater.FeePaidThrough == "")
 				{
 					txtFeePaidThrough.Text = "UNPAID";
 					feeOwed = true;
 				}
-				else if (DateTime.TryParse(repeater.FeePaidThrough, out DateTime feeDate) && feeDate > DateTime.Now)
+				else if (DateTime.TryParse(repeater.FeePaidThrough, out feeDate) && feeDate > DateTime.Now)
 				{
 					txtFeePaidThrough.Text = "OVERDUE (due " + feeDate.ToShortDateString() + ")";
 					feeOwed = true;
