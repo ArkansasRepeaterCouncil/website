@@ -30,7 +30,7 @@ public partial class _Default : System.Web.UI.Page
 		lblState2.Text = stateName;
 
 // Addition 041626 ghcjr - set PayPal link
-		string payPalEmail = System.Configuration.ConfigurationManager.AppSettings["PayPalEmail"];
+		string payPalNumber = System.Configuration.ConfigurationManager.AppSettings["PayPalNumber"];
 		lnkPayPal.NavigateUrl = string.Format(
 			"https://www.paypal.com/donate?business={0}&item_name=Donation&currency_code=USD",
 		    payPalNumber);
