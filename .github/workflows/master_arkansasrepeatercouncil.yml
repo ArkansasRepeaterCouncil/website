@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and Deploy
+name: Build and deploy ASP app to Azure Web App - arkansasrepeatercouncil
 
 on:
   push:
@@ -10,33 +10,57 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-publish:
+  build:
     runs-on: windows-latest
+    permissions:
+      contents: read #This is required for actions/checkout
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-    - name: Install Nuget
-      uses: nuget/setup-nuget@v1
-      with:
-        nuget-version: '6.4.0'
+      - name: Setup MSBuild path
+        uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: NuGet to restore dependencies
-      run: nuget restore '.\packages.config' -PackagesDirectory .\packages
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v1.0.5
 
-    - name: Setup msbuild
-      uses: microsoft/setup-msbuild@v1.0.2
+      - name: Restore NuGet packages
+        run: nuget restore
 
-    - name: Run msbuild
-      run: msbuild './ARC-website.sln'
+      - name: Publish to folder
+        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="\published\"
 
-    - name: Deploy to Azure
-      id: deploy-to-webapp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: 'arkansasrepeatercouncil'
-        slot-name: 'Production'
-        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_88658FEB29494F8CBF1027D2BB721CD5 }}
-        package: .
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: ASP-app
+          path: '/published/**'
 
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    permissions:
+      id-token: write #This is required for requesting the JWT
+      contents: read #This is required for actions/checkout
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: ASP-app
+      
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_46E02FAC996F4DC6AA9D37B447C6F129 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4E3A26CC007041D79B299176E3F6D5B2 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_8E0E086089084D07820771EBB14BA197 }}
+
+      - name: Deploy to Azure Web App
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'arkansasrepeatercouncil'
+          slot-name: 'Production'
+          package: .
+          
