@@ -33,8 +33,7 @@ public partial class _Default : System.Web.UI.Page
 		string payPalEmail = System.Configuration.ConfigurationManager.AppSettings["PayPalEmail"];
 		lnkPayPal.NavigateUrl = string.Format(
 			"https://www.paypal.com/donate?business={0}&item_name=Donation&currency_code=USD",
-			payPalEmail);
-
+		    payPalNumber);
 
 		string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
         string url = String.Format("{0}GetRepeaterUpdateNumbers?state={1}", rootUrl, Utilities.StateToDisplay);
