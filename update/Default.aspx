@@ -43,7 +43,9 @@
         
                 <div id="tab-1" >
                         <asp:Label ID="lblFeePaidThrough" CssClass="formLabel" runat="server" Text="Coordination fee"></asp:Label>
-                        <asp:TextBox ID="txtFeePaidThrough" CssClass="textInput" runat="server"></asp:TextBox> USD<br />
+                        <asp:TextBox ID="txtFeePaidThrough" CssClass="textInput" runat="server"></asp:TextBox>
+                        <asp:HyperLink ID="lnkPayNow" runat="server" Visible="false" Target="_blank" CssClass="btn-paypal">&#x1F4B3; Pay $5.00 via PayPal</asp:HyperLink>
+                        <br />
 
                         <asp:Label ID="lblType" CssClass="formLabel" runat="server" Text="Type"></asp:Label>
                         <asp:DropDownList ID="ddlType" CssClass="textInput" runat="server">
