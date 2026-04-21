@@ -21,19 +21,26 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup MSBuild path
-        uses: microsoft/setup-msbuild@v2
-
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2
 
       - name: Restore NuGet packages
         run: nuget restore packages.config -OutputDirectory packages
 
-      - name: Publish to folder
+      - name: Copy assemblies to Bin
         run: |
-          New-Item -ItemType Directory -Force -Path "$env:GITHUB_WORKSPACE\published" | Out-Null
-          msbuild ARC-website.sln /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="$env:GITHUB_WORKSPACE\published"
+          Copy-Item "packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll" -Destination "Bin\" -Force
+          Copy-Item "packages\Octokit.4.0.4\lib\netstandard2.0\Octokit.dll" -Destination "Bin\" -Force
+          Copy-Item "packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll" -Destination "Bin\" -Force
+          # Copy the netstandard façade so .NET 4.8 can resolve Octokit's netstandard2.0 dependency
+          $facade = "C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\Facades\netstandard.dll"
+          if (Test-Path $facade) { Copy-Item $facade -Destination "Bin\" -Force }
+
+      - name: Compile with aspnet_compiler
+        run: |
+          $compiler = "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\aspnet_compiler.exe"
+          & $compiler -v /localhost_50427 -p "$env:GITHUB_WORKSPACE" -u -f "$env:GITHUB_WORKSPACE\published"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
