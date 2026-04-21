@@ -31,13 +31,14 @@ jobs:
         run: nuget restore ARC-website.sln
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="${{ github.workspace }}\published\"
+        run: msbuild /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="$env:GITHUB_WORKSPACE\published"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: ASP-app
           path: '${{ github.workspace }}\published'
+          if-no-files-found: error
 
   deploy:
     runs-on: windows-latest
