@@ -37,19 +37,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolderTitle" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <asp:HiddenField ID="hdnPayPalEmail" ClientIDMode="Static" runat="server" />
     <section>
         <h1>
+            <asp:label id="lblState1" runat="server" text=""></asp:label> Repeater Council
+
             <% if (Utilities.StateToDisplay == "AR") { %>
-                <asp:label id="lblState1" runat="server" text=""></asp:label> Repeater Council
-                <div style="display:inline-block; vertical-align:middle; margin-left:15px; text-align:center;">
-
-<!-- Changes and Addition 041626 ghcjr -->
-
+                <div>
                     <asp:HyperLink ID="lnkPayPal" runat="server" Target="_blank">
-                        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
-                            alt="Donate with PayPal"
-                            style="vertical-align:middle;" />
+                        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal" />
                     </asp:HyperLink>
                     <br />
                     <span style="font-size:13px; font-weight:bold;">501(c)(3) Non-Profit Organization</span>

@@ -29,8 +29,7 @@ public partial class _Default : System.Web.UI.Page
         lblState1.Text = stateName;
 		lblState2.Text = stateName;
 
-// Addition 041626 ghcjr - set PayPal link
-		string payPalNumber = System.Configuration.ConfigurationManager.AppSettings["PayPalNumber"];
+		string payPalNumber = System.Configuration.ConfigurationManager.AppSettings["PayPalMerchantId"];
 		lnkPayPal.NavigateUrl = string.Format(
 			"https://www.paypal.com/donate?business={0}&item_name=Donation&currency_code=USD",
 		    payPalNumber);
@@ -38,7 +37,6 @@ public partial class _Default : System.Web.UI.Page
 		string rootUrl = System.Configuration.ConfigurationManager.AppSettings["webServiceRootUrl"].ToString();
         string url = String.Format("{0}GetRepeaterUpdateNumbers?state={1}", rootUrl, Utilities.StateToDisplay);
         string json = Utilities.GetResponseFromUrl(url);
-// Addition 041626 ghcjr 
         dynamic stats = JsonConvert.DeserializeObject<dynamic>(json);
 
         lblCount.Text = stats.TotalRepeaters;
