@@ -40,23 +40,22 @@
     <section>
         <h1>
             <asp:label id="lblState1" runat="server" text=""></asp:label> Repeater Council
-
-            <% if (Utilities.StateToDisplay == "AR") { %>
-                <div>
-                    <asp:HyperLink ID="lnkPayPal" runat="server" Target="_blank">
-                        <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal" />
-                    </asp:HyperLink>
-                    <br />
-                    <span style="font-size:13px; font-weight:bold;">501(c)(3) Non-Profit Organization</span>
-                </div>
-            <% } %>
         </h1>
 		<p>
 			The <asp:label id="lblState2" runat="server" text=""></asp:label> Repeater Council coordinates
 amateur radio repeater frequencies. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a>.
 		</p>
+        <% if (Utilities.StateToDisplay == "AR") { %>
+            <p>
+                The Arkansas Repeater Council is a 501(c)(3) non-profit organization. If you would like to support our efforts, please consider donating.
+            </p>
+            <div style="text-align: center;">
+                <asp:HyperLink ID="lnkPayPal" runat="server" Target="_blank">
+                    <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal" />
+                </asp:HyperLink>
+            </div>
+        <% } %>
     </section>
-<!-- The End of Changes and Addition 041626 ghcjr -->
     <section>
         <div id="homeStatsContainer">
             <div class="stat">
