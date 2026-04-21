@@ -53,7 +53,7 @@
             </asp:ContentPlaceHolder>
         </div>
         <footer>
-	        <div><a href="https://github.com/ArkansasRepeaterCouncil/website/tree/master#arkansas-repeater-council">Edit the site</a> - <a href="https://github.com/ArkansasRepeaterCouncil/website/issues">Report a problem</a></div>
+	        <div><a href="https://github.com/ArkansasRepeaterCouncil/ArkansasRepeaterCouncilWebsite/tree/master#arkansas-repeater-council">Edit the site</a> - <a href="https://github.com/ArkansasRepeaterCouncil/website/issues">Report a problem</a></div>
         </footer>
     </div>
     </form>
