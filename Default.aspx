@@ -45,7 +45,7 @@
 			The <asp:label id="lblState2" runat="server" text=""></asp:label> Repeater Council coordinates
 amateur radio repeater frequencies. We utilize available data from our own database, as well as information from surrounding states.  We use our own standards and guidelines as well as those of the <a href="http://iowarepeater.org/mid-america-coordination-council/">Mid-America Coordination Council</a>.
 		</p>
-        <% if (Utilities.StateToDisplay == "AR") { %>
+        <% if (Utilities.StateToDisplay == "AR" && bool.Parse(System.Configuration.ConfigurationManager.AppSettings["PayPalFeatureEnabled"])) { %>
             <p>
                 The Arkansas Repeater Council is a 501(c)(3) non-profit organization. If you would like to support our efforts, please consider donating.
             </p>

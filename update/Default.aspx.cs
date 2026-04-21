@@ -71,7 +71,9 @@ public partial class update_Default : System.Web.UI.Page
 			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 			txtID.Text = repeater.ID.ToString();
 
-			if (repeater.State == "AR") {
+			bool paypalFeatureEnabled = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["PayPalFeatureEnabled"]);
+
+			if (repeater.State == "AR" && paypalFeatureEnabled) {
 				bool feeOwed = false;
 				DateTime feeDate;
 				if (repeater.FeePaidThrough == "")
@@ -90,12 +92,12 @@ public partial class update_Default : System.Web.UI.Page
 				}
 				txtFeePaidThrough.Enabled = false;
 
-				if (feeOwed)
+				if (feeOwed) 
 				{
-				string paypalBusinessId = System.Configuration.ConfigurationManager.AppSettings["PayPalMerchantId"];
-				string ipnUrl = System.Configuration.ConfigurationManager.AppSettings["PayPalIpnUrl"];
-				string returnUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/update/?id=" + repeaterId;
-				string itemName = HttpUtility.UrlEncode("Coordination Fee - " + repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")");
+					string paypalBusinessId = System.Configuration.ConfigurationManager.AppSettings["PayPalMerchantId"];
+					string ipnUrl = System.Configuration.ConfigurationManager.AppSettings["PayPalIpnUrl"];
+					string returnUrl = Request.Url.GetLeftPart(UriPartial.Authority) + "/update/?id=" + repeaterId;
+					string itemName = HttpUtility.UrlEncode("Coordination Fee - " + repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")");
 
 					lnkPayNow.NavigateUrl = string.Format(
 						"https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business={0}&item_name={1}&amount=5.00&currency_code=USD&notify_url={2}&return={3}&cancel_return={3}&custom={4}&no_shipping=1",
