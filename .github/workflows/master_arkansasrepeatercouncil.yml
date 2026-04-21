@@ -28,10 +28,12 @@ jobs:
         uses: NuGet/setup-nuget@v2
 
       - name: Restore NuGet packages
-        run: nuget restore ARC-website.sln
+        run: nuget restore packages.config -OutputDirectory packages
 
       - name: Publish to folder
-        run: msbuild ARC-website.sln /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="$env:GITHUB_WORKSPACE\published"
+        run: |
+          New-Item -ItemType Directory -Force -Path "$env:GITHUB_WORKSPACE\published" | Out-Null
+          msbuild ARC-website.sln /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="$env:GITHUB_WORKSPACE\published"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
