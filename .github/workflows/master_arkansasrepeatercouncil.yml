@@ -31,7 +31,7 @@ jobs:
         run: nuget restore ARC-website.sln
 
       - name: Publish to folder
-        run: msbuild /nologo /verbosity:m /t:Build /p:Configuration=Release /p:Platform="Any CPU" /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:publishUrl="${{ github.workspace }}\published"
+        run: msbuild ARC-website.sln /nologo /verbosity:m /t:Build /p:Configuration=Release /p:DeployOnBuild=true /p:WebPublishMethod=FileSystem /p:publishUrl="$env:GITHUB_WORKSPACE\published"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
