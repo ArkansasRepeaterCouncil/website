@@ -49,7 +49,7 @@ amateur radio repeater frequencies. We utilize available data from our own datab
             <p>
                 The Arkansas Repeater Council is a 501(c)(3) non-profit organization. If you would like to support our efforts, please consider donating.
             </p>
-            <div style="text-align: center;">
+            <div style="text-align: center; width: 100%; margin-top: 10px;">
                 <asp:HyperLink ID="lnkPayPal" runat="server" Target="_blank">
                     <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donate with PayPal" />
                 </asp:HyperLink>
