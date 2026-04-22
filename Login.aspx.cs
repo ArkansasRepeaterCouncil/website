@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 public partial class Login : System.Web.UI.Page
 {
-    private bool isCoordinator = false;
+    private bool isExternalCoordinator = false;
 
 	protected void Page_Load(object sender, EventArgs e)
 	{
@@ -52,7 +52,7 @@ public partial class Login : System.Web.UI.Page
 
                 if ((int)data[0].isCoordinator == 1)
                 {
-                    isCoordinator = true;
+                    isExternalCoordinator = true;
                     HttpCookie oatmeal = new HttpCookie("oatmeal", "1");
                     Response.Cookies.Add(oatmeal);
                 }
@@ -84,7 +84,7 @@ public partial class Login : System.Web.UI.Page
 					}
 					else
 					{
-                        if (isCoordinator)
+                        if (isExternalCoordinator)
                         {
                             Response.Redirect("/request-interstate/");
                         }
