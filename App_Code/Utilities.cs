@@ -100,7 +100,7 @@ public static class Utilities
         return outputCreds;
     }
 
-    public static bool IsUserAdmin(string username, string password)
+    public static bool IsUserAdmin()
     {
         HttpCookie adminCookie = HttpContext.Current.Request.Cookies["chocolatechip"];
         if ((adminCookie != null) && (adminCookie.Value == "1"))
