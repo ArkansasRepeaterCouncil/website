@@ -100,6 +100,19 @@ public static class Utilities
         return outputCreds;
     }
 
+    public static bool IsUserAdmin(string username, string password)
+    {
+        HttpCookie adminCookie = HttpContext.Current.Request.Cookies["chocolatechip"];
+        if ((adminCookie != null) && (adminCookie.Value == "1"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     public static void GetValueIfNotNull(object val, string prefixString, List<string> arr)
     {
         if ((val is int) && ((int)val == 1))

@@ -71,9 +71,9 @@ public partial class update_Default : System.Web.UI.Page
 			lblRepeaterName.Text = repeater.RepeaterCallsign + " (" + repeater.OutputFrequency + ")";
 			txtID.Text = repeater.ID.ToString();
 
-			bool paypalFeatureEnabled = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["PayPalFeatureEnabled"]);
+			bool paypalFeatureEnabled = bool.Parse(System.Configuration.ConfigurationManager.AppSettings["PayPalFeatureEnabled"]);;
 
-			if (repeater.State == "AR" && paypalFeatureEnabled) {
+			if (repeater.State == "AR" && (paypalFeatureEnabled || Utilities.IsUserAdmin())) {
 				bool feeOwed = false;
 				DateTime feeDate;
 				if (repeater.FeePaidThrough == "")
