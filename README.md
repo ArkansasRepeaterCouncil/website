@@ -1,6 +1,7 @@
 <h1>Repeater Council</h1>
 <h2>Repeater coordination and data management</h2>
-[![Build and Deploy](https://github.com/ArkansasRepeaterCouncil/website/actions/workflows/master_arkansasrepeatercouncil.yml/badge.svg)](https://github.com/ArkansasRepeaterCouncil/website/actions/workflows/master_arkansasrepeatercouncil.yml)
+
+![Build Status](https://github.com/ArkansasRepeaterCouncil/website/actions/workflows/master_arkansasrepeatercouncil.yml/badge.svg)
 
 <h2 id="support">Support</h2>
 <p>This website is open-source.  This typically means, and is true in this case, that it is community supported.  If you find a bug, check to see if there is already an issue open to address it before you submit one.  If you have a suggestion please open an issue and share your idea.  Or better yet... contribute to the project (keep reading).</p>
