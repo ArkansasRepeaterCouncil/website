@@ -21,21 +21,21 @@ public partial class MasterPage : System.Web.UI.MasterPage
 			lbLogin.Text = "Logout";
 			pnlLoggedInNav.Visible = true;
 
-            HttpCookie oatmeal = Request.Cookies["oatmeal"];
-            if ((oatmeal != null) && (oatmeal.Value == "1"))
+            HttpCookie isExternalCoordinator = Request.Cookies["oatmeal"];
+            if ((isExternalCoordinator != null) && (isExternalCoordinator.Value == "1"))
             {
                 lblCoordination.Visible = false;
                 lblNopc.Visible = true;
             }
 
-            HttpCookie peanutbutter = Request.Cookies["peanutbutter"];
-			if ((peanutbutter != null) && (peanutbutter.Value == "1"))
+            HttpCookie isReportViewer = Request.Cookies["peanutbutter"];
+			if ((isReportViewer != null) && (isReportViewer.Value == "1"))
 			{
 				pnlAdminAndReportLinks.Visible = true;
 			}
 
-			HttpCookie chocolatechip = Request.Cookies["chocolatechip"];
-			if ((chocolatechip != null) && (chocolatechip.Value == "1"))
+			HttpCookie isAdmin = Request.Cookies["chocolatechip"];
+			if ((isAdmin != null) && (isAdmin.Value == "1"))
 			{
 				pnlAdminAndReportLinks.Visible = true;
 			}
@@ -83,6 +83,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
 					HttpContext.Current.Response.SetCookie(cookie);
 				}
 			}
+
+			// Side note from me six years later: What the hell was I thinking? I have no idea why I named the array "snackbag". I guess I was hungry. 
+			// Or maybe I just thought it was funny. Either way, it has stuck around for years now, and I'm not about to change it.	
 
 			Response.Redirect("~/");
 		}
